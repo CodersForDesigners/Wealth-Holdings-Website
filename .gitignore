@@ -1,0 +1,9 @@
+
+# the .DS_Store files everywhere
+.DS_Store
+
+/conf.php
+/conf.*.php
+
+# the content directory
+/content
