@@ -19,7 +19,7 @@ require_once __DIR__ . '/../inc/above.php';
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12">
-				<div class="h3 space-half-top space-min-bottom">Um, what happened to the sample?</div>
+				<div class="h3 space-50-top space-min-bottom">Um, what happened to the sample?</div>
 				<div class="h5"><?= $thePost[ 'post_content' ] ?: 'Not sure.' ?></div>
 			</div>
 		</div>

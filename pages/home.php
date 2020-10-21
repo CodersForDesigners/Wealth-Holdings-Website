@@ -19,9 +19,7 @@
 <section class="intro-section">
 	<div class="container">
 		<div class="row">
-			<div class="columns small-12 space-half-top-bottom">
-				<div class="h2">Welcome.</div>
-				<div class="h3">You are at the source.</div>
+			<div class="columns small-12 space-50-top-bottom">
 			</div>
 		</div>
 	</div>

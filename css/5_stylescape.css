@@ -474,7 +474,7 @@ select {
 }
 
 textarea {
-	min-height: var(--space-double);
+	min-height: var(--space-200);
 }
 
 .input-field:focus,
