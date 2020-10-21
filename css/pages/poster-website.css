@@ -1,0 +1,124 @@
+/*
+ * Poster Website
+ */
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}
+
+
+
+/* -- Intro -- */
+.intro-section .intro .logo {
+	width: 120px;
+}
+@media( min-width: 640px )  {
+	.intro-section .intro {
+		min-height: 800px;
+	}
+}
+@media( min-width: 1040px ) {
+	.intro-section .intro {
+		min-height: 940px;
+	}
+
+	.intro-section .intro .logo {
+		width: 260px;
+		padding-bottom: var(--space-75);
+	}
+	.intro-section .intro .description {
+		width: 66.66667%;
+	}
+}
+@media( min-width: 1480px ) {
+	.intro-section .intro {
+		min-height: 1240px;
+	}
+
+	.intro-section .intro .logo {
+		width: 320px;
+	}
+}
+
+
+
+/* -- Action -- */
+.intro-section .action .heading img {
+	width: 38px;
+	margin-top: 2px;
+}
+
+@media( min-width: 640px )  {
+	.intro-section .action {
+		min-height: 800px;
+	}
+
+	.intro-section .action .heading img {
+		width: 40px;
+		margin-top: 4px;
+	}
+}
+@media( min-width: 1040px ) {
+	.intro-section .action {
+		min-height: 940px;
+	}
+
+	.intro-section .action .heading img {
+		width: 46px;
+		margin-top: 4px;
+	}
+}
+@media( min-width: 1480px ) {
+	.intro-section .action {
+		min-height: 1240px;
+	}
+
+	.intro-section .action .heading img {
+		width: 86px;
+		margin-top: 6px;
+	}
+}
+
+
+
+/* -- How Section -- */
+/*.how-section .how .table { display: table; }*/
+.how-section .how .table .table-head { display: table-header-group; }
+.how-section .how .table .table-row {
+	display: table-row;
+}
+.how-section .how .table .table-cell {
+	display: table-cell;
+	box-shadow: inset 0px 0px 0px 1px rgba(255,255,255,0.25);
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {
+	.how-section .how .table .table-cell {
+		display: table-cell;
+		box-shadow: inset 0px 0px 0px 1.5px rgba(255,255,255,0.25);
+	}
+}
+
+
+
+/* -- About -- */
+.about-section .about .logo {
+	width: 120px;
+}
+@media( min-width: 640px )  {
+	.about-section .about .logo {
+		width: 140px;
+	}
+}
+@media( min-width: 1040px ) {
+	.about-section .about .logo {
+		width: 200px;
+	}
+}
+@media( min-width: 1480px ) {
+	.about-section .about .logo {
+		width: 240px;
+	}
+}
