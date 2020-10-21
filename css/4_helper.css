@@ -33,6 +33,10 @@
 	text-transform: lowercase;
 }
 
+.text-underline {
+	text-decoration: underline;
+}
+
 
 /*
  * Spacing
@@ -88,6 +92,15 @@
 
 
 /*
+ * Position
+ */
+
+.position-relative { position: relative; }
+.position-absolute { position: absolute; }
+.position-fixed { position: fixed; }
+
+
+/*
  * Display
  */
 
@@ -97,7 +110,7 @@
 }
 
 .inline {
-	display: inline-block !important;
+	display: inline-block;
 	vertical-align: baseline;
 }
 
@@ -207,36 +220,42 @@
 
 
 /*
- * Mobile only -> Hide visually and from screen readers
+ * Selective Hide/Show
+ *
+ * Important!!! READ ME:
+ * EACH of these helper classes are contained within their breakpoint.
+ * EACH of these helper classes do not bleed across breakpoint.
+ * If the element is shown by default, Then use ".hide-"
+ * If the element is hidden by default, Then use ".show-"
+ * 
  */
-
 @media ( max-width: 639px ) {
-	.hide-for-mobile {
-		display: none !important;
-	}
+	/* -- small -- */
+	.hide-small { display: none !important; }
+	.show-small-block { display: block !important; }
+	.show-small-inline { display: inline !important; }
+	.show-small-inline-block { display: inline !important; }
 }
-
-.show-for-mobile { display: none !important; }
-
-@media ( max-width: 639px ) {
-	.show-for-mobile {
-		display: block !important;
-	}
+@media( min-width: 640px ) and ( max-width: 1039px ) {
+	/* -- medium -- */
+	.hide-medium { display: none !important; }
+	.show-medium-block { display: block !important; }
+	.show-medium-inline { display: inline !important; }
+	.show-medium-inline-block { display: inline !important; }
 }
-
-
-@media ( max-width: 1039px ) {
-	.hide-for-tablet {
-		display: none !important;
-	}
+@media( min-width: 1040px ) and ( max-width: 1479px ) {
+	/* -- large -- */
+	.hide-large { display: none !important; }
+	.show-large-block { display: block !important; }
+	.show-large-inline { display: inline !important; }
+	.show-large-inline-block { display: inline !important; }
 }
-
-.show-for-tablet { display: none !important; }
-
-@media ( max-width: 1039px ) {
-	.show-for-tablet {
-		display: block !important;
-	}
+@media( min-width: 1480px ) {
+	/* -- xlarge -- */
+	.hide-xlarge { display: none !important; }
+	.show-xlarge-block { display: block !important; }
+	.show-xlarge-inline { display: inline !important; }
+	.show-xlarge-inline-block { display: inline !important; }
 }
 
 
