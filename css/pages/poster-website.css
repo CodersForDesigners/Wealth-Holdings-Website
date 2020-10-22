@@ -10,94 +10,127 @@
 
 /* -- Intro -- */
 .intro-section .intro .logo {
-	width: 120px;
+	width: 160px;
 }
 @media( min-width: 640px )  {
-	.intro-section .intro {
-		min-height: 800px;
+	.intro-section .intro .logo {
+		width: 180px;
 	}
 }
 @media( min-width: 1040px ) {
-	.intro-section .intro {
-		min-height: 940px;
-	}
-
 	.intro-section .intro .logo {
 		width: 260px;
 		padding-bottom: var(--space-75);
 	}
-	.intro-section .intro .description {
-		width: 66.66667%;
-	}
 }
 @media( min-width: 1480px ) {
-	.intro-section .intro {
-		min-height: 1240px;
-	}
-
 	.intro-section .intro .logo {
 		width: 320px;
+	}
+	.intro-section .intro .description {
+		line-height: 1.5;
 	}
 }
 
 
 
 /* -- Action -- */
-.intro-section .action .heading img {
-	width: 38px;
-	margin-top: 2px;
+.action-section .action .heading img {
+	width: 52px;
+    margin-top: 6px;
+    margin-right: 16px;
 }
 
 @media( min-width: 640px )  {
-	.intro-section .action {
-		min-height: 800px;
-	}
-
-	.intro-section .action .heading img {
-		width: 40px;
-		margin-top: 4px;
+	.action-section .action .heading img {
+		width: 56px;
 	}
 }
 @media( min-width: 1040px ) {
-	.intro-section .action {
-		min-height: 940px;
-	}
-
-	.intro-section .action .heading img {
-		width: 46px;
-		margin-top: 4px;
+	.action-section .action .heading img {
+		width: 72px;
+		margin-top: 10px;
+		margin-right: 24px;
 	}
 }
 @media( min-width: 1480px ) {
-	.intro-section .action {
-		min-height: 1240px;
+	.action-section .action .heading {
+		padding-right: var(--space-50);
 	}
-
-	.intro-section .action .heading img {
-		width: 86px;
-		margin-top: 6px;
+	.action-section .action .heading img {
+		width: 80px;
+		margin-top: 12px;
+		margin-right: 26px;
 	}
 }
 
 
 
 /* -- How Section -- */
-/*.how-section .how .table { display: table; }*/
-.how-section .how .table .table-head { display: table-header-group; }
+.how-section .how .table .table-head {
+	display: table-header-group;
+	cursor: pointer;
+}
+
 .how-section .how .table .table-row {
 	display: table-row;
 }
+
 .how-section .how .table .table-cell {
 	display: table-cell;
 	box-shadow: inset 0px 0px 0px 1px rgba(255,255,255,0.25);
 }
 
-@media( min-width: 640px )  {}
-@media( min-width: 1040px ) {}
+.how-section .how .table .table-row .table-cell {
+	padding-left: calc( var(--space-50) + 5px );
+	text-indent: calc( ( var(--space-50) * -1 ) - 5px );
+}
+
+.how-section .how .table .table-cell .num {
+	display: inline-block;
+	width: var(--space-50);
+	margin-right: 5px;
+	border-radius: 50%;
+	text-align: right;
+	padding: 0 5px;
+}
+
+.how-section .how .table .table-foot {
+	cursor: pointer;
+	display: table-footer-group;
+}
+
+@media( min-width: 640px )  {
+	.how-section .how .table .table-row .table-cell {
+		clear: both;
+		padding-left: var(--space-75);
+		text-indent: 0;
+	}
+	.how-section .how .table .table-cell .num {
+		float: left;
+		height: var(--space-50);
+		line-height: var(--space-50);
+		text-align: center;
+		margin-top: -3px;
+		margin-left: calc( (var(--space-50) * -1) - 5px );
+		background-color: rgba(255,255,255,0.25);
+	}
+}
+@media( min-width: 1040px ) {
+	.how-section .how .table .table-cell .num {
+		margin-top: -5px;
+		width: calc( var(--space-50) * .75);
+		height: calc( var(--space-50) * .75);
+		line-height: calc( var(--space-50) * .75);
+	}
+}
 @media( min-width: 1480px ) {
 	.how-section .how .table .table-cell {
 		display: table-cell;
 		box-shadow: inset 0px 0px 0px 1.5px rgba(255,255,255,0.25);
+	}
+	.how-section .how .table .table-cell .num {
+			margin-top: -11px;
 	}
 }
 
@@ -105,11 +138,11 @@
 
 /* -- About -- */
 .about-section .about .logo {
-	width: 120px;
+	width: 160px;
 }
 @media( min-width: 640px )  {
 	.about-section .about .logo {
-		width: 140px;
+		width: 180px;
 	}
 }
 @media( min-width: 1040px ) {
