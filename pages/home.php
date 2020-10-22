@@ -35,7 +35,7 @@
 				<div class="logo space-100-bottom"><img class="block" src="../media/wh-logo-large-dark.svg<?php echo $ver ?>"></div>
 			</div>
 			<div class="columns small-12 medium-10 large-4 inline-top">
-				<div class="description h5 line-height-large text-blue-4 space-50-bottom">Invest in a revolutionary asset class, rental-yielding real estate assets that are backed by a business model. Get the right returns, with managed volatility and capital protection.</div>
+				<div class="description h5 line-height-large text-blue-4 space-50-bottom">Real estate assets that are backed by a business model have better rental yields. Include this revolutionary new asset class in your portfolio. Invest today, get the right returns, with managed volatility and capital protection.</div>
 			</div>
 			<div class="columns small-12 medium-7 large-5 large-offset-1 xlarge-4 inline-top">
 				<div class="h5 strong line-height-large space-min-bottom">Curated rental-yielding assets, with</div>
