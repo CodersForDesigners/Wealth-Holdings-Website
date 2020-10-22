@@ -41,6 +41,23 @@
     margin-right: 16px;
 }
 
+.action-section .action .char-image {
+	position: relative;
+}
+.action-section .action .char-image:after {
+	content: '';
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 100%;
+	bottom: 0;
+	width: 100vw;
+	background-position: bottom left;
+	background-image: url('../../media/char-1-trail.png');
+	background-repeat: repeat-x;
+	background-size: auto 100%;
+}
+
 @media( min-width: 640px )  {
 	.action-section .action .heading img {
 		width: 56px;

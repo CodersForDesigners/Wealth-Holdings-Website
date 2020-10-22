@@ -35,11 +35,11 @@
 				<div class="logo space-100-bottom"><img class="block" src="../media/wh-logo-large-dark.svg<?php echo $ver ?>"></div>
 			</div>
 			<div class="columns small-12 medium-10 large-4 inline-top">
-				<div class="description h5 line-height-large text-blue-4 space-50-bottom">Invest in rental-yielding real estate assets that are backed by a business model. Get the right returns, with managed volatility and capital protection.</div>
+				<div class="description h5 line-height-large text-blue-4 space-50-bottom">Invest in a revolutionary asset class, rental-yielding real estate assets that are backed by a business model. Get the right returns, with managed volatility and capital protection.</div>
 			</div>
 			<div class="columns small-12 medium-7 large-5 large-offset-1 xlarge-4 inline-top">
 				<div class="h5 strong line-height-large space-min-bottom">Curated rental-yielding assets, with</div>
-				<div class="h1 strong">Returns you cannot ignore.</div>
+				<div class="h1 strong">returns you cannot ignore.</div>
 			</div>
 		</div>
 	</div>
@@ -53,11 +53,11 @@
 			<div class="columns small-12 medium-9 large-6 large-offset-5 xlarge-5">
 				<div class="heading h3 strong line-height-medium clearfix space-50-bottom">
 					<img class="float-left" src="../media/wh-logo-small-red.svg<?php echo $ver ?>">
-					Why not invest in a 3BHK flat and get a 7% return on this investment? <span class="text-red-2">That’s a better return than a fixed deposit.</span>
+					Why not invest in a 3BHK flat and <span class="text-red-2">get a 7% return</span> on this investment? The return is <span class="text-red-2">better than a fixed deposit.</span>
 				</div>
 			</div>
 			<div class="columns small-12 space-50-bottom">
-				<div class="image">
+				<div class="char-image">
 					<img class="block hide-large hide-xlarge" src="../media/char-1-small.png<?php echo $ver ?>">
 					<img class="block hide-small hide-medium" src="../media/char-1-large.png<?php echo $ver ?>">
 				</div>
