@@ -33,8 +33,8 @@ else
 
 
 // Construct the page's title ( for use in the title tag )
-$siteTitle = getContent( '', 'page_title', $urlSlug ) ?: getContent( 'Fudge', 'page_title' );
-$pageUrl = $siteUrl . $requestPath;
+$siteTitle = cmsIsEnabled() ? get_bloginfo( 'name' ) : '';
+$pageUrl = $siteUrl . '/' . $requestPath;
 
 // Build the Page Title ( if an explicit one is set, use that )
 if ( cmsIsEnabled() and ! empty( $thePost ) )
