@@ -66,71 +66,72 @@
 				<div class="form form-dark space-25-bottom">
 					<form class="part-1 js_contact_form_1" data-c="general-enquiry-form">
 						<div class="form-row space-min-bottom">
-							<div class="label">
-								<div class="label line-height-xlarge opacity-50">Country Code</div>
-								<select class="block js_phone_country_code">
-									<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
-								</select>
-								<input type="text" class="block js_phone_country_code_label" value="+91">
-							</div>
+							<label for="phone-number">
+								<div class="label line-height-xlarge opacity-50 cursor-pointer">Phone Number</div>
+								<div class="row">
+									<div class="columns position-relative small-3">
+										<select class="block position-relative opacity-0 js_phone_country_code">
+											<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+										</select>
+										<input type="text" class="block position-absolute no-pointer js_phone_country_code_label" value="+91" style="top: 0; left: 0;">
+									</div>
+									<div class="columns small-9 space-min-left">
+										<input id="phone-number" type="text" class="block" name="phone-number">
+									</div>
+								</div>
+							</label>
 						</div>
 						<div class="form-row space-min-bottom">
-							<div class="label">
-								<div class="label line-height-xlarge opacity-50">Phone Number</div>
-								<input type="text" class="block" name="phone-number">
-							</div>
-						</div>
-						<div class="form-row space-min-bottom">
-							<div class="label">
-								<div class="label line-height-xlarge opacity-50">Investment Budget</div>
+							<label>
+								<div class="label line-height-xlarge opacity-50 cursor-pointer">Investment Budget</div>
 								<select class="block" name="budget">
 									<option>14 Lakhs to 45 Lakhs</option>
 									<option>45 Lakhs to 95 Lakhs</option>
 									<option>95 Lakhs to 1.45Cr</option>
 									<option>1.45Cr and above</option>
 								</select>
-							</div>
+							</label>
 						</div>
 						<div class="form-row space-min-bottom">
-							<div class="label">
-								<div class="label line-height-xlarge opacity-50 invisible">Submit</div>
+							<label>
+								<div class="label line-height-xlarge opacity-50 cursor-pointer invisible">Submit</div>
 								<button class="fill-red-2 block" type="submit">Invest Today</button>
-							</div>
+							</label>
 						</div>
 					</form>
 					<form class="part-2 js_contact_form_2" style="display: none">
 						<div class="form-row space-min-bottom">
-							<div class="label">
-								<div class="label line-height-xlarge opacity-50">Name</div>
+							<label>
+								<div class="label line-height-xlarge opacity-50 cursor-pointer">Name</div>
 								<input type="text" class="block" name="name">
-							</div>
+							</label>
 						</div>
 						<div class="form-row space-min-bottom">
-							<div class="label">
-								<div class="label line-height-xlarge opacity-50">Email</div>
+							<label>
+								<div class="label line-height-xlarge opacity-50 cursor-pointer">Email</div>
 								<input type="text" class="block" name="email-address">
-							</div>
+							</label>
 						</div>
 						<div class="form-row space-min-bottom">
-							<div class="label">
-								<div class="label line-height-xlarge opacity-50 invisible">Submit</div>
+							<label>
+								<div class="label line-height-xlarge opacity-50 cursor-pointer invisible">Submit</div>
 								<button class="fill-red-2 block" type="submit">Submit Details</button>
-							</div>
+							</label>
 						</div>
 					</form>
 				</div>
 				<form class="form form-dark space-25-bottom js_otp_form" style="display: none">
 					<div class="form-row space-min-bottom">
-						<div class="label">
-							<div class="label line-height-xlarge opacity-50">Enter the OTP</div>
+						<label>
+							<div class="label line-height-xlarge opacity-50 cursor-pointer">Enter the OTP</div>
 							<input type="text" name="otp" class="block">
-						</div>
+						</label>
 					</div>
 					<div class="form-row space-min-bottom">
-						<div class="label">
-							<div class="label line-height-xlarge opacity-50 invisible">Verify</div>
+						<label>
+							<div class="label line-height-xlarge opacity-50 cursor-pointer invisible">Verify</div>
 							<button class="fill-red-2 block" type="submit">Verify</button>
-						</div>
+						</label>
 					</div>
 				</form>
 			</div>

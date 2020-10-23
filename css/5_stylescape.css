@@ -531,7 +531,15 @@ select:focus {
 	border-color: var(--red-2);
 }
 
-select { cursor: pointer; }
+select {
+	padding-top: 0;
+	padding-bottom: 0;
+	cursor: pointer;
+	background-position: 97% 50%;
+	background-image: url('../../media/icon/select-arrow.svg');
+	background-repeat: no-repeat;
+	background-size: 12px;
+}
 
 @media( min-width: 640px )  {
 	.input-field,
@@ -563,6 +571,10 @@ select { cursor: pointer; }
 		height: var(--space-50);
 		font-size: 1.5rem;
 	}
+
+	select {
+		background-size: 14px;
+	}
 }
 @media( min-width: 1480px ) {
 	.input-field,
@@ -593,6 +605,10 @@ select { cursor: pointer; }
 	textarea:focus,
 	select:focus {
 		border-width: 2px;
+	}
+
+	select {
+		background-size: 16px;
 	}
 }
 
