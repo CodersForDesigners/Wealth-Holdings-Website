@@ -214,11 +214,19 @@ $( document ).on( "submit", ".js_contact_form_1", function ( event ) {
 	/* -----
 	 * Process and Assemble the data
 	 ----- */
+	var __ = window.__CUPID;
 	// Get the data in an key-value structure
 	var data = formData.reduce( function ( acc, f ) {
 		acc[ f.name ] = f.value;
 		return acc;
 	}, { } );
+
+
+	// /* -----
+	//  * Update the person's information
+	//  ----- */
+	__.user.isInterestedIn( data.budget );
+	__.user.update();
 
 	// /* -----
 	//  * Give feedback to the user
@@ -287,11 +295,20 @@ $( document ).on( "submit", ".js_contact_form_2", function ( event ) {
 	/* -----
 	 * Process and Assemble the data
 	 ----- */
+	var __ = window.__CUPID;
 	// Get the data in an key-value structure
 	var data = formData.reduce( function ( acc, f ) {
 		acc[ f.name ] = f.value;
 		return acc;
 	}, { } );
+	__.user.name = data.name;
+	__.user.emailAddress = data.emailAddress;
+
+
+	// /* -----
+	//  * Update the person's information
+	//  ----- */
+	__.user.update();
 
 	// /* -----
 	//  * Give feedback to the user

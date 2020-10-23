@@ -62,9 +62,9 @@
 					<img class="block hide-small hide-medium" src="../media/char-1-large.png<?php echo $ver ?>">
 				</div>
 			</div>
-			<div class="columns small-12 medium-6 large-4">
+			<div class="columns small-12 medium-6 large-4 js_contact_form_section">
 				<div class="form form-dark space-25-bottom">
-					<form class="part-1 js_contact_form_1">
+					<form class="part-1 js_contact_form_1" data-c="general-enquiry-form">
 						<div class="form-row space-min-bottom">
 							<div class="label">
 								<div class="label line-height-xlarge opacity-50">Country Code</div>
@@ -119,6 +119,20 @@
 						</div>
 					</form>
 				</div>
+				<form class="form form-dark space-25-bottom js_otp_form" style="display: none">
+					<div class="form-row space-min-bottom">
+						<div class="label">
+							<div class="label line-height-xlarge opacity-50">Enter the OTP</div>
+							<input type="text" name="otp" class="block">
+						</div>
+					</div>
+					<div class="form-row space-min-bottom">
+						<div class="label">
+							<div class="label line-height-xlarge opacity-50 invisible">Verify</div>
+							<button class="fill-red-2 block" type="submit">Verify</button>
+						</div>
+					</div>
+				</form>
 			</div>
 			<div class="columns small-12 medium-5 medium-offset-1 large-4">
 				<div class="contact">

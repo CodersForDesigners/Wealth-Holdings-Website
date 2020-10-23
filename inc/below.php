@@ -33,7 +33,10 @@
 	<script type="text/javascript" src="/js/modules/modal_box.js"></script>
 	<script type="text/javascript" src="/js/modules/disclaimer.js"></script>
 	<script type="text/javascript" src="/js/modules/phone-country-code.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/js/modules/cupid/utils.js"></script>
+	<script type="text/javascript" src="/js/modules/cupid/user.js"></script>
 	<script type="text/javascript" src="/js/forms.js"></script>
+	<script type="text/javascript" src="/js/login-prompts.js"></script>
 
 	<script type="text/javascript">
 
