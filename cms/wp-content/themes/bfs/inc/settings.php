@@ -26,18 +26,18 @@ add_filter( 'redirect_canonical', function ( $redirectUrl ) {
  * Show the Meta-data page if it exists
  *
  */
-if ( ! function_exists( 'acf_add_options_page' ) )
-	return;
+if ( function_exists( 'acf_add_options_page' ) ) {
+	acf_add_options_page( [
+		'page_title' => 'Options',
+		'menu_title' => 'Options',
+		'menu_slug' => 'metadata',
+		'capability' => 'edit_posts',
+		'parent_slug' => '',
+		'position' => '4',
+		'icon_url' => 'dashicons-admin-generic'
+	] );
+}
 
-acf_add_options_page( [
-	'page_title' => 'Metadata',
-	'menu_title' => 'Metadata',
-	'menu_slug' => 'metadata',
-	'capability' => 'edit_posts',
-	'parent_slug' => '',
-	'position' => false,
-	'icon_url' => 'dashicons-info'
-] );
 
 
 function bfs_theme_setup () {
