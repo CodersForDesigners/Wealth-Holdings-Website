@@ -46,17 +46,9 @@ else
 /*
  * Meta / SEO
  */
-$metaDescription = $metaDescription ?? getContent( null, 'meta_description' );
+$metaDescription = htmlentities( strip_tags( $metaDescription ?? getContent( '', 'meta_description' ) ) );
 $metaImage = $metaImage ?? getContent( [ ], 'meta_image' );
-$metaImage = $metaImage[ 'sizes' ][ 'medium' ] ?? $metaImage[ 'sizes' ][ 'small' ] ?? $metaImage[ 'sizes' ][ 'thumbnail' ] ?? $metaImage[ 'url' ] ?? null;
-
-
-/*
- * Meta / SEO
- */
-$metaDescription = $metaDescription ?? getContent( null, 'meta_description' );
-$metaImage = $metaImage ?? getContent( [ ], 'meta_image' );
-$metaImage = $metaImage[ 'sizes' ][ 'medium' ] ?? $metaImage[ 'sizes' ][ 'small' ] ?? $metaImage[ 'sizes' ][ 'thumbnail' ] ?? $metaImage[ 'url' ] ?? null;
+$metaImage = $metaImage[ 'sizes' ][ 'medium' ] ?? $metaImage[ 'sizes' ][ 'small' ] ?? $metaImage[ 'sizes' ][ 'thumbnail' ] ?? $metaImage[ 'url' ] ?? ( $siteUrl . '/media/fallback-image.png' );
 
 
 // #fornow
