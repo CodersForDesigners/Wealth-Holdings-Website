@@ -64,40 +64,60 @@
 			</div>
 			<div class="columns small-12 medium-6 large-4">
 				<div class="form form-dark space-25-bottom">
-					<div class="part-1">
+					<form class="part-1 js_contact_form_1">
+						<div class="form-row space-min-bottom">
+							<div class="label">
+								<div class="label line-height-xlarge opacity-50">Country Code</div>
+								<select class="block js_phone_country_code">
+									<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+								</select>
+								<input type="text" class="block js_phone_country_code_label" value="+91">
+							</div>
+						</div>
 						<div class="form-row space-min-bottom">
 							<div class="label">
 								<div class="label line-height-xlarge opacity-50">Phone Number</div>
-								<input type="text" class="block">
+								<input type="text" class="block" name="phone-number">
 							</div>
 						</div>
 						<div class="form-row space-min-bottom">
 							<div class="label">
 								<div class="label line-height-xlarge opacity-50">Investment Budget</div>
-								<input type="text" class="block">
+								<select class="block" name="budget">
+									<option>14 Lakhs to 45 Lakhs</option>
+									<option>45 Lakhs to 95 Lakhs</option>
+									<option>95 Lakhs to 1.45Cr</option>
+									<option>1.45Cr and above</option>
+								</select>
 							</div>
 						</div>
-					</div>
-					<div class="part-2 hidden">
+						<div class="form-row space-min-bottom">
+							<div class="label">
+								<div class="label line-height-xlarge opacity-50 invisible">Submit</div>
+								<button class="fill-red-2 block" type="submit">Invest Today</button>
+							</div>
+						</div>
+					</form>
+					<form class="part-2 js_contact_form_2" style="display: none">
 						<div class="form-row space-min-bottom">
 							<div class="label">
 								<div class="label line-height-xlarge opacity-50">Name</div>
-								<input type="text" class="block">
+								<input type="text" class="block" name="name">
 							</div>
 						</div>
 						<div class="form-row space-min-bottom">
 							<div class="label">
 								<div class="label line-height-xlarge opacity-50">Email</div>
-								<input type="text" class="block">
+								<input type="text" class="block" name="email-address">
 							</div>
 						</div>
-					</div>
-					<div class="form-row space-min-bottom">
-						<div class="label">
-							<div class="label line-height-xlarge opacity-50 invisible">Submit</div>
-							<button class="fill-red-2 block">Invest Today</button>
+						<div class="form-row space-min-bottom">
+							<div class="label">
+								<div class="label line-height-xlarge opacity-50 invisible">Submit</div>
+								<button class="fill-red-2 block" type="submit">Submit Details</button>
+							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 			<div class="columns small-12 medium-5 medium-offset-1 large-4">
