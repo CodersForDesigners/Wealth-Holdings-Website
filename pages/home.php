@@ -64,7 +64,7 @@
 			</div>
 			<div class="columns small-12 medium-6 large-4 js_contact_form_section">
 				<div class="form form-dark space-25-bottom">
-					<form class="part-1 js_contact_form_1" data-c="general-enquiry-form">
+					<form class="part-1 js_contact_form_1" data-c="invest-today">
 						<div class="form-row space-min-bottom">
 							<label for="phone-number">
 								<div class="label line-height-xlarge opacity-50 cursor-pointer">Phone Number</div>
