@@ -45,8 +45,24 @@
 
 	<script type="text/javascript">
 
+		/*
+		 *
+		 * Tell to Cupid that the user dropped by
+		 *
+		 */
 		$( function () {
-			//
+
+			var user = __CUPID.utils.getUser();
+			if ( user ) {
+				setTimeout( function () {
+					__CUPID.utils.getAnalyticsId()
+						.then( function ( deviceId ) {
+							user.hasDeviceId( deviceId );
+							user.isOnWebsite();
+						} )
+				}, 1500 );
+			}
+
 		} );
 
 	</script>
