@@ -66,12 +66,7 @@ http_response_code( 200 );
 
 	<body id="body" class="body">
 
-		<?php
-			/*
-			 * Arbitrary Code ( Top of Body )
-			 */
-			echo getContent( '', 'arbitrary_code_body_top' );
-		?>
+		<?= getContent( '', 'arbitrary_code -> after_body_opening' ); ?>
 
 	<!--  ★  MARKUP GOES HERE  ★  -->
 

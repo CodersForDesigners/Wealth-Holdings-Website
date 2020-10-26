@@ -71,12 +71,7 @@
 	<?php // require __DIR__ . '/inc/can-user-hover.php' ?>
 
 
-	<?php
-		/*
-		 * Arbitrary Code ( Bottom of Body )
-		 */
-		echo getContent( '', 'arbitrary_code_body_bottom' );
-	?>
+	<?= getContent( '', 'arbitrary_code -> before_body_closing' ); ?>
 
 	<?php /* Query Monitor CMS plugin */ ?>
 	<?php if ( CMS_ENABLED and is_user_logged_in() ) : ?>

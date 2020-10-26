@@ -141,26 +141,13 @@
 		<link rel="stylesheet" type="text/css" href="cms/wp-content/plugins/query-monitor/assets/query-monitor.css<?= $ver ?>"/>
 	<?php endif; ?>
 
-	<!--
-	*
-	*	Fonts and Icons
-	*
-	- -->
-	<?php echo getContent( <<<ARB
-	<!-- Fonts -->
-	<link rel="stylesheet" href="https://use.typekit.net/hfk0cwi.css">
-	<!-- Icons -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<?= getContent( <<<ARB
+		<!-- Fonts -->
+		<link rel="stylesheet" href="https://use.typekit.net/hfk0cwi.css">
+		<!-- Icons -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 ARB
-, 'fonts_and_icons' ) ?>
-
-
-	<?php
-		/*
-		 * Arbitrary Code ( Bottom of Head )
-		 */
-		echo getContent( '', 'arbitrary_code_head_bottom' );
-	?>
+, 'arbitrary_code -> before_head_closing' ); ?>
 
 
 </head>
