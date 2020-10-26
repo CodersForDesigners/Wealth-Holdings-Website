@@ -200,7 +200,8 @@
 		<div class="row">
 			<div class="about columns small-12 large-10 xlarge-8">
 				<div class="logo"><img class="block" src="../media/wh-logo-large-red.svg<?php echo $ver ?>"></div>
-				<div class="p text-blue-1 space-50-top">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quas dignissimos est suscipit ratione consequatur debitis sequi, molestiae quasi, esse, aliquam quibusdam necessitatibus vel accusantium alias, cum. Molestiae, mollitia, voluptatem.</div>
+				<div class="p text-blue-1 space-50-top">Wealth Holdings is a brand of Green Infrastructure Projects Private Limited.</div>
+				<div class="label text-blue-2 space-25-top">Corporate Office<br>1097, 5th Block, 18th B Main Rd, Rajajinagar, Bengaluru, Karnataka 560010.</div>
 			</div>
 		</div>
 	</div>
