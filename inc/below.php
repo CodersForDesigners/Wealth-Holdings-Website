@@ -16,7 +16,9 @@
 
 	<!--  ☠  MARKUP ENDS HERE  ☠  -->
 
-	<?php lazaro_disclaimer(); ?>
+	<?php if ( ! BFS_ENV_PRODUCTION ) : ?>
+		<?php lazaro_disclaimer(); ?>
+	<?php endif; ?>
 
 
 
@@ -31,7 +33,9 @@
 	<!-- <script type="text/javascript" src="/js/modules/device-charge.js"></script> -->
 	<!-- <script type="text/javascript" src="/js/modules/video_embed.js"></script> -->
 	<script type="text/javascript" src="/js/modules/modal_box.js"></script>
-	<script type="text/javascript" src="/js/modules/disclaimer.js"></script>
+	<?php if ( ! BFS_ENV_PRODUCTION ) : ?>
+		<script type="text/javascript" src="/js/modules/disclaimer.js"></script>
+	<?php endif; ?>
 	<script type="text/javascript" src="/js/modules/phone-country-code.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/cupid/utils.js"></script>
 	<script type="text/javascript" src="/js/modules/cupid/user.js"></script>
