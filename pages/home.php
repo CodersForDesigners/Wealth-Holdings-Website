@@ -148,43 +148,43 @@
 
 
 <!-- How Section -->
-<section class="how-section space-100-top-bottom">
+<section class="how-section space-100-top-bottom js_lumpsum_emi_comparison" data-state="collapsed">
 	<div class="container">
 		<div class="row">
 			<div class="how columns small-12 large-10">
 				<div class="h3 strong space-50-bottom">How does it work?</div>
 				<div class="table">
-					<div class="row table-head">
-						<div class="table-cell h5 fill-red-2 columns small-6 space-25 clearfix">Lumpsum <span class="float-right">+</span></div>
-						<div class="table-cell h5 fill-blue-4 columns small-6 space-25 clearfix">EMI <span class="float-right">+</span></div>
+					<div class="row table-head js_table_head">
+						<div class="table-cell h5 fill-red-2 columns small-6 space-25 clearfix">Lumpsum <span class="float-right js_table_toggle" data-when-expanded="–" data-when-collapsed="+">+</span></div>
+						<div class="table-cell h5 fill-blue-4 columns small-6 space-25 clearfix">EMI <span class="float-right js_table_toggle" data-when-expanded="–" data-when-collapsed="+">+</span></div>
 					</div>
-					<div class="row table-row">
+					<div class="row table-row hidden js_table_row">
 						<div class="table-cell p fill-red-1 text-red-4 columns small-6 space-25"><span class="num strong">1.</span>Invest in any of the listed residential properties. </div>
 						<div class="table-cell p fill-blue-2 text-blue-4 columns small-6 space-25"><span class="num strong">1.</span>Get a home loan approval for any of the listed residential properties.</div>
 					</div>
-					<div class="row table-row">
+					<div class="row table-row hidden js_table_row">
 						<div class="table-cell p fill-red-1 text-red-4 columns small-6 space-25"><span class="num strong">2.</span>The property is transferred to you via an absolute sale deed. </div>
 						<div class="table-cell p fill-blue-2 text-blue-4 columns small-6 space-25"><span class="num strong">2.</span>Pay the ‘Minimum Investment Amount’ as the downpayment for the home loan.</div>
 					</div>
-					<div class="row table-row">
+					<div class="row table-row hidden js_table_row">
 						<div class="table-cell p fill-red-1 text-red-4 columns small-6 space-25"><span class="num strong">3.</span>Sign a 9-year rental agreement.</div>
 						<div class="table-cell p fill-blue-2 text-blue-4 columns small-6 space-25"><span class="num strong">3.</span>Complete the home loan paperwork and formalities. </div>
 					</div>
-					<div class="row table-row">
+					<div class="row table-row hidden js_table_row">
 						<div class="table-cell p fill-red-1 text-red-4 columns small-6 space-25"><span class="num strong">4.</span>Get a fixed yearly rental income for 9 years.</div>
 						<div class="table-cell p fill-blue-2 text-blue-4 columns small-6 space-25"><span class="num strong">4.</span>Sign a 9-year rental agreement.</div>
 					</div>
-					<div class="row table-row">
+					<div class="row table-row hidden js_table_row">
 						<div class="table-cell p fill-red-1 text-red-4 columns small-6 space-25">&nbsp;</div>
 						<div class="table-cell p fill-blue-2 text-blue-4 columns small-6 space-25"><span class="num strong">5.</span>Get a fixed yearly rental income for 9 years.</div>
 					</div>
-					<div class="row table-row">
+					<div class="row table-row hidden js_table_row">
 						<div class="table-cell p fill-red-1 text-red-4 columns small-6 space-25">&nbsp;</div>
 						<div class="table-cell p fill-blue-2 text-blue-4 columns small-6 space-25"><span class="num strong">6.</span>The rental income services your monthly EMI’s. </div>
 					</div>
-					<div class="row table-foot">
-						<div class="table-cell text-red-2 text-right text-uppercase label space-min columns small-6">Show Details</div>
-						<div class="table-cell text-blue-4 text-right text-uppercase label space-min columns small-6">Show Details</div>
+					<div class="row table-foot js_table_foot">
+						<div class="table-cell text-red-2 text-right text-uppercase label space-min columns small-6 js_table_toggle" data-when-expanded="Hide Details" data-when-collapsed="Show Details">Show Details</div>
+						<div class="table-cell text-blue-4 text-right text-uppercase label space-min columns small-6 js_table_toggle" data-when-expanded="Hide Details" data-when-collapsed="Show Details">Show Details</div>
 					</div>
 				</div>
 			</div>

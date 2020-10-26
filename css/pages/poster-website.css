@@ -85,7 +85,7 @@
 
 /* -- How Section -- */
 .how-section .how .table .table-head {
-	display: table-header-group;
+	display: flex;
 	cursor: pointer;
 }
 
@@ -113,8 +113,8 @@
 }
 
 .how-section .how .table .table-foot {
+	display: flex;
 	cursor: pointer;
-	display: table-footer-group;
 }
 
 @media( min-width: 640px )  {
