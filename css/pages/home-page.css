@@ -1,0 +1,212 @@
+/*
+ * Sample Section
+ */
+
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}
+
+
+
+
+
+/*
+ * Header Section
+ */
+
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}
+
+
+
+
+
+/*
+ * Landing Section
+ */
+
+.landing-section {}
+.landing-section .logo { width: 165px; }
+
+.landing-section .char-image {
+	position: relative;
+}
+.landing-section .char-image:after {
+	content: '';
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 100%;
+	bottom: 0;
+	width: 100vw;
+	background-position: bottom left;
+	background-image: url('../../media/char-1-trail.png');
+	background-repeat: repeat-x;
+	background-size: auto 100%;
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {
+	.landing-section .logo { width: 220px; }
+}
+
+
+
+
+
+/*
+ * Benefits Section
+ */
+
+.benefits-section {}
+.benefits-section .tile-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	/*grid-template-rows: repeat(16, calc((var(--space-100) * 3) - (var(--space-25)/2)));*/
+	grid-auto-rows: calc((var(--space-100) * 3) - (var(--space-25)/2));
+	grid-gap: var(--space-25);
+	counter-reset: order;
+}
+.benefits-section .tile-grid .tile {
+	position: relative;
+	overflow: hidden;
+}
+
+.benefits-section .tile-grid .tile:nth-child( 1 ) { grid-column: span 2; grid-row: span 2; }
+.benefits-section .tile-grid .tile:nth-child( 2 ) { grid-column: span 2; }
+.benefits-section .tile-grid .tile:nth-child( 3 ) { grid-column: span 2; }
+.benefits-section .tile-grid .tile:nth-child( 4 ) { grid-column: span 2; grid-row: span 2; }
+.benefits-section .tile-grid .tile:nth-child( 5 ) {}
+.benefits-section .tile-grid .tile:nth-child( 6 ) {}
+.benefits-section .tile-grid .tile:nth-child( 7 ) {}
+.benefits-section .tile-grid .tile:nth-child( 8 ) {}
+.benefits-section .tile-grid .tile:nth-child( 9 ) { grid-column: span 2; }
+.benefits-section .tile-grid .tile:nth-child( 10 ) { grid-column: span 2; }
+.benefits-section .tile-grid .tile:nth-child( 11 ) { grid-column: span 2; }
+.benefits-section .tile-grid .tile:nth-child( 12 ) { grid-column: span 2; grid-row: span 2; }
+.benefits-section .tile-grid .tile:nth-child( 13 ) { grid-column-start: 2; }
+.benefits-section .tile-grid .tile:nth-child( 14 ) { grid-column: span 2; }
+.benefits-section .tile-grid .tile:nth-child( 15 ) { grid-column: span 2; }
+.benefits-section .tile-grid .tile:nth-child( 16 ) { grid-column: span 2; grid-row: span 2; }
+
+@media( min-width: 640px )  {
+	.benefits-section .tile-grid {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	.benefits-section .tile-grid .tile:nth-child( 1 ) { grid-column: span 2; grid-row: span 3; }
+	.benefits-section .tile-grid .tile:nth-child( 4 ) { grid-column: span 2; grid-row: span 1; }
+	.benefits-section .tile-grid .tile:nth-child( 6 ) { grid-column: span 2; }
+	.benefits-section .tile-grid .tile:nth-child( 7 ) { grid-column-start: 1; }
+	.benefits-section .tile-grid .tile:nth-child( 8 ) { grid-column-start: 4; grid-row-start: 4; grid-row-end: span 2; }
+	.benefits-section .tile-grid .tile:nth-child( 11 ) { grid-column-start: 1; grid-column-end: span 2; }
+	.benefits-section .tile-grid .tile:nth-child( 12 ) { grid-column-start: 3; grid-column-end: span 2; grid-row-start: 6; grid-row-end: span 2; }
+	.benefits-section .tile-grid .tile:nth-child( 13 ) { grid-column-start: 4; }
+	.benefits-section .tile-grid .tile:nth-child( 14 ) { grid-column-start: 1; grid-column-end: span 2; grid-row-start: 8; }
+
+}
+@media( min-width: 1040px ) {
+	.benefits-section .tile-grid {
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-auto-rows: calc((var(--space-100) * 2) - (var(--space-25)/1.2));
+	}
+
+	.benefits-section .tile-grid .tile:nth-child( 3 ) { grid-column-start: 3; grid-column-end: span 2; }
+	.benefits-section .tile-grid .tile:nth-child( 6 ) { grid-column: span 2; grid-row: span 2; }
+	.benefits-section .tile-grid .tile:nth-child( 8 ) { grid-column-start: 6; grid-row-start: 3; grid-row-end: span 2; }
+	.benefits-section .tile-grid .tile:nth-child( 10 ) { grid-column-start: 2; grid-column-end: span 2; }
+	.benefits-section .tile-grid .tile:nth-child( 11 ) { grid-column-start: 2; grid-column-end: span 2; }
+	.benefits-section .tile-grid .tile:nth-child( 12 ) { grid-column-start: 4; grid-column-end: span 2; grid-row-start: 5; grid-row-end: span 2; }
+	.benefits-section .tile-grid .tile:nth-child( 13 ) { grid-column-start: 6; grid-row-start: 5; }
+	.benefits-section .tile-grid .tile:nth-child( 14 ) { grid-column-start: 3; grid-column-end: span 2; grid-row-start: 7; }
+	.benefits-section .tile-grid .tile:nth-child( 15 ) { grid-column-start: 3; grid-column-end: span 2; grid-row-start: 8; }
+	.benefits-section .tile-grid .tile:nth-child( 16 ) { grid-column-start: 5; grid-column-end: span 2; grid-row-start: 7; grid-row-end: span 2; }
+}
+@media( min-width: 1480px ) {}
+
+
+
+
+
+/*
+ * Investment Section
+ */
+
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}
+
+
+
+
+
+/*
+ * How Section
+ */
+
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}
+
+
+
+
+
+/*
+ * Webinar Section
+ */
+
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}
+
+
+
+
+
+/*
+ * FAQs Section
+ */
+
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}
+
+
+
+
+
+/*
+ * Testimonials Section
+ */
+
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}
+
+
+
+
+
+/*
+ * Footer Section
+ */
+
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}
+
+
+
+
+

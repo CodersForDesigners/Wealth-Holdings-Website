@@ -14,6 +14,7 @@
 
 <!-- Pages + Sections + Modals -->
 <link rel="stylesheet" type="text/css" href="css/pages/page.css<?php echo $ver ?>">
+<link rel="stylesheet" type="text/css" href="css/pages/home-page.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="css/pages/modal/modal-menu.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="css/pages/section/sample-section.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="css/pages/poster-website.css<?php echo $ver ?>">
