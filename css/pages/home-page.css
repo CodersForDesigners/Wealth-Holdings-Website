@@ -79,7 +79,7 @@
 .benefits-section .tile-grid .tile:nth-child( 1 ) { grid-column: span 2; grid-row: span 2; }
 .benefits-section .tile-grid .tile:nth-child( 2 ) { grid-column: span 2; }
 .benefits-section .tile-grid .tile:nth-child( 3 ) { grid-column: span 2; }
-.benefits-section .tile-grid .tile:nth-child( 4 ) { grid-column: span 2; grid-row: span 2; }
+.benefits-section .tile-grid .tile:nth-child( 4 ) { grid-column: span 2; }
 .benefits-section .tile-grid .tile:nth-child( 5 ) {}
 .benefits-section .tile-grid .tile:nth-child( 6 ) {}
 .benefits-section .tile-grid .tile:nth-child( 7 ) {}
@@ -93,13 +93,25 @@
 .benefits-section .tile-grid .tile:nth-child( 15 ) { grid-column: span 2; }
 .benefits-section .tile-grid .tile:nth-child( 16 ) { grid-column: span 2; grid-row: span 2; }
 
+/* -- Specific Tile Style -- */
+
+.benefits-section .tile-grid .tile.t-1 .icon {
+	margin-right: var(--space-min);
+	width: 40px; }
+.benefits-section .tile-grid .tile.t-1 .hn {
+	line-height: 0.8;
+	font-size: 16rem; }
+
+.benefits-section .tile-grid .tile.t-4 .hn {
+	margin-top: 20px;
+	font-size: 5rem; }
+
 @media( min-width: 640px )  {
 	.benefits-section .tile-grid {
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
 
 	.benefits-section .tile-grid .tile:nth-child( 1 ) { grid-column: span 2; grid-row: span 3; }
-	.benefits-section .tile-grid .tile:nth-child( 4 ) { grid-column: span 2; grid-row: span 1; }
 	.benefits-section .tile-grid .tile:nth-child( 6 ) { grid-column: span 2; }
 	.benefits-section .tile-grid .tile:nth-child( 7 ) { grid-column-start: 1; }
 	.benefits-section .tile-grid .tile:nth-child( 8 ) { grid-column-start: 4; grid-row-start: 4; grid-row-end: span 2; }
@@ -107,6 +119,13 @@
 	.benefits-section .tile-grid .tile:nth-child( 12 ) { grid-column-start: 3; grid-column-end: span 2; grid-row-start: 6; grid-row-end: span 2; }
 	.benefits-section .tile-grid .tile:nth-child( 13 ) { grid-column-start: 4; }
 	.benefits-section .tile-grid .tile:nth-child( 14 ) { grid-column-start: 1; grid-column-end: span 2; grid-row-start: 8; }
+
+	.benefits-section .tile-grid .tile.t-1 .hn {
+		margin-top: 140px;
+		font-size: 17.4rem; }
+
+	.benefits-section .tile-grid .tile.t-4 .hn {
+		margin-top: 18px; }
 
 }
 @media( min-width: 1040px ) {
@@ -125,8 +144,26 @@
 	.benefits-section .tile-grid .tile:nth-child( 14 ) { grid-column-start: 3; grid-column-end: span 2; grid-row-start: 7; }
 	.benefits-section .tile-grid .tile:nth-child( 15 ) { grid-column-start: 3; grid-column-end: span 2; grid-row-start: 8; }
 	.benefits-section .tile-grid .tile:nth-child( 16 ) { grid-column-start: 5; grid-column-end: span 2; grid-row-start: 7; grid-row-end: span 2; }
+
+	.benefits-section .tile-grid .tile.t-1 .icon {
+		width: 44px; }
+	.benefits-section .tile-grid .tile.t-1 .hn {
+		margin-top: 60px;
+		font-size: 17.4rem; }
+	.benefits-section .tile-grid .tile.t-4 .hn {
+		margin-top: 0px;
+		font-size: 4.2rem; }
 }
-@media( min-width: 1480px ) {}
+@media( min-width: 1480px ) {
+	.benefits-section .tile-grid .tile.t-1 .icon {
+		width: 48px; }
+	.benefits-section .tile-grid .tile.t-1 .hn {
+		margin-top: 180px;
+		font-size: 25rem; }
+	.benefits-section .tile-grid .tile.t-4 .hn {
+		margin-top: 8px;
+		font-size: 7rem; }
+}
 
 
 

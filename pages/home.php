@@ -64,76 +64,79 @@
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 tile-grid">
-				<div class="tile space-25 fill-blue-4">
+				<div class="tile t-1 space-50 fill-blue-4">
 					<!-- (1.) -->
-					Why not invest in a 3BHK flat and get a 7% return on this investment? 
-					The return is better than a fixed deposit.
-					7%
+					<div class="h4 strong space-50-bottom">Why not invest in a 3BHK flat and get a 7% return on this investment?</div>
+					<div class="h6 strong space-50-bottom clearfix">
+						<img class="icon float-left" src="../media/icon/icon-right-arrow-box-red.svg<?php echo $ver ?>">
+						The return is better than a fixed deposit.
+					</div>
+					<div class="hn strong text-red-2">7%</div>
 				</div>
-				<div class="tile space-25">
+				<div class="tile t-2 space-50">
 					<!-- (2.) -->
-					Invest
+					<div class="h1 strong text-uppercase line-height-small">Invest</div>
 				</div>
-				<div class="tile space-25 fill-red-3">
+				<div class="tile t-3 space-50 outline-red-2">
 					<!-- (3.) -->
-					own an apartment with a business model
+					<div class="h6 strong">own an apartment with <br>a business model</div>
 				</div>
-				<div class="tile space-25 fill-blue-4">
+				<div class="tile t-4 space-50 fill-blue-4">
 					<!-- (4.) -->
-					minimum investment amount
-					₹14 Lakhs
+					<div class="h6 strong space-25-bottom"><span class="text-red-2">minimum</span> investment <br>amount</div>
+					<div class="hn strong text-red-2">₹14 Lakhs</div>
 				</div>
-				<div class="tile space-25 fill-red-3">
+				<div class="tile t-5 space-50 fill-red-3">
 					<!-- (5.) -->
 					Bangalore Delhi Pune
 				</div>
-				<div class="tile space-25 fill-red-3">
+				<div class="tile t-6 space-50 fill-red-3">
 					<!-- (6.) -->
 					walking distance from tech parks, SEZs & educational institutions
 				</div>
-				<div class="tile space-25 fill-dark">
+				<div class="tile t-7 space-50 fill-dark">
 					<!-- (7.) -->
 					EMI
 					Invest only the down payment and let us fund your EMIs.
 				</div>
-				<div class="tile">
+				<div class="tile t-8">
 					<!-- (8.) -->
 					<img class="block" src="../media/placeholder.png<?php echo $ver ?>" style="object-fit: cover; height: 100%;">
 				</div>
-				<div class="tile space-25 fill-dark">
+				<div class="tile t-9 space-50 fill-dark">
 					<!-- (9.) -->
 					Lumpsum
 					Make a one-time investment and enjoy a monthly fixed rental income.
 				</div>
-				<div class="tile space-25">
+				<div class="tile t-10 space-50">
 					<!-- (10.) -->
-					Earn
+					<div class="h1 strong text-uppercase line-height-small">Earn</div>
 				</div>
-				<div class="tile space-25 fill-red-3">
+				<div class="tile t-11 space-50 outline-red-2">
 					<!-- (11.) -->
 					9+9 Years
 					Rental Agreement
 				</div>
-				<div class="tile space-25 fill-blue-4">
+				<div class="tile t-12 space-50 fill-blue-4">
 					<!-- (12.) -->
 					fixed monthly income
 					6% to
 					7.5%
 				</div>
-				<div class="tile space-25 fill-red-3">
+				<div class="tile t-13 space-50 fill-red-3">
 					<!-- (13.) -->
 					10% Increment at the end of 9 years
 				</div>
-				<div class="tile space-25">
+				<div class="tile t-14 space-50">
 					<!-- (14.) -->
-					Gain
+					<div class="h1 strong text-uppercase line-height-small">Gain</div>
 				</div>
-				<div class="tile space-25 fill-red-3">
+				<div class="tile t-15 space-50 outline-red-2">
 					<!-- (15.) -->
 					Capital appreciation
 					+ Fixed rental Income
 				</div>
-				<div class="tile space-25 fill-blue-4">
+				<div class="tile t-16 space-50 fill-blue-4">
 					<!-- (16.) -->
 					you invest  the down payment
 					we fund your EMI

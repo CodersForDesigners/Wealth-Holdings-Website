@@ -696,3 +696,18 @@ select {
 .carousel .carousel-controls .next {
 	pointer-events: all;
 }
+
+
+
+
+
+/*
+ *
+ *	Outline
+ *
+ */
+
+.outline-red-2 { box-shadow: inset 0px 0px 0px 3px var(--red-3); }
+
+
+
