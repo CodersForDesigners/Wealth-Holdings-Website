@@ -131,8 +131,14 @@
 				</div>
 				<div class="tile t-15 outline-red-2">
 					<!-- (15.) -->
-					<div class="h5 strong space-25-bottom line-height-small">capital <br>appreciation</div>
-					<div class="h5 strong line-height-small">+ fixed <br>rental income</div>
+					<div class="h5 strong space-25-bottom line-height-small clearfix">
+						<img class="icon float-left" src="../media/icon/icon-bar-red.svg<?php echo $ver ?>">
+						capital <br>appreciation
+					</div>
+					<div class="h5 strong line-height-small clearfix">
+						<img class="icon float-left" src="../media/icon/icon-bar-red.svg<?php echo $ver ?>">
+						+ fixed <br>rental income
+					</div>
 				</div>
 				<div class="tile t-16 fill-blue-4">
 					<!-- (16.) -->
