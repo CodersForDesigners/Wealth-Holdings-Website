@@ -226,10 +226,10 @@ hr {
 	color: var(--light);
 	background-color: var(--dark); }
 .fill-yellow-1 {
-	color: var(--light);
+	color: var(--dark);
 	background-color: var(--yellow-1); }
 .fill-yellow-2 {
-	color: var(--light);
+	color: var(--dark);
 	background-color: var(--yellow-2); }
 .fill-red-1 {
 	color: var(--light);
@@ -244,10 +244,10 @@ hr {
 	color: var(--light);
 	background-color: var(--red-4); }
 .fill-green-1 {
-	color: var(--light);
+	color: var(--dark);
 	background-color: var(--green-1); }
 .fill-green-2 {
-	color: var(--light);
+	color: var(--dark);
 	background-color: var(--green-2); }
 .fill-blue-1 {
 	color: var(--light);
@@ -389,8 +389,6 @@ button,
 	padding: 0 var(--space-25);
 	font-size: 1.2rem;
 	line-height: var(--space-75);
-	color: var(--light);
-	background-color: var(--dark);
 	box-shadow: none;
 	border: none;
 	border-radius: 0;

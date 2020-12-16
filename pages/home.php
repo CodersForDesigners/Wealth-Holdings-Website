@@ -155,12 +155,75 @@
 <!-- Investment Section -->
 <section class="investment-section fill-blue-4 space-75-top-bottom">
 	<div class="container">
-		<div class="h2 strong">Pick an investment</div>
-		Filters
-		Listing
-		View All
-		Call To Action (CTA) Interruption
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut id, voluptate iusto velit eum similique iure at veritatis dicta totam ullam eaque dolorum doloremque ratione, culpa. Quasi enim omnis, quibusdam.
+		<div class="row">
+			<div class="columns small-12">
+				<div class="h2 strong">Pick an investment</div>
+			</div>
+			<div class="columns small-12">
+				Filters
+			</div>
+			<div class="columns small-12 tile-grid">
+				<div class="tile investment">
+					<div class="front">
+						<div class="row meta-1 space-25-bottom">
+							<div class="columns small-4 yield text-red-2">
+								<div class="h5 strong text-uppercase">Yield</div>
+								<div class="h5">7.5%</div>
+								<div class="small line-height-small">p.a.</div>
+							</div>
+							<div class="columns small-8 rent">
+								<div class="h5 strong text-uppercase">Rent</div>
+								<div class="h5">₹ 25,000</div>
+								<div class="small line-height-small">monthly</div>
+							</div>
+						</div>
+						<div class="title h5 strong">Buy a Villa for ₹1.73 Cr and get an monthly rental yield of ₹ 1,08,332.</div>
+						<div class="toggle space-25-top">
+							<label class="toggle-button">
+								<input class="hidden" type="checkbox">
+								<div class="button fill-yellow-2">Lumpsum</div>
+								<div class="button fill-green-2">EMI</div>
+							</label>
+						</div>
+						<div class="meta-2 space-25-top">
+							<div class="size h5 space-min-bottom">2450sft Villa</div>
+							<div class="cost text-yellow-2 space-min-bottom">
+								<div class="label">Cost of Asset</div>
+								<div class="h6">₹ 1.73 Cr</div>
+							</div>
+							<div class="min-investment text-green-2 space-min-bottom">
+								<div class="label">Minimum Investment Amount</div>
+								<div class="h6">₹ 15.3 Lakhs</div>
+							</div>
+						</div>
+						<div class="action space-25-top">
+							<button class="fill-red-2">Get Details</button>
+							<button class="fill-red-2" style="margin-left: var(--space-min);">Share</button>
+						</div>
+					</div>
+				</div>
+				<div class="tile investment"></div>
+				<div class="tile investment"></div>
+				<div class="tile investment"></div>
+				<div class="tile investment"></div>
+				<div class="tile investment"></div>
+				<div class="tile investment"></div>
+				<div class="tile investment"></div>
+				<div class="tile investment"></div>
+				<div class="tile investment"></div>
+				<div class="tile investment"></div>
+				<div class="tile banner">
+					<div class="p fill-neutral-2 space-25">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. A fugit perspiciatis, voluptatibus dolorum, facere sapiente est, impedit exercitationem ut perferendis laboriosam, repudiandae consequatur ad rem odio adipisci hic ex. Perspiciatis?
+					</div>
+				</div>
+			</div>
+			<div class="columns small-12">
+				View All
+				Call To Action (CTA) Interruption
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut id, voluptate iusto velit eum similique iure at veritatis dicta totam ullam eaque dolorum doloremque ratione, culpa. Quasi enim omnis, quibusdam.
+			</div>
+		</div>
 	</div>
 </section>
 <!-- END: Investment Section -->
