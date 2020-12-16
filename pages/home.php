@@ -64,7 +64,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 tile-grid">
-				<div class="tile t-1 space-50 fill-blue-4">
+				<div class="tile t-1 fill-blue-4">
 					<!-- (1.) -->
 					<div class="h4 strong space-50-bottom">Why not invest in a 3BHK flat and get a 7% return on this investment?</div>
 					<div class="h6 strong space-50-bottom clearfix">
@@ -73,73 +73,71 @@
 					</div>
 					<div class="hn strong text-red-2">7%</div>
 				</div>
-				<div class="tile t-2 space-50">
+				<div class="tile t-2">
 					<!-- (2.) -->
-					<div class="h1 strong text-uppercase line-height-small">Invest</div>
+					<div class="hn strong text-uppercase line-height-small">Invest</div>
 				</div>
-				<div class="tile t-3 space-50 outline-red-2">
+				<div class="tile t-3 outline-red-2">
 					<!-- (3.) -->
 					<div class="h6 strong">own an apartment with <br>a business model</div>
 				</div>
-				<div class="tile t-4 space-50 fill-blue-4">
+				<div class="tile t-4 fill-blue-4">
 					<!-- (4.) -->
 					<div class="h6 strong space-25-bottom"><span class="text-red-2">minimum</span> investment <br>amount</div>
 					<div class="hn strong text-red-2">₹14 Lakhs</div>
 				</div>
-				<div class="tile t-5 space-50 fill-red-3">
+				<div class="tile t-5 fill-red-3">
 					<!-- (5.) -->
-					Bangalore Delhi Pune
+					<div class="h6 strong line-height-xlarge">Bangalore <br>Delhi <br>Pune</div>
 				</div>
-				<div class="tile t-6 space-50 fill-red-3">
+				<div class="tile t-6 fill-red-3">
 					<!-- (6.) -->
-					walking distance from tech parks, SEZs & educational institutions
+					<div class="h6 strong">walking distance from <br class="hide-small">tech parks, SEZs & schools</div>
 				</div>
-				<div class="tile t-7 space-50 fill-dark">
+				<div class="tile t-7 fill-dark">
 					<!-- (7.) -->
-					EMI
-					Invest only the down payment and let us fund your EMIs.
+					<div class="h4 strong space-min-bottom">EMI</div>
+					<div class="label strong">Invest only the down payment and <span class="text-red-2">let us fund your EMIs.</span></div>
 				</div>
-				<div class="tile t-8">
+				<div class="tile t-8" style="background-image: url('../media/placeholder.png<?php echo $ver ?>'); background-size: cover; background-position: center center;">
 					<!-- (8.) -->
-					<img class="block" src="../media/placeholder.png<?php echo $ver ?>" style="object-fit: cover; height: 100%;">
 				</div>
-				<div class="tile t-9 space-50 fill-dark">
+				<div class="tile t-9 fill-dark">
 					<!-- (9.) -->
-					Lumpsum
-					Make a one-time investment and enjoy a monthly fixed rental income.
+					<div class="h4 strong space-min-bottom">Lumpsum</div>
+					<div class="label strong">Make a <span class="text-red-2">one-time investment</span> <br>and enjoy a monthly fixed <br>rental income.</div>
 				</div>
-				<div class="tile t-10 space-50">
+				<div class="tile t-10">
 					<!-- (10.) -->
-					<div class="h1 strong text-uppercase line-height-small">Earn</div>
+					<div class="hn strong text-uppercase line-height-small">Earn</div>
 				</div>
-				<div class="tile t-11 space-50 outline-red-2">
+				<div class="tile t-11 outline-red-2">
 					<!-- (11.) -->
-					9+9 Years
-					Rental Agreement
+					<div class="h3 strong">9+9 Years</div>
+					<div class="h5 strong">Rental Agreement</div>
 				</div>
-				<div class="tile t-12 space-50 fill-blue-4">
+				<div class="tile t-12 fill-blue-4">
 					<!-- (12.) -->
-					fixed monthly income
-					6% to
-					7.5%
+					<div class="h5 strong">fixed <span class="text-red-2">monthly income</span></div>
+					<div class="hn strong text-red-2">6% to 7.5%</div>
 				</div>
-				<div class="tile t-13 space-50 fill-red-3">
+				<div class="tile t-13 fill-red-3">
 					<!-- (13.) -->
-					10% Increment at the end of 9 years
+					<div class="h6 strong">10% Increment at the end of 9 years</div>
 				</div>
-				<div class="tile t-14 space-50">
+				<div class="tile t-14">
 					<!-- (14.) -->
-					<div class="h1 strong text-uppercase line-height-small">Gain</div>
+					<div class="hn strong text-uppercase line-height-small">Gain</div>
 				</div>
-				<div class="tile t-15 space-50 outline-red-2">
+				<div class="tile t-15 outline-red-2">
 					<!-- (15.) -->
-					Capital appreciation
-					+ Fixed rental Income
+					<div class="h5 strong space-25-bottom line-height-small">capital <br>appreciation</div>
+					<div class="h5 strong line-height-small">+ fixed <br>rental income</div>
 				</div>
-				<div class="tile t-16 space-50 fill-blue-4">
+				<div class="tile t-16 fill-blue-4">
 					<!-- (16.) -->
-					you invest  the down payment
-					we fund your EMI
+					<div class="h5 strong">you invest the down payment</div>
+					<div class="hn strong text-red-2">we fund your EMI</div>
 				</div>
 			</div>
 		</div>

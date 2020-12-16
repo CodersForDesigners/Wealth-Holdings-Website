@@ -133,7 +133,7 @@ p, small, label {
 .h6 { font-size: 1.4rem; }
 .p 	{ font-size: 1.4rem; }
 .small { font-size: 0.8rem; }
-.label { font-size: 1.0rem; }
+.label { font-size: 1.1rem; }
 
 @media( min-width: 640px )  {
 	.h1 { font-size: 4.0rem; }
@@ -144,7 +144,7 @@ p, small, label {
 	.h6 { font-size: 1.4rem; }
 	.p 	{ font-size: 1.4rem; }
 	.small { font-size: 0.8rem; }
-	.label { font-size: 1.0rem; }
+	.label { font-size: 1.1rem; }
 }
 
 @media( min-width: 1040px ) {
@@ -156,7 +156,7 @@ p, small, label {
 	.h6 { font-size: 1.6rem; }
 	.p 	{ font-size: 1.6rem; }
 	.small { font-size: 1.0rem; }
-	.label { font-size: 1.2rem; }
+	.label { font-size: 1.3rem; }
 }
 
 @media( min-width: 1480px ) {
@@ -168,7 +168,7 @@ p, small, label {
 	.h6 { font-size: 1.8rem;  }
 	.p 	{ font-size: 1.8rem;  }
 	.small { font-size: 1.2rem; }
-	.label { font-size: 1.4rem; }
+	.label { font-size: 1.5rem; }
 }
 
 
