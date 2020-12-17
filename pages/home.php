@@ -272,8 +272,6 @@
 			</div>
 			<div class="columns small-12">
 				View All
-				Call To Action (CTA) Interruption
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut id, voluptate iusto velit eum similique iure at veritatis dicta totam ullam eaque dolorum doloremque ratione, culpa. Quasi enim omnis, quibusdam.
 			</div>
 		</div>
 	</div>
@@ -284,11 +282,63 @@
 <!-- How Section -->
 <section class="how-section fill-dark space-75-top-bottom">
 	<div class="container">
-		<div class="h2 strong">How does it work?</div>
-		<div class="h3 strong text-yellow-1">Lumpsum</div>
-		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non tempora sit quos distinctio praesentium quod nemo eos. Vero hic ab cum fuga, sit libero quis delectus harum dolorum eius alias!
-		<div class="h3 strong text-green-2">EMI</div>
-		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non tempora sit quos distinctio praesentium quod nemo eos. Vero hic ab cum fuga, sit libero quis delectus harum dolorum eius alias!
+		<div class="row">
+			<div class="columns small-12 large-2 space-50-bottom">
+				<div class="h2 strong">How does it work?</div>
+			</div>
+			<div class="lumpsum columns small-11 small-offset-1 medium-5 large-4 space-50-bottom">
+				<div class="h3 strong text-yellow-2 space-25-bottom">Lumpsum</div>
+				<div class="table">
+					<div class="table-row h6">
+						Invest in any of the listed residential properties.
+					</div>
+					<div class="table-row h6">
+							The property is transferred to you via an absolute sale deed.
+							<div class="tag label text-yellow-2">Invest</div>
+						</div>
+					<div class="table-row h6">
+						Sign a 9-year rental agreement.
+					</div>
+					<div class="table-row h6">
+							Get a fixed yearly rental income for 9 years.
+							<div class="tag label text-yellow-2">Earn</div>
+						</div>
+					<div class="table-row h6">
+							Get the benefit of capital appreciation plus fixed income.
+							<div class="tag label text-yellow-2">Gain</div>
+						</div>
+				</div>
+			</div>
+			<div class="emi columns small-11 small-offset-1 medium-5 large-4">
+				<div class="h3 strong text-green-2 space-25-bottom">EMI</div>
+				<div class="table">
+					<div class="table-row h6">
+						Get a home loan approval for any of the listed residential properties.
+					</div>
+					<div class="table-row h6">
+						Pay the ‘Minimum Investment Amount’ as the downpayment for the home loan.
+					</div>
+					<div class="table-row h6">
+							Complete the home loan paperwork and formalities.
+							<div class="tag label text-green-2">Invest</div>
+						</div>
+					<div class="table-row h6">
+						Sign a 9-year rental agreement.
+					</div>
+					<div class="table-row h6">
+							Get a fixed yearly rental income for 9 years.
+							<div class="tag label text-green-2">Earn</div>
+						</div>
+					<div class="table-row h6">
+						The rental income services your monthly EMI’s.
+					</div>
+					<div class="table-row h6">
+							Build an appreciating asset without paying EMI.
+							<div class="tag label text-green-2">Gain</div>
+						</div>
+				</div>
+			</div>
+		</div>
 		Character
 	</div>
 </section>
