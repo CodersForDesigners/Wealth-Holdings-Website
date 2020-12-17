@@ -100,22 +100,22 @@
 	z-index: 2;
 }
 
-.investment-section .tile-grid .tile.investment.only-emi .title .title-lumpsum {
+.investment-section .tile-grid .tile.investment.show-emi .title .title-lumpsum {
 	opacity: 0;
 }
-.investment-section .tile-grid .tile.investment.only-emi .title .title-emi {
+.investment-section .tile-grid .tile.investment.show-emi .title .title-emi {
 	opacity: 1;
 }
-.investment-section .tile-grid .tile.investment:not(.only-emi) .rent {
+.investment-section .tile-grid .tile.investment:not(.show-emi) .rent {
 	color: var(--light);
 }
-.investment-section .tile-grid .tile.investment:not(.only-emi) .cost {
+.investment-section .tile-grid .tile.investment:not(.show-emi) .cost {
 	color: var(--yellow-2);
 }
-.investment-section .tile-grid .tile.investment:not(.only-emi) .min-investment {
+.investment-section .tile-grid .tile.investment:not(.show-emi) .min-investment {
 	opacity: 0;
 }
-.investment-section .tile-grid .tile.investment.only-emi .min-investment {
+.investment-section .tile-grid .tile.investment.show-emi .min-investment {
 	color: var(--green-2);	
 }
 .investment-section .tile-grid .tile.banner {
