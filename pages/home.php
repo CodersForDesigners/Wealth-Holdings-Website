@@ -182,7 +182,7 @@
 							<div class="title-emi">Buy a Villa for ₹1 Lakhs per month and get an monthly rental yield of ₹ 1,24,000.</div>
 						</div>
 						<div class="toggle space-25-top">
-							<label class="toggle-button" tabindex="-1">
+							<label class="toggle-button unselectable" tabindex="-1">
 								<input class="hidden" type="checkbox">
 								<div class="button pill"></div>
 								<div class="button empty-pill">Lumpsum</div>
@@ -205,8 +205,56 @@
 							<button class="fill-red-2" style="margin-left: var(--space-min);">Share</button>
 						</div>
 					</div>
+					<div class="back">
+						<button class="unflip button fill-light">Back</button>
+						<div class="h5 strong text-red-2">Get access to a detailed offer document now.</div>
+						<div class="form form-dark">
+							<div class="form-row space-min-bottom">
+								<label for="">
+									<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
+									<input class="block" type="text">
+								</label>
+							</div>
+							<div class="form-row space-min-bottom">
+								<label for="">
+									<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span>
+									<button class="button block fill-red-2">Get Details</button>
+								</label>
+							</div>
+						</div>
+						<hr style="border-color: var(--red-2);">
+						<div class="h5 text-neutral-2">Saturday 15th Dec 4:30 PM</div>
+						<div class="label">Join our investment manager for a 30min presentation and 30min of Q&A.</div>
+						<div class="form form-dark">
+							<div class="form-row space-min-bottom">
+								<label for="">
+									<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Name</span>
+									<input class="block" type="text">
+								</label>
+							</div>
+							<div class="form-row space-min-bottom">
+								<label for="">
+									<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Email</span>
+									<input class="block" type="text">
+								</label>
+							</div>
+							<div class="form-row space-min-bottom">
+								<label for="">
+									<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
+									<input class="block" type="text">
+								</label>
+							</div>
+							<div class="form-row space-min-bottom">
+								<label for="">
+									<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span>
+									<button class="button block fill-red-2">Get Details</button>
+								</label>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="tile investment"></div>
+				<div class="tile investment">
+				</div>
 				<div class="tile investment"></div>
 				<div class="tile investment"></div>
 				<div class="tile investment"></div>
