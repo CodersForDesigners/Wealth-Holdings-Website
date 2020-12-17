@@ -171,27 +171,31 @@
 								<div class="h5">7.5%</div>
 								<div class="small line-height-small">p.a.</div>
 							</div>
-							<div class="columns small-8 rent">
+							<div class="columns small-8 rent text-neutral-2">
 								<div class="h5 strong text-uppercase">Rent</div>
 								<div class="h5">₹ 25,000</div>
 								<div class="small line-height-small">monthly</div>
 							</div>
 						</div>
-						<div class="title h5 strong">Buy a Villa for ₹1.73 Cr and get an monthly rental yield of ₹ 1,08,332.</div>
+						<div class="title h5 strong">
+							<div class="title-lumpsum">Buy a Villa for ₹1.73 Cr and get an monthly rental yield of ₹ 1,08,332.</div>
+							<div class="title-emi">Buy a Villa for ₹1 Lakhs per month and get an monthly rental yield of ₹ 1,24,000.</div>
+						</div>
 						<div class="toggle space-25-top">
-							<label class="toggle-button">
+							<label class="toggle-button" tabindex="-1">
 								<input class="hidden" type="checkbox">
-								<div class="button fill-yellow-2">Lumpsum</div>
-								<div class="button fill-green-2">EMI</div>
+								<div class="button pill"></div>
+								<div class="button empty-pill">Lumpsum</div>
+								<div class="button empty-pill">EMI</div>
 							</label>
 						</div>
-						<div class="meta-2 space-25-top">
+						<div class="meta-2 space-25-top text-neutral-2">
 							<div class="size h5 space-min-bottom">2450sft Villa</div>
-							<div class="cost text-yellow-2 space-min-bottom">
+							<div class="cost space-min-bottom">
 								<div class="label">Cost of Asset</div>
 								<div class="h6">₹ 1.73 Cr</div>
 							</div>
-							<div class="min-investment text-green-2 space-min-bottom">
+							<div class="min-investment space-min-bottom">
 								<div class="label">Minimum Investment Amount</div>
 								<div class="h6">₹ 15.3 Lakhs</div>
 							</div>

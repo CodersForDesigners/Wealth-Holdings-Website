@@ -391,6 +391,7 @@ button,
 	line-height: var(--space-75);
 	box-shadow: none;
 	border: none;
+	text-transform: none;
 	border-radius: 0;
 	filter: brightness(1);
 	-webkit-transition: all 0.2s ease-out;

@@ -1,0 +1,29 @@
+/*
+ * Landing Section
+ */
+
+.landing-section {}
+.landing-section .logo { width: 165px; }
+
+.landing-section .char-image {
+	position: relative;
+}
+.landing-section .char-image:after {
+	content: '';
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 100%;
+	bottom: 0;
+	width: 100vw;
+	background-position: bottom left;
+	background-image: url('../../media/char-1-trail.png');
+	background-repeat: repeat-x;
+	background-size: auto 100%;
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {
+	.landing-section .logo { width: 220px; }
+}
