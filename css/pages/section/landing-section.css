@@ -17,7 +17,7 @@
 	bottom: 0;
 	width: 100vw;
 	background-position: bottom left;
-	background-image: url('../../media/char-1-trail.png');
+	background-image: url('../../../media/char-1-trail.png');
 	background-repeat: repeat-x;
 	background-size: auto 100%;
 }

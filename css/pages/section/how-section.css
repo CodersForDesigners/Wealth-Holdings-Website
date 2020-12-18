@@ -31,7 +31,7 @@
 	left: 0;
 	width: var(--space-25);
 	height: 100%;
-	background-image: url('../../media/pattern/table-edge-pattern.png');
+	background-image: url('../../../media/pattern/table-edge-pattern.png');
 	background-repeat: repeat-y;
 	background-size: 100%;
 }
