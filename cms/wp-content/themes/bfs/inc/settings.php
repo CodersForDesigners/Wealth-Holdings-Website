@@ -5,6 +5,41 @@
  *
  */
 
+/*
+ *
+ * ----- Custom ACF Gutenberg blocks
+ *
+ */
+add_action( 'acf/init', function () {
+	if ( ! function_exists( 'acf_register_block_type' ) )
+		return;
+
+	// Project Essentials block
+	acf_register_block_type( [
+		'name' => 'bfs-investments',
+		'title' => __( 'Investments' ),
+		'description' => __( 'Investments' ),
+		'category' => 'common',
+		'icon' => 'money-alt',
+		'align' => 'wide',
+		'mode' => 'edit',
+		'supports' => [
+			'multiple' => false,
+			'align' => [ 'wide' ]
+		],
+		'render_callback' => 'acf_render_callback'
+	] );
+
+	function acf_render_callback ( $block, $content, $is_preview, $post_id ) {
+		if ( ! class_exists( '\BFS\CMS' ) )
+			return;
+
+		\BFS\CMS::$currentQueriedPostACF = array_merge( \BFS\CMS::$currentQueriedPostACF, get_fields() ?: [ ] );
+
+	}
+
+} );
+
 
 
 /*
@@ -21,24 +56,6 @@ add_filter( 'redirect_canonical', function ( $redirectUrl ) {
 } );
 
 
-/*
- *
- * Show the Meta-data page if it exists
- *
- */
-if ( function_exists( 'acf_add_options_page' ) ) {
-	acf_add_options_page( [
-		'page_title' => 'Options',
-		'menu_title' => 'Options',
-		'menu_slug' => 'metadata',
-		'capability' => 'edit_posts',
-		'parent_slug' => '',
-		'position' => '4',
-		'icon_url' => 'dashicons-admin-generic'
-	] );
-}
-
-
 
 function bfs_theme_setup () {
 
@@ -53,6 +70,12 @@ function bfs_theme_setup () {
 	// @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'menus' );
+	add_theme_support( 'editor-style' );
+	add_theme_support( 'editor-styles' );
+	add_theme_support( 'dark-editor-style' );
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'align-wide' );
+
 
 
 	/*
@@ -61,6 +84,45 @@ function bfs_theme_setup () {
 	 *
 	 */
 	add_image_size( 'small', 400, 400, false );
+
+
+
+	/*
+	 *
+	 * Templates for the various Post Types
+	 *
+	 */
+	add_filter( 'register_post_type_args', function ( $args, $postType ) {
+
+		if ( $postType === 'investment' ) {
+			$args[ 'template' ] = [
+				[ 'acf/bfs-investments' ]
+			];
+			$args[ 'template_lock' ] = 'all';
+		}
+
+		return $args;
+
+	}, 20, 2 );
+
+
+
+	/*
+	 *
+	 * Show the Meta-data page if ACF is enabled
+	 *
+	 */
+	if ( function_exists( 'acf_add_options_page' ) ) {
+		acf_add_options_page( [
+			'page_title' => 'Metadata',
+			'menu_title' => 'Metadata',
+			'menu_slug' => 'metadata',
+			'capability' => 'edit_posts',
+			'parent_slug' => '',
+			'position' => '5',
+			'icon_url' => 'dashicons-info'
+		] );
+	}
 
 }
 

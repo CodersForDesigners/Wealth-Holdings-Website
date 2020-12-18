@@ -41,7 +41,7 @@
 	<script type="text/javascript" src="/js/modules/cupid/user.js"></script>
 	<script type="text/javascript" src="/js/forms.js"></script>
 	<script type="text/javascript" src="/js/login-prompts.js"></script>
-	<script type="text/javascript" src="/js/page/home.js"></script>
+	<script type="text/javascript" src="/js/page/home.js<?= $ver ?>"></script>
 
 	<script type="text/javascript">
 
