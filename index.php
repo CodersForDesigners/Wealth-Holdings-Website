@@ -3,13 +3,14 @@
 
 
 
-require_once __DIR__ . '/conf.php';
 
 /*
  * -/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-
  *  Set some useful variables
  * -/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-
  */
+require_once __DIR__ . '/conf.php';
+require_once __DIR__ . '/inc/cms.php';
 $documentRoot = $_SERVER[ 'DOCUMENT_ROOT' ];
 $homePage = $documentRoot . '/pages/home.php';
 // $_requestPathParts = explode( '?', $_SERVER[ 'REQUEST_URI' ], -1 );

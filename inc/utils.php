@@ -120,6 +120,12 @@ function getPostsOf ( $type, $limit = -1, $exclude = [ ] ) {
  * Pull custom content from ACF fields and native post fields from WordPress
  *
  */
+
+/*
+ *
+ * Pull custom content from ACF fields and native post fields from WordPress
+ *
+ */
 function getContent ( $fallback, $field, $context = null ) {
 
 	if ( ! function_exists( 'get_field' ) )
@@ -148,11 +154,11 @@ function getContent ( $fallback, $field, $context = null ) {
 				return $fallback;
 		}
 		else {
-			$page = get_page_by_path( $context, OBJECT, $postType ?: [ 'page', 'attachment' ] );
-			if ( empty( $page ) or empty( $page->ID ) )
+			$page = BFS\CMS::getPostBySlug( $context );
+			if ( empty( $page ) or empty( $page[ 'ID' ] ) )
 				$context = 'options';
 			else
-				$context = $page->ID;
+				$context = $page[ 'ID' ];
 		}
 	}
 
@@ -161,7 +167,18 @@ function getContent ( $fallback, $field, $context = null ) {
 		array_unshift( $contexts, $context );
 	$fieldParts = preg_split( '/\s*->\s*/' , $field );
 	foreach ( $contexts as $currentContext ) {
-		$content = get_field( $fieldParts[ 0 ], $currentContext );
+		if ( $currentContext === 'options' )
+			$content = get_field( $fieldParts[ 0 ], 'option' );
+		else {
+			$postCache = BFS\CMS::$cache[ $currentContext ] ?? BFS\CMS::getPostById( $currentContext ) ?? BFS\CMS::getPostBySlug( $currentContext );
+			if ( empty( $postCache ) )
+				continue;
+
+			if ( ! empty( $postCache[ 'acf' ] ) )
+				$content = $postCache[ 'acf' ][ $fieldParts[ 0 ] ] ?? get_field( $fieldParts[ 0 ], $postCache[ 'ID' ] ) ?? null;
+		}
+
+
 		// If no content was found, search in underlying native post object
 		if ( empty( $content ) and ! empty( $thePost ) ) {
 			if ( $currentContext and ( ! is_string( $currentContext ) ) )
