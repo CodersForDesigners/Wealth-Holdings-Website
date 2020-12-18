@@ -1,0 +1,109 @@
+/*
+ * How Section
+ */
+
+.how-section {}
+.how-section .lumpsum {}
+.how-section .emi {}
+
+.how-section .table {
+	position: relative;
+	z-index: 1;
+	padding-left: var(--space-25);
+	counter-reset: rowindex;
+}
+.how-section .table:before {
+	content: '';
+	display: block;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: calc( var(--space-25) * -1 );
+	width: 1px;
+	height: 100%;
+}
+.how-section .table:after {
+	content: '';
+	display: block;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: var(--space-25);
+	height: 100%;
+	background-image: url('../../media/pattern/table-edge-pattern.png');
+	background-repeat: repeat-y;
+	background-size: 100%;
+}
+.how-section .lumpsum .table:before,
+.how-section .lumpsum .table:after {
+	background-color: var(--yellow-2);
+}
+.how-section .emi .table:before,
+.how-section .emi .table:after {
+	background-color: var(--green-2);
+}
+
+.how-section .table .table-row {
+	position: relative;
+	z-index: 1;
+	display: block;
+	padding: var(--space-min) var(--space-min) var(--space-min) calc(var(--space-100) + var(--space-min));
+	background-color: rgba(255,255,255,0.5);
+	counter-increment: rowindex;
+	min-height: calc( 2.75em + ( var(--space-min) * 2 )); /* line-height (1.375) * Number of lines (2) */
+}
+.how-section .table .table-row:nth-child(2n+1) {
+	background-color: rgba(255,255,255,0.25);
+}
+.how-section .table .table-row:before {
+	position: absolute;
+	display: inline-block;
+	z-index: 2;
+	left: var(--space-50);
+	top: var(--min);
+	font-size: 2.4rem;
+	font-weight: 700;
+	line-height: 1.25;
+	transform: translateX(-50%);
+	content: counter(rowindex);
+}
+.how-section .table .table-row .tag {
+	position: absolute;
+	display: inline-block;
+	z-index: 3;
+	bottom: 0;
+	left: calc( ( 0.5em + var(--space-25) ) * -1 );
+	text-transform: uppercase;
+	line-height: 1;
+	transform-origin: left bottom;
+	transform: rotate(-90deg);
+	padding: 0 calc(var(--space-min)/2);
+	background-color: var(--dark);
+}
+
+@media( min-width: 640px )  {
+	.how-section .table .table-row:before {
+		font-size: 2.6rem;
+	}
+}
+@media( min-width: 1040px ) {
+	.how-section .table .table-row {
+		padding: var(--space-min) var(--space-min) var(--space-min) var(--space-75);
+	}
+	.how-section .table .table-row:before {
+		left: calc(var(--space-75)/2);
+		font-size: 3.4rem;
+	}
+	.how-section .table .table-row .tag {
+		left: calc( ( 1em + var(--space-25) ) * -1 );
+	}
+}
+@media( min-width: 1480px ) {
+	.how-section .table .table-row:before {
+		font-size: 3.8rem;
+	}
+	.how-section .table .table-row .tag {
+		left: calc( ( 1.5em + var(--space-25) ) * -1 );
+	}
+}
