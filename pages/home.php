@@ -5,11 +5,13 @@
  *
  */
 
+require_once __DIR__ . '/../inc/above.php';
+
 // Page-specific preparatory code goes here.
+$investments = BFS\CMS::getPostsOf( 'investment' );
 
 ?>
 
-<?php require_once __DIR__ . '/../inc/above.php'; ?>
 
 
 <!-- Sample Section -->
@@ -153,7 +155,7 @@
 
 
 <!-- Investment Section -->
-<section class="investment-section fill-blue-4 space-75-top-bottom">
+<section class="investment-section fill-blue-4 space-75-top-bottom js_section_investment">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12">
@@ -163,26 +165,27 @@
 				Filters
 			</div>
 			<div class="columns small-12 tile-grid">
+			<?php foreach ( $investments as $investment ) : ?>
 				<div class="tile investment js_investment_card">
 					<div class="front">
 						<div class="row meta-1 space-25-bottom">
 							<div class="columns small-4 yield text-red-2">
 								<div class="h5 strong text-uppercase">Yield</div>
-								<div class="h5">7.5%</div>
-								<div class="small line-height-small">p.a.</div>
+								<div class="h5"><?= $investment->get( 'yield' )[ 'amount' ] ?>%</div>
+								<div class="small line-height-small"><?= $investment->get( 'yield' )[ 'duration' ] ?></div>
 							</div>
 							<div class="columns small-8 rent text-neutral-2">
 								<div class="h5 strong text-uppercase">Rent</div>
-								<div class="h5">₹ 25,000</div>
-								<div class="small line-height-small">monthly</div>
+								<div class="h5">₹ <?= $investment->get( 'rent' )[ 'amount' ] ?></div>
+								<div class="small line-height-small"><?= $investment->get( 'yield' )[ 'duration' ] ?></div>
 							</div>
 						</div>
 						<div class="title h5 strong">
-							<div class="title-lumpsum">Buy a Villa for ₹1.73 Cr and get an monthly rental yield of ₹ 1,08,332.</div>
-							<div class="title-emi">Buy a Villa for ₹1 Lakhs per month and get an monthly rental yield of ₹ 1,24,000.</div>
+							<div class="title-lumpsum"><?= $investment->get( 'title' )[ 'lumpsum' ] ?></div>
+							<div class="title-emi"><?= $investment->get( 'title' )[ 'emi' ] ?></div>
 						</div>
 						<div class="toggle space-25-top">
-							<label class="toggle-button unselectable" tabindex="-1">
+							<label class="toggle-button" tabindex="-1">
 								<input class="hidden js_toggle_payment_mode" type="checkbox">
 								<div class="button pill"></div>
 								<div class="button empty-pill">Lumpsum</div>
@@ -190,23 +193,23 @@
 							</label>
 						</div>
 						<div class="meta-2 space-25-top text-neutral-2">
-							<div class="size h5 space-min-bottom">2450sft Villa</div>
+							<div class="size h5 space-min-bottom"><?= $investment->get( 'size' ) ?></div>
 							<div class="cost space-min-bottom">
 								<div class="label">Cost of Asset</div>
-								<div class="h6">₹ 1.73 Cr</div>
+								<div class="h6">₹ <?= $investment->get( 'cost' ) ?></div>
 							</div>
 							<div class="min-investment space-min-bottom">
 								<div class="label">Minimum Investment Amount</div>
-								<div class="h6">₹ 15.3 Lakhs</div>
+								<div class="h6">₹ <?= $investment->get( 'minimum_investment' ) ?></div>
 							</div>
 						</div>
 						<div class="action space-25-top">
-							<button class="fill-red-2">Get Details</button>
+							<button class="fill-red-2 js_investment_get_details">Get Details</button>
 							<button class="fill-red-2" style="margin-left: var(--space-min);">Share</button>
 						</div>
 					</div>
 					<div class="back">
-						<button class="unflip button fill-light">Back</button>
+						<button class="unflip button fill-light js_investment_card_unflip">Back</button>
 						<div class="h5 strong text-red-2">Get access to a detailed offer document now.</div>
 						<div class="form form-dark">
 							<div class="form-row space-min-bottom">
@@ -253,17 +256,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="tile investment">
-				</div>
-				<div class="tile investment"></div>
-				<div class="tile investment"></div>
-				<div class="tile investment"></div>
-				<div class="tile investment"></div>
-				<div class="tile investment"></div>
-				<div class="tile investment"></div>
-				<div class="tile investment"></div>
-				<div class="tile investment"></div>
-				<div class="tile investment"></div>
+			<?php endforeach; ?>
 				<div class="tile banner">
 					<div class="p fill-neutral-2 space-25">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. A fugit perspiciatis, voluptatibus dolorum, facere sapiente est, impedit exercitationem ut perferendis laboriosam, repudiandae consequatur ad rem odio adipisci hic ex. Perspiciatis?
