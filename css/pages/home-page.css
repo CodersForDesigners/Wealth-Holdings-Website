@@ -25,50 +25,30 @@
 
 
 /*
- * Webinar Section
- */
-
-.webinar-section {
-	position: relative;
-}
-.webinar-section .webinar-image {
-	position: relative; 
-	width: 100vw;
-	padding-top: 1px;
-	padding-bottom: 56.25%;
-	background-size: cover; 
-	background-position: center center;
-	background-repeat: no-repeat;
-}
-.webinar-section .webinar-form {}
-
-@media( min-width: 640px )  {
-	.webinar-section .webinar-image {
-		position: absolute;
-		padding-top: 0;
-		padding-bottom: 0;
-		top: 0; 
-		left: 0; 
-		bottom: 0;
-		width: 50vw;
-	}
-	.webinar-section .webinar-form {
-		padding-left: var(--space-75);
-	}
-}
-@media( min-width: 1040px ) {}
-@media( min-width: 1480px ) {}
-
-
-
-
-
-/*
  * FAQs Section
  */
 
+.faqs-section .faqs .faq {
+	border-bottom: dashed 2px var(--blue-4);
+}
+.faqs-section .faqs .faq .title { cursor: pointer; }
+.faqs-section .faqs .faq .title { cursor: pointer; }
+.faqs-section .faqs .faq .summary {
+	max-height: 0;
+	overflow: hidden;
+	transition: 1.5s;
+	font-size: 0;
+}
+.faqs-section .faqs .faq.open .summary {
+	max-height: 150vh;
+}
 
-@media( min-width: 640px )  {}
+
+@media( min-width: 640px )  {
+	.faqs-section .faqs .faq .summary .thumbnail {
+		padding-right: var(--space-min);
+	}
+}
 @media( min-width: 1040px ) {}
 @media( min-width: 1480px ) {}
 

@@ -380,10 +380,67 @@ $investments = BFS\CMS::getPostsOf( 'investment' );
 
 
 <!-- FAQs Section -->
-<section class="faqs-section fill-neutral-1 space-75-top-bottom">
+<section class="faqs-section fill-neutral-1 space-75-top">
 	<div class="container">
-		<div class="h2 strong">FAQs</div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque labore blanditiis laborum fugiat, laboriosam omnis ipsam. Ratione excepturi, sapiente nihil aut adipisci, voluptatibus quisquam saepe quas possimus itaque eos consectetur!
+		<div class="row text-blue-4">
+			<div class="columns small-12 large-3">
+				<div class="h2 strong space-50-bottom">FAQs</div>				
+			</div>
+			<div class="columns small-12 large-9 xlarge-8">
+				<div class="faqs space-75-bottom">
+					<div class="faq space-25-top-bottom">
+						<div class="title h5 strong">Why should I buy and is my money secure?</div>
+						<div class="summary">
+							<div class="row">
+								<!-- optional thumbnail -->
+								<div class="thumbnail columns small-12 medium-4 space-min-top">
+									 <img class="block" src="../media/placeholder.png<?php echo $ver ?>">
+								</div>
+								<!-- <div class="columns small-12"> -->
+								<div class="columns small-12 medium-8 space-min-top">
+									<div class="description h6 opacity-50 space-min-bottom">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, perferendis aperiam quibusdam ipsam possimus optio alias? Excepturi, corporis eius inventore provident aut expedita quidem illo placeat aliquam ex, suscipit ratione.</div>
+									<div class="action clearfix">
+										<a class="h6" href="">Read More</a>
+										<a class="h6" href="">Share</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="faq space-25-top-bottom">
+						<div class="title h5 strong">When will my returns start?</div>
+					</div>
+					<div class="faq space-25-top-bottom">
+						<div class="title h5 strong">How frequently will I get my returns?</div>
+					</div>
+					<div class="faq space-25-top-bottom">
+						<div class="title h5 strong">What is the payment schedule?</div>
+					</div>
+					<div class="faq space-25-top-bottom">
+						<div class="title h5 strong">When will the Villa/Apartment be registered in my name?</div>
+					</div>
+					<div class="faq space-25-top-bottom">
+						<div class="title h5 strong">When will the rental agreement be executed?</div>
+					</div>
+					<div class="faq space-25-top-bottom">
+						<div class="title h5 strong">Do I have to pay any other charges?</div>
+					</div>
+					<div class="faq space-25-top-bottom">
+						<div class="title h5 strong">What is then Income Tax applicable on the monthly rent I receive and will there by any deductions?</div>
+					</div>
+				</div>
+				<div class="brochures">
+					<div class="row">
+						<div class="columns small-12 medium-6 fill-blue-4">
+							Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Sint eius obcaecati aliquam id, magni et dolorem nihil eum, ducimus vel, sit voluptas nesciunt, quaerat. Incidunt ullam officiis sapiente recusandae nemo.
+						</div>
+						<div class="columns small-12 medium-6 fill-red-2">
+							Lorem ipsum dolor, sit amet consectetur, adipisicing elit. Autem, voluptatum similique nihil, magni voluptates repellendus accusantium molestias quam ipsum, voluptatibus quos illo odit numquam facilis quas repudiandae ab aliquam, fuga!
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
 	</div>
 </section>
 <!-- END: FAQs Section -->
