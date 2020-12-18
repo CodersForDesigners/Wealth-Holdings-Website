@@ -5,6 +5,41 @@
  *
  */
 
+/*
+ *
+ * ----- Custom ACF Gutenberg blocks
+ *
+ */
+add_action( 'acf/init', function () {
+	if ( ! function_exists( 'acf_register_block_type' ) )
+		return;
+
+	// Project Essentials block
+	acf_register_block_type( [
+		'name' => 'bfs-investments',
+		'title' => __( 'Investments' ),
+		'description' => __( 'Investments' ),
+		'category' => 'common',
+		'icon' => 'money-alt',
+		'align' => 'wide',
+		'mode' => 'edit',
+		'supports' => [
+			'multiple' => false,
+			'align' => [ 'wide' ]
+		],
+		'render_callback' => 'acf_render_callback'
+	] );
+
+	function acf_render_callback ( $block, $content, $is_preview, $post_id ) {
+		if ( ! class_exists( '\BFS\CMS' ) )
+			return;
+
+		\BFS\CMS::$currentQueriedPostACF = array_merge( \BFS\CMS::$currentQueriedPostACF, get_fields() ?: [ ] );
+
+	}
+
+} );
+
 
 
 /*
@@ -49,6 +84,26 @@ function bfs_theme_setup () {
 	 *
 	 */
 	add_image_size( 'small', 400, 400, false );
+
+
+
+	/*
+	 *
+	 * Templates for the various Post Types
+	 *
+	 */
+	add_filter( 'register_post_type_args', function ( $args, $postType ) {
+
+		if ( $postType === 'investment' ) {
+			$args[ 'template' ] = [
+				[ 'acf/bfs-investments' ]
+			];
+			$args[ 'template_lock' ] = 'all';
+		}
+
+		return $args;
+
+	}, 20, 2 );
 
 
 
