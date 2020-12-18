@@ -163,7 +163,7 @@
 				Filters
 			</div>
 			<div class="columns small-12 tile-grid">
-				<div class="tile investment">
+				<div class="tile investment js_investment_card">
 					<div class="front">
 						<div class="row meta-1 space-25-bottom">
 							<div class="columns small-4 yield text-red-2">
@@ -183,7 +183,7 @@
 						</div>
 						<div class="toggle space-25-top">
 							<label class="toggle-button unselectable" tabindex="-1">
-								<input class="hidden" type="checkbox">
+								<input class="hidden js_toggle_payment_mode" type="checkbox">
 								<div class="button pill"></div>
 								<div class="button empty-pill">Lumpsum</div>
 								<div class="button empty-pill">EMI</div>
