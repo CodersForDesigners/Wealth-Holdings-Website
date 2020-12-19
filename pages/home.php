@@ -431,11 +431,59 @@ $investments = BFS\CMS::getPostsOf( 'investment' );
 				</div>
 				<div class="brochures">
 					<div class="row">
-						<div class="columns small-12 medium-6 fill-blue-4">
-							Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Sint eius obcaecati aliquam id, magni et dolorem nihil eum, ducimus vel, sit voluptas nesciunt, quaerat. Incidunt ullam officiis sapiente recusandae nemo.
+						<div class="brochure columns small-12 medium-6 fill-blue-4">
+							<div class="layer-1" style="background-image: url('/*-- insert image url here -- */<?php echo $ver ?>');"></div>
+							<div class="layer-2">
+								<div class="h4 strong space-25-bottom">Comparison to <br>Gold</div>
+								<button class="button fill-red-2">Download Now</button>
+							</div>
+							<div class="layer-3">
+								<div class="form block form-dark">
+									<div class="form-row space-25-bottom">
+										<div class="title h5 strong">Signup to Download <br>for Free.</div>
+									</div>
+									<div class="form-row space-min-bottom">
+										<label for="">
+											<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
+											<input class="block" type="text">
+										</label>
+									</div>
+									<div class="form-row space-min-bottom">
+										<label for="">
+											<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+											<button class="button fill-red-2">Get Details</button>
+										</label>
+									</div>
+								</div>
+								<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+							</div>
 						</div>
-						<div class="columns small-12 medium-6 fill-red-2">
-							Lorem ipsum dolor, sit amet consectetur, adipisicing elit. Autem, voluptatum similique nihil, magni voluptates repellendus accusantium molestias quam ipsum, voluptatibus quos illo odit numquam facilis quas repudiandae ab aliquam, fuga!
+						<div class="brochure columns small-12 medium-6 fill-red-2">
+							<div class="layer-1" style="background-image: url('/*-- insert image url here -- */<?php echo $ver ?>');"></div>
+							<div class="layer-2">
+								<div class="h4 strong space-25-bottom">Comparison to <br>Fixed Deposits</div>
+								<button class="button fill-blue-4">Download Now</button>
+							</div>
+							<div class="layer-3">
+								<div class="form block form-dark">
+									<div class="form-row space-25-bottom">
+										<div class="title h5 strong">Signup to Download <br>for Free.</div>
+									</div>
+									<div class="form-row space-min-bottom">
+										<label for="">
+											<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
+											<input class="block" type="text">
+										</label>
+									</div>
+									<div class="form-row space-min-bottom">
+										<label for="">
+											<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+											<button class="button fill-red-2">Get Details</button>
+										</label>
+									</div>
+								</div>
+								<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+							</div>
 						</div>
 					</div>
 				</div>
