@@ -185,7 +185,7 @@ $investments = BFS\CMS::getPostsOf( 'investment' );
 							<div class="title-emi"><?= $investment->get( 'title' )[ 'emi' ] ?></div>
 						</div>
 						<div class="toggle space-25-top">
-							<label class="toggle-button" tabindex="-1">
+							<label class="toggle-button unselectable" tabindex="-1">
 								<input class="hidden js_toggle_payment_mode" type="checkbox">
 								<div class="button pill"></div>
 								<div class="button empty-pill">Lumpsum</div>
@@ -338,7 +338,7 @@ $investments = BFS\CMS::getPostsOf( 'investment' );
 	<div class="container">
 		<div class="row text-blue-4">
 			<div class="columns small-12 large-3">
-				<div class="h2 strong space-50-bottom">FAQs</div>				
+				<div class="h2 strong space-50-bottom">FAQs</div>
 			</div>
 			<div class="columns small-12 large-9 xlarge-8">
 				<div class="faqs space-75-bottom">
@@ -442,7 +442,7 @@ $investments = BFS\CMS::getPostsOf( 'investment' );
 					</div>
 				</div>
 			</div>
-		</div>		
+		</div>
 	</div>
 </section>
 <!-- END: FAQs Section -->
