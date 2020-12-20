@@ -208,53 +208,7 @@ $investments = BFS\CMS::getPostsOf( 'investment' );
 							<button class="fill-red-2" style="margin-left: var(--space-min);">Share</button>
 						</div>
 					</div>
-					<div class="back">
-						<button class="unflip button fill-light js_investment_card_unflip">Back</button>
-						<div class="h5 strong text-red-2">Get access to a detailed offer document now.</div>
-						<div class="form form-dark">
-							<div class="form-row space-min-bottom">
-								<label for="">
-									<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
-									<input class="block" type="text">
-								</label>
-							</div>
-							<div class="form-row space-min-bottom">
-								<label for="">
-									<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span>
-									<button class="button block fill-red-2">Get Details</button>
-								</label>
-							</div>
-						</div>
-						<hr style="border-color: var(--red-2);">
-						<div class="h5 text-neutral-2">Saturday 15th Dec 4:30 PM</div>
-						<div class="label">Join our investment manager for a 30min presentation and 30min of Q&A.</div>
-						<div class="form form-dark">
-							<div class="form-row space-min-bottom">
-								<label for="">
-									<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Name</span>
-									<input class="block" type="text">
-								</label>
-							</div>
-							<div class="form-row space-min-bottom">
-								<label for="">
-									<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Email</span>
-									<input class="block" type="text">
-								</label>
-							</div>
-							<div class="form-row space-min-bottom">
-								<label for="">
-									<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
-									<input class="block" type="text">
-								</label>
-							</div>
-							<div class="form-row space-min-bottom">
-								<label for="">
-									<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span>
-									<button class="button block fill-red-2">Get Details</button>
-								</label>
-							</div>
-						</div>
-					</div>
+					<div class="back js_back"></div>
 				</div>
 			<?php endforeach; ?>
 				<div class="tile banner">
@@ -511,6 +465,60 @@ $investments = BFS\CMS::getPostsOf( 'investment' );
 	</div>
 </section>
 <!-- END: Footer Section -->
+
+
+<!-- TEMPLATE: Back of Investment Card -->
+<template class="js_template js_investment_card_back">
+	<div>
+		<button class="unflip button fill-light js_investment_card_unflip">Back</button>
+		<div class="h5 strong text-red-2">Get access to a detailed offer document now.</div>
+		<div class="form form-dark">
+			<div class="form-row space-min-bottom">
+				<label for="">
+					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
+					<input class="block" type="text">
+				</label>
+			</div>
+			<div class="form-row space-min-bottom">
+				<label for="">
+					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span>
+					<button class="button block fill-red-2">Get Details</button>
+				</label>
+			</div>
+		</div>
+		<hr style="border-color: var(--red-2);">
+		<div class="h5 text-neutral-2">Saturday 15th Dec 4:30 PM</div>
+		<div class="label">Join our investment manager for a 30min presentation and 30min of Q&A.</div>
+		<div class="form form-dark">
+			<div class="form-row space-min-bottom">
+				<label for="">
+					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Name</span>
+					<input class="block" type="text">
+				</label>
+			</div>
+			<div class="form-row space-min-bottom">
+				<label for="">
+					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Email</span>
+					<input class="block" type="text">
+				</label>
+			</div>
+			<div class="form-row space-min-bottom">
+				<label for="">
+					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
+					<input class="block" type="text">
+				</label>
+			</div>
+			<div class="form-row space-min-bottom">
+				<label for="">
+					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span>
+					<button class="button block fill-red-2">Get Details</button>
+				</label>
+			</div>
+		</div>
+	</div>
+</template>
+<!-- END: TEMPLATE: Back of Investment Card -->
+
 
 
 
