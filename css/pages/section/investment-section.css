@@ -47,7 +47,10 @@
 	left: 0;
 	opacity: 0;
 }
-.investment-section .tile-grid .tile.investment .front .toggle { position: relative; }
+.investment-section .tile-grid .tile.investment .front .toggle {
+	position: relative;
+	font-size: 0;
+}
 .investment-section .tile-grid .tile.investment .front .toggle .toggle-button {
 	position: relative;
 	z-index: 2;
@@ -88,7 +91,7 @@
 	z-index: 1;
 	position: absolute;
 	left: 0;
-	bottom: calc( (var(--space-75)/2) + 2px );
+	bottom: calc( (var(--space-75)/2) - 2px );
 	width: 100%;
 	transform: translate(0,-50%);
 	margin: 0;
@@ -231,7 +234,7 @@
 
 
 	.investment-section .tile-grid .tile.investment .front .toggle hr {
-		bottom: calc( (var(--space-50)/2) + 2px );
+		bottom: calc( (var(--space-50)/2) - 2px );
 	}
 
 }
