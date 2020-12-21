@@ -38,6 +38,10 @@ class CMS {
 			$post[ 'post_content' ] = apply_filters( 'the_content', $post[ 'post_content' ] );
 			$post[ 'acf' ] = self::$currentQueriedPostACF;
 			self::$currentQueriedPostId = null;
+
+			// Create the custom field stub
+			$post[ '__custom' ] = [ ];
+
 			// Cache the post
 			self::$cache[ $post[ 'ID' ] ] = $post;
 		}
@@ -66,6 +70,8 @@ class CMS {
 		// Neatly store all the ACF fields in a sub-field
 		$post[ 'acf' ] = self::$currentQueriedPostACF;
 		self::$currentQueriedPostId = null;
+		// Create the custom field stub
+		$post[ '__custom' ] = [ ];
 		// Cache the post
 		self::$cache[ $id ] = $post;
 
@@ -89,6 +95,8 @@ class CMS {
 		$post[ 'post_content' ] = apply_filters( 'the_content', $post[ 'post_content' ] );
 		$post[ 'acf' ] = self::$currentQueriedPostACF;
 		self::$currentQueriedPostId = null;
+		// Create the custom field stub
+		$post[ '__custom' ] = [ ];
 		// Cache the post
 		self::$cache[ $post[ 'ID' ] ] = $post;
 		self::$cache[ $slug ] = $post;
@@ -123,16 +131,22 @@ class Content {
 		}
 	}
 
+	public function getAll () {
+		return CMS::$cache[ $this->postIdentifier ];
+	}
+
 	public function get ( $key ) {
 
 		// Get a reference to the post's cache
 		$postCache = CMS::$cache[ $this->postIdentifier ];
 
 		// Get the value from the cache
-		if ( isset( $postCache[ $key ] ) )
-			return $postCache[ $key ];
+		if ( isset( $postCache[ '__custom' ][ $key ] ) )
+			return $postCache[ '__custom' ][ $key ];
 		else if ( ! empty( $postCache[ 'acf' ] ) and isset( $postCache[ 'acf' ][ $key ] ) )
 			return $postCache[ 'acf' ][ $key ];
+		else if ( isset( $postCache[ $key ] ) )
+			return $postCache[ $key ];
 		else
 			return null;
 
@@ -167,6 +181,11 @@ class Content {
 
 		// return $post[ $key ];
 
+	}
+
+	public function set ( $key, $value ) {
+		CMS::$cache[ $this->postIdentifier ][ '__custom' ][ $key ] = $value;
+		return $this;
 	}
 
 }
