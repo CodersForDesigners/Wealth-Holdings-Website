@@ -8,6 +8,8 @@
 require_once __DIR__ . '/../inc/above.php';
 
 // Page-specific preparatory code goes here.
+
+
 $investments = BFS\CMS::getPostsOf( 'investment' );
 
 ?>
