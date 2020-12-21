@@ -62,6 +62,22 @@ add_action( 'acf/init', function () {
 		'render_callback' => 'acf_render_callback'
 	] );
 
+	// Testimonials block
+	acf_register_block_type( [
+		'name' => 'bfs-testimonials',
+		'title' => __( 'Testimonials' ),
+		'description' => __( 'Testimonials' ),
+		'category' => 'common',
+		'icon' => 'testimonial',
+		'align' => 'wide',
+		'mode' => 'edit',
+		'supports' => [
+			'multiple' => false,
+			'align' => [ 'wide' ]
+		],
+		'render_callback' => 'acf_render_callback'
+	] );
+
 	function acf_render_callback ( $block, $content, $is_preview, $post_id ) {
 		if ( ! class_exists( '\BFS\CMS' ) )
 			return;
