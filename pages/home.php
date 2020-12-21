@@ -12,6 +12,16 @@ require_once __DIR__ . '/../inc/above.php';
 
 $investments = BFS\CMS::getPostsOf( 'investment' );
 
+$faqs = BFS\CMS::getPostsOf( 'faq' );
+foreach ( $faqs as $faq ) {
+	$faq->set( 'featuredImage', get_the_post_thumbnail_url( $faq->get( 'ID' ) ) );
+	$faqTextualContent = wp_strip_all_tags( $faq->get( 'post_content' ) );
+	if ( ! $faq->get( 'summary' ) )
+		$faq->set( 'summary', substr( $faqTextualContent, 0, 415 ) );
+	if ( strlen( $faq->get( 'summary' ) ) === strlen( $faqTextualContent ) )
+		$faq->set( 'thereIsMore?', true );
+}
+
 ?>
 
 
@@ -336,7 +346,7 @@ $investments = BFS\CMS::getPostsOf( 'investment' );
 
 
 <!-- FAQs Section -->
-<section class="faqs-section fill-neutral-1 space-75-top">
+<section class="faqs-section fill-neutral-1 space-75-top js_section_faqs">
 	<div class="container">
 		<div class="row text-blue-4">
 			<div class="columns small-12 large-3">
@@ -344,46 +354,29 @@ $investments = BFS\CMS::getPostsOf( 'investment' );
 			</div>
 			<div class="columns small-12 large-9 xlarge-8">
 				<div class="faqs space-75-bottom">
-					<div class="faq space-25-top-bottom">
-						<div class="title h5 strong">Why should I buy and is my money secure?</div>
+				<?php foreach ( $faqs as $faq ) : ?>
+					<div class="faq space-25-top-bottom js_faq">
+						<div class="title h5 strong js_faq_title"><?= $faq->get( 'post_title' ) ?></div>
 						<div class="summary">
 							<div class="row">
-								<!-- optional thumbnail -->
-								<div class="thumbnail columns small-12 medium-4 space-min-top">
-									 <img class="block" src="../media/placeholder.png<?php echo $ver ?>">
-								</div>
-								<!-- <div class="columns small-12"> -->
+								<?php if ( $faq->get( 'featuredImage' ) ) : ?>
+									<div class="thumbnail columns small-12 medium-4 space-min-top">
+										 <img class="block" src="<?= $faq->get( 'featuredImage' ) ?>">
+									</div>
+								<?php endif; ?>
 								<div class="columns small-12 medium-8 space-min-top">
-									<div class="description h6 opacity-50 space-min-bottom">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, perferendis aperiam quibusdam ipsam possimus optio alias? Excepturi, corporis eius inventore provident aut expedita quidem illo placeat aliquam ex, suscipit ratione.</div>
+									<div class="description h6 opacity-50 space-min-bottom"><?= $faq->get( 'summary' ) ?></div>
 									<div class="action clearfix">
-										<a class="h6" href="">Read More</a>
+										<?php if ( $faq->get( 'thereIsMore?' ) ) : ?>
+											<a class="h6" href="<?= $faq->get( 'guid' ) ?>">Read More</a>
+										<?php endif; ?>
 										<a class="h6" href="">Share</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="faq space-25-top-bottom">
-						<div class="title h5 strong">When will my returns start?</div>
-					</div>
-					<div class="faq space-25-top-bottom">
-						<div class="title h5 strong">How frequently will I get my returns?</div>
-					</div>
-					<div class="faq space-25-top-bottom">
-						<div class="title h5 strong">What is the payment schedule?</div>
-					</div>
-					<div class="faq space-25-top-bottom">
-						<div class="title h5 strong">When will the Villa/Apartment be registered in my name?</div>
-					</div>
-					<div class="faq space-25-top-bottom">
-						<div class="title h5 strong">When will the rental agreement be executed?</div>
-					</div>
-					<div class="faq space-25-top-bottom">
-						<div class="title h5 strong">Do I have to pay any other charges?</div>
-					</div>
-					<div class="faq space-25-top-bottom">
-						<div class="title h5 strong">What is then Income Tax applicable on the monthly rent I receive and will there by any deductions?</div>
-					</div>
+				<?php endforeach; ?>
 				</div>
 				<div class="brochures">
 					<div class="row">
