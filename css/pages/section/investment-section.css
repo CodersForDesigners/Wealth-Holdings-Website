@@ -26,6 +26,10 @@
 .investment-section .tile-grid .tile.investment .front * {
 	transition: all .3s ease-out;
 }
+.investment-section .tile-grid .tile.investment .front .rent {
+	padding-left: var(--space-25);
+	border-left: dashed 2px var(--red-2);
+}
 .investment-section .tile-grid .tile.investment .front .title {
 	position: relative;
 	pointer-events: none;

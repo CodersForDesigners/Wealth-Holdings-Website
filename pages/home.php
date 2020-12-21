@@ -42,10 +42,10 @@ foreach ( $faqs as $faq ) {
 
 
 <!-- Header Section -->
-<section class="header-section">
+<!-- <section class="header-section">
 	Logo
 	Navigation
-</section>
+</section> -->
 <!-- END: Header Section -->
 
 
@@ -184,12 +184,12 @@ foreach ( $faqs as $faq ) {
 				<div class="tile investment js_investment_card">
 					<div class="front">
 						<div class="row meta-1 space-25-bottom">
-							<div class="columns small-4 yield text-red-2">
+							<div class="columns small-3 yield text-red-2">
 								<div class="h5 strong text-uppercase">Yield</div>
 								<div class="h5"><?= $investment->get( 'yield' )[ 'amount' ] ?>%</div>
 								<div class="small line-height-small"><?= $investment->get( 'yield' )[ 'duration' ] ?></div>
 							</div>
-							<div class="columns small-8 rent text-neutral-2">
+							<div class="columns small-9 rent text-neutral-2">
 								<div class="h5 strong text-uppercase">Rent</div>
 								<div class="h5">₹ <?= $investment->get( 'rent' )[ 'amount' ] ?></div>
 								<div class="small line-height-small"><?= $investment->get( 'yield' )[ 'duration' ] ?></div>
@@ -221,7 +221,7 @@ foreach ( $faqs as $faq ) {
 						</div>
 						<div class="action space-25-top">
 							<button class="fill-red-2 js_investment_get_details">Get Details</button>
-							<button class="fill-red-2" style="margin-left: var(--space-min);">Share</button>
+							<!-- <button class="fill-red-2" style="margin-left: var(--space-min);">Share</button> -->
 						</div>
 					</div>
 					<div class="back js_back"></div>
