@@ -160,6 +160,12 @@ function bfs_theme_setup () {
 			];
 			$args[ 'template_lock' ] = 'all';
 		}
+		else if ( $postType === 'testimonial' ) {
+			$args[ 'template' ] = [
+				[ 'acf/bfs-testimonials' ]
+			];
+			$args[ 'template_lock' ] = 'all';
+		}
 
 		return $args;
 
