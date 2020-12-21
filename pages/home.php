@@ -16,9 +16,12 @@ $faqs = BFS\CMS::getPostsOf( 'faq' );
 foreach ( $faqs as $faq ) {
 	$faq->set( 'featuredImage', get_the_post_thumbnail_url( $faq->get( 'ID' ) ) );
 	$faqTextualContent = wp_strip_all_tags( $faq->get( 'post_content' ) );
-	if ( ! $faq->get( 'summary' ) )
+	if ( ! $faq->get( 'summary' ) ) {
 		$faq->set( 'summary', substr( $faqTextualContent, 0, 415 ) );
-	if ( strlen( $faq->get( 'summary' ) ) === strlen( $faqTextualContent ) )
+		if ( strlen( $faqTextualContent ) > 415 )
+			$faq->set( 'thereIsMore?', true );
+	}
+	else
 		$faq->set( 'thereIsMore?', true );
 }
 
