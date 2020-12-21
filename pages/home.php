@@ -173,12 +173,12 @@ foreach ( $faqs as $faq ) {
 <section class="investment-section fill-blue-4 space-75-top-bottom js_section_investment">
 	<div class="container">
 		<div class="row">
-			<div class="columns small-12">
+			<div class="columns small-12 space-50-bottom">
 				<div class="h2 strong">Pick an investment</div>
 			</div>
-			<div class="columns small-12">
+			<!-- <div class="columns small-12">
 				Filters
-			</div>
+			</div> -->
 			<div class="columns small-12 tile-grid">
 			<?php foreach ( $investments as $investment ) : ?>
 				<div class="tile investment js_investment_card">
@@ -206,6 +206,7 @@ foreach ( $faqs as $faq ) {
 								<div class="button empty-pill">Lumpsum</div>
 								<div class="button empty-pill">EMI</div>
 							</label>
+							<hr class="dashed blue-4">
 						</div>
 						<div class="meta-2 space-25-top text-neutral-2">
 							<div class="size h5 space-min-bottom"><?= $investment->get( 'size' ) ?></div>
@@ -226,15 +227,15 @@ foreach ( $faqs as $faq ) {
 					<div class="back js_back"></div>
 				</div>
 			<?php endforeach; ?>
-				<div class="tile banner">
+				<!-- <div class="tile banner">
 					<div class="p fill-neutral-2 space-25">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. A fugit perspiciatis, voluptatibus dolorum, facere sapiente est, impedit exercitationem ut perferendis laboriosam, repudiandae consequatur ad rem odio adipisci hic ex. Perspiciatis?
 					</div>
-				</div>
+				</div> -->
 			</div>
-			<div class="columns small-12">
+			<!-- <div class="columns small-12">
 				View All
-			</div>
+			</div> -->
 		</div>
 	</div>
 </section>
@@ -447,7 +448,7 @@ foreach ( $faqs as $faq ) {
 
 
 <!-- Testimonials Section -->
-<section class="testimonials-section fill-light space-75-top-bottom">
+<section class="testimonials-section fill-light space-75-top space-25-bottom">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12">
@@ -622,10 +623,10 @@ foreach ( $faqs as $faq ) {
 			<div class="row">
 				<div class="container">
 					<div class="columns small-6">
-						<div class="scroll-button button fill-red-2 scroll-left unselectable js_pager" data-dir="left" tabindex="-1"><img src="media/glyph/32-leftarrow.svg?v=20190917"></div>
+						<div class="scroll-button left scroll-left unselectable js_pager" data-dir="left" tabindex="-1"><img class="block" src="../media/icon/icon-left-arrow-red.svg<?php echo $ver ?>"></div>
 					</div>
 					<div class="columns small-6 text-right">
-						<div class="scroll-button button fill-red-2 scroll-right unselectable js_pager" data-dir="right" tabindex="-1"><img src="media/glyph/32-rightarrow.svg?v=20190917"></div>
+						<div class="scroll-button right scroll-right unselectable js_pager" data-dir="right" tabindex="-1"><img class="block" src="../media/icon/icon-right-arrow-red.svg<?php echo $ver ?>"></div>
 					</div>
 				</div>
 			</div>
@@ -647,8 +648,8 @@ foreach ( $faqs as $faq ) {
 <!-- TEMPLATE: Back of Investment Card -->
 <template class="js_template js_investment_card_back">
 	<div>
-		<button class="unflip button fill-light js_investment_card_unflip">Back</button>
-		<div class="h5 strong text-red-2">Get access to a detailed offer document now.</div>
+		<div class="close js_investment_card_unflip" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+		<div class="title h4 strong text-red-2 space-25-bottom">Get access to a detailed offer document now.</div>
 		<div class="form form-dark">
 			<div class="form-row space-min-bottom">
 				<label for="">
@@ -663,35 +664,10 @@ foreach ( $faqs as $faq ) {
 				</label>
 			</div>
 		</div>
-		<hr style="border-color: var(--red-2);">
-		<div class="h5 text-neutral-2">Saturday 15th Dec 4:30 PM</div>
-		<div class="label">Join our investment manager for a 30min presentation and 30min of Q&A.</div>
-		<div class="form form-dark">
-			<div class="form-row space-min-bottom">
-				<label for="">
-					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Name</span>
-					<input class="block" type="text">
-				</label>
-			</div>
-			<div class="form-row space-min-bottom">
-				<label for="">
-					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Email</span>
-					<input class="block" type="text">
-				</label>
-			</div>
-			<div class="form-row space-min-bottom">
-				<label for="">
-					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
-					<input class="block" type="text">
-				</label>
-			</div>
-			<div class="form-row space-min-bottom">
-				<label for="">
-					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span>
-					<button class="button block fill-red-2">Get Details</button>
-				</label>
-			</div>
-		</div>
+		<div class="or-separator"><span class="label">OR</span><hr class="dashed red-2"></div>
+		<div class="h5 text-neutral-2 line-height-xlarge">Saturday 15th Dec 4:30 PM</div>
+		<div class="label space-25-bottom">Join our investment manager for a 30min presentation and 30min of Q&A.</div>
+		<button class="button fill-dark" style="box-shadow: inset 0px 0px 0px 1px var(--red-3)">Register for Webinar</button>
 	</div>
 </template>
 <!-- END: TEMPLATE: Back of Investment Card -->

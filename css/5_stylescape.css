@@ -186,6 +186,18 @@ em, .em { font-style: italic; }
 hr {
 	border-color: var(--dark);
 }
+hr.dashed {
+	border-top: 2px dashed;
+}
+hr.red-2 {
+	border-color: var(--red-2);
+}
+hr.blue-3 {
+	border-color: var(--blue-3);
+}
+hr.blue-4 {
+	border-color: var(--blue-4);
+}
 @media( min-width: 1480px ) {
 	hr {
 		border-width: 2px;
