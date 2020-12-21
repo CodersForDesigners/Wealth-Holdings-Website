@@ -1,7 +1,7 @@
 
 /*
  *
- * ----- CARDS
+ * ----- INVESTMENTS
  *
  */
 
@@ -40,4 +40,25 @@ $( ".js_section_investment" ).on( "click", ".js_investment_card_unflip", functio
 $( document ).on( "change", ".js_toggle_payment_mode", function ( event ) {
 	let $card = $( event.target ).closest( ".js_investment_card" );
 	$card.toggleClass( "show-emi" );
+} );
+
+
+
+/*
+ *
+ * ----- FAQs
+ *
+ */
+$( ".js_section_faqs" ).on( "click", ".js_faq_title", function ( event ) {
+
+	var $selectedFaq = $( event.target ).closest( ".js_faq" );
+	var $faqs = $( ".js_faq" );
+
+	if ( $selectedFaq.hasClass( "open" ) )
+		$selectedFaq.removeClass( "open" )
+	else {
+		$faqs.removeClass( "open" );
+		$selectedFaq.addClass( "open" );
+	}
+
 } );
