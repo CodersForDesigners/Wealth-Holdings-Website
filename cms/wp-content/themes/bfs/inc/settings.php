@@ -138,6 +138,12 @@ function bfs_theme_setup () {
 			];
 			// $args[ 'template_lock' ] = 'all';
 		}
+		else if ( $postType === 'brochure' ) {
+			$args[ 'template' ] = [
+				[ 'acf/bfs-brochures' ]
+			];
+			$args[ 'template_lock' ] = 'all';
+		}
 
 		return $args;
 
