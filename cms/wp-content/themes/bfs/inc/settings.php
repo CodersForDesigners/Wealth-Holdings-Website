@@ -30,6 +30,22 @@ add_action( 'acf/init', function () {
 		'render_callback' => 'acf_render_callback'
 	] );
 
+	// FAQs block
+	acf_register_block_type( [
+		'name' => 'bfs-faqs',
+		'title' => __( 'FAQs' ),
+		'description' => __( 'FAQs' ),
+		'category' => 'common',
+		'icon' => 'editor-textcolor',
+		'align' => 'wide',
+		'mode' => 'edit',
+		'supports' => [
+			'multiple' => false,
+			'align' => [ 'wide' ]
+		],
+		'render_callback' => 'acf_render_callback'
+	] );
+
 	function acf_render_callback ( $block, $content, $is_preview, $post_id ) {
 		if ( ! class_exists( '\BFS\CMS' ) )
 			return;
@@ -98,6 +114,13 @@ function bfs_theme_setup () {
 				[ 'acf/bfs-investments' ]
 			];
 			$args[ 'template_lock' ] = 'all';
+		}
+		else if ( $postType === 'faq' ) {
+			$args[ 'template' ] = [
+				[ 'core/paragraph', [ 'placeholder' => 'Type in a detailed answer here...' ] ],
+				[ 'acf/bfs-faqs' ]
+			];
+			// $args[ 'template_lock' ] = 'all';
 		}
 
 		return $args;
