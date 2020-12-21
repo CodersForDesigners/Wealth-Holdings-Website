@@ -46,6 +46,22 @@ add_action( 'acf/init', function () {
 		'render_callback' => 'acf_render_callback'
 	] );
 
+	// Brochures block
+	acf_register_block_type( [
+		'name' => 'bfs-brochures',
+		'title' => __( 'Brochures' ),
+		'description' => __( 'Brochures' ),
+		'category' => 'common',
+		'icon' => 'media-document',
+		'align' => 'wide',
+		'mode' => 'edit',
+		'supports' => [
+			'multiple' => false,
+			'align' => [ 'wide' ]
+		],
+		'render_callback' => 'acf_render_callback'
+	] );
+
 	function acf_render_callback ( $block, $content, $is_preview, $post_id ) {
 		if ( ! class_exists( '\BFS\CMS' ) )
 			return;
