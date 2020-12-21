@@ -14,7 +14,7 @@ add_action( 'acf/init', function () {
 	if ( ! function_exists( 'acf_register_block_type' ) )
 		return;
 
-	// Project Essentials block
+	// Investments block
 	acf_register_block_type( [
 		'name' => 'bfs-investments',
 		'title' => __( 'Investments' ),
@@ -35,7 +35,6 @@ add_action( 'acf/init', function () {
 			return;
 
 		\BFS\CMS::$currentQueriedPostACF = array_merge( \BFS\CMS::$currentQueriedPostACF, get_fields() ?: [ ] );
-
 	}
 
 } );
