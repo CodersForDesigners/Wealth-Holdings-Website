@@ -115,7 +115,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<!-- (2.) -->
 					<div class="hn strong text-uppercase line-height-small">Invest</div>
 				</div>
-				<div class="tile t-3 outline-red-2">
+				<div class="tile t-3 outline-red-2 hide-small">
 					<!-- (3.) -->
 					<div class="h6 strong">own an apartment with <br>a business model</div>
 				</div>
@@ -124,17 +124,17 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<div class="h6 strong space-25-bottom"><span class="text-red-2">minimum</span> investment <br>amount</div>
 					<div class="hn strong text-red-2">₹14 Lakhs</div>
 				</div>
-				<div class="tile t-5 fill-red-3">
+				<div class="tile t-5 fill-red-3 hide-small">
 					<!-- (5.) -->
 					<div class="h6 strong line-height-xlarge">Bangalore <br>Delhi <br>Pune</div>
 				</div>
-				<div class="tile t-6 fill-red-3">
+				<div class="tile t-6 fill-red-3 hide-small">
 					<!-- (6.) -->
 					<div class="h6 strong">walking distance from <br class="hide-small">tech parks, SEZs & schools</div>
 				</div>
 				<div class="tile t-7 fill-dark">
 					<!-- (7.) -->
-					<div class="h4 strong space-min-bottom">EMI</div>
+					<div class="h5 strong space-min-bottom">EMI</div>
 					<div class="label strong">Invest only the down payment and <span class="text-red-2">let us fund your EMIs.</span></div>
 				</div>
 				<div class="tile t-8" style="background-image: url('../media/placeholder.png<?php echo $ver ?>'); background-size: cover; background-position: center center;">
@@ -142,8 +142,9 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 				</div>
 				<div class="tile t-9 fill-dark">
 					<!-- (9.) -->
-					<div class="h4 strong space-min-bottom">Lumpsum</div>
-					<div class="label strong">Make a <span class="text-red-2">one-time investment</span> <br>and enjoy a monthly fixed <br>rental income.</div>
+					<div class="h5 strong space-min-bottom">Lumpsum</div>
+					<!-- <div class="label strong">Make a <span class="text-red-2">one-time investment</span> <br>and enjoy a monthly fixed <br>rental income.</div> -->
+					<div class="label strong">Get a monthly fixed income, <br>on a <span class="text-red-2">one-time investment.</span></div>
 				</div>
 				<div class="tile t-10">
 					<!-- (10.) -->
@@ -159,7 +160,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<div class="h5 strong">fixed <span class="text-red-2">monthly income</span></div>
 					<div class="hn strong text-red-2">6% to 7.5%</div>
 				</div>
-				<div class="tile t-13 fill-red-3">
+				<div class="tile t-13 fill-red-3 hide-small">
 					<!-- (13.) -->
 					<div class="h6 strong">10% Increment at the end of 9 years</div>
 				</div>
@@ -336,7 +337,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 		<div class="row">
 			<div class="webinar-form columns small-12 medium-6 medium-offset-6 space-75-top-bottom xlarge-5">
 				<div class="h3 strong text-red-2 space-25-bottom">Register for the next webinar</div>
-				<div class="h5 space-min-bottom">Saturday 15th Dec 4:30 PM</div>
+				<div class="h5 space-min-bottom">Saturday 9th Jan 2021 4:30 PM</div>
 				<div class="p opacity-75 space-50-bottom">Join our investment manager for a 30 minute presentation and 30 minutes of Q&A.</div>
 				<form class="form form-dark" onsubmit="event.preventDefault()">
 					<div class="form-row space-min-bottom">
