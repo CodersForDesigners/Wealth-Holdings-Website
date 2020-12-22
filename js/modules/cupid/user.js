@@ -45,6 +45,14 @@ function LoginPrompt ( context, $site ) {
 		event.preventDefault();
 		loginPrompt.trigger( "OTPSubmit", event );
 	} );
+	this.$OTPForm.on( "click", ".js_resend_otp", function ( event ) {
+		event.preventDefault();
+		loginPrompt.trigger( "OTPResend", event );
+	} );
+	this.$OTPForm.on( "click", ".js_try_different_number", function ( event ) {
+		event.preventDefault();
+		loginPrompt.trigger( "requirePhone", event );
+	} );
 }
 LoginPrompt.prototype.events = [
 	"requirePhone", "phoneValidationError", "phoneSubmit", "phoneError",
