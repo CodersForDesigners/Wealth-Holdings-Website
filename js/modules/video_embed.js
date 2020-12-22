@@ -9,23 +9,26 @@
  * Inject iframes into the video containers.
  * 	These iframes hold urls to the videos hosted on YouTube.
  */
-function initialiseVideoEmbeds () {
-	$( ".js_video_embed" ).each( function ( _i, el ) {
-		var $iframe = $( "<iframe>" )
-		var attributes = {
-			// Add the origin parameter
-	 		// This is to protect against malicious third-party JavaScript being
-	 		// injected into the page and hijacking control of the YouTube player.
-			src: "https://www.youtube.com/embed/" + el.dataset.src + "?html5=1&color=white&disablekb=1&fs=0&autoplay=0&loop=0&modestbranding=1&playsinline=1&rel=0&showinfo=0&origin=" + location.origin,
-			frameborder: 0,
-			allow: "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
-			allowfullscreen: ""
-		};
-		if ( $( el ).hasClass( "js_video_get_player" ) )
-			attributes.src += "&enablejsapi=1&mute=1&controls=0";
-		$iframe.attr( attributes );
-		$( el ).append( $iframe );
-	} );
+function initialiseVideoEmbed ( domElement, videoId ) {
+	var $iframe = $( "<iframe>" );
+	var videoId = videoId || domElement.dataset.src;
+	var attributes = {
+		// Add the origin parameter
+ 		// This is to protect against malicious third-party JavaScript being
+ 		// injected into the page and hijacking control of the YouTube player.
+		src: "https://www.youtube.com/embed/" + videoId + "?html5=1&color=white&disablekb=1&fs=0&autoplay=0&loop=0&modestbranding=1&playsinline=1&rel=0&showinfo=0&origin=" + location.origin,
+		frameborder: 0,
+		allow: "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+		allowfullscreen: ""
+	};
+	if ( $( domElement ).hasClass( "js_video_get_player" ) )
+		attributes.src += "&enablejsapi=1&mute=1&controls=0";
+	$iframe.attr( attributes );
+	$( domElement ).append( $iframe );
+}
+
+function destroyVideoEmbed ( domElement ) {
+	$( domElement ).find( "iframe" ).remove();
 }
 
 /*
@@ -49,15 +52,11 @@ function unsetVideoEmbed ( domEl ) {
 }
 
 /*
+ *
  * Setup the YouTube Iframe API
- * Store references to video players
- * 	in data attributes of their respective video containers.
+ *
  */
-function setupYoutubePlayers () {
-
-	// If there isn't a background YouTube embed, move on
-	if ( $( ".js_video_get_player" ).length == 0 )
-		return;
+function setupYoutubeIframeAPI () {
 
 	// If there is a background YouTube embed, then
 	// 1. Load the YouTube API library (asynchronously)
@@ -65,20 +64,6 @@ function setupYoutubePlayers () {
 	var scriptElement = document.createElement( "script" );
 	scriptElement.src = "https://www.youtube.com/iframe_api";
 	$( "script" ).last().after( scriptElement );
-
-	// 2. Setup the YouTube video, its playback options and hooks event handling
-	function onYouTubeIframeAPIReady () {
-		$( ".js_video_get_player iframe" ).each( function ( _i, domVideo ) {
-			new YT.Player( domVideo, {
-				events: {
-					onReady: onPlayerReady,
-					onStateChange: onPlayerStateChange
-				}
-			} );
-		} );
-	}
-	// This function needs to exposed as a global
-	window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
 	// When the YouTube video player is ready, this function is run
 	function onPlayerReady ( event ) {
@@ -100,16 +85,87 @@ function setupYoutubePlayers () {
 			event.target.seekTo( 0 )
 	}
 
+	// This function needs to exposed as a global
+	window.onYouTubeIframeAPIReady = function ( event ) {
+		var players = { };
+		$( document ).on( "youtube/player/create", function ( event, domVideo ) {
+			players[ domVideo.id ] = new YT.Player( domVideo, {
+				events: {
+					onReady: onPlayerReady,
+					onStateChange: onPlayerStateChange
+				}
+			} );
+		} );
+		$( document ).on( "youtube/player/destroy", function ( event, playerId ) {
+			if ( players[ playerId ] )
+				players[ playerId ].destroy();
+		} );
+	};
+
 }
+window.__BFS = window.__BFS || { };
+window.__BFS.setupYoutubeIframeAPI = setupYoutubeIframeAPI;
+
+/*
+ * The first time a YouTube player is created, also set up the YouTube Iframe API
+ */
+$( document ).one( "youtube/player/create", function ( event, domVideo ) {
+
+	// Only run this function **once**
+	if ( window.__BFS.setupYoutubeIframeAPI ) {
+		window.__BFS.setupYoutubeIframeAPI();
+		window.__BFS.setupYoutubeIframeAPI = null;
+	}
+
+	$( document ).trigger( "youtube/player/create", domVideo );
+
+} );
 
 $( function () {
+
 
 	// Wait for a bit
 	waitFor( 3 )
 		.then( function () {
 			// Initialize, load and setup the video embeds and their players
-			initialiseVideoEmbeds();
-			setupYoutubePlayers();
+			$( ".js_video_embed" ).each( function ( _i, domVideoEmbed ) {
+				initialiseVideoEmbed( domVideoEmbed );
+			} );
 		} )
+
+
+	var $youtubeModal = $( ".js_modal_box_content[ data-mod-id = 'youtube-video' ]" );
+	var $videoEmbed = $youtubeModal.find( ".js_video_embed" );
+	var domVideoEmbed = $videoEmbed.get( 0 );
+	var youtubeIdRegex = /\?v=([^&\s]+)(?:&|$)/;
+
+	// When YouTube modal is triggered for opening
+	$( document ).on( "modal/open/youtube-video", function ( event, data ) {
+
+		var $modalTrigger = data.$trigger;
+
+		// Extract the YouTube video ID from the data attribute
+		var youtubeIdMatches = $modalTrigger.data( "src" ).match( youtubeIdRegex );
+		if ( ! youtubeIdMatches )
+			return;
+		var youtubeId = youtubeIdMatches[ 1 ];
+
+		// Set the data-src attribute on the video embed element
+		$videoEmbed.data( "src", youtubeId );
+		// Store the id of the modal trigger element, it'll be used for destroying the player later
+		$youtubeModal.data( "player", $modalTrigger.attr( "id" ) );
+
+		// Now, actually set up the video embed
+		initialiseVideoEmbed( domVideoEmbed, youtubeId );
+		// $( document ).trigger( "youtube/player/create", $modalTrigger.get( 0 ) );
+
+	} );
+
+	// When YouTube modal is closing
+	$( document ).on( "modal/close/youtube-video", function ( event ) {
+		var playerId = $youtubeModal.data( "player" );
+		// $( document ).trigger( "youtube/player/destroy", playerId );
+		destroyVideoEmbed( domVideoEmbed );
+	} );
 
 } );
