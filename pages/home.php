@@ -347,7 +347,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 				<div class="h3 strong text-red-2 space-25-bottom">Register for the next webinar</div>
 				<div class="h5 space-min-bottom">Saturday 9th Jan 2021 4:30 PM</div>
 				<div class="p opacity-75 space-50-bottom">Join our investment manager for a 30 minute presentation and 30 minutes of Q&A.</div>
-				<form class="form form-dark" onsubmit="event.preventDefault()">
+				<form class="form form-dark js_phone_form" onsubmit="event.preventDefault()">
 					<div class="form-row space-min-bottom">
 						<label for="">
 							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Name</span><br>
@@ -363,11 +363,11 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<div class="form-row space-min-bottom">
 						<label for="webinar-form-phone-number">
 							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
-							<div style="position: relative">
-								<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent">
+							<div style="position: relative; display: flex">
+								<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
 									<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
 								</select>
-								<input type="text" class="no-pointer js_phone_country_code_label" value="+91" disabled>
+								<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
 								<input class="block fill-dark" type="text" id="webinar-form-phone-number">
 							</div>
 						</label>
@@ -379,14 +379,14 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						</label>
 					</div>
 				</form>
-				<form class="form form-dark" onsubmit="event.preventDefault()">
+				<form class="form form-dark js_otp_form" onsubmit="event.preventDefault()">
 					<div class="form-row space-min-bottom">
 						<label for="webinar-form-otp">
 							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
 							<input class="block fill-dark" type="text" id="webinar-form-otp">
 						</label>
-						<span class="small text-uppercase line-height-small opacity-50 cursor-pointer">Re-send OTP</span>
-						<span class="small text-uppercase line-height-small opacity-50 cursor-pointer">Try a different number</span>
+						<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp">Re-send OTP</span>
+						<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number">Try a different number</span>
 					</div>
 					<div class="form-row space-min-bottom">
 						<label for="">
@@ -445,18 +445,18 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 									<a class="button fill-<?= $brochure->get( 'color' )[ 'button' ] ?>" href="<?= $brochure->get( 'brochure' ) ?>" target="_blank">Download Now</a>
 								</div>
 								<div class="layer-3">
-									<form class="form block form-dark">
+									<form class="form block form-dark js_phone_form" onsubmit="event.preventDefault()">
 										<div class="form-row space-25-bottom">
 											<div class="title h5 strong">Signup to Download <br>for Free.</div>
 										</div>
 										<div class="form-row space-min-bottom">
 											<label for="">
 												<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
-												<div style="position: relative">
-													<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent">
+												<div style="position: relative; display: flex">
+													<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
 														<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
 													</select>
-													<input type="text" class="no-pointer js_phone_country_code_label" value="+91" disabled>
+													<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
 													<input class="block" type="text" id="">
 												</div>
 											</label>
@@ -468,14 +468,14 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 											</label>
 										</div>
 									</form>
-									<form class="form block form-dark" onsubmit="event.preventDefault()">
+									<form class="form block form-dark js_otp_form" onsubmit="event.preventDefault()">
 										<div class="form-row space-min-bottom">
 											<label for="">
 												<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
 												<input class="block" type="text" id="">
 											</label>
-											<span class="small text-uppercase line-height-small opacity-50 cursor-pointer">Re-send OTP</span>
-											<span class="small text-uppercase line-height-small opacity-50 cursor-pointer">Try a different number</span>
+											<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp">Re-send OTP</span>
+											<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number">Try a different number</span>
 										</div>
 										<div class="form-row space-min-bottom">
 											<label for="">
@@ -575,15 +575,15 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 	<div>
 		<div class="close js_investment_card_unflip" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
 		<div class="title h4 strong text-red-2 space-25-bottom">Get access to a detailed offer document now.</div>
-		<form class="form form-dark">
+		<form class="form form-dark js_phone_form" onsubmit="event.preventDefault()">
 			<div class="form-row space-min-bottom">
 				<label for="investment-form-phone-number">
 					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
-					<div style="position: relative">
-						<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent">
+					<div style="position: relative; display: flex">
+						<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
 							<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
 						</select>
-						<input type="text" class="no-pointer js_phone_country_code_label" value="+91" disabled>
+						<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
 						<input class="block" type="text" id="investment-form-phone-number">
 					</div>
 				</label>
@@ -595,14 +595,14 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 				</label>
 			</div>
 		</form>
-		<form class="form form-dark" onsubmit="event.preventDefault()">
+		<form class="form form-dark js_otp_form" onsubmit="event.preventDefault()">
 			<div class="form-row space-min-bottom">
 				<label for="investment-form-otp">
 					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
 					<input class="block fill-dark" type="text" id="investment-form-otp">
 				</label>
-				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer">Re-send OTP</span>
-				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer">Try a different number</span>
+				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp">Re-send OTP</span>
+				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number">Try a different number</span>
 			</div>
 			<div class="form-row space-min-bottom">
 				<label for="">
