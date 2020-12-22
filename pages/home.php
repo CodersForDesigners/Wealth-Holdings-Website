@@ -27,6 +27,25 @@ foreach ( $faqs as $faq ) {
 
 $brochures = BFS\CMS::getPostsOf( 'brochure' );
 
+
+/*
+ * ----- Testimonials
+ */
+$testimonials = BFS\CMS::getPostsOf( 'testimonial' ) ?: [ ];
+foreach ( $testimonials as $testimonial ) {
+	$photograph = $testimonial->get( 'photograph' ) ?: [ 'sizes' => [ ] ];
+	$photographURL = $photograph[ 'sizes' ][ 'thumbnail' ] ?: $photograph[ 'sizes' ][ 'small' ] ?: $photograph[ 'sizes' ][ 'medium' ] ?: $photograph[ 'sizes' ][ 'medium_large' ] ?: $photograph[ 'sizes' ][ 'large' ] ?: $photograph[ 'url' ] ?: '';
+	$testimonial->set( 'photograph', $photographURL );
+
+	$videoThumbnail = $testimonial->get( 'video_thumbnail' ) ?: [ 'sizes' => [ ] ];
+	if ( $videoThumbnail !== false ) {
+		$videoThumbnailURL = $videoThumbnail[ 'sizes' ][ 'thumbnail' ] ?: $videoThumbnail[ 'sizes' ][ 'small' ] ?: $videoThumbnail[ 'sizes' ][ 'medium' ] ?: $videoThumbnail[ 'sizes' ][ 'medium_large' ] ?: $videoThumbnail[ 'sizes' ][ 'large' ] ?: $videoThumbnail[ 'url' ] ?: null;
+		$testimonial->set( 'video_thumbnail', $videoThumbnailURL );
+	}
+}
+// Chunk it in sets of 2
+$testimonialSets = array_chunk( $testimonials, 2, true );
+
 ?>
 
 
@@ -435,166 +454,29 @@ $brochures = BFS\CMS::getPostsOf( 'brochure' );
 	</div>
 	<div class="row testimonials carousel js_carousel_container">
 		<div class="carousel-list js_carousel_content">
-			<div class="carousel-list-item js_carousel_item">
-				<div class="testimonial">
-					<div class="tile">
-						<div class="testimonial-content-video" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');" tabindex="-1"></div>
-						<div class="testimonial-content-text label">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, aut atque sit temporibus maiores reiciendis nobis sunt, corrupti, inventore dolorum exercitationem saepe suscipit eaque dolorem optio necessitatibus molestiae excepturi libero?
-						</div>
-						<div class="testimonial-info">
-							<div class="photo" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');"></div>
-							<div class="meta">
-								<div class="name h6">Person Full Name</div>
-								<div class="occupation label">occupation or company designation</div>
+			<?php foreach ( $testimonialSets as $testimonialSet ) : ?>
+				<div class="carousel-list-item js_carousel_item">
+					<?php foreach ( $testimonialSet as $testimonial ) : ?>
+						<div class="testimonial">
+							<div class="tile">
+								<?php if ( $testimonial->get( 'video_thumbnail' ) ) : ?>
+									<div class="js_modal_trigger" data-mod-id="youtube-video" data-src="<?= $testimonial->get( 'video_url' ) ?>">
+										<div class="testimonial-content-video" style="background-image: url( '<?= $testimonial->get( 'video_thumbnail' ) ?>' );" tabindex="-1"></div>
+									</div>
+								<?php endif; ?>
+								<div class="testimonial-content-text label"><?= $testimonial->get( 'testimonial' ) ?></div>
+								<div class="testimonial-info">
+									<div class="photo" style="background-image: url( '<?= $testimonial->get( 'photograph' ) ?>' )"></div>
+									<div class="meta">
+										<div class="name h6"><?= $testimonial->get( 'post_title' ) ?></div>
+										<div class="occupation label"><?= $testimonial->get( 'occupation' ) ?></div>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
+					<?php endforeach; ?>
 				</div>
-				<div class="testimonial">
-					<div class="tile">
-						<div class="testimonial-content-video" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');" tabindex="-1"></div>
-						<div class="testimonial-content-text label">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, aut atque sit temporibus maiores reiciendis nobis sunt, corrupti, inventore dolorum exercitationem saepe suscipit eaque dolorem optio necessitatibus molestiae excepturi libero?
-						</div>
-						<div class="testimonial-info">
-							<div class="photo" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');"></div>
-							<div class="meta">
-								<div class="name h6">Person Full Name</div>
-								<div class="occupation label">occupation or company designation</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-list-item js_carousel_item">
-				<div class="testimonial">
-					<div class="tile">
-						<div class="testimonial-content-video" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');" tabindex="-1"></div>
-						<div class="testimonial-content-text label">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, aut atque sit temporibus maiores reiciendis nobis sunt, corrupti, inventore dolorum exercitationem saepe suscipit eaque dolorem optio necessitatibus molestiae excepturi libero?
-						</div>
-						<div class="testimonial-info">
-							<div class="photo" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');"></div>
-							<div class="meta">
-								<div class="name h6">Person Full Name</div>
-								<div class="occupation label">occupation or company designation</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="testimonial">
-					<div class="tile">
-						<div class="testimonial-content-video" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');" tabindex="-1"></div>
-						<div class="testimonial-content-text label">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, aut atque sit temporibus maiores reiciendis nobis sunt, corrupti, inventore dolorum exercitationem saepe suscipit eaque dolorem optio necessitatibus molestiae excepturi libero?
-						</div>
-						<div class="testimonial-info">
-							<div class="photo" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');"></div>
-							<div class="meta">
-								<div class="name h6">Person Full Name</div>
-								<div class="occupation label">occupation or company designation</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-list-item js_carousel_item">
-				<div class="testimonial">
-					<div class="tile">
-						<div class="testimonial-content-video" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');" tabindex="-1"></div>
-						<div class="testimonial-content-text label">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, aut atque sit temporibus maiores reiciendis nobis sunt, corrupti, inventore dolorum exercitationem saepe suscipit eaque dolorem optio necessitatibus molestiae excepturi libero?
-						</div>
-						<div class="testimonial-info">
-							<div class="photo" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');"></div>
-							<div class="meta">
-								<div class="name h6">Person Full Name</div>
-								<div class="occupation label">occupation or company designation</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="testimonial">
-					<div class="tile">
-						<div class="testimonial-content-video" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');" tabindex="-1"></div>
-						<div class="testimonial-content-text label">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, aut atque sit temporibus maiores reiciendis nobis sunt, corrupti, inventore dolorum exercitationem saepe suscipit eaque dolorem optio necessitatibus molestiae excepturi libero?
-						</div>
-						<div class="testimonial-info">
-							<div class="photo" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');"></div>
-							<div class="meta">
-								<div class="name h6">Person Full Name</div>
-								<div class="occupation label">occupation or company designation</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-list-item js_carousel_item">
-				<div class="testimonial">
-					<div class="tile">
-						<div class="testimonial-content-video" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');" tabindex="-1"></div>
-						<div class="testimonial-content-text label">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, aut atque sit temporibus maiores reiciendis nobis sunt, corrupti, inventore dolorum exercitationem saepe suscipit eaque dolorem optio necessitatibus molestiae excepturi libero?
-						</div>
-						<div class="testimonial-info">
-							<div class="photo" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');"></div>
-							<div class="meta">
-								<div class="name h6">Person Full Name</div>
-								<div class="occupation label">occupation or company designation</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="testimonial">
-					<div class="tile">
-						<div class="testimonial-content-video" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');" tabindex="-1"></div>
-						<div class="testimonial-content-text label">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, aut atque sit temporibus maiores reiciendis nobis sunt, corrupti, inventore dolorum exercitationem saepe suscipit eaque dolorem optio necessitatibus molestiae excepturi libero?
-						</div>
-						<div class="testimonial-info">
-							<div class="photo" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');"></div>
-							<div class="meta">
-								<div class="name h6">Person Full Name</div>
-								<div class="occupation label">occupation or company designation</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-list-item js_carousel_item">
-				<div class="testimonial">
-					<div class="tile">
-						<div class="testimonial-content-video" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');" tabindex="-1"></div>
-						<div class="testimonial-content-text label">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, aut atque sit temporibus maiores reiciendis nobis sunt, corrupti, inventore dolorum exercitationem saepe suscipit eaque dolorem optio necessitatibus molestiae excepturi libero?
-						</div>
-						<div class="testimonial-info">
-							<div class="photo" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');"></div>
-							<div class="meta">
-								<div class="name h6">Person Full Name</div>
-								<div class="occupation label">occupation or company designation</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="testimonial">
-					<div class="tile">
-						<div class="testimonial-content-video" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');" tabindex="-1"></div>
-						<div class="testimonial-content-text label">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, aut atque sit temporibus maiores reiciendis nobis sunt, corrupti, inventore dolorum exercitationem saepe suscipit eaque dolorem optio necessitatibus molestiae excepturi libero?
-						</div>
-						<div class="testimonial-info">
-							<div class="photo" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');"></div>
-							<div class="meta">
-								<div class="name h6">Person Full Name</div>
-								<div class="occupation label">occupation or company designation</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<?php endforeach; ?>
 		</div>
 		<div class="scroll-controls">
 			<div class="row">
