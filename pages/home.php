@@ -338,7 +338,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 				<div class="h3 strong text-red-2 space-25-bottom">Register for the next webinar</div>
 				<div class="h5 space-min-bottom">Saturday 15th Dec 4:30 PM</div>
 				<div class="p opacity-75 space-50-bottom">Join our investment manager for a 30 minute presentation and 30 minutes of Q&A.</div>
-				<div class="form form-dark">
+				<form class="form form-dark" onsubmit="event.preventDefault()">
 					<div class="form-row space-min-bottom">
 						<label for="">
 							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Name</span><br>
@@ -352,18 +352,40 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						</label>
 					</div>
 					<div class="form-row space-min-bottom">
-						<label for="">
+						<label for="webinar-form-phone-number">
 							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
-							<input class="block fill-dark" type="text">
+							<div style="position: relative">
+								<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent">
+									<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+								</select>
+								<input type="text" class="no-pointer js_phone_country_code_label" value="+91" disabled>
+								<input class="block fill-dark" type="text" id="webinar-form-phone-number">
+							</div>
 						</label>
 					</div>
 					<div class="form-row space-min-bottom">
 						<label for="">
 							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-							<button class="button fill-red-2">Get Details</button>
+							<button class="button fill-red-2" type="submit">Get Details</button>
 						</label>
 					</div>
-				</div>
+				</form>
+				<form class="form form-dark" onsubmit="event.preventDefault()">
+					<div class="form-row space-min-bottom">
+						<label for="webinar-form-otp">
+							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
+							<input class="block fill-dark" type="text" id="webinar-form-otp">
+						</label>
+						<span class="small text-uppercase line-height-small opacity-50 cursor-pointer">Re-send OTP</span>
+						<span class="small text-uppercase line-height-small opacity-50 cursor-pointer">Try a different number</span>
+					</div>
+					<div class="form-row space-min-bottom">
+						<label for="">
+							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+							<button class="button fill-red-2" type="submit">Verify OTP</button>
+						</label>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -414,23 +436,45 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 									<a class="button fill-<?= $brochure->get( 'color' )[ 'button' ] ?>" href="<?= $brochure->get( 'brochure' ) ?>" target="_blank">Download Now</a>
 								</div>
 								<div class="layer-3">
-									<div class="form block form-dark">
+									<form class="form block form-dark">
 										<div class="form-row space-25-bottom">
 											<div class="title h5 strong">Signup to Download <br>for Free.</div>
 										</div>
 										<div class="form-row space-min-bottom">
 											<label for="">
 												<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
-												<input class="block" type="text">
+												<div style="position: relative">
+													<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent">
+														<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+													</select>
+													<input type="text" class="no-pointer js_phone_country_code_label" value="+91" disabled>
+													<input class="block" type="text" id="">
+												</div>
 											</label>
 										</div>
 										<div class="form-row space-min-bottom">
 											<label for="">
 												<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-												<button class="button fill-red-2">Get Details</button>
+												<button class="button fill-red-2" type="submit">Get Details</button>
 											</label>
 										</div>
-									</div>
+									</form>
+									<form class="form block form-dark" onsubmit="event.preventDefault()">
+										<div class="form-row space-min-bottom">
+											<label for="">
+												<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
+												<input class="block" type="text" id="">
+											</label>
+											<span class="small text-uppercase line-height-small opacity-50 cursor-pointer">Re-send OTP</span>
+											<span class="small text-uppercase line-height-small opacity-50 cursor-pointer">Try a different number</span>
+										</div>
+										<div class="form-row space-min-bottom">
+											<label for="">
+												<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+												<button class="button fill-red-2" type="submit">Verify OTP</button>
+											</label>
+										</div>
+									</form>
 									<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
 								</div>
 							</div>
@@ -510,20 +554,42 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 	<div>
 		<div class="close js_investment_card_unflip" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
 		<div class="title h4 strong text-red-2 space-25-bottom">Get access to a detailed offer document now.</div>
-		<div class="form form-dark">
+		<form class="form form-dark">
 			<div class="form-row space-min-bottom">
-				<label for="">
+				<label for="investment-form-phone-number">
 					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
-					<input class="block" type="text">
+					<div style="position: relative">
+						<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent">
+							<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+						</select>
+						<input type="text" class="no-pointer js_phone_country_code_label" value="+91" disabled>
+						<input class="block" type="text" id="investment-form-phone-number">
+					</div>
 				</label>
 			</div>
 			<div class="form-row space-min-bottom">
 				<label for="">
 					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span>
-					<button class="button block fill-red-2">Get Details</button>
+					<button class="button block fill-red-2" type="submit">Get Details</button>
 				</label>
 			</div>
-		</div>
+		</form>
+		<form class="form form-dark" onsubmit="event.preventDefault()">
+			<div class="form-row space-min-bottom">
+				<label for="investment-form-otp">
+					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
+					<input class="block fill-dark" type="text" id="investment-form-otp">
+				</label>
+				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer">Re-send OTP</span>
+				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer">Try a different number</span>
+			</div>
+			<div class="form-row space-min-bottom">
+				<label for="">
+					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+					<button class="button block fill-red-2" type="submit">Verify OTP</button>
+				</label>
+			</div>
+		</form>
 		<div class="or-separator"><span class="label">OR</span><hr class="dashed red-2"></div>
 		<div class="h5 text-neutral-2 line-height-xlarge">Saturday 15th Dec 4:30 PM</div>
 		<div class="label space-25-bottom">Join our investment manager for a 30min presentation and 30min of Q&A.</div>
