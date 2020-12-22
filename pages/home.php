@@ -25,6 +25,8 @@ foreach ( $faqs as $faq ) {
 		$faq->set( 'thereIsMore?', true );
 }
 
+$brochures = BFS\CMS::getPostsOf( 'brochure' );
+
 ?>
 
 
@@ -384,60 +386,35 @@ foreach ( $faqs as $faq ) {
 				</div>
 				<div class="brochures">
 					<div class="row">
-						<div class="brochure columns small-12 medium-6 fill-blue-4">
-							<div class="layer-1" style="background-image: url('/*-- insert image url here -- */<?php echo $ver ?>');"></div>
-							<div class="layer-2">
-								<div class="h4 strong space-25-bottom">Comparison to <br>Gold</div>
-								<button class="button fill-red-2">Download Now</button>
-							</div>
-							<div class="layer-3">
-								<div class="form block form-dark">
-									<div class="form-row space-25-bottom">
-										<div class="title h5 strong">Signup to Download <br>for Free.</div>
-									</div>
-									<div class="form-row space-min-bottom">
-										<label for="">
-											<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
-											<input class="block" type="text">
-										</label>
-									</div>
-									<div class="form-row space-min-bottom">
-										<label for="">
-											<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-											<button class="button fill-red-2">Get Details</button>
-										</label>
-									</div>
+						<?php foreach ( $brochures as $brochure ) : ?>
+							<div class="brochure columns small-12 medium-6 fill-<?= $brochure->get( 'color' )[ 'background' ] ?>">
+								<div class="layer-1" style="background-image: url( '<?= $brochure->get( 'image' ) ?>' );"></div>
+								<div class="layer-2">
+									<div class="h4 strong space-25-bottom"><?= $brochure->get( 'post_title' ) ?></div>
+									<a class="button fill-<?= $brochure->get( 'color' )[ 'button' ] ?>" href="<?= $brochure->get( 'brochure' ) ?>" target="_blank">Download Now</a>
 								</div>
-								<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
-							</div>
-						</div>
-						<div class="brochure columns small-12 medium-6 fill-red-2">
-							<div class="layer-1" style="background-image: url('/*-- insert image url here -- */<?php echo $ver ?>');"></div>
-							<div class="layer-2">
-								<div class="h4 strong space-25-bottom">Comparison to <br>Fixed Deposits</div>
-								<button class="button fill-blue-4">Download Now</button>
-							</div>
-							<div class="layer-3">
-								<div class="form block form-dark">
-									<div class="form-row space-25-bottom">
-										<div class="title h5 strong">Signup to Download <br>for Free.</div>
+								<div class="layer-3">
+									<div class="form block form-dark">
+										<div class="form-row space-25-bottom">
+											<div class="title h5 strong">Signup to Download <br>for Free.</div>
+										</div>
+										<div class="form-row space-min-bottom">
+											<label for="">
+												<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
+												<input class="block" type="text">
+											</label>
+										</div>
+										<div class="form-row space-min-bottom">
+											<label for="">
+												<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+												<button class="button fill-red-2">Get Details</button>
+											</label>
+										</div>
 									</div>
-									<div class="form-row space-min-bottom">
-										<label for="">
-											<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
-											<input class="block" type="text">
-										</label>
-									</div>
-									<div class="form-row space-min-bottom">
-										<label for="">
-											<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-											<button class="button fill-red-2">Get Details</button>
-										</label>
-									</div>
+									<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
 								</div>
-								<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
 							</div>
-						</div>
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</div>
