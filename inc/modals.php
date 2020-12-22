@@ -2,19 +2,20 @@
 
 <div id="modal-wrapper"><!-- Modal Wrapper -->
 	<div class="modal-box js_modal_box">
-		<!-- Modal Content : Sample Video -->
-		<div class="modal-box-content js_modal_box_content" data-mod-id="sample-video">
+		<!-- Modal Content : YouTube Video -->
+		<div class="modal-box-content js_modal_box_content" data-mod-id="youtube-video">
 			<div class="container">
 				<div class="row">
 					<div class="columns small-12">
 						<!-- video embed -->
-						<div class="video-embed js_video_embed" data-src="lncVHzsc_QA">
+						<div class="video-embed js_video_embed" data-autoplay="true">
+							<!-- <div class="video-embed-placeholder" style="background-image: url( 'https://via.placeholder.com/1500' );"></div> -->
 							<div class="video-loading-indicator"></div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div><!-- END : Sample Video -->
+		</div><!-- END : YouTube Video -->
 
 		<!-- Modal Content : Sample Form -->
 		<div class="modal-box-content js_modal_box_content" data-mod-id="sample-form">
