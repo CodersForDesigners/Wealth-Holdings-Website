@@ -363,6 +363,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 							<button class="button fill-red-2">Get Details</button>
 						</label>
 					</div>
+				</div>
 			</div>
 		</div>
 	</div>
