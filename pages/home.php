@@ -218,8 +218,8 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 							</div>
 						</div>
 						<div class="title h5 strong">
-							<div class="title-lumpsum"><?= $investment->get( 'title' )[ 'lumpsum' ] ?></div>
-							<div class="title-emi"><?= $investment->get( 'title' )[ 'emi' ] ?></div>
+							<div class="title-lumpsum js_title_lumpsum"><?= $investment->get( 'title' )[ 'lumpsum' ] ?></div>
+							<div class="title-emi js_title_emi"><?= $investment->get( 'title' )[ 'emi' ] ?></div>
 						</div>
 						<div class="toggle space-25-top">
 							<label class="toggle-button unselectable" tabindex="-1">
@@ -574,7 +574,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 <template class="js_template js_investment_card_back">
 	<div>
 		<div class="close js_investment_card_unflip" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
-		<div class="title h4 strong text-red-2 space-25-bottom">Get access to a detailed offer document now.</div>
+		<div class="title h4 strong text-red-2 space-25-bottom js_message">Get access to a detailed offer document now.</div>
 		<form class="form form-dark js_phone_form" onsubmit="event.preventDefault()">
 			<div class="form-row space-min-bottom">
 				<label for="investment-form-phone-number">

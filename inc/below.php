@@ -40,6 +40,8 @@
 	<script type="text/javascript" src="/js/modules/cupid/utils.js"></script>
 	<script type="text/javascript" src="/js/modules/cupid/user.js"></script>
 	<script type="text/javascript" src="/js/page/home/home.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/js/modules/forms.js"></script>
+	<script type="text/javascript" src="/js/page/home/forms.js"></script>
 
 	<script type="text/javascript" src="/js/modules/carousel.js<?= $ver ?>"></script>
 
