@@ -43,12 +43,22 @@
 .benefits-section .tile-grid .tile.t-2 .hn {
 	line-height: 0.8;
 	font-size: 7rem; }
+.benefits-section .tile-grid .tile.t-3 {
+	background-image: url('../../../media/art/art-horizontal-long-arrow-red-3.svg');
+	background-size: auto 100px;
+	background-position: right bottom;
+	background-repeat: no-repeat; }
 .benefits-section .tile-grid .tile.t-4 .hn {
 	margin-top: 20px;
 	font-size: 5rem; }
 .benefits-section .tile-grid .tile.t-10 .hn {
 	line-height: 0.8;
 	font-size: 7rem; }
+.benefits-section .tile-grid .tile.t-11 {
+	background-image: url('../../../media/art/art-vertical-long-arrow-red-3.svg');
+	background-size: 100px auto;
+	background-position: right top;
+	background-repeat: no-repeat; }
 .benefits-section .tile-grid .tile.t-12 .hn {
 	margin-top: 90px;
 	line-height: 1;
@@ -60,6 +70,11 @@
 	margin-top: -1px;
 	margin-right: var(--space-min);
 	width: 4px; }
+.benefits-section .tile-grid .tile.t-16 {
+	background-image: url('../../../media/art/art-up-down-arrows-red-2-white.svg');
+	background-size: 87% auto;
+	background-position: center 40%;
+	background-repeat: no-repeat; }
 .benefits-section .tile-grid .tile.t-16 .hn {
 	margin-top: 140px;
 	line-height: 1;
@@ -145,11 +160,15 @@
 		font-size: 28rem; }
 	.benefits-section .tile-grid .tile.t-2 .hn {
 		font-size: 10rem; }
+	.benefits-section .tile-grid .tile.t-3 {
+		background-size: auto 150px; }
 	.benefits-section .tile-grid .tile.t-4 .hn {
 		margin-top: 26px;
 		font-size: 8rem; }
 	.benefits-section .tile-grid .tile.t-10 .hn {
 		font-size: 10rem; }
+	.benefits-section .tile-grid .tile.t-11 {
+		background-size: 150px auto; }
 	.benefits-section .tile-grid .tile.t-12 .hn {
 		margin-top: 180px;
 		font-size: 12rem; }
