@@ -214,7 +214,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 							<div class="columns small-9 rent text-neutral-2">
 								<div class="h5 strong text-uppercase">Rent</div>
 								<div class="h5">₹ <?= $investment->get( 'rent' )[ 'amount' ] ?></div>
-								<div class="small line-height-small"><?= $investment->get( 'yield' )[ 'duration' ] ?></div>
+								<div class="small line-height-small"><?= $investment->get( 'rent' )[ 'duration' ] ?></div>
 							</div>
 						</div>
 						<div class="title h5 strong">
