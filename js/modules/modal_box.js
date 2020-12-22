@@ -26,8 +26,8 @@ $( function () {
 			.addClass( "active" );
 
 		// Trigger hooks with the modal id
-		$( document ).trigger( "modal/open", { id: modalId } );
-		$( document ).trigger( "modal/open/" + modalId, { id: modalId } );
+		$( event.target ).trigger( "modal/open", { id: modalId, event: event, $trigger: $modalTrigger } );
+		$( event.target ).trigger( "modal/open/" + modalId, { id: modalId, event: event, $trigger: $modalTrigger } );
 
 	} );
 
