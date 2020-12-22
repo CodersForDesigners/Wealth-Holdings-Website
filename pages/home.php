@@ -368,7 +368,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 									<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
 								</select>
 								<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
-								<input class="block fill-dark" type="text" id="webinar-form-phone-number">
+								<input class="block fill-dark" type="text" name="phone-number" id="webinar-form-phone-number">
 							</div>
 						</label>
 					</div>
@@ -379,11 +379,11 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						</label>
 					</div>
 				</form>
-				<form class="form form-dark js_otp_form" onsubmit="event.preventDefault()">
+				<form class="form form-dark js_otp_form" style="display: none" onsubmit="event.preventDefault()">
 					<div class="form-row space-min-bottom">
 						<label for="webinar-form-otp">
 							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
-							<input class="block fill-dark" type="text" id="webinar-form-otp">
+							<input class="block fill-dark" type="text" name="otp" id="webinar-form-otp">
 						</label>
 						<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp">Re-send OTP</span>
 						<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number">Try a different number</span>
@@ -457,7 +457,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 														<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
 													</select>
 													<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
-													<input class="block" type="text" id="">
+													<input class="block" type="text" name="phone-number" id="">
 												</div>
 											</label>
 										</div>
@@ -468,11 +468,11 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 											</label>
 										</div>
 									</form>
-									<form class="form block form-dark js_otp_form" onsubmit="event.preventDefault()">
+									<form class="form block form-dark js_otp_form" style="display: none" onsubmit="event.preventDefault()">
 										<div class="form-row space-min-bottom">
 											<label for="">
 												<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
-												<input class="block" type="text" id="">
+												<input class="block" type="text" name="otp" id="">
 											</label>
 											<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp">Re-send OTP</span>
 											<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number">Try a different number</span>
@@ -584,7 +584,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 							<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
 						</select>
 						<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
-						<input class="block" type="text" id="investment-form-phone-number">
+						<input class="block" type="text" name="phone-number" id="investment-form-phone-number">
 					</div>
 				</label>
 			</div>
@@ -595,11 +595,11 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 				</label>
 			</div>
 		</form>
-		<form class="form form-dark js_otp_form" onsubmit="event.preventDefault()">
+		<form class="form form-dark js_otp_form" style="display: none" onsubmit="event.preventDefault()">
 			<div class="form-row space-min-bottom">
 				<label for="investment-form-otp">
 					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
-					<input class="block fill-dark" type="text" id="investment-form-otp">
+					<input class="block fill-dark" type="text" name="otp" id="investment-form-otp">
 				</label>
 				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp">Re-send OTP</span>
 				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number">Try a different number</span>
