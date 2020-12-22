@@ -28,10 +28,17 @@
  * Footer Section
  */
 
-
+.footer-section {}
+.footer-section .logo {
+	width: 165px;
+}
 @media( min-width: 640px )  {}
 @media( min-width: 1040px ) {}
-@media( min-width: 1480px ) {}
+@media( min-width: 1480px ) {
+	.footer-section .logo {
+		width: 220px;
+	}
+}
 
 
 

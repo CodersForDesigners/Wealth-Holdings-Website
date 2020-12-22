@@ -88,7 +88,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 			</div>
 			<div class="columns small-12 large-6 large-offset-1 space-25-bottom">
 				<div class="char-image">
-					<img class="block" src="../media/char-1-small.png<?php echo $ver ?>">
+					<img class="block" src="../media/char-1.png<?php echo $ver ?>">
 				</div>
 			</div>
 		</div>
@@ -137,7 +137,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<div class="h5 strong space-min-bottom">EMI</div>
 					<div class="label strong">Invest only the down payment and <span class="text-red-2">let us fund your EMIs.</span></div>
 				</div>
-				<div class="tile t-8" style="background-image: url('../media/placeholder.png<?php echo $ver ?>'); background-size: cover; background-position: center center;">
+				<div class="tile t-8" style="background-image: url('../media/char-4.png<?php echo $ver ?>'); background-size: cover; background-position: center center;">
 					<!-- (8.) -->
 				</div>
 				<div class="tile t-9 fill-dark">
@@ -324,7 +324,15 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 				</div>
 			</div>
 		</div>
-		Character
+	</div>
+	<div class="character row hide-small hide-medium">
+		<div class="container">
+			<div class="columns small-12 medium-8 large-4">
+				<div class="char-image">
+					<img class="block" src="../media/char-2.png<?php echo $ver ?>">
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
 <!-- END: How Section -->
@@ -332,7 +340,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 <!-- Webinar Section -->
 <section class="webinar-section fill-blue-4">
-	<div class="webinar-image" style="background-image: url('../media/placeholder.png<?php echo $ver ?>');"></div>
+	<div class="webinar-image" style="background-image: url('../media/char-5.png<?php echo $ver ?>');"></div>
 	<div class="container">
 		<div class="row">
 			<div class="webinar-form columns small-12 medium-6 medium-offset-6 space-75-top-bottom xlarge-5">
@@ -544,7 +552,19 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 <!-- Footer Section -->
 <section class="footer-section fill-blue-4 space-75-top-bottom">
 	<div class="container">
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolores numquam, sit quasi placeat minima unde consequuntur soluta autem maxime? Eveniet pariatur, dolor hic impedit id at repudiandae officiis. Facere.
+		<div class="row">
+			<div class="columns small-12 medium-6 large-4">
+				<div class="logo space-50-bottom"><img class="block" src="../media/wh-logo-large-light.svg<?php echo $ver ?>"></div>
+				<a class="address inline space-25-bottom" target="_blank" href="https://maps.google.com">
+					<span class="label inline text-blue-3 line-height-xlarge">Corporate Address :</span><br>
+					<span class="h5 inline">1097, 5th Block, 18th B Main Rd <br>Rajajinagar, Bengaluru <br>Karnataka 560 010</span>
+				</a>
+				<a class="phone inline" href="tel:+919341203040">
+					<span class="label inline text-blue-3 line-height-xlarge">Phone Number :</span><br>
+					<span class="h4 inline strong text-red-2 ">+91 93412 03040</span>
+				</a>
+			</div>
+		</div>
 	</div>
 </section>
 <!-- END: Footer Section -->

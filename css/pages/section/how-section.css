@@ -2,7 +2,7 @@
  * How Section
  */
 
-.how-section {}
+.how-section { position: relative; }
 .how-section .lumpsum {}
 .how-section .emi {}
 
@@ -80,6 +80,18 @@
 	transform: rotate(-90deg);
 	padding: 0 calc(var(--space-min)/2);
 	background-color: var(--dark);
+}
+
+.how-section .character {
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+}
+.how-section .character .char-image {
+	transform: translateX(-20%);
 }
 
 @media( min-width: 640px )  {
