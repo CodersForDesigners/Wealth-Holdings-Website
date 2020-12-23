@@ -135,6 +135,20 @@
 	<link rel="stylesheet" type="text/css" href="plugins/slick/slick.css<?php echo $ver ?>"/>
 	<link rel="stylesheet" type="text/css" href="plugins/slick/slick-theme.css<?php echo $ver ?>"/>
 
+	<!--
+	*
+	*	Prevent browsers from (non-smooth) scrolling when a hash is in the URL
+	*
+	- -->
+	<script type="text/javascript">
+
+		if ( window.location.hash ) {
+			window.__BFS = window.__BFS || { };
+			window.__BFS.scrollTo = window.location.hash;
+			window.history.replaceState( { }, "", location.origin + location.pathname + location.search )
+		}
+
+	</script>
 
 	<?php /* Query Monitor CMS plugin */ ?>
 	<?php if ( CMS_ENABLED and is_user_logged_in() ) : ?>

@@ -1,4 +1,6 @@
 
+window.__BFS = window.__BFS || { };
+
 /*
  *
  * Wait for the specified number of seconds.
@@ -13,3 +15,25 @@ function waitFor ( seconds ) {
 		}, seconds * 1000 );
 	} );
 }
+
+
+
+/*
+ *
+ * Smooth scroll to a section
+ *
+ */
+function smoothScrollTo ( locationHash ) {
+
+	if ( ! locationHash )
+		return;
+
+	var locationId = locationHash.replace( "#", "" );
+	var domLocation = document.getElementById( locationId );
+	if ( ! domLocation )
+		return;
+
+	window.scrollTo( { top: domLocation.offsetTop, behavior: "smooth" } );
+
+}
+
