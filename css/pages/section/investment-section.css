@@ -219,6 +219,12 @@
 .investment-section.view-all .view-all-toggle {
 	display: none;
 }
+.investment-section .view-all-toggle .view-all-toggle-button * {
+	pointer-events: none;
+}
+.investment-section .view-all-toggle .view-all-toggle-button:focus {
+	outline: none;
+}
 .investment-section .view-all-toggle .view-all-toggle-button span {
 	display: inline-block;
 	line-height: 1.625;
