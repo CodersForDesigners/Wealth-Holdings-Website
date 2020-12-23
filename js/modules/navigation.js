@@ -68,6 +68,98 @@ $( document ).on( "click", "a[ href ]", function ( event ) {
 
 
 
+/*
+ *
+ * When scrolling through the page, communicate with GTM if the user is viewing a section for longer than a threshold amount of time
+ *
+ */
+var intervalToCheckForEngagement = 250;
+var thresholdTimeForEngagement = 2000;
+var timeSpentOnASection = 0;
+window.__BFS.engagementIntervalCheck = null;	// this is set later
+
+var thingsToDoOnEveryInterval = function () {
+
+	var $window = $( window );
+	var currentScrollTop;
+	var previousScrollTop;
+	var $currentSection;
+	var currentSectionName;
+		var currentSectionId;
+		var currentSectionDOMId;
+	var previousSectionName;
+	var sectionScrollTop;
+	var $currentNavItem;
+	var lastRecordedSection;
+
+	// Get all the sections in the reverse order
+	var $sections = Array.prototype.slice.call( $( "[ data-section-slug ]" ) )
+					.filter( function ( domSection ) {
+						return ! $( domSection ).hasClass( "hidden" );
+					} )
+					.reverse()
+					.map( function ( el ) { return $( el ) } );
+
+	return function thingsToDoOnEveryInterval () {
+
+		var viewportHeight = $window.height();
+		currentScrollTop = window.scrollY || document.body.scrollTop;
+		$currentSection = null;
+		currentSectionName = null;
+
+		// Determine the section being viewed
+		var _i
+		for ( _i = 0; _i < $sections.length; _i += 1 ) {
+			$currentSection = $sections[ _i ];
+			sectionScrollTop = $currentSection.position().top;
+			if (
+				( currentScrollTop >= sectionScrollTop - viewportHeight / 2 )
+				&&
+				( currentScrollTop <= sectionScrollTop + $currentSection.height() + viewportHeight / 2 )
+			) {
+				currentSectionName = $currentSection.data( "section-title" );
+				currentSectionId = $currentSection.data( "section-slug" );
+				break;
+			}
+		}
+
+		/*
+		 * If the previous and the current section are the same, then add time
+		 * Else, reset the "time spent on a section" counter
+		 */
+		if ( currentSectionId && currentSectionName == previousSectionName ) {
+			timeSpentOnASection += intervalToCheckForEngagement
+			if ( timeSpentOnASection >= thresholdTimeForEngagement ) {
+				if ( currentSectionName != lastRecordedSection ) {
+					window.__BFS.gtmPushToDataLayer( {
+						event: "section-view",
+						currentSectionId: currentSectionId,
+						currentSectionName: currentSectionName
+					} );
+					lastRecordedSection = currentSectionName;
+				}
+			}
+		}
+		else {
+			timeSpentOnASection = 0
+		}
+
+		previousScrollTop = currentScrollTop;
+		previousSectionName = currentSectionName;
+
+	};
+
+}();
+
+
+window.__BFS.engagementIntervalCheck = executeEvery(
+	intervalToCheckForEngagement / 1000,
+	thingsToDoOnEveryInterval
+);
+window.__BFS.engagementIntervalCheck.start();
+
+
+
 
 
 

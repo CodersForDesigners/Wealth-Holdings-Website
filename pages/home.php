@@ -71,7 +71,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- Landing Section -->
-<section class="landing-section fill-red-2 space-50-top" id="landing-section"
+<section class="landing-section fill-red-2 space-50-top" id="landing-section" data-section-title="Landing Section" data-section-slug="landing-section">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 large-5">
@@ -98,7 +98,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- Benefits Section -->
-<section class="benefits-section fill-red-2 space-25-top space-75-bottom" id="benefits-section">
+<section class="benefits-section fill-red-2 space-25-top space-75-bottom" id="benefits-section" data-section-title="Benefits Section" data-section-slug="benefits-section">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 tile-grid">
@@ -192,7 +192,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- Investment Section -->
-<section class="investment-section fill-blue-4 space-75-top-bottom js_section_investment" id="investments-section">
+<section class="investment-section fill-blue-4 space-75-top-bottom js_section_investment" id="investments-section" data-section-title="Investments Section" data-section-slug="investments-section">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 space-50-bottom">
@@ -265,7 +265,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- How Section -->
-<section class="how-section fill-dark space-75-top-bottom" id="how-section">
+<section class="how-section fill-dark space-75-top-bottom" id="how-section" data-section-title="How Section" data-section-slug="how-section">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 large-2 space-50-bottom">
@@ -339,7 +339,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- Webinar Section -->
-<section class="webinar-section fill-blue-4" id="webinar-section">
+<section class="webinar-section fill-blue-4" id="webinar-section" data-section-title="Webinar Section" data-section-slug="webinar-section">
 	<div class="webinar-image" style="background-image: url('../media/char-5.png<?php echo $ver ?>');"></div>
 	<div class="container">
 		<div class="row">
@@ -403,7 +403,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- FAQs Section -->
-<section class="faqs-section fill-neutral-1 space-75-top js_section_faqs" id="faqs-section">
+<section class="faqs-section fill-neutral-1 space-75-top js_section_faqs" id="faqs-section" data-section-title="FAQs Section" data-section-slug="faqs-section">
 	<div class="container">
 		<div class="row text-blue-4">
 			<div class="columns small-12 large-3">
@@ -498,7 +498,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- Testimonials Section -->
-<section class="testimonials-section fill-light space-75-top space-25-bottom" id="testimonials-section">
+<section class="testimonials-section fill-light space-75-top space-25-bottom" id="testimonials-section" data-section-title="Testimonials Section" data-section-slug="testimonials-section">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12">
@@ -550,7 +550,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- Footer Section -->
-<section class="footer-section fill-blue-4 space-75-top-bottom" id="footer-section">
+<section class="footer-section fill-blue-4 space-75-top-bottom" id="footer-section" data-section-title="Footer Section" data-section-slug="footer-section">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 medium-6 large-4">
