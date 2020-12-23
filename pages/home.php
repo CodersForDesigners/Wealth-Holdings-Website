@@ -203,7 +203,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 			</div> -->
 			<div class="columns small-12 tile-grid">
 			<?php foreach ( $investments as $investment ) : ?>
-				<div class="tile investment js_investment_card">
+				<div class="tile investment <?= $investment->get( 'default_payment_mode' ) ? 'show-emi' : '' ?> js_investment_card">
 					<div class="front">
 						<div class="row meta-1 space-25-bottom">
 							<div class="columns small-3 yield text-red-2">
@@ -223,7 +223,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						</div>
 						<div class="toggle space-25-top">
 							<label class="toggle-button unselectable" tabindex="-1">
-								<input class="hidden js_toggle_payment_mode" type="checkbox">
+								<input class="hidden js_toggle_payment_mode" type="checkbox" <?php if ( $investment->get( 'default_payment_mode' ) ) : ?>checked<?php endif; ?>>
 								<div class="button pill"></div>
 								<div class="button empty-pill">Lumpsum</div>
 								<div class="button empty-pill">EMI</div>
