@@ -32,3 +32,31 @@
 }
 @media( min-width: 1040px ) {}
 @media( min-width: 1480px ) {}
+
+
+/* ----- Forms ----- */
+.webinar-section .forms-container {
+	position: relative;
+}
+.webinar-section .phone-form {
+	transition: opacity 0.25s 0.25s ease-in;
+}
+.webinar-section .otp-form {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.25s ease-in;
+}
+.webinar-section.show-otp-form .phone-form {
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.25s ease-in;
+}
+.webinar-section.show-otp-form .otp-form {
+	opacity: 1;
+	pointer-events: auto;
+	transition: opacity 0.25s 0.25s ease-in;
+}

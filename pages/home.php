@@ -12,6 +12,8 @@ require_once __DIR__ . '/../inc/above.php';
 
 $investments = BFS\CMS::getPostsOf( 'investment' );
 
+$webinarDate = getContent( 'Registered interest at ' . date( 'h:ia, d/m/Y' ), 'webinar_date' );
+
 $faqs = BFS\CMS::getPostsOf( 'faq' );
 foreach ( $faqs as $faq ) {
 	$faq->set( 'featuredImage', get_the_post_thumbnail_url( $faq->get( 'ID' ) ) );
@@ -49,6 +51,18 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 ?>
 
 
+<?php
+ /*
+  * ----- Seed some data for use in JavaScript
+  */
+?>
+<script type="text/javascript">
+
+	window.__BFS = window.__BFS || { };
+	window.__BFS.data = window.__BFS.data || { };
+	window.__BFS.data.webinarDate = "<?= $webinarDate ?>";
+
+</script>
 
 <!-- Sample Section -->
 <section class="sample-section">
@@ -345,62 +359,70 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- Webinar Section -->
-<section class="webinar-section fill-blue-4" id="webinar-section" data-section-title="Webinar Section" data-section-slug="webinar-section">
+<section class="webinar-section fill-blue-4 js_section_webinar" id="webinar-section" data-section-title="Webinar Section" data-section-slug="webinar-section">
 	<div class="webinar-image" style="background-image: url('../media/char-5.png<?php echo $ver ?>');"></div>
 	<div class="container">
 		<div class="row">
 			<div class="webinar-form columns small-12 medium-6 medium-offset-6 space-75-top-bottom xlarge-5">
 				<div class="h3 strong text-red-2 space-25-bottom">Register for the next webinar</div>
-				<div class="h5 space-min-bottom">Saturday 9th Jan 2021 4:30 PM</div>
+				<div class="h5 space-min-bottom"><?= $webinarDate ?></div>
 				<div class="p opacity-75 space-50-bottom">Join our investment manager for a 30 minute presentation and 30 minutes of Q&A.</div>
-				<form class="form form-dark js_phone_form" onsubmit="event.preventDefault()">
-					<div class="form-row space-min-bottom">
-						<label for="">
-							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Name</span><br>
-							<input class="block fill-dark" type="text">
-						</label>
-					</div>
-					<div class="form-row space-min-bottom">
-						<label for="">
-							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Email</span><br>
-							<input class="block fill-dark" type="text">
-						</label>
-					</div>
-					<div class="form-row space-min-bottom">
-						<label for="webinar-form-phone-number">
-							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
-							<div style="position: relative; display: flex">
-								<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
-									<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
-								</select>
-								<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
-								<input class="block fill-dark" type="text" name="phone-number" id="webinar-form-phone-number">
-							</div>
-						</label>
-					</div>
-					<div class="form-row space-min-bottom">
-						<label for="">
-							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-							<button class="button fill-red-2" type="submit">Get Details</button>
-						</label>
-					</div>
-				</form>
-				<form class="form form-dark js_otp_form" style="display: none" onsubmit="event.preventDefault()">
-					<div class="form-row space-min-bottom">
-						<label for="webinar-form-otp">
-							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
-							<input class="block fill-dark" type="text" name="otp" id="webinar-form-otp">
-						</label>
-						<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp">Re-send OTP</span>
-						<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number">Try a different number</span>
-					</div>
-					<div class="form-row space-min-bottom">
-						<label for="">
-							<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-							<button class="button fill-red-2" type="submit">Verify OTP</button>
-						</label>
-					</div>
-				</form>
+				<div class="p opacity-75 space-50-bottom js_post_registration_message" style="display: none">
+					Registration successful.
+					You will receive an invite in your email ({{ emailAddress }}) inbox shortly.
+					<br>
+					See you on <?= $webinarDate ?>.
+				</div>
+				<div class="forms-container">
+					<form class="form form-dark phone-form js_phone_form" onsubmit="event.preventDefault()">
+						<div class="form-row space-min-bottom">
+							<label for="webinar-form-name">
+								<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Name</span><br>
+								<input class="block fill-dark" name="name" type="text" id="webinar-form-name">
+							</label>
+						</div>
+						<div class="form-row space-min-bottom">
+							<label for="webinar-form-email">
+								<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Email</span><br>
+								<input class="block fill-dark" type="text" name="email-address" id="webinar-form-email">
+							</label>
+						</div>
+						<div class="form-row space-min-bottom">
+							<label for="webinar-form-phone-number">
+								<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
+								<div style="position: relative; display: flex">
+									<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
+										<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+									</select>
+									<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
+									<input class="block fill-dark" type="text" name="phone-number" id="webinar-form-phone-number">
+								</div>
+							</label>
+						</div>
+						<div class="form-row space-min-bottom">
+							<label for="">
+								<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+								<button class="button fill-red-2" type="submit">Get Details</button>
+							</label>
+						</div>
+					</form>
+					<form class="form form-dark otp-form js_otp_form" onsubmit="event.preventDefault()">
+						<div class="form-row space-min-bottom">
+							<label for="webinar-form-otp">
+								<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
+								<input class="block fill-dark" type="text" name="otp" id="webinar-form-otp">
+							</label>
+							<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp">Re-send OTP</span>
+							<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number">Try a different number</span>
+						</div>
+						<div class="form-row space-min-bottom">
+							<label for="">
+								<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+								<button class="button fill-red-2" type="submit">Verify OTP</button>
+							</label>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
