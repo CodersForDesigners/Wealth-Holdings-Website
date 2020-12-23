@@ -193,8 +193,8 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 <!-- Investment Section -->
 <section class="investment-section fill-blue-4 space-75-top-bottom js_section_investment" id="investments-section" data-section-title="Investments Section" data-section-slug="investments-section">
-	<div class="container">
-		<div class="row">
+	<div class="row">
+		<div class="container">
 			<div class="columns small-12 space-50-bottom">
 				<div class="h2 strong">Pick an investment</div>
 			</div>
@@ -255,9 +255,15 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					</div>
 				</div> -->
 			</div>
-			<!-- <div class="columns small-12">
-				View All
-			</div> -->
+		</div>
+	</div>
+	<div class="view-all-toggle row space-75-top-bottom">
+		<div class="container">
+			<div class="columns small-12 text-center">
+				<div class="inline view-all-toggle-button h4 strong space-25">
+					<span>View All</span>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
