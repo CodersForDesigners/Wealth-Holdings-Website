@@ -123,7 +123,7 @@
 	opacity: 0;
 }
 .investment-section .tile-grid .tile.investment.show-emi .front .min-investment {
-	color: var(--green-2);	
+	color: var(--green-2);
 }
 
 
@@ -219,6 +219,7 @@
 .investment-section.view-all .view-all-toggle {
 	display: none;
 }
+.investment-section .view-all-toggle .view-all-toggle-button { cursor: pointer; }
 .investment-section .view-all-toggle .view-all-toggle-button * {
 	pointer-events: none;
 }

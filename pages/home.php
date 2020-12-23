@@ -274,7 +274,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 	<div class="view-all-toggle row space-75-top-bottom">
 		<div class="container">
 			<div class="columns small-12 text-center">
-				<div class="inline view-all-toggle-button h4 strong space-25" tabindex="-1">
+				<div class="inline view-all-toggle-button h4 strong space-25 js_view_all" tabindex="-1">
 					<span>View All</span>
 				</div>
 			</div>

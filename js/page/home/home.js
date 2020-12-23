@@ -66,6 +66,13 @@ $( document ).on( "change", ".js_toggle_payment_mode", function ( event ) {
 
 
 
+// Hitting "View All" shows all the investment cards
+$( ".js_section_investment .js_view_all" ).on( "click", function ( event ) {
+	$( ".js_section_investment" ).addClass( "view-all" );
+} );
+
+
+
 /*
  *
  * ----- FAQs
