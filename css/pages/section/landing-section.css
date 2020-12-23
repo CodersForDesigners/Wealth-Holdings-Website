@@ -23,7 +23,12 @@
 }
 
 @media( min-width: 640px )  {}
-@media( min-width: 1040px ) {}
+@media( min-width: 1040px ) {
+	.landing-section .char-image {
+		position: relative;
+		transform: translate(-20%);
+	}
+}
 @media( min-width: 1480px ) {
 	.landing-section .logo { width: 220px; }
 }

@@ -429,7 +429,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 								<?php endif; ?>
 								<div class="columns small-12 medium-8 space-min-top">
 									<div class="description h6 opacity-50 space-min-bottom"><?= $faq->get( 'summary' ) ?></div>
-									<div class="action clearfix">
+									<div class="hidden action clearfix">
 										<?php if ( $faq->get( 'thereIsMore?' ) ) : ?>
 											<a class="h6" href="<?= $faq->get( 'guid' ) ?>">Read More</a>
 										<?php endif; ?>
@@ -441,7 +441,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					</div>
 				<?php endforeach; ?>
 				</div>
-				<div class="brochures">
+				<div class="brochures hidden">
 					<div class="row">
 						<?php foreach ( $brochures as $brochure ) : ?>
 							<div class="brochure columns small-12 medium-6 fill-<?= $brochure->get( 'color' )[ 'background' ] ?>">
