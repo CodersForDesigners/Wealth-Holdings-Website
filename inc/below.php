@@ -29,6 +29,7 @@
 
 
 	<!-- JS Modules -->
+	<script type="text/javascript" src="/plugins/base64/js-base64-v3.6.0.min.js"></script>
 	<script type="text/javascript" src="/js/modules/utils.js"></script>
 	<script type="text/javascript" src="/js/modules/navigation.js"></script>
 	<script type="text/javascript" src="/js/modules/video_embed.js"></script>
