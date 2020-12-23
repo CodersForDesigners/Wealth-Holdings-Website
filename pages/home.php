@@ -402,7 +402,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						<div class="form-row space-min-bottom">
 							<label for="">
 								<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-								<button class="button fill-red-2" type="submit">Get Details</button>
+								<button class="button fill-red-2" type="submit">Register Today</button>
 							</label>
 						</div>
 					</form>
