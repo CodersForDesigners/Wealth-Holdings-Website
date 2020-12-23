@@ -90,3 +90,32 @@ function gtmPushToDataLayer ( data ) {
 	window.dataLayer.push( data );
 }
 window.__BFS.gtmPushToDataLayer = gtmPushToDataLayer;
+
+
+
+/*
+ *
+ * ----- Renders a template with data
+ *
+ */
+window.__BFS.renderTemplate = function () {
+
+	var d;
+	function replaceWith ( m ) {
+
+		var pipeline = m.slice( 2, -2 ).trim().split( / *\| */ );
+		var value = d[ pipeline[ 0 ] ];
+		for ( var _i = 1; _i < pipeline.length; _i +=1 ) {
+			value = __UTIL.template[ pipeline[ _i ] ]( value );
+		}
+
+		return value;
+
+	}
+
+	return function renderTemplate ( template, data ) {
+		d = data;
+		return template.replace( /({{[^{}]+}})/g, replaceWith );
+	}
+
+}();
