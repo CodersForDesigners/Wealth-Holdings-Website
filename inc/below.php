@@ -30,19 +30,19 @@
 
 	<!-- JS Modules -->
 	<script type="text/javascript" src="/plugins/base64/js-base64-v3.6.0.min.js"></script>
-	<script type="text/javascript" src="/js/modules/utils.js"></script>
-	<script type="text/javascript" src="/js/modules/navigation.js"></script>
-	<script type="text/javascript" src="/js/modules/video_embed.js"></script>
-	<script type="text/javascript" src="/js/modules/modal_box.js"></script>
+	<script type="text/javascript" src="/js/modules/utils.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/js/modules/navigation.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/js/modules/video_embed.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/js/modules/modal_box.js<?= $ver ?>"></script>
 	<?php if ( ! BFS_ENV_PRODUCTION ) : ?>
-		<script type="text/javascript" src="/js/modules/disclaimer.js"></script>
+		<script type="text/javascript" src="/js/modules/disclaimer.js<?= $ver ?>"></script>
 	<?php endif; ?>
 	<script type="text/javascript" src="/js/modules/phone-country-code.js<?= $ver ?>"></script>
-	<script type="text/javascript" src="/js/modules/cupid/utils.js"></script>
-	<script type="text/javascript" src="/js/modules/cupid/user.js"></script>
+	<script type="text/javascript" src="/js/modules/cupid/utils.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/js/modules/cupid/user.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/page/home/home.js<?= $ver ?>"></script>
-	<script type="text/javascript" src="/js/modules/forms.js"></script>
-	<script type="text/javascript" src="/js/page/home/forms.js"></script>
+	<script type="text/javascript" src="/js/modules/forms.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/js/page/home/forms.js<?= $ver ?>"></script>
 
 	<script type="text/javascript" src="/js/modules/carousel.js<?= $ver ?>"></script>
 
