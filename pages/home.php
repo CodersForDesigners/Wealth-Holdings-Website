@@ -412,8 +412,8 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 								<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
 								<input class="block fill-dark" type="text" name="otp" id="webinar-form-otp">
 							</label>
-							<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp">Re-send OTP</span>
-							<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number">Try a different number</span>
+							<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp hidden">Re-send OTP</span>
+							<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number hidden">Try a different number</span>
 						</div>
 						<div class="form-row space-min-bottom">
 							<label for="">
@@ -502,8 +502,8 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 												<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
 												<input class="block" type="text" name="otp" id="">
 											</label>
-											<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp">Re-send OTP</span>
-											<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number">Try a different number</span>
+											<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp hidden">Re-send OTP</span>
+											<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number hidden">Try a different number</span>
 										</div>
 										<div class="form-row space-min-bottom">
 											<label for="">
@@ -629,8 +629,8 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
 					<input class="block fill-dark" type="text" name="otp" id="investment-form-otp">
 				</label>
-				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp">Re-send OTP</span>
-				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number">Try a different number</span>
+				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp hidden">Re-send OTP</span>
+				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number hidden">Try a different number</span>
 			</div>
 			<div class="form-row space-min-bottom">
 				<label for="">
