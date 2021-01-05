@@ -601,54 +601,58 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 <!-- END: Footer Section -->
 
 
-<!-- TEMPLATE: Back of Investment Card -->
-<template class="js_template" data-name="investment-card-back">
-	<div>
-		<div class="close js_investment_card_unflip" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
-		<div class="title h4 strong text-red-2 space-25-bottom js_message">Get access to a detailed offer document now.</div>
-		<form class="form form-dark js_phone_form" onsubmit="event.preventDefault()">
-			<div class="form-row space-min-bottom">
-				<label for="investment-form-phone-number">
-					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
-					<div style="position: relative; display: flex">
-						<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
-							<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
-						</select>
-						<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
-						<input class="block" type="text" name="phone-number" id="investment-form-phone-number">
-					</div>
-				</label>
-			</div>
-			<div class="form-row space-min-bottom">
-				<label for="">
-					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span>
-					<button class="button block fill-red-2" type="submit">Get Details</button>
-				</label>
-			</div>
-		</form>
-		<form class="form form-dark js_otp_form" style="display: none" onsubmit="event.preventDefault()">
-			<div class="form-row space-min-bottom">
-				<label for="investment-form-otp">
-					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
-					<input class="block fill-dark" type="text" name="otp" id="investment-form-otp">
-				</label>
-				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp hidden">Re-send OTP</span>
-				<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number hidden">Try a different number</span>
-			</div>
-			<div class="form-row space-min-bottom">
-				<label for="">
-					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-					<button class="button block fill-red-2" type="submit">Verify OTP</button>
-				</label>
-			</div>
-		</form>
-		<div class="or-separator"><span class="label">OR</span><hr class="dashed red-2"></div>
-		<div class="h5 text-neutral-2 line-height-xlarge"><?= $webinarDate ?></div>
-		<div class="label space-25-bottom">Join our investment manager for a 30min presentation and 30min of Q&A.</div>
-		<a href="#webinar-section" class="button fill-dark" style="box-shadow: inset 0px 0px 0px 1px var(--red-3)">Register for Webinar</a>
-	</div>
-</template>
-<!-- END: TEMPLATE: Back of Investment Card -->
+<!-- Templates Section -->
+<section class="js_section_templates">
+	<!-- TEMPLATE: Back of Investment Card -->
+	<template class="js_template" data-name="investment-card-back">
+		<div>
+			<div class="close js_investment_card_unflip" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+			<div class="title h4 strong text-red-2 space-25-bottom js_message">Get access to a detailed offer document now.</div>
+			<form class="form form-dark js_phone_form" onsubmit="event.preventDefault()">
+				<div class="form-row space-min-bottom">
+					<label for="investment-form-phone-number">
+						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
+						<div style="position: relative; display: flex">
+							<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
+								<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+							</select>
+							<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
+							<input class="block" type="text" name="phone-number" id="investment-form-phone-number">
+						</div>
+					</label>
+				</div>
+				<div class="form-row space-min-bottom">
+					<label for="">
+						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span>
+						<button class="button block fill-red-2" type="submit">Get Details</button>
+					</label>
+				</div>
+			</form>
+			<form class="form form-dark js_otp_form" style="display: none" onsubmit="event.preventDefault()">
+				<div class="form-row space-min-bottom">
+					<label for="investment-form-otp">
+						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
+						<input class="block fill-dark" type="text" name="otp" id="investment-form-otp">
+					</label>
+					<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp hidden">Re-send OTP</span>
+					<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number hidden">Try a different number</span>
+				</div>
+				<div class="form-row space-min-bottom">
+					<label for="">
+						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+						<button class="button block fill-red-2" type="submit">Verify OTP</button>
+					</label>
+				</div>
+			</form>
+			<div class="or-separator"><span class="label">OR</span><hr class="dashed red-2"></div>
+			<div class="h5 text-neutral-2 line-height-xlarge"><?= $webinarDate ?></div>
+			<div class="label space-25-bottom">Join our investment manager for a 30min presentation and 30min of Q&A.</div>
+			<a href="#webinar-section" class="button fill-dark" style="box-shadow: inset 0px 0px 0px 1px var(--red-3)">Register for Webinar</a>
+		</div>
+	</template>
+	<!-- END: TEMPLATE: Back of Investment Card -->
+</section>
+<!-- END: Templates Section -->
 
 
 
