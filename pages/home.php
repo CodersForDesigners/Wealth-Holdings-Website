@@ -222,13 +222,13 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						<div class="row meta-1 space-25-bottom">
 							<div class="columns small-3 yield text-red-2">
 								<div class="h5 strong text-uppercase">Yield</div>
-								<div class="h5"><?= $investment->get( 'yield' )[ 'amount' ] ?>%</div>
-								<div class="small line-height-small"><?= $investment->get( 'yield' )[ 'duration' ] ?></div>
+								<div class="h5"><span class="js_yield_amount"><?= $investment->get( 'yield' )[ 'amount' ] ?></span>%</div>
+								<div class="small line-height-small js_yield_duration"><?= $investment->get( 'yield' )[ 'duration' ] ?></div>
 							</div>
 							<div class="columns small-9 rent text-neutral-2">
 								<div class="h5 strong text-uppercase">Rent</div>
-								<div class="h5">₹ <?= $investment->get( 'rent' )[ 'amount' ] ?></div>
-								<div class="small line-height-small"><?= $investment->get( 'rent' )[ 'duration' ] ?></div>
+								<div class="h5">₹ <span class="js_rent_amount"><?= $investment->get( 'rent' )[ 'amount' ] ?></span></div>
+								<div class="small line-height-small js_rent_duration"><?= $investment->get( 'rent' )[ 'duration' ] ?></div>
 							</div>
 						</div>
 						<div class="title h5 strong">
@@ -245,14 +245,14 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 							<hr class="dashed blue-4">
 						</div>
 						<div class="meta-2 space-25-top text-neutral-2">
-							<div class="size h5 space-min-bottom"><?= $investment->get( 'size' ) ?></div>
+							<div class="size h5 space-min-bottom js_size"><?= $investment->get( 'size' ) ?></div>
 							<div class="cost space-min-bottom">
 								<div class="label">Cost of Asset</div>
-								<div class="h6">₹ <?= $investment->get( 'cost' ) ?></div>
+								<div class="h6">₹ <span class="js_cost"><?= $investment->get( 'cost' ) ?></span></div>
 							</div>
 							<div class="min-investment space-min-bottom">
 								<div class="label">Minimum Investment Amount</div>
-								<div class="h6">₹ <?= $investment->get( 'minimum_investment' ) ?></div>
+								<div class="h6">₹ <span class="js_minimum_investment"><?= $investment->get( 'minimum_investment' ) ?></span></div>
 							</div>
 						</div>
 						<div class="action space-25-top">
