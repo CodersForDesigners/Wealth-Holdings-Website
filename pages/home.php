@@ -62,6 +62,12 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 	window.__BFS.data = window.__BFS.data || { };
 	window.__BFS.data.webinarDate = "<?= $webinarDate ?>";
 
+	<?php
+		foreach ( $investments as $investment )
+			$investmentsForJS[ ] = $investment->getAll();
+	?>
+	window.__BFS.data.investments = <?= json_encode( $investmentsForJS ) ?>;
+
 </script>
 
 <!-- Sample Section -->
