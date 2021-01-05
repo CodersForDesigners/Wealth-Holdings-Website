@@ -1,4 +1,10 @@
 
+$( function () {
+
+
+
+
+
 /*
  *
  * ----- INVESTMENTS
@@ -89,5 +95,11 @@ $( ".js_section_faqs" ).on( "click", ".js_faq_title", function ( event ) {
 		$faqs.removeClass( "open" );
 		$selectedFaq.addClass( "open" );
 	}
+
+} );
+
+
+
+
 
 } );
