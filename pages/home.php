@@ -643,7 +643,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 			</div>
 		</form>
 		<div class="or-separator"><span class="label">OR</span><hr class="dashed red-2"></div>
-		<div class="h6 text-neutral-2 line-height-xlarge">Saturday 15th Dec 4:30 PM</div>
+		<div class="h5 text-neutral-2 line-height-xlarge"><?= $webinarDate ?></div>
 		<div class="label space-25-bottom">Join our investment manager for a 30min presentation and 30min of Q&A.</div>
 		<a href="#webinar-section" class="button fill-dark" style="box-shadow: inset 0px 0px 0px 1px var(--red-3)">Register for Webinar</a>
 	</div>
