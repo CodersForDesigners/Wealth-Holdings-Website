@@ -11,9 +11,17 @@ $( function () {
  *
  */
 
+// Clone an investment card and store it as a template
+var $investmentCardCopy = $( $( ".js_section_investment" ).find( ".js_investment_card" ).first().get( 0 ).outerHTML );
+$investmentCardCopy
+	.find( ".js_yield_amount, .js_yield_duration, .js_rent_amount, .js_rent_duration, .js_title_lumpsum, .js_title_emi, .js_cost, .js_minimum_investment" ).text( "" )
+		.end()
+	.find( ".js_toggle_payment_mode" ).prop( "checked", false )
+$( ".js_section_templates" ).prepend( $( "<template class='js_template' data-name='investment-card'>" + $investmentCardCopy.get( 0 ).outerHTML.trim() + "</template>" ) );
+
+
 // For the markup comprising the back of the investment cards, we're using only **one** instance of it
 // Every time a card is flipped, we move the markup from the previous card and onto the back of the card being flipped
-//
 $( ".js_investment_card" ).first().find( ".js_back" )
 	.append( $( ".js_template[ data-name = 'investment-card-back' ]" ).html() )
 var domBackOfInvestmentCard = $( ".js_investment_card" ).first().find( ".js_back > div" ).get( 0 )
