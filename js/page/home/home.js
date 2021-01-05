@@ -9,7 +9,7 @@
 // Every time a card is flipped, we move the markup from the previous card and onto the back of the card being flipped
 //
 $( ".js_investment_card" ).first().find( ".js_back" )
-	.append( $( ".js_template.js_investment_card_back" ).html() )
+	.append( $( ".js_template[ data-name = 'investment-card-back' ]" ).html() )
 var domBackOfInvestmentCard = $( ".js_investment_card" ).first().find( ".js_back > div" ).get( 0 )
 
 // Flip the investment card if the user is not logged in

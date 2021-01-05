@@ -602,7 +602,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- TEMPLATE: Back of Investment Card -->
-<template class="js_template js_investment_card_back">
+<template class="js_template" data-name="investment-card-back">
 	<div>
 		<div class="close js_investment_card_unflip" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
 		<div class="title h4 strong text-red-2 space-25-bottom js_message">Get access to a detailed offer document now.</div>
