@@ -314,14 +314,6 @@
 .investment-section .investment {
 	transition: opacity 0.3s 0.25s ease-in;
 }
-/*.investment-section.filter-and-load .investment:nth-child( n + 4 ) {
-	opacity: 0;
-	transition: opacity 0.25s ease-in;
-}*/
-/*.investment-section.filter-and-load .investment {
-	opacity: 0;
-	transition: opacity 0.25s ease-in;
-}*/
 
 .investment-section .investment.marked-for-removal {
 	opacity: 0;
@@ -333,11 +325,6 @@
 .investment-section.filter-and-load .investment.faded-while-loading {
 	opacity: 0;
 }
-/* Blur out the buttons */
-/*.investment-section.filter-and-load .toggle-button,
-.investment-section.filter-and-load .action {
-	filter: blur( 5px );
-}*/
 
 @media ( min-width: 640px ) {
 	/* Collapse the tile grid */
