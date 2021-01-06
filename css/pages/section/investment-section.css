@@ -295,61 +295,49 @@
 /*
  * ----- Filter and Load sequence
  */
-.sheenable {
-	display: inline;
-	background-image:
-		linear-gradient( to left, transparent, rgba( 255, 255, 255, 0.75 ) 50%, transparent ),
-		linear-gradient( to left, var(--color), var(--color) );
-	background-size: 10% 100%, 0% 90%;
-	background-repeat: no-repeat;
-	background-position-y: center;
-	background-position-x: -10%, 0;
+.fade-able {
+	transition: opacity 0.3s ease-in;
 }
-	.investment-section .sheenable.title-lumpsum,
-	.investment-section .title-emi > span.sheenable {
-		background-image:
-			linear-gradient( to left, transparent, rgba( 0, 0, 0, 0.25 ) 50%, transparent ),
-			linear-gradient( to left, var(--color), var(--color) );
-	}
-
 
 /* Collapse the tile grid */
 .investment-section.filter-and-load .tile-grid {
 	max-height: 470px;
-	transition: max-height 0.5s ease-in-out;
+	transition: max-height 0.3s ease-in-out;
 }
 
-/* Only do the wipe-and-sheen animation for the first 3 cards (for perf reasons) */
-.investment-section.filter-and-load .investment:nth-child( -n + 3 ) .sheenable {
-	animation:
-		wipe-cover 0.75s ease-in forwards,
-		reduce-line-height 0.75s 0.75s ease-in forwards;
-}
-.investment-section.filter-and-load .investment:nth-child( -n + 3 ) .title-lumpsum,
-.investment-section.filter-and-load .investment:nth-child( -n + 3 ) .title-emi {
-	animation:
-		wipe-cover 0.75s ease-in forwards,
-		reduce-line-height 0.75s 0.75s ease-in forwards,
-		sheen 1s 0.75s ease-in infinite;
+.investment-section.filter-and-load .investment .fade-able {
+	opacity: 0 !important;
+	transition: opacity 0.3s ease-out;
 }
 
 /* Fade out the remaining cards, i.e. from the second row onwards */
 .investment-section .investment {
-	transition: opacity 0.25s 0.25s ease-in;
+	transition: opacity 0.3s 0.25s ease-in;
 }
-.investment-section.filter-and-load .investment:nth-child( n + 4 ) {
+/*.investment-section.filter-and-load .investment:nth-child( n + 4 ) {
 	opacity: 0;
 	transition: opacity 0.25s ease-in;
-}
+}*/
+/*.investment-section.filter-and-load .investment {
+	opacity: 0;
+	transition: opacity 0.25s ease-in;
+}*/
 
-.investment-section .investment.faded {
+.investment-section .investment.marked-for-removal {
+	opacity: 0;
+	transition: opacity 0.5s ease-out;
+}
+.investment-section .investment.faded-while-loading {
+	transition: opacity 0.3s ease-in;
+}
+.investment-section.filter-and-load .investment.faded-while-loading {
 	opacity: 0;
 }
 /* Blur out the buttons */
-.investment-section.filter-and-load .toggle-button,
+/*.investment-section.filter-and-load .toggle-button,
 .investment-section.filter-and-load .action {
 	filter: blur( 5px );
-}
+}*/
 
 @media ( min-width: 640px ) {
 	/* Collapse the tile grid */
@@ -369,37 +357,5 @@
 	/* Collapse the tile grid */
 	.investment-section.filter-and-load .tile-grid {
 		max-height: 720px;
-	}
-}
-
-@keyframes wipe-cover {
-	0% {
-		background-size: 10% 100%, 0% 90%;
-	}
-	95% {
-		color: currentColor;
-		background-size: 10% 100%, 100% 90%;
-	}
-	100% {
-		color: transparent;
-		background-size: 10% 100%, 100% 90%;
-	}
-}
-
-@keyframes reduce-line-height {
-	from {
-		background-size: 10% 100%, 100% 90%;
-	}
-	to {
-		background-size: 10% 50%, 100% 50%;
-	}
-}
-
-@keyframes sheen {
-	from {
-		background-position-x: -10%, 0;
-	}
-	to {
-		background-position-x: 110%, 0;
 	}
 }

@@ -14,7 +14,7 @@ $( function () {
 // Clone an investment card and store it as a template
 var $investmentCardCopy = $( $( ".js_section_investment" ).find( ".js_investment_card" ).first().get( 0 ).outerHTML );
 $investmentCardCopy
-	.addClass( "faded" )
+	.addClass( "faded-while-loading" )
 	.find( ".js_yield_amount, .js_yield_duration, .js_rent_amount, .js_rent_duration, .js_title_lumpsum, .js_title_emi, .js_cost, .js_minimum_investment" ).text( "" )
 		.end()
 	.find( ".js_toggle_payment_mode" ).prop( "checked", false )
@@ -103,6 +103,7 @@ function filterByCategories ( investment ) {
 }
 var $investmentCardTemplate = $( ".js_template[ data-name = 'investment-card' ]" );
 $( ".js_section_investment" ).on( "change", ".js_filter", function ( event ) {
+
 	// Store some references
 	var $investmentSection = $( ".js_section_investment" );
 	var $filtrationFeedback = $investmentSection.find( ".js_filtration_feedback" );
@@ -120,9 +121,8 @@ $( ".js_section_investment" ).on( "change", ".js_filter", function ( event ) {
 		// Un-focus
 	$filter.get( 0 ).blur();
 
-	// Hide the "View All" overlay
-	$investmentSection.addClass( "view-all" );
-	$investmentSection.find( ".js_view_all" ).addClass( "invisible" );
+	// Remove the "View All" overlay
+	$investmentSection.find( ".js_view_all" ).trigger( "click" );
 
 	// Add the filtration n' loading effect
 	$investmentSection.addClass( "filter-and-load" );
@@ -136,30 +136,29 @@ $( ".js_section_investment" ).on( "change", ".js_filter", function ( event ) {
 	// Hide the filtration feedback
 	$filtrationFeedback.addClass( "hidden" );
 
+	// Add or remove investments if required
+	var $investments = $investmentSection.find( ".js_investment_card" );
+	if ( investments.length < $investments.length ) {
+		$investments.slice( investments.length ).addClass( "marked-for-removal" );
+		$investments = $investments.slice( 0, investments.length );
+	}
+	else if ( investments.length > $investments.length ) {
+		var _i = 1;
+		var numberOfAdditionalInvestments = investments.length - $investments.length;
+		if ( $investments.length === 0 ) {
+			$( ".js_investment_card_container" ).prepend( $investmentCardTemplate.html() );
+			_i = 2;
+			$investments = $( ".js_section_investment" ).find( ".js_investment_card" );
+		}
+		for ( ; _i <= numberOfAdditionalInvestments; _i += 1 )
+			$investments.last().after( $investmentCardTemplate.html() );
+	}
 
 	setTimeout( function () {
 
-		// Add or remove investment if required
-		var $investments = $investmentSection.find( ".js_investment_card" );
-		if ( investments.length < $investments.length ) {
-			$investments.slice( investments.length ).remove();
-			$investments = $investments.slice( 0, investments.length );
-		}
-		else if ( investments.length > $investments.length ) {
-			var _i = 1;
-			var numberOfAdditionalInvestments = investments.length - $investments.length;
-			if ( $investments.length === 0 ) {
-				$( ".js_investment_card_container" ).prepend( $investmentCardTemplate.html() );
-				_i = 2;
-				$investments = $( ".js_section_investment" ).find( ".js_investment_card" );
-			}
-			for ( ; _i <= numberOfAdditionalInvestments; _i += 1 )
-				$investments.last().after( $investmentCardTemplate.html() );
-		}
-
 		// Populate the data on the investment cards
 			// Yes, the cards are being queried again (because it reports the old number)
-		var $investments = $investmentSection.find( ".js_investment_card" );
+		var $investments = $investmentSection.find( ".js_investment_card:not( .marked-for-removal )" );
 		$investments.removeClass( "show-emi flipped" );
 		$investments.each( function ( _i, domEl ) {
 			var $card = $( domEl );
@@ -174,48 +173,36 @@ $( ".js_section_investment" ).on( "change", ".js_filter", function ( event ) {
 			$card.find( ".js_minimum_investment" ).text( investment.minimum_investment );
 			$card.find( ".default_payment_mode" ).text( investment.minimum_investment );
 			$card.find( ".js_toggle_payment_mode" ).prop( "checked", investment.default_payment_mode )
+			if ( investment.default_payment_mode )
+				$card.addClass( "show-emi" );
 		} )
 
-		// Fade-in newly-added investment options
-		window.requestAnimationFrame( function () {
-			window.requestAnimationFrame( function () {
-				$investmentSection.find( ".js_investment_card.faded" ).removeClass( "faded" );
-			} )
-		} )
-
+		// Restore the back of the investment card ( *if* there are cards to show )
 		if ( investments.length )
-			timeToWindDownLoadingAnimation = 1900
-		else
-			timeToWindDownLoadingAnimation = 250
+			$investments.first().find( ".js_back" ).get( 0 ).appendChild( domBackOfInvestmentCard );
 
-		setTimeout( function () {
+		// Show a feedback message if no investments were found
+		if ( investments.length === 0 )
+			$filtrationFeedback.removeClass( "hidden" )
 
-			// Remove the filtration n' loading effect
-			$investmentSection.removeClass( "filter-and-load" );
+		// Remove the `faded-while-loading` class from the new cards
+		$investmentSection.find( ".js_investment_card.faded-while-loading" ).removeClass( "faded-while-loading" );
 
-			// Restore the back of the investment card ( *if* there are cards to show )
-			if ( investments.length )
-				$investments.first().find( ".js_back" ).get( 0 ).appendChild( domBackOfInvestmentCard );
+		// Remove the filtration n' loading effect
+		$investmentSection.removeClass( "filter-and-load" );
 
-			// Show a feedback message if no investments were found
-			if ( investments.length === 0 )
-				$filtrationFeedback.removeClass( "hidden" )
+	}, 300 );
 
-			// Restore the "View All" over (if required)
-			if ( investments.length > 3 ) {
-				$investmentSection.removeClass( "view-all" );
-				setTimeout( function () {
-					$investmentSection.find( ".js_view_all" ).removeClass( "invisible" );
-				}, 250 )
-			}
+	setTimeout( function () {
 
-			// Un-block the filtration
-			$investmentSection.find( ".js_filtration" ).removeClass( "no-pointer" );
-			$investmentSection.find( ".js_filter" ).prop( "disabled", false );
+		// Properly remove the cards that were marked for removal from the DOM
+		$investmentSection.find( ".js_investment_card.marked-for-removal" ).remove();
 
-		}, timeToWindDownLoadingAnimation );
+		// Un-block the filtration
+		$investmentSection.find( ".js_filtration" ).removeClass( "no-pointer" );
+		$investmentSection.find( ".js_filter" ).prop( "disabled", false );
 
-	}, 900 );
+	}, 500 )
 
 } );
 
