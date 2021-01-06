@@ -218,28 +218,49 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 			<div class="columns small-12 space-50-bottom">
 				<div class="h2 strong">Pick an investment</div>
 			</div>
-			<!-- <div class="columns small-12">
-				Filters
-			</div> -->
-			<div class="columns small-12 tile-grid">
+			<div class="columns small-12 js_filtration">
+				<div>Filters</div>
+				<div>
+					<label>
+						<span>Asset Cost</span>
+						<select class="js_filter" data-name="asset_cost">
+							<option value="">Any</option>
+							<option>Below 1Cr</option>
+							<option>1Cr to 2Cr</option>
+							<option>Above 2Cr</option>
+						</select>
+					</label>
+					<label>
+						<span>Minimum Investment</span>
+						<select class="js_filter" data-name="minimum_investment">
+							<option value="">Any</option>
+							<option>Below 25L</option>
+							<option>25L to 50L</option>
+							<option>Above 50L</option>
+						</select>
+					</label>
+				</div>
+				<div class="js_filtration_feedback hidden">No investment options were found for the selected filters.</div>
+			</div>
+			<div class="columns small-12 tile-grid js_investment_card_container">
 			<?php foreach ( $investments as $investment ) : ?>
 				<div class="tile investment <?= $investment->get( 'default_payment_mode' ) ? 'show-emi' : '' ?> js_investment_card">
 					<div class="front">
 						<div class="row meta-1 space-25-bottom">
 							<div class="columns small-3 yield text-red-2">
-								<div class="h5 strong text-uppercase">Yield</div>
-								<div class="h5"><span class="js_yield_amount"><?= $investment->get( 'yield' )[ 'amount' ] ?></span>%</div>
-								<div class="small line-height-small js_yield_duration"><?= $investment->get( 'yield' )[ 'duration' ] ?></div>
+								<div class="h5 strong text-uppercase sheenable">Yield</div>
+								<div class="h5 sheenable"><span class="js_yield_amount"><?= $investment->get( 'yield' )[ 'amount' ] ?></span>%</div>
+								<div class="small line-height-small sheenable block js_yield_duration"><?= $investment->get( 'yield' )[ 'duration' ] ?></div>
 							</div>
 							<div class="columns small-9 rent text-neutral-2">
-								<div class="h5 strong text-uppercase">Rent</div>
-								<div class="h5">₹ <span class="js_rent_amount"><?= $investment->get( 'rent' )[ 'amount' ] ?></span></div>
-								<div class="small line-height-small js_rent_duration"><?= $investment->get( 'rent' )[ 'duration' ] ?></div>
+								<div class="h5 strong text-uppercase sheenable block">Rent</div>
+								<div class="h5 sheenable">₹ <span class="js_rent_amount"><?= $investment->get( 'rent' )[ 'amount' ] ?></span></div>
+								<div class="small line-height-small sheenable block js_rent_duration"><?= $investment->get( 'rent' )[ 'duration' ] ?></div>
 							</div>
 						</div>
 						<div class="title h5 strong">
-							<div class="title-lumpsum js_title_lumpsum"><?= $investment->get( 'title' )[ 'lumpsum' ] ?></div>
-							<div class="title-emi js_title_emi"><?= $investment->get( 'title' )[ 'emi' ] ?></div>
+							<div class="title-lumpsum text-light sheenable js_title_lumpsum"><?= $investment->get( 'title' )[ 'lumpsum' ] ?></div>
+							<div class="title-emi text-light"><span class="sheenable js_title_emi"><?= $investment->get( 'title' )[ 'emi' ] ?></span></div>
 						</div>
 						<div class="toggle space-25-top">
 							<label class="toggle-button unselectable" tabindex="-1">
@@ -251,14 +272,14 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 							<hr class="dashed blue-4">
 						</div>
 						<div class="meta-2 space-25-top text-neutral-2">
-							<div class="size h5 space-min-bottom js_size"><?= $investment->get( 'size' ) ?></div>
+							<div class="size h5 space-min-bottom sheenable block js_size"><?= $investment->get( 'size' ) ?></div>
 							<div class="cost space-min-bottom">
-								<div class="label">Cost of Asset</div>
-								<div class="h6">₹ <span class="js_cost"><?= $investment->get( 'cost' ) ?></span></div>
+								<div class="label sheenable block">Cost of Asset</div>
+								<div class="h6 sheenable">₹ <span class="js_cost"><?= $investment->get( 'cost' ) ?></span></div>
 							</div>
 							<div class="min-investment space-min-bottom">
-								<div class="label">Minimum Investment Amount</div>
-								<div class="h6">₹ <span class="js_minimum_investment"><?= $investment->get( 'minimum_investment' ) ?></span></div>
+								<div class="label sheenable block">Minimum Investment Amount</div>
+								<div class="h6 sheenable">₹ <span class="js_minimum_investment"><?= $investment->get( 'minimum_investment' ) ?></span></div>
 							</div>
 						</div>
 						<div class="action space-25-top">

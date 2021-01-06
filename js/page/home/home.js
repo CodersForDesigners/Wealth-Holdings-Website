@@ -14,6 +14,7 @@ $( function () {
 // Clone an investment card and store it as a template
 var $investmentCardCopy = $( $( ".js_section_investment" ).find( ".js_investment_card" ).first().get( 0 ).outerHTML );
 $investmentCardCopy
+	.addClass( "faded" )
 	.find( ".js_yield_amount, .js_yield_duration, .js_rent_amount, .js_rent_duration, .js_title_lumpsum, .js_title_emi, .js_cost, .js_minimum_investment" ).text( "" )
 		.end()
 	.find( ".js_toggle_payment_mode" ).prop( "checked", false )
@@ -83,6 +84,139 @@ $( document ).on( "change", ".js_toggle_payment_mode", function ( event ) {
 // Hitting "View All" shows all the investment cards
 $( ".js_section_investment .js_view_all" ).on( "click", function ( event ) {
 	$( ".js_section_investment" ).addClass( "view-all" );
+} );
+
+
+// Selecting a filter toggles the filter pipeline
+var filtersSelected = {
+	asset_cost: "",
+	minimum_investment: ""
+}
+function filterByCategories ( investment ) {
+	var category;
+	for ( category in filtersSelected ) {
+		var value = filtersSelected[ category ];
+		if ( value && investment.acf.categories[ category ] !== value )
+			return false;
+	}
+	return true;
+}
+var $investmentCardTemplate = $( ".js_template[ data-name = 'investment-card' ]" );
+$( ".js_section_investment" ).on( "change", ".js_filter", function ( event ) {
+	// Store some references
+	var $investmentSection = $( ".js_section_investment" );
+	var $filtrationFeedback = $investmentSection.find( ".js_filtration_feedback" );
+
+	// Get and set the selected filter
+	var $filter = $( event.target );
+	var filterCategory = $filter.data( "name" );
+	var filterValue = $( event.target ).val();
+	filtersSelected[ filterCategory ] = filterValue;
+
+
+	// Block the filtration
+	$investmentSection.find( ".js_filtration" ).addClass( "no-pointer" );
+	$investmentSection.find( ".js_filter" ).prop( "disabled", true );
+		// Un-focus
+	$filter.get( 0 ).blur();
+
+	// Hide the "View All" overlay
+	$investmentSection.addClass( "view-all" );
+	$investmentSection.find( ".js_view_all" ).addClass( "invisible" );
+
+	// Add the filtration n' loading effect
+	$investmentSection.addClass( "filter-and-load" );
+
+	// Move the back of the investment card to temporary holding space
+	$( ".js_section_templates" ).get( 0 ).appendChild( domBackOfInvestmentCard );
+
+	// Get the investments that qualify for the filters selected
+	var investments = window.__BFS.data.investments.filter( filterByCategories );
+
+	// Hide the filtration feedback
+	$filtrationFeedback.addClass( "hidden" );
+
+
+	setTimeout( function () {
+
+		// Add or remove investment if required
+		var $investments = $investmentSection.find( ".js_investment_card" );
+		if ( investments.length < $investments.length ) {
+			$investments.slice( investments.length ).remove();
+			$investments = $investments.slice( 0, investments.length );
+		}
+		else if ( investments.length > $investments.length ) {
+			var _i = 1;
+			var numberOfAdditionalInvestments = investments.length - $investments.length;
+			if ( $investments.length === 0 ) {
+				$( ".js_investment_card_container" ).prepend( $investmentCardTemplate.html() );
+				_i = 2;
+				$investments = $( ".js_section_investment" ).find( ".js_investment_card" );
+			}
+			for ( ; _i <= numberOfAdditionalInvestments; _i += 1 )
+				$investments.last().after( $investmentCardTemplate.html() );
+		}
+
+		// Populate the data on the investment cards
+			// Yes, the cards are being queried again (because it reports the old number)
+		var $investments = $investmentSection.find( ".js_investment_card" );
+		$investments.removeClass( "show-emi flipped" );
+		$investments.each( function ( _i, domEl ) {
+			var $card = $( domEl );
+			var investment = investments[ _i ].acf;
+			$card.find( ".js_yield_amount" ).text( investment.yield.amount );
+			$card.find( ".js_yield_duration" ).text( investment.yield.duration );
+			$card.find( ".js_rent_amount" ).text( investment.rent.amount );
+			$card.find( ".js_rent_duration" ).text( investment.rent.duration );
+			$card.find( ".js_title_lumpsum" ).text( investment.title.lumpsum );
+			$card.find( ".js_title_emi" ).text( investment.title.emi );
+			$card.find( ".js_cost" ).text( investment.cost );
+			$card.find( ".js_minimum_investment" ).text( investment.minimum_investment );
+			$card.find( ".default_payment_mode" ).text( investment.minimum_investment );
+			$card.find( ".js_toggle_payment_mode" ).prop( "checked", investment.default_payment_mode )
+		} )
+
+		// Fade-in newly-added investment options
+		window.requestAnimationFrame( function () {
+			window.requestAnimationFrame( function () {
+				$investmentSection.find( ".js_investment_card.faded" ).removeClass( "faded" );
+			} )
+		} )
+
+		if ( investments.length )
+			timeToWindDownLoadingAnimation = 1900
+		else
+			timeToWindDownLoadingAnimation = 250
+
+		setTimeout( function () {
+
+			// Remove the filtration n' loading effect
+			$investmentSection.removeClass( "filter-and-load" );
+
+			// Restore the back of the investment card ( *if* there are cards to show )
+			if ( investments.length )
+				$investments.first().find( ".js_back" ).get( 0 ).appendChild( domBackOfInvestmentCard );
+
+			// Show a feedback message if no investments were found
+			if ( investments.length === 0 )
+				$filtrationFeedback.removeClass( "hidden" )
+
+			// Restore the "View All" over (if required)
+			if ( investments.length > 3 ) {
+				$investmentSection.removeClass( "view-all" );
+				setTimeout( function () {
+					$investmentSection.find( ".js_view_all" ).removeClass( "invisible" );
+				}, 250 )
+			}
+
+			// Un-block the filtration
+			$investmentSection.find( ".js_filtration" ).removeClass( "no-pointer" );
+			$investmentSection.find( ".js_filter" ).prop( "disabled", false );
+
+		}, timeToWindDownLoadingAnimation );
+
+	}, 900 );
+
 } );
 
 
