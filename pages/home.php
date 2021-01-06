@@ -608,7 +608,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- Templates Section -->
-<section class="js_section_templates">
+<section class="js_section_templates hidden">
 	<!-- TEMPLATE: Back of Investment Card -->
 	<template class="js_template" data-name="investment-card-back">
 		<div>
