@@ -1,0 +1,67 @@
+/*
+ * Share Modal
+ */
+
+.modal-share {
+	position: relative;
+}
+.modal-share .url-share {
+	position: relative;
+}
+.modal-share .url-share .url {
+	position: relative;
+	z-index: 1;
+	padding-right: 60px;
+}
+.modal-share .url-share .button {
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	right: 0;
+	color: var(--red-3);
+	text-transform: uppercase;
+	background-color: transparent;
+}
+.modal-share .url-share .button:focus {
+	color: var(--neutral-4);
+	opacity: .5;
+}
+.modal-share .url-share .feedback {
+	position: absolute;
+	z-index: 3;
+	bottom: calc(100% + var(--space-min));
+	right: 0;
+	opacity: 0;
+	transform: translateX( var(--space-50) );
+	transition: .3s ease-out;
+}
+.modal-share .url-share .feedback.show {
+	opacity: 1;
+	transform: translateX(0);
+}
+.modal-share .social-share .share-button {
+	text-indent: -99999px;
+	overflow: hidden;
+	width: var(--space-75);
+	height: var(--space-75);
+	margin-right: calc(var(--space-min)/2);
+	background-size: 50%;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {
+	.modal-share .url-share .url {
+		padding-right: 85px;
+	}
+	.modal-share .social-share .share-button {
+		width: var(--space-50);
+		height: var(--space-50);
+	}
+}
+@media( min-width: 1480px ) {
+	.modal-share .url-share .url {
+		padding-right: 110px;
+	}
+}

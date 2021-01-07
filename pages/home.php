@@ -284,7 +284,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						</div>
 						<div class="action space-25-top">
 							<button class="fill-red-2 js_investment_get_details">Get Details</button>
-							<!-- <button class="fill-red-2" style="margin-left: var(--space-min);">Share</button> -->
+							<button class="fill-red-2 js_modal_trigger" data-mod-id="share" style="margin-left: var(--space-min);">Share</button>
 						</div>
 					</div>
 					<div class="back js_back"></div>
