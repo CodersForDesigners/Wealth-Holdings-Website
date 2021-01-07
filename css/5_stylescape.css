@@ -762,3 +762,16 @@ select {
 }
 @media( min-width: 1480px ) {}
 
+
+
+/*
+ *
+ *	Material Icons
+ *
+ */
+
+.material-icons {
+	font-size: inherit !important;
+	vertical-align: middle;
+}
+
