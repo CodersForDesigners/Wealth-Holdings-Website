@@ -18,7 +18,7 @@
 	z-index: 2;
 	top: 0;
 	right: 0;
-	color: var(--red-3);
+	color: var(--dark);
 	text-transform: uppercase;
 	background-color: transparent;
 }

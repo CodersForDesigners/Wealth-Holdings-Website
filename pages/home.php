@@ -478,11 +478,11 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 								<?php endif; ?>
 								<div class="columns small-12 medium-8 space-min-top">
 									<div class="description h6 opacity-50 space-min-bottom"><?= $faq->get( 'summary' ) ?></div>
-									<div class="hidden action clearfix">
+									<div class="action clearfix">
 										<?php if ( $faq->get( 'thereIsMore?' ) ) : ?>
-											<a class="h6" href="<?= $faq->get( 'guid' ) ?>">Read More</a>
+											<a class="h6 inline" href="<?= $faq->get( 'guid' ) ?>">Read More</a>
 										<?php endif; ?>
-										<a class="h6" href="">Share</a>
+										<a class="h6 inline js_modal_trigger" data-mod-id="share" href="">Share</a>
 									</div>
 								</div>
 							</div>
