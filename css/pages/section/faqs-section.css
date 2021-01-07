@@ -17,7 +17,7 @@
 	max-height: 150vh;
 }
 
-.faqs-section .faqs .faq.open .summary .action .label {
+.faqs-section .faqs .faq .summary .action .label {
 	border-bottom: 1px solid var(--dark);
 	margin-right: var(--space-min);
 }
@@ -29,7 +29,7 @@
 }
 @media( min-width: 1040px ) {}
 @media( min-width: 1480px ) {
-	.faqs-section .faqs .faq.open .summary .action .label {
+	.faqs-section .faqs .faq .summary .action .label {
 		border-bottom: 1.5px solid var(--dark);
 	}
 }
