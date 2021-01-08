@@ -289,11 +289,29 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<div class="back js_back"></div>
 				</div>
 			<?php endforeach; ?>
-				<!-- <div class="tile banner">
-					<div class="p fill-neutral-2 space-25">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. A fugit perspiciatis, voluptatibus dolorum, facere sapiente est, impedit exercitationem ut perferendis laboriosam, repudiandae consequatur ad rem odio adipisci hic ex. Perspiciatis?
+				<div class="tile banner">
+					<div class="row">
+						<div class="sub-tile columns small-12 medium-6 large-7">
+							<div class="card fill-blue-3 space-25">
+								<div class="h4 strong" style="padding-bottom: calc(var(--space-min)/2)">Didn’t find a suitable investment?</div>
+								<div class="h6 space-25-bottom">Tell us what you are looking for.</div>
+								<a href="" class="link inline">
+									<span class="h5 strong-underline blue-4 strong text-blue-4 line-height-large">Feedback</span>
+									<img class="icon inline-middle" src="../media/icon/icon-right-arrow-strong-blue-4.svg<?php echo $ver ?>">
+								</a>
+							</div>
+						</div>
+						<div class="sub-tile columns small-12 medium-6 large-5">
+							<div class="card fill-blue-3 space-25">
+								<div class="h5 strong space-25-bottom">Get a sneak peak at upcoming investment opportunities.</div>
+								<a href="" class="link inline">
+									<span class="h5 strong-underline blue-4 strong text-blue-4 line-height-large">Register</span>
+									<img class="icon inline-middle" src="../media/icon/icon-right-arrow-strong-blue-4.svg<?php echo $ver ?>">
+								</a>
+							</div>
+						</div>
 					</div>
-				</div> -->
+				</div>
 			</div>
 		</div>
 	</div>

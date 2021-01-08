@@ -775,3 +775,19 @@ select {
 	vertical-align: middle;
 }
 
+
+
+
+/*
+ *
+ *	Strong Underline
+ *
+ */
+
+.strong-underline {
+	border-bottom: solid 4px var(--light);
+}
+.strong-underline.blue-4 {
+	border-color: var(--blue-4);
+}
+
