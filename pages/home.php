@@ -312,7 +312,8 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						<label class="filter inline fill-dark <?= $category[ 'key' ] ?>">
 							<span class="icon fill-blue-3" style="background-image: url('../media/icon/filter/<?= $category[ 'key' ] ?>.svg<?php echo $ver ?>');"></span>
 							<span class="key button"><?= $category[ 'label' ] ?></span>
-							<select class="value text-blue-3 js_filter" data-name="<?= $category[ 'key' ] ?>">
+							<span class="value text-blue-3 js_readable_value">All</span>
+							<select class="input js_filter" data-name="<?= $category[ 'key' ] ?>">
 									<option value="">All</option>
 								<?php foreach ( $category[ 'values' ] as $value ) : ?>
 									<option><?= $value ?></option>
