@@ -224,13 +224,13 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 			<div class="columns small-12 space-50-bottom">
 				<div class="h2 strong">Pick an investment</div>
 			</div>
-			<div class="columns small-12 js_filtration">
-				<div>Filters</div>
-				<div>
+			<div class="filtration columns small-12 js_filtration">
+				<div class="filters space-50-bottom">
 					<?php foreach ( $investmentCategories as $category ) : ?>
-						<label>
-							<span class="<?= $category[ 'key' ] ?>"><?= $category[ 'label' ] ?></span>
-							<select class="js_filter" data-name="<?= $category[ 'key' ] ?>">
+						<label class="filter inline fill-dark <?= $category[ 'key' ] ?>">
+							<span class="icon fill-blue-3" style="background-image: url('../media/icon/filter/<?= $category[ 'key' ] ?>.svg<?php echo $ver ?>');"></span>
+							<span class="key button"><?= $category[ 'label' ] ?></span>
+							<select class="value text-blue-3 js_filter" data-name="<?= $category[ 'key' ] ?>">
 									<option value="">All</option>
 								<?php foreach ( $category[ 'values' ] as $value ) : ?>
 									<option><?= $value ?></option>
@@ -239,7 +239,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						</label>
 					<?php endforeach; ?>
 				</div>
-				<div class="js_filtration_feedback hidden">No investment options were found for the selected filters.</div>
+				<div class="h4 line-height-large filtration-feedback js_filtration_feedback hidden">No investment options were found for the selected filters.</div>
 			</div>
 			<div class="columns small-12 tile-grid js_investment_card_container">
 			<?php foreach ( $investments as $investment ) : ?>
