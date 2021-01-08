@@ -11,6 +11,12 @@ require_once __DIR__ . '/../inc/above.php';
 
 
 $investments = BFS\CMS::getPostsOf( 'investment' );
+$investmentCategories = array_map( function ( $el ) {
+	return [ 'key' => $el[ 'name' ], 'label' => $el[ 'label' ], 'values' => array_values( $el[ 'choices' ] ) ];
+}, acf_get_field(	// this function gets us the "Investment" field group settings
+	'categories',	// return this field from the field group
+	get_page_by_title( 'investments', OBJECT, 'acf-field-group' )->ID
+)[ 'sub_fields' ] );
 
 $webinarDate = getContent( 'Registered interest at ' . date( 'h:ia, d/m/Y' ), 'webinar_date' );
 
@@ -221,24 +227,17 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 			<div class="columns small-12 js_filtration">
 				<div>Filters</div>
 				<div>
-					<label>
-						<span>Asset Cost</span>
-						<select class="js_filter" data-name="asset_cost">
-							<option value="">Any</option>
-							<option>Below 1Cr</option>
-							<option>1Cr to 2Cr</option>
-							<option>Above 2Cr</option>
-						</select>
-					</label>
-					<label>
-						<span>Minimum Investment</span>
-						<select class="js_filter" data-name="minimum_investment">
-							<option value="">Any</option>
-							<option>Below 25L</option>
-							<option>25L to 50L</option>
-							<option>Above 50L</option>
-						</select>
-					</label>
+					<?php foreach ( $investmentCategories as $category ) : ?>
+						<label>
+							<span class="<?= $category[ 'key' ] ?>"><?= $category[ 'label' ] ?></span>
+							<select class="js_filter" data-name="<?= $category[ 'key' ] ?>">
+									<option value="">All</option>
+								<?php foreach ( $category[ 'values' ] as $value ) : ?>
+									<option><?= $value ?></option>
+								<?php endforeach; ?>
+							</select>
+						</label>
+					<?php endforeach; ?>
 				</div>
 				<div class="js_filtration_feedback hidden">No investment options were found for the selected filters.</div>
 			</div>
