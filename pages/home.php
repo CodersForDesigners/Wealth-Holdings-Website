@@ -22,6 +22,7 @@ $webinarDate = getContent( 'Registered interest at ' . date( 'h:ia, d/m/Y' ), 'w
 
 $faqs = BFS\CMS::getPostsOf( 'faq' );
 foreach ( $faqs as $faq ) {
+	$faq->set( 'url', get_permalink( $faq->get( 'ID' ) ) );
 	$faq->set( 'featuredImage', get_the_post_thumbnail_url( $faq->get( 'ID' ) ) );
 	$faqTextualContent = wp_strip_all_tags( $faq->get( 'post_content' ) );
 	if ( ! $faq->get( 'summary' ) ) {
@@ -485,7 +486,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 			<div class="columns small-12 large-9 xlarge-8">
 				<div class="faqs space-75-bottom">
 				<?php foreach ( $faqs as $faq ) : ?>
-					<div class="faq space-25-top-bottom js_faq">
+					<div class="faq space-25-top-bottom js_shareable js_faq" data-title="<?= $faq->get( 'post_title' ) ?>" data-description="<?= $faq->get( 'summary' ) ?>" data-image="<?= $faq->get( 'featuredImage' ) ?: '' ?>" data-url="<?= $faq->get( 'url' ) ?>">
 						<div class="title h5 strong js_faq_title"><?= $faq->get( 'post_title' ) ?></div>
 						<div class="summary">
 							<div class="row">
