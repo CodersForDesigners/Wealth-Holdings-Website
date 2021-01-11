@@ -1,0 +1,27 @@
+/*
+ * Footer Section
+ */
+
+.footer-section {}
+.footer-section .about {}
+.footer-section .featured-links {}
+.footer-section .featured-links .link {}
+.footer-section .featured-links .link .h2 {
+	position: relative;
+	z-index: 1;
+	line-height: 0.8;
+}
+.footer-section .featured-links .link .h2 img {
+	width: 18px;
+}
+.footer-section .featured-links .link .h5 {
+	position: relative;
+	z-index: 2;
+	margin-top: calc( 1em * -0.75 );
+}
+.footer-section .footer-navigation {}
+.footer-section .footer-navigation .link {}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}

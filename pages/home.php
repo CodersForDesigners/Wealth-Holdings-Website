@@ -622,30 +622,6 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 <!-- END: Testimonials Section -->
 
 
-<!-- Footer Section -->
-<section class="footer-section fill-blue-4 space-75-top-bottom" id="footer-section" data-section-title="Footer Section" data-section-slug="footer-section">
-	<div class="container">
-		<div class="row">
-			<div class="columns small-12 medium-6 large-4">
-				<div class="logo space-50-bottom"><img class="block" src="../media/wh-logo-large-light.svg<?php echo $ver ?>"></div>
-				<div class="h6 space-25-bottom text-blue-2">Wealth Holdings is a brand of Green Infrastructure Projects Private Limited.</div>
-				<!-- <a class="address inline space-25-bottom" target="_blank" href="https://maps.google.com"> -->
-				<span class="address inline space-25-bottom">
-					<span class="label inline text-blue-3 line-height-xlarge">Corporate Address :</span><br>
-					<span class="h5 inline">1097, 5th Block, 18th B Main Rd <br>Rajajinagar, Bengaluru <br>Karnataka 560 010</span>
-				</span>
-				<!-- </a> -->
-				<!-- <a class="phone inline" href="tel:+919341203040">
-					<span class="label inline text-blue-3 line-height-xlarge">Phone Number :</span><br>
-					<span class="h4 inline strong text-red-2 ">+91 93412 03040</span>
-				</a> -->
-			</div>
-		</div>
-	</div>
-</section>
-<!-- END: Footer Section -->
-
-
 <!-- Templates Section -->
 <section class="js_section_templates hidden">
 	<!-- TEMPLATE: Back of Investment Card -->
