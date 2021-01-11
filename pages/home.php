@@ -156,7 +156,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 				</div>
 				<div class="tile t-6 fill-red-3 hide-small">
 					<!-- (6.) -->
-					<div class="h6 strong">walking distance from <br class="hide-small">tech parks, SEZs & schools</div>
+					<div class="h6 strong">walking distance from SEZs, tech parks & schools</div>
 				</div>
 				<div class="tile t-7 fill-dark">
 					<!-- (7.) -->
