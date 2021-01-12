@@ -11,6 +11,10 @@ require_once __DIR__ . '/../inc/above.php';
 
 
 $investments = BFS\CMS::getPostsOf( 'investment' );
+foreach ( $investments as $investment ) {
+	$investment->set( 'url', get_permalink( $investment->get( 'ID' ) ) );
+	$investment->set( 'defaultDescription', $investment->get( 'default_payment_mode' ) ? $investment->get( 'title' )[ 'emi' ] : $investment->get( 'title' )[ 'lumpsum' ] );
+}
 $investmentCategories = array_map( function ( $el ) {
 	return [ 'key' => $el[ 'name' ], 'label' => $el[ 'label' ], 'values' => array_values( $el[ 'choices' ] ) ];
 }, acf_get_field(	// this function gets us the "Investment" field group settings
@@ -245,7 +249,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 			</div>
 			<div class="columns small-12 tile-grid js_investment_card_container">
 			<?php foreach ( $investments as $investment ) : ?>
-				<div class="tile investment <?= $investment->get( 'default_payment_mode' ) ? 'show-emi' : '' ?> js_investment_card">
+				<div class="tile investment js_shareable <?= $investment->get( 'default_payment_mode' ) ? 'show-emi' : '' ?> js_investment_card" data-id="<?= $investment->get( 'ID' ) ?>" data-title="<?= $investment->get( 'post_title' ) ?>" data-description="<?= $investment->get( 'defaultDescription' ) ?>" data-image="<?= $investment->get( 'featuredImage' ) ?: '' ?>" data-url="<?= $investment->get( 'url' ) ?>">
 					<div class="front">
 						<div class="row meta-1 space-25-bottom">
 							<div class="columns small-3 yield text-red-2">

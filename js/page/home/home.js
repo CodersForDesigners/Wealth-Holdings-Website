@@ -76,6 +76,32 @@ $( ".js_section_investment" ).on( "click", ".js_investment_card_unflip", functio
 // Toggle between the EMI and Lumpsum content when hitting the Lumpsum/EMI toggle button
 $( document ).on( "change", ".js_toggle_payment_mode", function ( event ) {
 	let $card = $( event.target ).closest( ".js_investment_card" );
+
+	// Update the Share parameters
+	var investmentId = $card.data( "id" );
+	var investment = window.__BFS.data.investments.find( function ( investment ) { return investment.ID === investmentId } );
+	var shareURL = investment.__custom.url;
+	var shareDescription;
+	if ( investment.acf.default_payment_mode ) {
+		if ( $card.hasClass( "show-emi" ) ) {
+			shareURL += "?pm=lumpsum";
+			shareDescription = investment.acf.title.lumpsum;
+		}
+		else
+			shareDescription = investment.acf.title.emi;
+	}
+	else {
+		if ( $card.hasClass( "show-emi" ) )
+			shareDescription = investment.acf.title.lumpsum;
+		else {
+			shareURL += "?pm=emi";
+			shareDescription = investment.acf.title.emi;
+		}
+	}
+	$card.attr( "data-description", shareDescription );
+	$card.attr( "data-url", shareURL );
+
+	// Toggle the payment mode
 	$card.toggleClass( "show-emi" );
 } );
 
@@ -165,18 +191,23 @@ $( ".js_section_investment" ).on( "change", ".js_filter", function ( event ) {
 		$investments.removeClass( "show-emi flipped" );
 		$investments.each( function ( _i, domEl ) {
 			var $card = $( domEl );
-			var investment = investments[ _i ].acf;
-			$card.find( ".js_yield_amount" ).text( investment.yield.amount );
-			$card.find( ".js_yield_duration" ).text( investment.yield.duration );
-			$card.find( ".js_rent_amount" ).text( investment.rent.amount );
-			$card.find( ".js_rent_duration" ).text( investment.rent.duration );
-			$card.find( ".js_title_lumpsum" ).text( investment.title.lumpsum );
-			$card.find( ".js_title_emi" ).text( investment.title.emi );
-			$card.find( ".js_cost" ).text( investment.cost );
-			$card.find( ".js_minimum_investment" ).text( investment.minimum_investment );
-			$card.find( ".default_payment_mode" ).text( investment.minimum_investment );
-			$card.find( ".js_toggle_payment_mode" ).prop( "checked", investment.default_payment_mode )
-			if ( investment.default_payment_mode )
+			var investment = investments[ _i ];
+			$card.find( ".js_yield_amount" ).text( investment.acf.yield.amount );
+			$card.find( ".js_yield_duration" ).text( investment.acf.yield.duration );
+			$card.find( ".js_rent_amount" ).text( investment.acf.rent.amount );
+			$card.find( ".js_rent_duration" ).text( investment.acf.rent.duration );
+			$card.find( ".js_title_lumpsum" ).text( investment.acf.title.lumpsum );
+			$card.find( ".js_title_emi" ).text( investment.acf.title.emi );
+			$card.find( ".js_cost" ).text( investment.acf.cost );
+			$card.find( ".js_minimum_investment" ).text( investment.acf.minimum_investment );
+			$card.find( ".default_payment_mode" ).text( investment.acf.minimum_investment );
+			$card.find( ".js_toggle_payment_mode" ).prop( "checked", investment.acf.default_payment_mode )
+
+			$card.attr( "data-title", investment.post_title );
+			$card.attr( "data-description", investment.acf.default_payment_mode ? investment.acf.title.emi : investment.acf.title.lumpsum );
+			$card.attr( "data-url", investment.__custom.url );
+
+			if ( investment.acf.default_payment_mode )
 				$card.addClass( "show-emi" );
 		} )
 
