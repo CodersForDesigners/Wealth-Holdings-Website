@@ -11,9 +11,9 @@ require_once __DIR__ . '/../inc/above.php';
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 medium-10 medium-offset-1 xlarge-8 xlarge-offset-2 space-min">
-				<h3><?= $thePost[ 'post_title' ] ?></h3>
+				<h3><?= $thePost->get( 'post_title' ) ?></h3>
 
-				<?= $thePost[ 'post_content' ] ?>
+				<?= $thePost->get( 'post_content' ) ?>
 
 			</div>
 		</div>

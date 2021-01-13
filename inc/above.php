@@ -38,7 +38,7 @@ $pageUrl = $siteUrl . '/' . $requestPath;
 
 // Build the Page Title ( if an explicit one is set, use that )
 if ( cmsIsEnabled() and ! empty( $thePost ) )
-	$pageTitle = ( $pageTitle ?? $thePost[ 'post_title' ] ) . ' | ' . $siteTitle;
+	$pageTitle = ( $pageTitle ?? $thePost->get( 'post_title' ) ) . ' | ' . $siteTitle;
 else
 	$pageTitle = empty( $pageTitle ) ? $siteTitle : ( $pageTitle . ' | ' . $siteTitle );
 

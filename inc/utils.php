@@ -67,7 +67,7 @@ function establishContext () {
 
 	$thePost = getCurrentPost( $urlSlug, $postType );
 	if ( ! empty( $thePost ) )
-		$postType = $thePost[ 'post_type' ];
+		$postType = $thePost->get( 'post_type' );
 
 	if ( empty( $thePost ) and ! in_array( $postType, [ 'page', null ] ) ) {
 		// echo 'Please create a corresponding page or post with the slug' . '"' . $urlSlug . '"' . 'in the CMS.';
@@ -82,7 +82,7 @@ function establishContext () {
 		exit;
 	}
 	else if ( ! empty( $thePost ) )
-		$postId = $thePost[ 'ID' ];
+		$postId = $thePost->get( 'ID' );
 
 }
 
@@ -142,7 +142,7 @@ function getContent ( $fallback, $field, $context = null ) {
 
 	if ( empty( $context ) ) {
 		// If the page is contextual to a post, then set that as the context
-		$context = $thePost ? $thePost[ 'ID' ] : 'options';
+		$context = $thePost ? $thePost->get( 'ID' ) : 'options';
 	}
 	else if ( is_string( $context ) ) {
 		if ( $context === 'navigation' ) {
@@ -185,7 +185,7 @@ function getContent ( $fallback, $field, $context = null ) {
 		// If no content was found, search in underlying native post object
 		if ( empty( $content ) and ! empty( $thePost ) ) {
 			if ( $currentContext and ( ! is_string( $currentContext ) ) )
-				$content = $thePost[ $fieldParts[ 0 ] ] ?? null;
+				$content = $thePost->get( $fieldParts[ 0 ] ) ?? null;
 			if ( empty( $content ) )
 				continue;
 		}
@@ -250,7 +250,7 @@ function getNavigationMenu ( $name ) {
 		if ( ! empty( $item[ 'selectorOf' ] ) ) {
 			global $thePost;
 			$item[ 'type' ] = 'post-selector';
-			$item[ 'posts' ] = getPostsOf( $item[ 'selectorOf' ], null, $thePost[ 'ID' ] ?? [ ] );
+			$item[ 'posts' ] = getPostsOf( $item[ 'selectorOf' ], null, $thePost->get( 'ID' ) ?? [ ] );
 			$item[ 'classes' ][ ] = 'no-pointer';
 		}
 		else
@@ -310,20 +310,9 @@ function isOnHTTPS () {
 function getCurrentPost ( $slug, $type = null ) {
 
 	if ( ! cmsIsEnabled() )
-		return [ ];
+		return null;
 
-	$post = null;
-	if ( ! empty( $type ) )
-		$post = get_page_by_path( $slug, OBJECT, $type );
-	else
-		$post = get_page_by_path( $slug, OBJECT, 'post' ) ?: get_page_by_path( $slug, OBJECT, 'page' );
-
-	if ( is_object( $post ) )
-		$post = get_object_vars( $post );
-	if ( ! is_array( $post ) )
-		$post = [ ];
-
-	return $post;
+	return BFS\CMS::getPostBySlug( $slug, $type );
 
 }
 

@@ -75,15 +75,16 @@ class CMS {
 		// Cache the post
 		self::$cache[ $id ] = $post;
 
-		return $post;
+		return new Content( $post[ 'ID' ] );
 
 	}
 
-	public static function getPostBySlug ( $slug ) {
+	public static function getPostBySlug ( $slug, $type = null ) {
 
 		global $postType;
+		$type = $type ?: $postType ?: [ 'post', 'page', 'attachment' ];
 
-		$postFromDB = get_page_by_path( $slug, OBJECT, $postType ?: [ 'page', 'attachment' ] ) ?? null;
+		$postFromDB = get_page_by_path( $slug, OBJECT, $type ) ?? null;
 
 		if ( ! $postFromDB )
 			return null;
@@ -101,7 +102,7 @@ class CMS {
 		self::$cache[ $post[ 'ID' ] ] = $post;
 		self::$cache[ $slug ] = $post;
 
-		return $post;
+		return new Content( $post[ 'ID' ] );
 
 	}
 
