@@ -21,6 +21,15 @@ $investmentCategories = array_map( function ( $el ) {
 	'categories',	// return this field from the field group
 	get_page_by_title( 'investments', OBJECT, 'acf-field-group' )->ID
 )[ 'sub_fields' ] );
+// Determine whether to show the "View All" overlay at all in the first place
+$numberOfInvestments = count( $investments );
+$hideInvestmentsPagination = '';
+if ( $numberOfInvestments <= 9 )
+	$hideInvestmentsPagination .= 'hide-large hide-xlarge';
+if ( $numberOfInvestments <= 6 )
+	$hideInvestmentsPagination .= ' hide-medium';
+if ( $numberOfInvestments <= 3 )
+	$hideInvestmentsPagination .= ' hide-small';
 
 $webinarDate = getContent( 'Registered interest at ' . date( 'h:ia, d/m/Y' ), 'webinar_date' );
 
@@ -321,7 +330,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 			</div>
 		</div>
 	</div>
-	<div class="view-all-toggle row space-75-top-bottom">
+	<div class="view-all-toggle row space-75-top-bottom <?= $hideInvestmentsPagination ?>">
 		<div class="container">
 			<div class="columns small-12 text-center">
 				<div class="inline view-all-toggle-button h4 strong space-25 js_view_all" tabindex="-1">
