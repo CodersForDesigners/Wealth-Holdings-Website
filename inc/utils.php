@@ -66,6 +66,9 @@ function establishContext () {
 	global $hasDedicatedTemplate;
 
 	$thePost = getCurrentPost( $urlSlug, $postType );
+	if ( ! empty( $thePost ) )
+		$postType = $thePost[ 'post_type' ];
+
 	if ( empty( $thePost ) and ! in_array( $postType, [ 'page', null ] ) ) {
 		// echo 'Please create a corresponding page or post with the slug' . '"' . $urlSlug . '"' . 'in the CMS.';
 		http_response_code( 404 );

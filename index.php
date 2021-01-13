@@ -56,7 +56,7 @@ else if ( count( explode( '/', $requestPath ) ) === 2 ) {
 }
 // Else fallback to the default template
 else {
-	$postType = 'post';
+	// $postType = 'post';
 	$urlSlug = $requestPath;
 	$filename = $documentRoot . '/pages/default.php';
 	return require_once $filename;
