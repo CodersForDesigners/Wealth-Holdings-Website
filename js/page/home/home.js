@@ -10,6 +10,13 @@ $( function () {
  * ----- INVESTMENTS
  *
  */
+// Set the `content-height` of the section so that CSS can tap into for the "View All" slide-down transition
+var domInvestmentTileGrid = $( ".js_section_investment .js_investment_card_container" ).get( 0 );
+domInvestmentTileGrid.style.setProperty( "--content-height", domInvestmentTileGrid.scrollHeight + "px" );
+	// Track the height as and when the viewport gets resized
+$( window ).on( "resize", debounce( function ( event ) {
+	domInvestmentTileGrid.style.setProperty( "--content-height", domInvestmentTileGrid.scrollHeight + "px" );
+} ) );
 
 // Clone an investment card and store it as a template
 var $investmentCardCopy = $( $( ".js_section_investment" ).find( ".js_investment_card" ).first().get( 0 ).outerHTML );

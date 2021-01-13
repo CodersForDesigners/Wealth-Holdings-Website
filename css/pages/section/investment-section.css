@@ -12,12 +12,12 @@
 	grid-template-columns: 1fr;
 	grid-gap: var(--space-25);
 	counter-reset: order;
-	max-height: 1165px;
+	max-height: 1765px;
 	overflow: hidden;
 	transition: max-height 2s ease-in;
 }
 .investment-section.view-all .tile-grid {
-	max-height: 5000px;
+	max-height: var(--content-height,none);
 }
 .investment-section .tile-grid .tile {
 	position: relative;
@@ -249,11 +249,8 @@
 @media( min-width: 640px )  {
 	.investment-section .tile-grid {
 		grid-template-columns: 1fr 1fr;
-		max-height: 1200px;
+		max-height: 1720px;
 		transition: max-height 1s ease-in;
-	}
-	.investment-section.view-all .tile-grid {
-		max-height: 2500px;
 	}
 
 	.investment-section .tile-grid .tile.banner .sub-tile:nth-child(1) {
@@ -271,7 +268,7 @@
 @media( min-width: 1040px ) {
 	.investment-section .tile-grid {
 		grid-template-columns: 1fr 1fr 1fr;
-		max-height: none;
+		max-height: 2010px;
 	}
 	.investment-section .tile-grid .tile.investment .front {
 		padding: var(--space-25);
@@ -310,6 +307,9 @@
 
 }
 @media( min-width: 1480px ) {
+	.investment-section .tile-grid {
+		max-height: 2010px;
+	}
 	.investment-section .tile-grid .tile.investment .front .toggle .toggle-button .pill {
 		width: 62%;
 	}

@@ -39,7 +39,6 @@ function smoothScrollTo ( locationHash ) {
 
 
 
-
 /*
  *
  * Recur a given function every given interval
@@ -74,6 +73,29 @@ function executeEvery ( interval, fn ) {
 			running = false;
 		}
 	}
+
+}
+
+
+
+/*
+ *
+ * Debounce a given function if invoked within the given period
+ *
+ */
+function debounce ( fn, duration ) {
+
+	duration = ( duration || 1 ) * 1000;
+	var timeoutId;
+
+	return function () {
+		// Clear any previously scheduled execution *always*
+		window.clearTimeout( timeoutId );
+		// Schedule a fresh execution of the provided function
+		timeoutId = setTimeout( function () {
+			window.requestAnimationFrame( fn );
+		}, duration );
+	};
 
 }
 
