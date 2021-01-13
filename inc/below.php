@@ -52,6 +52,7 @@
 									<a href="" class="link h6 strong block text-red-2 line-height-large">How does it work?</a>
 									<a href="" class="link h6 strong block text-red-2 line-height-large">FAQs</a>
 									<a href="" class="link h6 strong block text-red-2 line-height-large">Testimonials</a>
+									<a href="" class="link h6 strong block text-red-2 line-height-large">Help Center</a>
 								</div>
 							</div>
 						</div>
@@ -69,6 +70,8 @@
 		<!-- END : Lazaro Signature -->
 
 	</div><!-- END : Page Wrapper -->
+
+	<?php require_once 'navigation.php'; ?>
 
 	<?php require_once 'modals.php' ?>
 

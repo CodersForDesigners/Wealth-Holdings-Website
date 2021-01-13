@@ -93,14 +93,6 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 <!-- END: Sample Section -->
 
 
-<!-- Header Section -->
-<!-- <section class="header-section">
-	Logo
-	Navigation
-</section> -->
-<!-- END: Header Section -->
-
-
 <!-- Landing Section -->
 <section class="landing-section fill-red-2 space-50-top" id="landing-section" data-section-title="Landing Section" data-section-slug="landing-section">
 	<div class="container">
