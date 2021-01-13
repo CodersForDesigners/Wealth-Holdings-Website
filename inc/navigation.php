@@ -9,7 +9,7 @@ $navigationMenuItems = getNavigationMenu( 'Primary' );
 
 ?>
 
-<? /*
+<?php /*
 <!-- Header Section -->
 <section class="header-section">
 	<div class="container">
