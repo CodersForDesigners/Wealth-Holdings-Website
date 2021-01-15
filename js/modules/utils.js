@@ -127,6 +127,38 @@ function debounce ( fn, duration ) {
 
 /*
  *
+ * Throttle the execution of a given function to a fixed frequency interval, regardless of how many times it is invoked
+ *
+ */
+function throttle ( fn, duration ) {
+
+	duration = ( duration || 1 ) * 1000;
+	var timeoutId = null;
+	var frameId = null;
+
+	return function () {
+		// If the function is yet to be executed, do nothing and simply return
+		if ( frameId !== null || timeoutId !== null )
+			return;
+
+		// Else, schedule the function to execute at the end of the given interval
+		var context = this;
+		var functionArguments = Array.prototype.slice.call( arguments );
+		timeoutId = setTimeout( function () {
+			frameId = window.requestAnimationFrame( function () {
+				fn.apply( context, functionArguments );
+				frameId = null;
+				timeoutId = null;
+			} );
+		}, duration );
+	};
+
+}
+
+
+
+/*
+ *
  * Add given data to the data layer variable established by GTM
  *
  */
