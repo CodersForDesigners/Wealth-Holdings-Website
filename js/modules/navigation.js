@@ -99,7 +99,6 @@ onScroll( function () {
 		currentScrollY = window.scrollY || document.body.scrollTop;
 
 		var scrollAmount = currentScrollY - previousScrollY;
-		console.log( scrollAmount )
 
 		if ( Math.abs( scrollAmount ) > scrollThreshold ) {
 			if ( scrollAmount > 0 )
