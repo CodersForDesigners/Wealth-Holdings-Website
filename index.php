@@ -58,6 +58,6 @@ else if ( count( explode( '/', $requestPath ) ) === 2 ) {
 else {
 	// $postType = 'post';
 	$urlSlug = $requestPath;
-	$filename = $documentRoot . '/pages/default.php';
+	$filename = $documentRoot . '/pages/post.php';
 	return require_once $filename;
 }

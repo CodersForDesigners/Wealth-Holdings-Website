@@ -77,9 +77,3 @@ http_response_code( 200 );
 		<div id="page-content">
 
 
-			<!-- Header Section -->
-			<section class="header-section">
-				
-			</section>
-			<!-- END: Header Section -->
-

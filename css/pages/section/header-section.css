@@ -1,0 +1,16 @@
+/*
+ * Header Section
+ */
+
+.header-section {}
+.header-section .logo {
+	width: 165px;
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {
+	.header-section .logo {
+		width: 220px;
+	}
+}
