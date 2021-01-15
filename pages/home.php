@@ -130,6 +130,57 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- Benefits Section -->
+<style type="text/css">
+
+	.benefits-section .minimum-investment-amount,
+	.benefits-section .emi,
+	.benefits-section .lumpsum {
+		perspective: 5000px;
+		cursor: pointer;
+	}
+	.benefits-section .minimum-investment-amount:focus,
+	.benefits-section .emi:focus,
+	.benefits-section .lumpsum:focus {
+		outline: none;
+	}
+	.benefits-section .front,
+	.benefits-section .back {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transition: transform 0.4s ease-out;
+		backface-visibility: hidden;
+	}
+	.benefits-section .front {
+		padding: var(--space-50);
+		transform: rotateY( 0turn );
+	}
+	@media ( min-width: 1040px ) {
+		.benefits-section .front {
+			padding: var(--space-25);
+		}
+	}
+	.benefits-section .back {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transform: rotateY( 0.5turn );
+	}
+
+	.benefits-section :focus .front,
+	.benefits-section :focus:focus-within .front,
+	.benefits-section .flipped .front {
+		transform: rotateY( 0.5turn );
+	}
+	.benefits-section :focus .back,
+	.benefits-section :focus:focus-within .back,
+	.benefits-section .flipped .back {
+		transform: rotateY( 1turn );
+	}
+
+</style>
 <section class="benefits-section fill-red-2 space-25-top space-75-bottom" id="benefits-section" data-section-title="Benefits Section" data-section-slug="benefits-section">
 	<div class="container">
 		<div class="row">
@@ -151,10 +202,18 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<!-- (3.) -->
 					<div class="h6 strong">own an apartment with <br>a business model</div>
 				</div>
-				<div class="tile t-4 fill-blue-4">
-					<!-- (4.) -->
-					<div class="h6 strong space-25-bottom"><span class="text-red-2">minimum</span> investment <br>amount</div>
-					<div class="hn strong text-red-2">₹14 Lakhs</div>
+				<div class="tile t-4 minimum-investment-amount" tabindex="-1">
+					<div class="front fill-blue-4">
+						<!-- (4.) -->
+						<div class="h6 strong space-25-bottom"><span class="text-red-2">minimum</span> investment <br>amount</div>
+						<div class="hn strong text-red-2">₹14 Lakhs</div>
+					</div>
+					<div class="back fill-blue-4">
+						<div>
+							<a class="label block text-lowercase" href="/lumpsum">Read More <span class="material-icons">subject</span></a>
+							<a class="label inline text-lowercase js_modal_trigger" data-mod-id="share" href="">Share <span class="material-icons" style="transform: scaleX(-1);">reply</span></a>
+						</div>
+					</div>
 				</div>
 				<div class="tile t-5 fill-red-3 hide-small">
 					<!-- (5.) -->
@@ -164,19 +223,35 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<!-- (6.) -->
 					<div class="h6 strong">walking distance from SEZs, tech parks & schools</div>
 				</div>
-				<div class="tile t-7 fill-dark">
-					<!-- (7.) -->
-					<div class="h5 strong space-min-bottom">EMI</div>
-					<div class="label strong">Invest only the down payment and <span class="text-red-2">let us fund your EMIs.</span></div>
+				<div class="tile t-7 emi" tabindex="-1">
+					<div class="front fill-dark">
+						<!-- (7.) -->
+						<div class="h5 strong space-min-bottom">EMI</div>
+						<div class="label strong">Invest only the down payment and <span class="text-red-2">let us fund your EMIs.</span></div>
+					</div>
+					<div class="back fill-dark">
+						<div>
+							<a class="label block text-lowercase" href="/lumpsum">Read More <span class="material-icons">subject</span></a>
+							<a class="label inline text-lowercase js_modal_trigger" data-mod-id="share" href="">Share <span class="material-icons" style="transform: scaleX(-1);">reply</span></a>
+						</div>
+					</div>
 				</div>
 				<div class="tile t-8" style="background-image: url('../media/char-4.png<?php echo $ver ?>'); background-size: cover; background-position: center center;">
 					<!-- (8.) -->
 				</div>
-				<div class="tile t-9 fill-dark">
-					<!-- (9.) -->
-					<div class="h5 strong space-min-bottom">Lumpsum</div>
-					<!-- <div class="label strong">Make a <span class="text-red-2">one-time investment</span> <br>and enjoy a monthly fixed <br>rental income.</div> -->
-					<div class="label strong">Get a monthly fixed income, <br>on a <span class="text-red-2">one-time investment.</span></div>
+				<div class="tile t-9 lumpsum" tabindex="-1">
+					<div class="front fill-dark">
+						<!-- (9.) -->
+						<div class="h5 strong space-min-bottom">Lumpsum</div>
+						<!-- <div class="label strong">Make a <span class="text-red-2">one-time investment</span> <br>and enjoy a monthly fixed <br>rental income.</div> -->
+						<div class="label strong">Get a monthly fixed income, <br>on a <span class="text-red-2">one-time investment.</span></div>
+					</div>
+					<div class="back fill-dark">
+						<div>
+							<a class="label block text-lowercase" href="/lumpsum">Read More <span class="material-icons">subject</span></a>
+							<a class="label inline text-lowercase js_modal_trigger" data-mod-id="share" href="">Share <span class="material-icons" style="transform: scaleX(-1);">reply</span></a>
+						</div>
+					</div>
 				</div>
 				<div class="tile t-10">
 					<!-- (10.) -->
