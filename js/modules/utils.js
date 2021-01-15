@@ -41,6 +41,21 @@ function smoothScrollTo ( locationHash ) {
 
 /*
  *
+ * Schedule a function to execute on the *next* browser paint
+ *
+ */
+function onNextPaint ( fn ) {
+	return window.requestAnimationFrame( function () {
+		return window.requestAnimationFrame( function () {
+			return fn();
+		} );
+	} );
+}
+
+
+
+/*
+ *
  * Recur a given function every given interval
  *
  */
