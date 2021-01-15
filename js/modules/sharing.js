@@ -11,7 +11,35 @@ $( function () {
 var $shareDialog = $( ".js_modal_box_content[ data-mod-id = 'share' ]" );
 
 /*
- * ---- Show the "More" option on the Share dialog if the device supports the Web Share API
+ *
+ * If the device supports the Web Share API,
+ * 	then do not open the share dialog modal,
+ * 	instead directly trigger the *native* share dialog.
+ *
+ */
+if ( navigator.share ) {
+	var $shareDialogTriggers = $( ".js_modal_trigger[ data-mod-id = 'share' ]" );
+	$shareDialogTriggers.each( function ( _i, domEl ) {
+		domEl.className = domEl.className.replace( "js_modal_trigger", "" );
+		domEl.removeAttribute( "data-mod-id" );
+	} );
+	$shareDialogTriggers.on( "click", function ( event ) {
+		event.preventDefault();
+		var domShareable = $( event.target ).closest( ".js_shareable" ).get( 0 );
+		var parameters = getSharingParameters( domShareable );
+		var title = parameters.title;
+		var text = parameters.description;
+		var url = parameters.url;
+		return navigator.share( {
+			title: title,
+			text: text,
+			url: url
+		} );
+	} );
+}
+
+/*
+ * ---- {REDUNDANT} Show the "More" option on the Share dialog if the device supports the Web Share API
  */
 let $moreOption = $shareDialog.find( ".js_share_more_options" );
 if ( navigator.share )
