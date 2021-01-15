@@ -71,20 +71,17 @@ $( document ).on( "click", "a[ href ]", function ( event ) {
  */
 // Initiate the menu open/close transition sequence on clicking the menu toggle button
 var $menuToggle = $( ".js_menu_toggle" );
-$menuToggle.on( "click", function () {
+$menuToggle.on( "click", function toggleNavMenu () {
 	var $body = $( window.document.body );
-
-	$body.toggleClass( "modal-open" );
-	$menuToggle
-		.prop( "disabled", true )
-		.addClass( "no-pointer" );
-
-	onNextPaint( function () {
-		$body.toggleClass( "modal-nav" );
-		$menuToggle
-			.prop( "disabled", false )
-			.removeClass( "no-pointer" );
-	} );
+	if ( $body.hasClass( "modal-nav" ) )
+		$body.removeClass( "modal-open modal-nav" );
+	else
+		$body.addClass( "modal-open modal-nav" );
+} );
+// Initiate only the close transition sequence on clicking anywhere outside of the navigation menu
+var $navCloseArea = $( ".js_nav_close_area" );
+$navCloseArea.on( "click", function closeNavMenu () {
+	$body.removeClass( "modal-open modal-nav" );
 } );
 
 // Show or Hide the menu toggle button on mobile depending on the direction of scroll

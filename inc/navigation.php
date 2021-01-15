@@ -56,7 +56,7 @@ $navigationMenuItems = \BFS\CMS::getNavigation( 'Home', '/' );
 				<a href="<?= $item[ 'url' ] ?>" class="link h5 strong block line-height-large"><?= $item[ 'title' ] ?></a>
 			<?php endforeach; ?>
 		</div>
-		<div tab-index="-1" class="nav-close-area"></div>
+		<div tab-index="-1" class="nav-close-area js_nav_close_area"></div>
 	</div>
 </section>
 <!-- END: Navigation Section -->
