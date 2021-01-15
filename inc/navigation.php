@@ -5,7 +5,7 @@
  * Build out the data-structure driving the page navigation markup
  *
  */
-$navigationMenuItems = getNavigationMenu( 'Primary' );
+$navigationMenuItems = \BFS\CMS::getNavigation( 'Home', '/' );
 
 ?>
 
@@ -52,12 +52,9 @@ $navigationMenuItems = getNavigationMenu( 'Primary' );
 	<div class="container text-right">
 		<div class="nav-list inline fill-blue-4 text-left space-75 space-200-bottom">
 			<div class="title h2 strong text-blue-3 space-50-bottom">Menu</div>
-			<a tab-index="-1" href="" class="link h5 strong block line-height-large">Benefits</a>
-			<a tab-index="-1" href="" class="link h5 strong block line-height-large">Investment</a>
-			<a tab-index="-1" href="" class="link h5 strong block line-height-large">How does it work?</a>
-			<a tab-index="-1" href="" class="link h5 strong block line-height-large">FAQs</a>
-			<a tab-index="-1" href="" class="link h5 strong block line-height-large">Testimonials</a>
-			<a tab-index="-1" href="" class="link h5 strong block line-height-large">Help Center</a>
+			<?php foreach ( $navigationMenuItems as $item ) : ?>
+				<a href="<?= $item[ 'url' ] ?>" class="link h5 strong block line-height-large"><?= $item[ 'title' ] ?></a>
+			<?php endforeach; ?>
 		</div>
 		<div tab-index="-1" class="nav-close-area"></div>
 	</div>

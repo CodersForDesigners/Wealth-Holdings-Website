@@ -106,6 +106,24 @@ class CMS {
 
 	}
 
+	public static function getNavigation ( $name, $urlPrefix = false ) {
+
+		$menuItems = wp_get_nav_menu_items( $name );
+		// Convert from class instances to regular associate arrays
+		foreach ( $menuItems as &$item )
+			$item = get_object_vars( $item );
+		unset( $item );
+		// Prepend a prefix if provided
+		if ( $urlPrefix )
+			foreach ( $menuItems as &$item )
+				if ( $item[ 'url' ][ 0 ] === '#' )
+					$item[ 'url' ] = $urlPrefix . $item[ 'url' ];
+		unset( $item );
+
+		return $menuItems;
+
+	}
+
 }
 
 class Content {
