@@ -87,6 +87,32 @@ $menuToggle.on( "click", function () {
 	} );
 } );
 
+// Show or Hide the menu toggle button on mobile depending on the direction of scroll
+onScroll( function () {
+	var currentScrollY = window.scrollY || document.body.scrollTop;
+	var previousScrollY = currentScrollY;
+	var scrollThreshold = 50;
+
+	var $body = $( document.body );
+
+	return function () {
+		currentScrollY = window.scrollY || document.body.scrollTop;
+
+		var scrollAmount = currentScrollY - previousScrollY;
+		console.log( scrollAmount )
+
+		if ( Math.abs( scrollAmount ) > scrollThreshold ) {
+			if ( scrollAmount > 0 )
+				$body.addClass( "hide-nav-toggle" );
+			else if ( scrollAmount < 0 )
+				$body.removeClass( "hide-nav-toggle" );
+		}
+
+		previousScrollY = currentScrollY;
+	};
+
+}(), { frequencyMode: "throttle", interval: 0.25 } );
+
 
 
 /*
