@@ -64,7 +64,7 @@ $( function () {
 
 	// Close Modal Box,
 	// on clicking the close button
-	$( ".js_modal_close" ).on( "click", closeModal );
+	$( document ).on( "click", ".js_modal_close", closeModal );
 	// on hitting the escape key
 	$( document ).on( "keyup", function ( event ) {
 
