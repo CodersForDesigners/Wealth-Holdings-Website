@@ -114,6 +114,12 @@
 	transform: rotate(-45deg);
 }
 
+@media( max-width: 639px )  {
+	.hide-nav-toggle .menu-section .menu-button {
+		transform: translateY( calc( var(--space-150) * 1 ) );
+	}
+}
+
 @media( min-width: 640px )  {
 	.menu-section {
 		top: 0;
