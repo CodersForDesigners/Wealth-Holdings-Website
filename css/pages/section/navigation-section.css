@@ -115,7 +115,7 @@
 }
 
 @media( max-width: 639px )  {
-	.hide-nav-toggle .menu-section .menu-button {
+	.hide-nav-toggle:not(.modal-open) .menu-section .menu-button {
 		transform: translateY( calc( var(--space-150) * 1 ) );
 	}
 }
