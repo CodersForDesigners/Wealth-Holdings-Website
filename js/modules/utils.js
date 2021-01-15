@@ -197,3 +197,56 @@ window.__BFS.renderTemplate = function () {
 	}
 
 }();
+
+
+
+/*
+ *
+ * Managerial Hub for "scroll" event handlers
+ *
+ */
+function onScroll ( fn, options ) {
+
+	options = options || { };
+
+	// Create frequency controlled versions of the provided function
+	if ( options.frequencyMode === "debounce" )
+		fn = debounce( fn, options.interval );
+	else if ( options.frequencyMode === "throttle" )
+		fn = throttle( fn, options.interval );
+	else if ( options.frequencyMode !== false || options.frequencyMode !== "none" || options.frequencyMode !== "default" )
+		console.log( "WARNING: Please provide an explicity frequency mode so that your intention is explicit and clear." );
+
+	// Add the provided function to the queue
+	window.__BFS = window.__BFS || { };
+	window.__BFS.bevahior = window.__BFS.bevahior || { };
+	window.__BFS.bevahior.scrollHandlers = window.__BFS.bevahior.scrollHandlers || [ ];
+	var scrollHandlers = window.__BFS.bevahior.scrollHandlers;
+	scrollHandlers.push( { fn: fn, options: options } );
+
+	if ( scrollHandlers.length > 1 )
+		return;
+
+	// Set up the scroll event handling mechanism
+	initializeGlobalScrollHandler();
+
+}
+
+function initializeGlobalScrollHandler () {
+
+	// var currentScrollY = window.scrollY || document.body.scrollTop;
+	// var previousScrollY = currentScrollY;
+	var scrollHandlers = window.__BFS.bevahior.scrollHandlers;
+	function globalScrollHandler ( event ) {
+		var context = this;
+		// Call all the registered scroll handlers one after the other, providing useful data
+		var _i;
+		for ( _i = 0; _i < scrollHandlers.length; _i += 1 )
+			scrollHandlers[ _i ].fn.call( context, event );
+
+	};
+	window.__BFS.bevahior.globalScrollHandler = globalScrollHandler;
+
+	window.addEventListener( "scroll", globalScrollHandler, true );
+
+}
