@@ -57,6 +57,9 @@ $( document ).on( "click", "a[ href ]", function ( event ) {
 	event.stopPropagation();
 	event.stopImmediatePropagation();
 
+	// Close the navigation menu
+	toggleNavMenu();
+
 	smoothScrollTo( sectionId );
 
 	return false;
