@@ -151,6 +151,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 		width: 100%;
 		height: 100%;
 		transition: transform 0.4s ease-out;
+		-webkit-backface-visibility: hidden;
 		backface-visibility: hidden;
 	}
 	.benefits-section .front {
