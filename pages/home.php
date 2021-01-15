@@ -577,7 +577,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- Testimonials Section -->
-<section class="testimonials-section fill-light space-75-top space-25-bottom hidden" id="testimonials-section" data-section-title="Testimonials Section" data-section-slug="testimonials-section">
+<section class="testimonials-section fill-light space-75-top space-25-bottom" id="testimonials-section" data-section-title="Testimonials Section" data-section-slug="testimonials-section">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12">
