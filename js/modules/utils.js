@@ -64,13 +64,14 @@ function executeEvery ( interval, fn ) {
 	interval = ( interval || 1 ) * 1000;
 
 	var timeoutId;
+	var frameId;
 	var running = false;
 
 	return {
 		_schedule: function () {
 			var _this = this;
-			timeoutId = setTimeout( function () {
-				window.requestAnimationFrame( function () {
+			timeoutId = window.setTimeout( function () {
+				frameId = window.requestAnimationFrame( function () {
 					fn();
 					_this._schedule()
 				} );
@@ -83,7 +84,9 @@ function executeEvery ( interval, fn ) {
 			this._schedule();
 		},
 		stop: function () {
-			clearTimeout( timeoutId );
+			window.cancelAnimationFrame( frameId );
+			frameId = null;
+			window.clearTimeout( timeoutId );
 			timeoutId = null;
 			running = false;
 		}
