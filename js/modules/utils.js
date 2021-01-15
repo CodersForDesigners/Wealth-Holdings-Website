@@ -102,13 +102,19 @@ function debounce ( fn, duration ) {
 
 	duration = ( duration || 1 ) * 1000;
 	var timeoutId;
+	var frameId;
 
 	return function () {
 		// Clear any previously scheduled execution *always*
+		window.cancelAnimationFrame( frameId );
 		window.clearTimeout( timeoutId );
 		// Schedule a fresh execution of the provided function
+		var context = this;
+		var functionArguments = Array.prototype.slice.call( arguments );
 		timeoutId = setTimeout( function () {
-			window.requestAnimationFrame( fn );
+			frameId = window.requestAnimationFrame( function () {
+				fn.apply( context, functionArguments );
+			} );
 		}, duration );
 	};
 
