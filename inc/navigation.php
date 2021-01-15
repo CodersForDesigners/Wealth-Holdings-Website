@@ -34,14 +34,14 @@ $navigationMenuItems = getNavigationMenu( 'Primary' );
 <!-- Menu Section -->
 <section class="menu-section">
 	<div class="container">
-		<div class="menu-button fill-blue-4 inline" tabindex="-1">
+		<button class="menu-button fill-blue-4 inline js_menu_toggle" tabindex="-1">
 			<span class="menu-label h6"></span>
 			<span class="menu-icon">
 				<span></span>
 				<span></span>
 				<span></span>
 			</span>
-		</div>
+		</button>
 	</div>
 </section>
 <!-- END: Menu Section -->

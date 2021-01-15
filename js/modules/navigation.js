@@ -64,6 +64,30 @@ $( document ).on( "click", "a[ href ]", function ( event ) {
 } );
 
 
+/*
+ *
+ * ----- Menu
+ *
+ */
+// Initiate the menu open/close transition sequence on clicking the menu toggle button
+var $menuToggle = $( ".js_menu_toggle" );
+$menuToggle.on( "click", function () {
+	var $body = $( window.document.body );
+
+	$body.toggleClass( "modal-open" );
+	$menuToggle
+		.prop( "disabled", true )
+		.addClass( "no-pointer" );
+
+	onNextPaint( function () {
+		$body.toggleClass( "modal-nav" );
+		$menuToggle
+			.prop( "disabled", false )
+			.removeClass( "no-pointer" );
+	} );
+} );
+
+
 
 /*
  *

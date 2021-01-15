@@ -25,6 +25,7 @@
 .menu-section .menu-button {
 	padding: 0 calc(var(--space-min)*1.5);
 	font-size: 0;
+	letter-spacing: normal;
 	box-shadow: 0 0 0 2px var(--light);
 	cursor: pointer;
 	transform: translateY( calc( var(--space-150) * -1 ) );

@@ -140,7 +140,7 @@
 }
 
 .no-pointer {
-	pointer-events: none;
+	pointer-events: none !important;
 }
 
 
