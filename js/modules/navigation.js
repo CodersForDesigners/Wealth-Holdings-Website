@@ -69,15 +69,20 @@ $( document ).on( "click", "a[ href ]", function ( event ) {
  * ----- Menu
  *
  */
-// Initiate the menu open/close transition sequence on clicking the menu toggle button
-var $menuToggle = $( ".js_menu_toggle" );
-$menuToggle.on( "click", function toggleNavMenu () {
+/*
+ * ----- Open or close the navigation menu
+ */
+function toggleNavMenu () {
 	var $body = $( window.document.body );
 	if ( $body.hasClass( "modal-nav" ) )
 		$body.removeClass( "modal-open modal-nav" );
 	else
 		$body.addClass( "modal-open modal-nav" );
-} );
+}
+
+// Initiate the menu open/close transition sequence on clicking the menu toggle button
+var $menuToggle = $( ".js_menu_toggle" );
+$menuToggle.on( "click", toggleNavMenu );
 // Initiate only the close transition sequence on clicking anywhere outside of the navigation menu
 var $navCloseArea = $( ".js_nav_close_area" );
 $navCloseArea.on( "click", function closeNavMenu () {
