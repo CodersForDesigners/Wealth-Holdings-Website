@@ -81,7 +81,7 @@ $menuToggle.on( "click", function toggleNavMenu () {
 // Initiate only the close transition sequence on clicking anywhere outside of the navigation menu
 var $navCloseArea = $( ".js_nav_close_area" );
 $navCloseArea.on( "click", function closeNavMenu () {
-	$body.removeClass( "modal-open modal-nav" );
+	$( window.document.body ).removeClass( "modal-open modal-nav" );
 } );
 
 // Show or Hide the menu toggle button on mobile depending on the direction of scroll
