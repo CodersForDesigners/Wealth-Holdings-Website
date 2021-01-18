@@ -1,4 +1,7 @@
 <?php
+
+require_once __DIR__ . '/hooks.php';
+
 /*
  *
  * This script sets up a global-level settings page.
