@@ -22,7 +22,7 @@ add_action( 'acf/init', function () {
 		'name' => 'bfs-investments',
 		'title' => __( 'Investments' ),
 		'description' => __( 'Investments' ),
-		'category' => 'common',
+		'category' => 'wealth-holdings',
 		'icon' => 'money-alt',
 		'align' => 'wide',
 		'mode' => 'edit',
@@ -38,7 +38,7 @@ add_action( 'acf/init', function () {
 		'name' => 'bfs-faqs',
 		'title' => __( 'FAQs' ),
 		'description' => __( 'FAQs' ),
-		'category' => 'common',
+		'category' => 'wealth-holdings',
 		'icon' => 'editor-textcolor',
 		'align' => 'wide',
 		'mode' => 'edit',
@@ -54,7 +54,7 @@ add_action( 'acf/init', function () {
 		'name' => 'bfs-brochures',
 		'title' => __( 'Brochures' ),
 		'description' => __( 'Brochures' ),
-		'category' => 'common',
+		'category' => 'wealth-holdings',
 		'icon' => 'media-document',
 		'align' => 'wide',
 		'mode' => 'edit',
@@ -70,7 +70,7 @@ add_action( 'acf/init', function () {
 		'name' => 'bfs-testimonials',
 		'title' => __( 'Testimonials' ),
 		'description' => __( 'Testimonials' ),
-		'category' => 'common',
+		'category' => 'wealth-holdings',
 		'icon' => 'testimonial',
 		'align' => 'wide',
 		'mode' => 'edit',
@@ -196,3 +196,20 @@ function bfs_theme_setup () {
 }
 
 add_action( 'after_setup_theme', 'bfs_theme_setup' );
+
+
+
+add_action( 'bfs/backend/on-editing-posts', function ( $postType ) {
+
+	// Add a custom block category
+	add_filter( 'block_categories', function ( $categories ) {
+		return array_merge( $categories, [
+			[
+				'slug' => 'wealth-holdings',
+				'title' => __( 'Wealth Holdings', 'bfs' ),
+				'icon' => 'money'
+			]
+		] );
+	} );
+
+} );
