@@ -12,7 +12,7 @@
 	grid-template-columns: 1fr;
 	grid-gap: var(--space-25);
 	counter-reset: order;
-	max-height: 1765px;
+	max-height: 1030px;
 	overflow: hidden;
 	transition: max-height 2s ease-in;
 }
@@ -258,7 +258,7 @@
 @media( min-width: 640px )  {
 	.investment-section .tile-grid {
 		grid-template-columns: 1fr 1fr;
-		max-height: 1720px;
+		max-height: 1075px;
 		transition: max-height 1s ease-in;
 	}
 	.investment-section.view-all-m .tile-grid {
@@ -282,7 +282,7 @@
 @media( min-width: 1040px ) {
 	.investment-section .tile-grid {
 		grid-template-columns: 1fr 1fr 1fr;
-		max-height: 2010px;
+		max-height: 1270px;
 	}
 	.investment-section.view-all-l .tile-grid {
 		max-height: var(--content-height,none);
@@ -327,7 +327,7 @@
 }
 @media( min-width: 1480px ) {
 	.investment-section .tile-grid {
-		max-height: 2010px;
+		max-height: 1665px;
 	}
 	.investment-section.view-all-xl .tile-grid {
 		max-height: var(--content-height,none);
