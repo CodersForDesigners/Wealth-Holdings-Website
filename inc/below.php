@@ -26,7 +26,7 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 							</a> -->
 						</div>
 						<div class="columns small-12 medium-6 large-8 space-50-bottom">
-							<div class="row featured-links">
+							<div class="row featured-links hidden">
 								<div class="columns small-12 large-6 space-50-bottom">
 									<a class="link inline" href="">
 										<div class="h2 inline strong text-red-2 opacity-50 no-wrap">

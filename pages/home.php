@@ -136,7 +136,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 	.benefits-section .emi,
 	.benefits-section .lumpsum {
 		perspective: 5000px;
-		cursor: pointer;
+		/*cursor: pointer;*/
 	}
 	.benefits-section .minimum-investment-amount:focus,
 	.benefits-section .emi:focus,
@@ -170,7 +170,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 		transform: rotateY( 0.5turn );
 	}
 
-	.benefits-section :focus .front,
+	/*.benefits-section :focus .front,
 	.benefits-section :focus:focus-within .front,
 	.benefits-section .flipped .front {
 		transform: rotateY( 0.5turn );
@@ -179,7 +179,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 	.benefits-section :focus:focus-within .back,
 	.benefits-section .flipped .back {
 		transform: rotateY( 1turn );
-	}
+	}*/
 
 </style>
 <section class="benefits-section fill-red-2 space-25-top space-75-bottom" id="benefits-section" data-section-title="Benefits Section" data-section-slug="benefits-section">
@@ -365,13 +365,13 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						</div>
 						<div class="action space-25-top">
 							<button class="fill-red-2 js_investment_get_details">Get Details</button>
-							<button class="fill-red-2 button-icon js_modal_trigger" data-mod-id="share" style="background-image: url('../media/icon/icon-share-more.svg<?php echo $ver ?>'); margin-left: calc(var(--space-min)/2);">Share</button>
+							<button class="fill-red-2 button-icon js_modal_trigger hidden" data-mod-id="share" style="background-image: url('../media/icon/icon-share-more.svg<?php echo $ver ?>'); margin-left: calc(var(--space-min)/2);">Share</button>
 						</div>
 					</div>
 					<div class="back js_back"></div>
 				</div>
 			<?php endforeach; ?>
-				<div class="tile banner">
+				<div class="tile banner hidden">
 					<div class="row">
 						<div class="sub-tile columns small-12 medium-6 large-7">
 							<div class="card fill-blue-3 space-25">
@@ -577,7 +577,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 								<?php endif; ?>
 								<div class="columns small-12 medium-8 space-min-top">
 									<div class="description h6 opacity-50 space-min-bottom"><?= $faq->get( 'summary' ) ?></div>
-									<div class="action clearfix">
+									<div class="action clearfix hidden">
 										<?php if ( $faq->get( 'thereIsMore?' ) ) : ?>
 											<a class="label inline text-lowercase" href="<?= $faq->get( 'guid' ) ?>">Read More <span class="material-icons">subject</span></a>
 										<?php endif; ?>
