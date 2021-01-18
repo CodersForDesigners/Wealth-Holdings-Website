@@ -1,5 +1,6 @@
 
 window.__BFS = window.__BFS || { };
+window.__BFS.utils = window.__BFS.utils || { };
 
 /*
  *
