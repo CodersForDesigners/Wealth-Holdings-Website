@@ -4,7 +4,7 @@
 
 .menu-section {
 	position: fixed;
-	z-index: 11;
+	z-index: 101;
 	top: auto;
 	left: 0;
 	right: 0;
