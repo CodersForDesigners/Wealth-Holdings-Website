@@ -147,9 +147,6 @@ $( ".js_section_investment" ).on( "change", ".js_filter", function ( event ) {
 	var filterValue = $( event.target ).val();
 	filtersSelected[ filterCategory ] = filterValue;
 
-	// Set the selected value on the markup
-	var filterValue__Presentable = $filter.find( ":selected" ).text();
-	$filter.parent().find( ".js_readable_value" ).text( filterValue__Presentable );
 
 	// Block the filtration
 	$investmentSection.find( ".js_filtration" ).addClass( "no-pointer" );
