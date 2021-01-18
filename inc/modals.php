@@ -65,9 +65,6 @@
 			</div>
 		</div><!-- END : Share -->
 
-
-		<!-- Modal Close Button -->
-		<div class="modal-close js_modal_close">&times;</div>
 	</div>
 
 </div><!-- END : Modal Wrapper -->

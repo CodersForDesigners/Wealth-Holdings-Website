@@ -77,8 +77,8 @@ $( document ).on( "click", "a[ href ]", function ( event ) {
  */
 function toggleNavMenu () {
 	var $body = $( window.document.body );
-	if ( $body.hasClass( "modal-nav" ) )
-		$body.removeClass( "modal-open modal-nav" );
+	if ( $body.hasClass( "modal-nav" ) || $body.hasClass( "modal-open" ) )
+		__BFS.utils.closeModal();
 	else
 		$body.addClass( "modal-open modal-nav" );
 }
