@@ -35,23 +35,20 @@ $( function () {
 	// close the modal
 	function closeModal ( event ) {
 
-		event.stopImmediatePropagation();
-		event.preventDefault();
-
 		var $activeModal = $( ".js_modal_box_content" ).filter( ".active" );
 		var modalId = $activeModal.data( "modId" );
 
 		$( ".js_modal_box" ).fadeOut( 350 );	// Hide the modal box
-		$( document.body ).removeClass( "modal-open" ); // Un-freeze the page layer
+		$( document.body )
+			.removeClass( "modal-open" ) // Un-freeze the page layer
+			.removeClass( "modal-nav" );
 		$activeModal.removeClass( "active" );	// Hide the modal content
 
-		var $videoEmbeds = $( event.target )
-			.closest( ".js_modal_box" )
-			.find( ".js_video_embed" );
+		var $videoEmbeds = $activeModal.find( ".js_video_embed" );
 		$videoEmbeds.each( function ( _i, el ) {
 			unsetVideoEmbed( el );
 			setVideoEmbed( el );
-		} )
+		} );
 
 		// Form reset operations
 		$( ".form-error" ).removeClass( "form-error" );
@@ -61,6 +58,7 @@ $( function () {
 		$( document ).trigger( "modal/close/" + modalId, { id: modalId } );
 
 	}
+	window.__BFS.utils.closeModal = closeModal;
 
 	// Close Modal Box,
 	// on clicking the close button
@@ -73,7 +71,7 @@ $( function () {
 
 		if ( keyAlias == "esc" || keyAlias == "escape" || keyCode == 27 ) {
 			event.preventDefault();
-			closeModal( event );
+			closeModal();
 		}
 
 	} )
