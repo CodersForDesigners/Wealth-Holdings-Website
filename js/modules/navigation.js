@@ -58,7 +58,7 @@ $( document ).on( "click", "a[ href ]", function ( event ) {
 	event.stopImmediatePropagation();
 
 	// Close the navigation menu
-	toggleNavMenu();
+	__BFS.utils.closeModal();
 
 	smoothScrollTo( sectionId );
 
