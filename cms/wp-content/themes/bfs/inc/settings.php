@@ -212,4 +212,12 @@ add_action( 'bfs/backend/on-editing-posts', function ( $postType ) {
 		] );
 	} );
 
+	// Only allow access to certain types of blocks
+	wp_enqueue_script(
+		'bfs-block-access',
+		get_template_directory_uri() . '/js/block-access.js',
+		[ 'wp-data', 'wp-edit-post' ],
+		filemtime( get_template_directory() . '/js/block-access.js' )
+	);
+
 } );
