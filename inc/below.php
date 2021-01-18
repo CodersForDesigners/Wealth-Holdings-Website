@@ -1,4 +1,8 @@
+<?php
 
+$footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
+
+?>
 			<!-- ~/~/~/~/~/~/~/~/~/~/~/~/~/~/~/~/ -->
 			<!-- Page-specific content goes here. -->
 			<!-- ~/~/~/~/~/~/~/~/~/~/~/~/~/~/~/~/ -->
@@ -47,12 +51,9 @@
 									<div class="label text-blue-3 line-height-xlarge">Quick Links :</div>
 								</div>
 								<div class="columns small-12 large-6 large-offset-6" style="columns: 2; column-gap: var(--space-min);">
-									<a href="" class="link h6 strong block text-red-2 line-height-large">Benefits</a>
-									<a href="" class="link h6 strong block text-red-2 line-height-large">Investment</a>
-									<a href="" class="link h6 strong block text-red-2 line-height-large">How does it work?</a>
-									<a href="" class="link h6 strong block text-red-2 line-height-large">FAQs</a>
-									<a href="" class="link h6 strong block text-red-2 line-height-large">Testimonials</a>
-									<a href="" class="link h6 strong block text-red-2 line-height-large">Help Center</a>
+									<?php foreach ( $footerNavigationMenuItems as $item ) : ?>
+										<a href="<?= $item[ 'url' ] ?>" class="link h6 strong block text-red-2 line-height-large"><?= $item[ 'title' ] ?></a>
+									<?php endforeach; ?>
 								</div>
 							</div>
 						</div>
