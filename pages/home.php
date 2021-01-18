@@ -25,11 +25,11 @@ $investmentCategories = array_map( function ( $el ) {
 $numberOfInvestments = count( $investments );
 $hideInvestmentsPagination = '';
 if ( $numberOfInvestments <= 9 )
-	$hideInvestmentsPagination .= 'hide-large hide-xlarge';
+	$hideInvestmentsPagination .= 'view-all-l view-all-xl';
 if ( $numberOfInvestments <= 6 )
-	$hideInvestmentsPagination .= ' hide-medium';
+	$hideInvestmentsPagination .= ' view-all-m';
 if ( $numberOfInvestments <= 3 )
-	$hideInvestmentsPagination .= ' hide-small';
+	$hideInvestmentsPagination .= ' view-all-s';
 
 $webinarDate = getContent( 'Registered interest at ' . date( 'h:ia, d/m/Y' ), 'webinar_date' );
 
@@ -300,7 +300,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- Investment Section -->
-<section class="investment-section fill-blue-4 space-75-top-bottom js_section_investment" id="investments-section" data-section-title="Investments Section" data-section-slug="investments-section">
+<section class="investment-section fill-blue-4 space-75-top-bottom <?= $hideInvestmentsPagination ?> js_section_investment" id="investments-section" data-section-title="Investments Section" data-section-slug="investments-section">
 	<div class="row">
 		<div class="container">
 			<div class="columns small-12 space-50-bottom">
@@ -397,7 +397,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 			</div>
 		</div>
 	</div>
-	<div class="view-all-toggle row space-75-top-bottom <?= $hideInvestmentsPagination ?>">
+	<div class="view-all-toggle row space-75-top-bottom">
 		<div class="container">
 			<div class="columns small-12 text-center">
 				<div class="inline view-all-toggle-button h4 strong space-25 js_view_all" tabindex="-1">

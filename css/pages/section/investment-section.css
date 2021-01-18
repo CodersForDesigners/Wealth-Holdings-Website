@@ -246,13 +246,24 @@
 	line-height: 1.625;
 	border-bottom: solid 4px var(--light);
 }
+@media( max-width: 639px ) {
+	.investment-section.view-all-s .tile-grid {
+		max-height: var(--content-height,none);
+	}
+	.investment-section.view-all-s .view-all-toggle {
+		display: none;
+	}
+}
+
 @media( min-width: 640px )  {
 	.investment-section .tile-grid {
 		grid-template-columns: 1fr 1fr;
 		max-height: 1720px;
 		transition: max-height 1s ease-in;
 	}
-
+	.investment-section.view-all-m .tile-grid {
+		max-height: var(--content-height,none);
+	}
 	.investment-section .tile-grid .tile.banner .sub-tile:nth-child(1) {
 		padding-bottom: 0;
 		padding-right: calc(var(--space-25)/2);
@@ -264,11 +275,17 @@
 	.investment-section .tile-grid .tile.banner .sub-tile .card {
 		min-height: 140px;
 	}
+	.investment-section.view-all-m .view-all-toggle {
+		display: none;
+	}
 }
 @media( min-width: 1040px ) {
 	.investment-section .tile-grid {
 		grid-template-columns: 1fr 1fr 1fr;
 		max-height: 2010px;
+	}
+	.investment-section.view-all-l .tile-grid {
+		max-height: var(--content-height,none);
 	}
 	.investment-section .tile-grid .tile.investment .front {
 		padding: var(--space-25);
@@ -304,11 +321,16 @@
 	.investment-section .tile-grid .tile.banner .sub-tile .card {
 		min-height: 152px;
 	}
-
+	.investment-section.view-all-l .view-all-toggle {
+		display: none;
+	}
 }
 @media( min-width: 1480px ) {
 	.investment-section .tile-grid {
 		max-height: 2010px;
+	}
+	.investment-section.view-all-xl .tile-grid {
+		max-height: var(--content-height,none);
 	}
 	.investment-section .tile-grid .tile.investment .front .toggle .toggle-button .pill {
 		width: 62%;
@@ -323,6 +345,9 @@
 	}
 	.investment-section .tile-grid .tile.banner .sub-tile .card {
 		min-height: 200px;
+	}
+	.investment-section.view-all-xl .view-all-toggle {
+		display: none;
 	}
 }
 
