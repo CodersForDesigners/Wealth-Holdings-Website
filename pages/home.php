@@ -111,7 +111,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<div class="columns small-12 medium-4 space-25-top-bottom">
 						<div class="logo"><img class="block" src="../media/wh-logo-large-dark.svg<?php echo $ver ?>"></div>
 					</div>
-					<div class="columns small-12 medium-8 large-12 space-50-top-bottom">
+					<div class="columns small-12 medium-10 large-12 space-50-top-bottom">
 						<div class="h5 strong space-min-bottom">Curated rental-yielding assets, with</div>
 						<div class="h1 strong">returns you cannot ignore.</div>
 						<div class="h5 text-blue-4 space-50-top">Invest in rental-yielding real estate assets that are backed by a business model. Get the right returns, with managed volatility and capital protection.</div>
