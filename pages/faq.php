@@ -27,7 +27,7 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 				<?= getFAQHierarchyMarkup( $faqs__Tree, $faq->get( 'ID' ) ) ?>
 			</li>
 		<?php endforeach; ?>
-	<ul>
+	</ul>
 
 	<?php
 
