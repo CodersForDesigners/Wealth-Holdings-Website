@@ -47,6 +47,13 @@ if ( file_exists( $filename ) ) {
 	$_GET[ '_slug' ] = $requestPath;
 	return require_once $filename;
 }
+else if ( substr( $requestPath, 0, 4 ) == 'faq/' ) {
+	$postType = 'faq';
+	$urlSlug = substr( $requestPath, 4 );
+	$_GET[ '_slug' ] = $urlSlug;
+	$filename = $documentRoot . '/pages/' . $postType . '.php';
+	return require_once $filename;
+}
 else if ( count( explode( '/', $requestPath ) ) === 2 ) {
 	[ $postType, $urlSlug ] = explode( '/', $requestPath );
 	$_GET[ '_slug' ] = $urlSlug;
