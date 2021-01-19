@@ -588,7 +588,11 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						</div>
 					</div>
 				<?php endforeach; ?>
+					<a class="inline big-link h4 strong" tabindex="-1">
+						<span>Help Center</span>
+					</a>
 				</div>
+				<!--  -->
 				<div class="brochures hidden">
 					<div class="row">
 						<?php foreach ( $brochures as $brochure ) : ?>

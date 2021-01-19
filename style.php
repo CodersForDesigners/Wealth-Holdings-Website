@@ -15,6 +15,8 @@
 <!-- Pages + Sections + Modals -->
 <link rel="stylesheet" type="text/css" href="css/pages/page.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="css/pages/home-page.css<?php echo $ver ?>">
+<link rel="stylesheet" type="text/css" href="css/pages/faqs-page.css<?php echo $ver ?>">
+<link rel="stylesheet" type="text/css" href="css/pages/post-page.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="css/pages/modal/modal-menu.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="css/pages/modal/modal-share.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="css/pages/section/header-section.css<?php echo $ver ?>">

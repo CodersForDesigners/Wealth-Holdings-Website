@@ -22,6 +22,21 @@
 	margin-right: var(--space-min);
 }
 
+.faqs-section .faqs .big-link {
+	cursor: pointer;
+	margin-top: var(--space-50);
+}
+.faqs-section .faqs .big-link * {
+	pointer-events: none;
+}
+.faqs-section .faqs .big-link:focus {
+	outline: none;
+}
+.faqs-section .faqs .big-link span {
+	display: inline-block;
+	line-height: 1.625;
+	border-bottom: solid 4px var(--blue-4);
+}
 @media( min-width: 640px )  {
 	.faqs-section .faqs .faq .summary .thumbnail {
 		padding-right: var(--space-min);
@@ -33,6 +48,7 @@
 		border-bottom: 1.5px solid var(--dark);
 	}
 }
+
 
 /* -- Brochure Sub Section -- */
 .faqs-section .brochures {

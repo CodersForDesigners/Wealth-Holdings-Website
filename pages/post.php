@@ -24,10 +24,10 @@ require_once __DIR__ . '/../inc/above.php';
 <!-- END: Header Section -->
 
 <!-- Post Content Section -->
-<section class="document-section space-75-top-bottom">
+<section class="post-content-section space-75-top-bottom">
 	<div class="container">
 		<div class="row">
-			<div class="columns small-12 large-10 xlarge-8">
+			<div class="post-content columns small-12 large-10 xlarge-8">
 
 				<?= $thePost->get( 'post_content' ) ?>
 
