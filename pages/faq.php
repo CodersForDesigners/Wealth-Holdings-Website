@@ -25,7 +25,7 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 	<ul>
 		<?php foreach ( $faqs__Tree[ $parentId ] as $faq ) : ?>
 			<li class="<?php if ( $faq->get( 'ID' ) == $thePost->get( 'ID' ) ) : ?>active js_active<?php endif; ?>">
-				<a href="<?= $faq->get( 'url' ) ?>" target="_blank"><?= $faq->get( 'post_title' ) ?></a>
+				<a href="<?= $faq->get( 'url' ) ?>"><?= $faq->get( 'post_title' ) ?></a>
 				<?= getFAQHierarchyMarkup( $faqs__Tree, $faq->get( 'ID' ) ) ?>
 				<button class="hierarchy-toggle js_expand">&#9654;</button>
 			</li>
@@ -61,8 +61,12 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 <section class="faq-content-section space-75-top-bottom">
 	<div class="container">
 		<div class="row">
-			<div class="faq-sidebar columns small-12 medium-8 large-4 xlarge-3 js_faq_listing">
-				<?= getFAQHierarchyMarkup( $faqs__Tree, 0, $thePost->get( 'ID' ) ) ?>
+			<div class="faq-sidebar columns small-12 large-4">
+				<div class="sidebar-min fill-blue-1 hide-large hide-xlarge space-min cursor-pointer" tabindex="-1">
+					<div class="sidebar-min-label h5 text-blue-4 opacity-50 clearfix"><span class="label float-left">Help Center Menu</span> <span class="icon material-icons float-right">expand_more</span></div>
+					<div class="active-title h6 text-blue-4">Lumpsum</div>
+				</div>
+				<div class="faq-hierarchy js_faq_listing"><?= getFAQHierarchyMarkup( $faqs__Tree, 0, $thePost->get( 'ID' ) ) ?></div>
 			</div>
 			<div class="faq-content columns small-12 large-8 xlarge-7">
 				<div class="title h4 strong space-50-bottom">

@@ -2,18 +2,31 @@
  * FAQs Page
  */
 
-.faq-content-section .faq-sidebar {}
+.faq-content-section .faq-sidebar {
+	margin-bottom: var(--space-50);
+}
+.faq-content-section .faq-sidebar .sidebar-min {}
+.faq-content-section .faq-sidebar .sidebar-min * { pointer-events: none; }
+.faq-content-section .faq-sidebar .sidebar-min .sidebar-min-label .icon {
+	transition: .2s ease-out;
+}
+.faq-content-section .faq-sidebar .faq-hierarchy {
+	max-height: 0;
+	transition: .5s ease-in-out;
+	overflow: hidden;
+}
+
 /* -- Level 1 -- */
-.faq-content-section .faq-sidebar ul {
+.faq-content-section .faq-sidebar .faq-hierarchy ul {
 	position: relative;
 	list-style: none;
 	margin: 0;
 }
-.faq-content-section .faq-sidebar ul li {
+.faq-content-section .faq-sidebar .faq-hierarchy ul li {
 	position: relative;
 	margin: 0;
 }
-.faq-content-section .faq-sidebar ul li a {
+.faq-content-section .faq-sidebar .faq-hierarchy ul li a {
 	position: relative;
 	z-index: 1;
 	display: inline-block;
@@ -22,18 +35,18 @@
 	padding-left: calc(var(--space-min)*3);
 	font-weight: 700;
 	font-size: 1.6rem;
-	transition: .3s ease-out; 
+	transition: .2s ease-out; 
 	line-height: 1;
 }
 
-.faq-content-section .faq-sidebar ul li.active > a,
-.faq-content-section .faq-sidebar ul li a:hover {
+.faq-content-section .faq-sidebar .faq-hierarchy ul li.active > a,
+.faq-content-section .faq-sidebar .faq-hierarchy ul li a:hover {
 	background-color: var(--neutral-1);
 }
 
 /* -- Level 2 -- */
-/*.faq-content-section .faq-sidebar ul li > ul li {} */
-.faq-content-section .faq-sidebar ul li > ul li a { 
+/*.faq-content-section .faq-sidebar .faq-hierarchy ul li > ul li {} */
+.faq-content-section .faq-sidebar .faq-hierarchy ul li > ul li a { 
 	margin-left: 16.66666%;
 	font-weight: 400; 
 	font-size: 1.1rem; 
@@ -41,21 +54,31 @@
 }
 
 /* -- Level 3 -- */
-/*.faq-content-section .faq-sidebar ul li > ul li > ul li {}*/
-.faq-content-section .faq-sidebar ul li > ul li > ul li a {
+/*.faq-content-section .faq-sidebar .faq-hierarchy ul li > ul li > ul li {}*/
+.faq-content-section .faq-sidebar .faq-hierarchy ul li > ul li > ul li a {
 	margin-left: 33.33333%;
 	font-size: 1.1rem;
 }
 
 /* -- Toggle -- */
-.faq-content-section .faq-sidebar ul li:not(.show-hierarchy) a + ul {
-	display: none;
+.faq-content-section .faq-sidebar.show-sidebar .sidebar-min .sidebar-min-label .icon {
+	transform: rotate(180deg);
+}
+.faq-content-section .faq-sidebar.show-sidebar .faq-hierarchy {
+	padding: var(--space-25) 0;
+	max-height: 100vh;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	border-bottom: 1px solid var(--blue-1);
 }
 
-.faq-content-section .faq-sidebar ul li a + .hierarchy-toggle {
+.faq-content-section .faq-sidebar .faq-hierarchy ul li:not(.show-hierarchy) a + ul {
 	display: none;
 }
-.faq-content-section .faq-sidebar ul li a + ul + .hierarchy-toggle {
+.faq-content-section .faq-sidebar .faq-hierarchy ul li a + .hierarchy-toggle {
+	display: none;
+}
+.faq-content-section .faq-sidebar .faq-hierarchy ul li a + ul + .hierarchy-toggle {
 	position: absolute;
 	z-index: 2;
 	top: calc(8px - (var(--space-min)/2));
@@ -67,52 +90,62 @@
 	cursor: pointer;
 	background-color: transparent;
 }
-.faq-content-section .faq-sidebar ul li > ul li a + ul + .hierarchy-toggle {
+.faq-content-section .faq-sidebar .faq-hierarchy ul li > ul li a + ul + .hierarchy-toggle {
 	left: 16.66666%;
 }
-.faq-content-section .faq-sidebar ul li > ul li > ul li a + ul + .hierarchy-toggle {
+.faq-content-section .faq-sidebar .faq-hierarchy ul li > ul li > ul li a + ul + .hierarchy-toggle {
 	left: 33.33333%;
 }
 
-.faq-content-section .faq-sidebar ul li a + ul + .hierarchy-toggle {
-	transition: .3s ease-out;
+.faq-content-section .faq-sidebar .faq-hierarchy ul li a + ul + .hierarchy-toggle {
+	transition: .2s ease-out;
 }
-.faq-content-section .faq-sidebar ul li.show-hierarchy > a + ul + .hierarchy-toggle {
+.faq-content-section .faq-sidebar .faq-hierarchy ul li.show-hierarchy > a + ul + .hierarchy-toggle {
 	transform: rotate(90deg);
 }
 
 
 @media( min-width: 640px )  {
+	.faq-content-section .faq-sidebar .faq-hierarchy { width: 66.6666% }
 	/* -- Level 1 -- */
-	.faq-content-section .faq-sidebar ul li a { font-size: 1.8rem; }
+	.faq-content-section .faq-sidebar .faq-hierarchy ul li a { font-size: 1.8rem; }
 	/* -- Level 2 -- */
-	.faq-content-section .faq-sidebar ul li > ul li a { font-size: 1.1rem; }
+	.faq-content-section .faq-sidebar .faq-hierarchy ul li > ul li a { font-size: 1.1rem; }
 	/* -- Level 3 -- */
-	.faq-content-section .faq-sidebar ul li > ul li > ul li a { font-size: 1.1rem; }
+	.faq-content-section .faq-sidebar .faq-hierarchy ul li > ul li > ul li a { font-size: 1.1rem; }
 }
 
 @media( min-width: 1040px ) {
+	.faq-content-section .faq-sidebar { margin: 0; }
+	.faq-content-section .faq-sidebar .faq-hierarchy,
+	.faq-content-section .faq-sidebar.show-sidebar .faq-hierarchy {
+		max-height: none;
+		padding: 0;
+	}
+
+
+	.faq-content-section .faq-sidebar .faq-hierarchy { width: 100% }
 	/* -- Level 1 -- */
-	.faq-content-section .faq-sidebar ul li a { font-size: 2.0rem; }
+	.faq-content-section .faq-sidebar .faq-hierarchy ul li a { font-size: 2.0rem; }
 	/* -- Level 2 -- */
-	.faq-content-section .faq-sidebar ul li > ul li a { font-size: 1.3rem; }
+	.faq-content-section .faq-sidebar .faq-hierarchy ul li > ul li a { font-size: 1.3rem; }
 	/* -- Level 3 -- */
-	.faq-content-section .faq-sidebar ul li > ul li > ul li a { font-size: 1.3rem; }
+	.faq-content-section .faq-sidebar .faq-hierarchy ul li > ul li > ul li a { font-size: 1.3rem; }
 	/* -- Toggle -- */
-	.faq-content-section .faq-sidebar ul li a + ul + .hierarchy-toggle {
+	.faq-content-section .faq-sidebar .faq-hierarchy ul li a + ul + .hierarchy-toggle {
 		top: calc(10px - (var(--space-min)/2));
 	}
 }
 
 @media( min-width: 1480px ) {
 	/* -- Level 1 -- */
-	.faq-content-section .faq-sidebar ul li a { font-size: 2.4rem;  }
+	.faq-content-section .faq-sidebar .faq-hierarchy ul li a { font-size: 2.4rem;  }
 	/* -- Level 2 -- */
-	.faq-content-section .faq-sidebar ul li > ul li a { font-size: 1.5rem; }
+	.faq-content-section .faq-sidebar .faq-hierarchy ul li > ul li a { font-size: 1.5rem; }
 	/* -- Level 3 -- */
-	.faq-content-section .faq-sidebar ul li > ul li > ul li a { font-size: 1.5rem; }
+	.faq-content-section .faq-sidebar .faq-hierarchy ul li > ul li > ul li a { font-size: 1.5rem; }
 	/* -- Toggle -- */
-	.faq-content-section .faq-sidebar ul li a + ul + .hierarchy-toggle {
+	.faq-content-section .faq-sidebar .faq-hierarchy ul li a + ul + .hierarchy-toggle {
 		top: calc(13px - (var(--space-min)/2));
 	}
 }
