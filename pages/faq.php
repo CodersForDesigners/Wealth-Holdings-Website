@@ -18,14 +18,16 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 	if ( empty( $faqs__Tree[ $parentId ] ) )
 		return '';
 
+	global $thePost;
+
 	?>
 
 	<ul>
 		<?php foreach ( $faqs__Tree[ $parentId ] as $faq ) : ?>
-			<li>
+			<li class="<?php if ( $faq->get( 'ID' ) == $thePost->get( 'ID' ) ) : ?>active js_active<?php endif; ?>">
 				<a href="<?= $faq->get( 'url' ) ?>" target="_blank"><?= $faq->get( 'post_title' ) ?></a>
 				<?= getFAQHierarchyMarkup( $faqs__Tree, $faq->get( 'ID' ) ) ?>
-				<button class="hierarchy-toggle">&#9654;</button>
+				<button class="hierarchy-toggle js_expand">&#9654;</button>
 			</li>
 		<?php endforeach; ?>
 	</ul>
@@ -50,7 +52,7 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
 </section>
 <!-- END: Header Section -->
 
@@ -59,8 +61,8 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 <section class="faq-content-section space-75-top-bottom">
 	<div class="container">
 		<div class="row">
-			<div class="faq-sidebar columns small-12 medium-8 large-4 xlarge-3">
-				<?= getFAQHierarchyMarkup( $faqs__Tree, 0 ) ?>
+			<div class="faq-sidebar columns small-12 medium-8 large-4 xlarge-3 js_faq_listing">
+				<?= getFAQHierarchyMarkup( $faqs__Tree, 0, $thePost->get( 'ID' ) ) ?>
 			</div>
 			<div class="faq-content columns small-12 large-8 xlarge-7">
 				<div class="title h4 strong space-50-bottom">
@@ -77,5 +79,20 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 
 
 
+
+<script type="text/javascript">
+
+	$( function () {
+
+		/*
+		 * ----- Expand a listing section on clicking on the adjacent arrow
+		 */
+		$( ".js_faq_listing" ).on( "click", ".js_expand", function ( event ) {
+			$( event.target ).closest( "li" ).toggleClass( "show-hierarchy" );
+		} );
+
+	} );
+
+</script>
 
 <?php require_once __DIR__ . '/../inc/below.php'; ?>
