@@ -13,21 +13,22 @@ class CMS {
 	public static $currentQueriedPostId = null;
 
 
-	public static function getPostsOf ( $type, $limit = -1, $exclude = [ ] ) {
+	public static function getPostsOf ( $type, $options = [ ] ) {
 
-		$limit = $limit ?: -1;
+		$limit = $options[ 'limit' ] ?: -1;
+		$exclude = $options[ 'exclude' ] ?: [ ];
 		if ( ! is_array( $exclude ) )
 			if ( is_int( $exclude ) )
 				$exclude = [ $exclude ];
 
-		$postsFromDB = get_posts( [
+		$postsFromDB = get_posts( array_merge( [
 		    'post_type' => $type,
 		    'post_status' => 'publish',
 		    'numberposts' => $limit,
 		    // 'order' => 'ASC'
 		    'orderby' => 'date',
 		    'exclude' => $exclude
-		] );
+		], $options ) );
 
 
 		foreach ( $postsFromDB as &$post ) {
