@@ -48,6 +48,9 @@
 
 /* -- Toggle -- */
 .faq-content-section .faq-sidebar ul li a + .hierarchy-toggle {
+	display: none;
+}
+.faq-content-section .faq-sidebar ul li a + ul + .hierarchy-toggle {
 	position: absolute;
 	z-index: 2;
 	top: 8px;
@@ -59,10 +62,10 @@
 	cursor: pointer;
 	background-color: transparent;
 }
-.faq-content-section .faq-sidebar ul li > ul li a + .hierarchy-toggle {
+.faq-content-section .faq-sidebar ul li > ul li a + ul + .hierarchy-toggle {
 	left: 16.66666%;
 }
-.faq-content-section .faq-sidebar ul li > ul li > ul li a + .hierarchy-toggle {
+.faq-content-section .faq-sidebar ul li > ul li > ul li a + ul + .hierarchy-toggle {
 	left: 33.33333%;
 }
 
@@ -83,7 +86,7 @@
 	/* -- Level 3 -- */
 	.faq-content-section .faq-sidebar ul li > ul li > ul li a { font-size: 1.3rem; }
 	/* -- Toggle -- */
-	.faq-content-section .faq-sidebar ul li a + .hierarchy-toggle {
+	.faq-content-section .faq-sidebar ul li a + ul + .hierarchy-toggle {
 		top: 10px;
 	}
 }
@@ -96,7 +99,7 @@
 	/* -- Level 3 -- */
 	.faq-content-section .faq-sidebar ul li > ul li > ul li a { font-size: 1.5rem; }
 	/* -- Toggle -- */
-	.faq-content-section .faq-sidebar ul li a + .hierarchy-toggle {
+	.faq-content-section .faq-sidebar ul li a + ul + .hierarchy-toggle {
 		top: 13px;
 	}
 }
