@@ -33,7 +33,10 @@ if ( $numberOfInvestments <= 3 )
 
 $webinarDate = getContent( 'Registered interest at ' . date( 'h:ia, d/m/Y' ), 'webinar_date' );
 
-$faqs = BFS\CMS::getPostsOf( 'faq' );
+$faqs = BFS\CMS::getPostsOf( 'faq', [
+	'meta_key' => '_is_ns_featured_post',
+	'meta_value' => 'yes'
+] );
 foreach ( $faqs as $faq ) {
 	$faq->set( 'url', get_permalink( $faq->get( 'ID' ) ) );
 	$faq->set( 'featuredImage', get_the_post_thumbnail_url( $faq->get( 'ID' ) ) );
