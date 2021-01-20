@@ -85,6 +85,16 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 	$( function () {
 
 		/*
+		 * ----- Expand all the parent sections
+		 */
+		var $activeFAQ = $( ".js_faq_listing .js_active" );
+		$activeFAQ
+			.addClass( "active" )
+			.addClass( "show-hierarchy" )
+			.parentsUntil( ".js_faq_listing", "li" )
+				.addClass( "show-hierarchy" )
+
+		/*
 		 * ----- Expand a listing section on clicking on the adjacent arrow
 		 */
 		$( ".js_faq_listing" ).on( "click", ".js_expand", function ( event ) {
