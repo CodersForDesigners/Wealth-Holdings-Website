@@ -26,8 +26,9 @@
 	line-height: 1;
 }
 
-.faq-content-section .faq-sidebar ul li a,
+.faq-content-section .faq-sidebar ul li.active > a,
 .faq-content-section .faq-sidebar ul li a:hover {
+	background-color: var(--neutral-1);
 }
 
 /* -- Level 2 -- */
