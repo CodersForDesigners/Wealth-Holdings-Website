@@ -24,6 +24,7 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 		<?php foreach ( $faqs__Tree[ $parentId ] as $faq ) : ?>
 			<li>
 				<a href="<?= $faq->get( 'url' ) ?>" target="_blank"><?= $faq->get( 'post_title' ) ?></a>
+				<button class="hierarchy-toggle">&#9654;</button>
 				<?= getFAQHierarchyMarkup( $faqs__Tree, $faq->get( 'ID' ) ) ?>
 			</li>
 		<?php endforeach; ?>
@@ -58,7 +59,7 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 <section class="faq-content-section space-75-top-bottom">
 	<div class="container">
 		<div class="row">
-			<div class="faq-sidebar columns small-12 large-4 xlarge-3">
+			<div class="faq-sidebar columns small-12 medium-8 large-4 xlarge-3">
 				<?= getFAQHierarchyMarkup( $faqs__Tree, 0 ) ?>
 			</div>
 			<div class="faq-content columns small-12 large-8 xlarge-7">
