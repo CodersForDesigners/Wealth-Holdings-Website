@@ -47,18 +47,22 @@
 }
 
 /* -- Toggle -- */
+.faq-content-section .faq-sidebar ul li:not(.show-hierarchy) a + ul {
+	display: none;
+}
+
 .faq-content-section .faq-sidebar ul li a + .hierarchy-toggle {
 	display: none;
 }
 .faq-content-section .faq-sidebar ul li a + ul + .hierarchy-toggle {
 	position: absolute;
 	z-index: 2;
-	top: 8px;
+	top: calc(8px - (var(--space-min)/2));
 	left: 0;
 	padding: 0;
-	line-height: calc(var(--space-min)*2);
+	line-height: calc(var(--space-min)*3);
 	width: calc(var(--space-min)*3);
-	height: calc(var(--space-min)*2);
+	height: calc(var(--space-min)*3);
 	cursor: pointer;
 	background-color: transparent;
 }
@@ -68,6 +72,14 @@
 .faq-content-section .faq-sidebar ul li > ul li > ul li a + ul + .hierarchy-toggle {
 	left: 33.33333%;
 }
+
+.faq-content-section .faq-sidebar ul li a + ul + .hierarchy-toggle {
+	transition: .3s ease-out;
+}
+.faq-content-section .faq-sidebar ul li.show-hierarchy > a + ul + .hierarchy-toggle {
+	transform: rotate(90deg);
+}
+
 
 @media( min-width: 640px )  {
 	/* -- Level 1 -- */
@@ -87,7 +99,7 @@
 	.faq-content-section .faq-sidebar ul li > ul li > ul li a { font-size: 1.3rem; }
 	/* -- Toggle -- */
 	.faq-content-section .faq-sidebar ul li a + ul + .hierarchy-toggle {
-		top: 10px;
+		top: calc(10px - (var(--space-min)/2));
 	}
 }
 
@@ -100,6 +112,6 @@
 	.faq-content-section .faq-sidebar ul li > ul li > ul li a { font-size: 1.5rem; }
 	/* -- Toggle -- */
 	.faq-content-section .faq-sidebar ul li a + ul + .hierarchy-toggle {
-		top: 13px;
+		top: calc(13px - (var(--space-min)/2));
 	}
 }
