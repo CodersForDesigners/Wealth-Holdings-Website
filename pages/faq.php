@@ -61,10 +61,10 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 <section class="faq-content-section space-75-top-bottom">
 	<div class="container">
 		<div class="row">
-			<div class="faq-sidebar columns small-12 large-4">
-				<div class="sidebar-min fill-blue-1 hide-large hide-xlarge space-min cursor-pointer" tabindex="-1">
+			<div class="faq-sidebar columns small-12 large-4 js_faq_sidebar">
+				<div class="sidebar-min fill-blue-1 hide-large hide-xlarge space-min cursor-pointer js_toggle_sidebar" tabindex="-1">
 					<div class="sidebar-min-label h5 text-blue-4 opacity-50 clearfix"><span class="label float-left">Help Center Menu</span> <span class="icon material-icons float-right">expand_more</span></div>
-					<div class="active-title h6 text-blue-4">Lumpsum</div>
+					<div class="active-title h6 text-blue-4 js_current_category">Lumpsum</div>
 				</div>
 				<div class="faq-hierarchy js_faq_listing"><?= getFAQHierarchyMarkup( $faqs__Tree, 0, $thePost->get( 'ID' ) ) ?></div>
 			</div>
@@ -89,6 +89,14 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 	$( function () {
 
 		/*
+		 * ----- Expand the entire listing on clicking the global toggle (mobile only)
+		 */
+		$( ".js_toggle_sidebar" ).on( "click", function ( event ) {
+			var $faqSidebar = $( event.target ).closest( ".js_faq_sidebar" );
+			$faqSidebar.toggleClass( "show-sidebar" );
+		} );
+
+		/*
 		 * ----- Expand all the parent sections
 		 */
 		var $activeFAQ = $( ".js_faq_listing .js_active" );
@@ -97,6 +105,15 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 			.addClass( "show-hierarchy" )
 			.parentsUntil( ".js_faq_listing", "li" )
 				.addClass( "show-hierarchy" )
+
+		/*
+		 * ----- Reflect the top-level section name in the Listing Heading / Toggle (mobile only)
+		 */
+		var $topLevelFAQ = $activeFAQ.parentsUntil( ".js_faq_listing", "li" ).last();
+		if ( ! $topLevelFAQ.length )
+			$topLevelFAQ = $activeFAQ;
+		var currentTopLevelHeading = $topLevelFAQ.find( " > a" ).text();
+		$( ".js_current_category" ).text( currentTopLevelHeading );
 
 		/*
 		 * ----- Expand a listing section on clicking on the adjacent arrow
