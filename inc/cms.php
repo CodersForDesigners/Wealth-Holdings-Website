@@ -15,8 +15,11 @@ class CMS {
 
 	public static function getPostsOf ( $type, $options = [ ] ) {
 
-		$limit = $options[ 'limit' ] ?: -1;
-		$exclude = $options[ 'exclude' ] ?: [ ];
+		if ( ! CMS_ENABLED )
+			return [ ];
+
+		$limit = $options[ 'limit' ] ?? -1;
+		$exclude = $options[ 'exclude' ] ?? [ ];
 		if ( ! is_array( $exclude ) )
 			if ( is_int( $exclude ) )
 				$exclude = [ $exclude ];
@@ -108,6 +111,9 @@ class CMS {
 	}
 
 	public static function getNavigation ( $name, $urlPrefix = false ) {
+
+		if ( ! CMS_ENABLED )
+			return [ ];
 
 		$menuItems = wp_get_nav_menu_items( $name );
 		// Convert from class instances to regular associate arrays
