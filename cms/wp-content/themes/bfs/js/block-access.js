@@ -11,7 +11,8 @@ wp.domReady( function () {
 		"core/list",
 		"core/group",
 		"core/separator",
-		"core/spacer"
+		"core/spacer",
+		"acf/bfs-form"
 	];
 	if ( postType === "investment" )
 		allowedBlocks.push( "acf/bfs-investments" )

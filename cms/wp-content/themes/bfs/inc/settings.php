@@ -81,6 +81,22 @@ add_action( 'acf/init', function () {
 		'render_callback' => 'acf_render_callback'
 	] );
 
+	// Form block
+	acf_register_block_type( [
+		'name' => 'bfs-form',
+		'title' => __( 'Form' ),
+		'description' => __( 'Form' ),
+		'category' => 'wealth-holdings',
+		'icon' => 'feedback',
+		'align' => 'wide',
+		'mode' => 'edit',
+		'supports' => [
+			'multiple' => false,
+			'align' => [ 'wide' ]
+		],
+		'render_template' => get_template_directory() . '/inc/blocks/form.php'
+	] );
+
 	function acf_render_callback ( $block, $content, $is_preview, $post_id ) {
 		if ( ! class_exists( '\BFS\CMS' ) )
 			return;
