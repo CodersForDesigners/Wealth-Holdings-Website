@@ -102,9 +102,13 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 	<script type="text/javascript" src="/js/modules/phone-country-code.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/cupid/utils.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/cupid/user.js<?= $ver ?>"></script>
-	<script type="text/javascript" src="/js/page/home/home.js<?= $ver ?>"></script>
+	<?php if ( $requestPath == 'home' ) : ?>
+		<script type="text/javascript" src="/js/page/home/home.js<?= $ver ?>"></script>
+	<?php endif; ?>
 	<script type="text/javascript" src="/js/modules/forms.js<?= $ver ?>"></script>
-	<script type="text/javascript" src="/js/page/home/forms.js<?= $ver ?>"></script>
+	<?php if ( $requestPath == 'home' ) : ?>
+		<script type="text/javascript" src="/js/page/home/forms.js<?= $ver ?>"></script>
+	<?php endif; ?>
 	<script type="text/javascript" src="/plugins/goodshare/goodshare-v6.1.5.min.js"></script>
 	<script type="text/javascript" src="/js/modules/sharing.js<?= $ver ?>"></script>
 
