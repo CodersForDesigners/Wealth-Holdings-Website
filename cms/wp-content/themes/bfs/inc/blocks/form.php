@@ -80,6 +80,11 @@ unset( $field );
 			</label>
 		</div>
 		<div class="form-row space-min-bottom">
+			<div class="js_form_feedback">
+				Thank you.
+				<br>
+				Someone will get in touch with you shortly.
+			</div>
 			<label for="form-field-submit">
 				<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
 				<button class="button fill-red-2" type="submit" id="form-field-submit"><?= $formSubmitLabel ?></button>
