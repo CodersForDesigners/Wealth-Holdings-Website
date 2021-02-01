@@ -14,27 +14,9 @@ unset( $field );
 <?php if ( $is_preview ) : ?>
 	<h4>(A form will be placed here.)</h4>
 <?php else : ?>
-<style type="text/css">
 
-	.forms-container {
-		/*min-height: 250px;*/
-	}
-	.primary-form {
-		transition: opacity 0.5s ease-out;
-	}
-	.phone-form,
-	.otp-form {
-		position: absolute;
-		top: 50%;
-		transform: translateY( -50% );
-		width: 100%;
-		opacity: 0;
-		transition: opacity 0.5s ease-out;
-	}
-
-</style>
-<section class="form-section forms-container position-relative js_forms_container">
-	<h1><?= $formName ?></h1>
+<section class="form-section form-dark fill-neutral-4 space-50 forms-container position-relative js_forms_container">
+	<div class="h3 strong space-50-bottom"><?= $formName ?></div>
 	<form class="form primary-form js_primary_form" onsubmit="event.preventDefault()">
 		<?php foreach ( $fields as $index => $field ) : ?>
 		<div class="form-row space-min-bottom">

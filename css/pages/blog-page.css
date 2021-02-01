@@ -1,16 +1,11 @@
 /*
- * Post Page
+ * Blog Page
  */
-
-
-@media( min-width: 640px )  {}
-@media( min-width: 1040px ) {}
-@media( min-width: 1480px ) {}
-
 
 .post-content {
 	position: relative;
 	color: var(--dark);
+	font-family: 'Barlow', Arial, sans-serif;
 	font-weight: 400;
 	font-size: 1.4rem;
 	line-height: 1.375;
@@ -20,6 +15,7 @@
 .post-content h2,
 .post-content h3,
 .post-content h4 {
+	font-family: 'Barlow', 'Arial Black', Arial, sans-serif;
 	line-height: 1;
 }
 
@@ -99,18 +95,6 @@
 	.post-content label { font-size: 1.4rem; }
 }
 
-
-
-
-
-/*
- * Interruption Form
- */
-
-.post-content .forms-container {
-	margin-bottom: var(--space-25);
-	transition: .3s ease-out;
-}
 
 
 
@@ -239,3 +223,14 @@
 	}
 }
 /* -- END: Slicks Resets -- */
+
+
+
+
+
+
+
+
+
+
+
