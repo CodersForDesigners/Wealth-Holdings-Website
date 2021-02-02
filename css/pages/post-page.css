@@ -129,6 +129,7 @@
 	opacity: 0;
 	transition: opacity 0.25s ease-out;
 	transition-delay: 0s;
+	pointer-events: none;
 }
 
 .post-content .form-section .forms-container.show-otp .primary-form {
