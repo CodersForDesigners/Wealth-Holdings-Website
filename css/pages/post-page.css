@@ -107,13 +107,45 @@
  * Interruption Form
  */
 
-.post-content .forms-container {
+.post-content .form-section {
 	margin-bottom: var(--space-25);
+}
+.post-content .form-section .forms-container {
+	position: relative;
+	min-height: var(--otp-form-height,auto);
+}
+.post-content .form-section .primary-form {
+	max-height: var(--content-height,none);
+	overflow: hidden;
+	transition:
+		max-height 0.25s ease-out,
+		opacity 0.25s ease-out
+	;
+	transition-delay: 0s, 0.15s;
+}
+.post-content .form-section .otp-form {
+	position: absolute;
+	top: 0;
+	opacity: 0;
+	transition: opacity 0.25s ease-out;
+	transition-delay: 0s;
+}
+
+.post-content .form-section .forms-container.show-otp .primary-form {
+	max-height: 0;
+	opacity: 0;
+	pointer-events: none;
+	transition-delay: 0.15s, 0s;
+}
+.post-content .form-section .forms-container.show-otp .otp-form {
+	opacity: 1;
+	pointer-events: auto;
+	transition-delay: 0.4s;
 }
 
 @media( min-width: 640px )  {}
 @media( min-width: 1040px ) {
-	.post-content .forms-container {
+	.post-content .form-section {
 		width: 75%;
 	}
 }

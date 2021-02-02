@@ -9,6 +9,29 @@ if ( ! $( ".js_forms_container" ).length )
 
 
 /*
+ *
+ * ----- FORM CONTENT HEIGHTS
+ *
+ */
+// Track and explicitly set the content heights of the primary and OTP forms
+// This is to enable a smooth height transition for when the forms are to crossfade
+var domFormsContainer = $( ".js_forms_container" ).get( 0 );
+var domPrimaryForm = $( ".js_primary_form" ).get( 0 );
+domPrimaryForm.style.setProperty( "--content-height", domPrimaryForm.scrollHeight + "px" );
+var domOTPForm = $( ".js_otp_form" ).get( 0 );
+domFormsContainer.style.setProperty( "--otp-form-height", domOTPForm.scrollHeight + "px" );
+	// Track the height as and when the viewport gets resized
+$( window ).on( "resize", debounce( function ( event ) {
+	domPrimaryForm.style.setProperty( "--content-height", domPrimaryForm.scrollHeight + "px" );
+	domFormsContainer.style.setProperty( "--otp-form-height", domOTPForm.scrollHeight + "px" );
+} ) );
+
+
+
+
+
+
+/*
  * ------------------------\
  *  Common event handlers
  * ------------------------|
@@ -97,6 +120,7 @@ __BFS.loginPrompts = loginPrompts;
  */
 loginPrompts.theForm = new __.LoginPrompt( "The Form", $( ".js_forms_container" ) );
 loginPrompts.theForm.conversionSlug = location.pathname.replace( "/", "" );
+loginPrompts.theForm.$primaryForm = loginPrompts.theForm.$site.find( ".js_primary_form" );
 
 loginPrompts.theForm.triggerFlowOn( "submit", ".js_primary_form" );
 
@@ -189,24 +213,20 @@ loginPrompts.theForm.on( "phoneSubmit", function ( event ) {
 // When the phone number is to be submitted
 loginPrompts.theForm.on( "requireOTP", function ( event, phoneNumber ) {
 	var loginPrompt = this;
-	loginPrompt.$phoneForm.css( { opacity: 1, pointerEvents: "auto" } );
-	loginPrompt.$site.find( ".js_primary_form" ).css( { opacity: 0, pointerEvents: "none" } );
-	// enableForm( loginPrompt.$phoneForm );
 
-	var $primaryForm = loginPrompt.$site.find( ".js_primary_form" );
-
-	disableForm( loginPrompt.$phoneForm, "Sending..." );
 	__.tempUser.requestOTP( loginPrompt.context )
 		.then( function ( otpSessionId ) {
 			__.tempUser.otpSessionId = otpSessionId;
-			$primaryForm.css( { opacity: 0, pointerEvents: "none" } );
-			// Show OTP form
-			loginPrompt.$OTPForm.css( { opacity: 1, pointerEvents: "auto" } );
+			// Scroll to the top of the form container, and crossfade between the main and OTP form
+			window.scrollTo( { top: loginPrompt.$site.offset().top - 50, behavior: "smooth" } );
+			setTimeout( function () {
+				loginPrompt.$site.addClass( "show-otp" );
+			}, 250 );
 			enableForm( loginPrompt.$OTPForm );
 		} )
 		.catch( function ( e ) {
 			alert( e.message );
-			enableForm( $primaryForm );
+			enableForm( loginPrompt.$primaryForm );
 		} )
 } );
 
@@ -222,12 +242,16 @@ loginPrompts.theForm.on( "login", onLogin );
 loginPrompts.theForm.on( "postLogin", function ( user ) {
 	var loginPrompt = this;
 
-	loginPrompt.$OTPForm.css( { opacity: 0, pointerEvents: "none" } );
-	var $primaryForm = loginPrompt.$site.find( ".js_primary_form" );
-	$primaryForm.css( { opacity: 1, pointerEvents: "auto" } );
-	enableForm( $primaryForm );
+	// loginPrompt.$OTPForm.css( { opacity: 0, pointerEvents: "none" } );
+	loginPrompt.$primaryForm.find( "[ name = 'name' ]" ).prop( "disabled", true );
+	loginPrompt.$primaryForm.find( "[ name = 'email-address' ]" ).prop( "disabled", true );
+	loginPrompt.$primaryForm.find( "[ name = 'phone-number' ]" ).prop( "disabled", true );
+	loginPrompt.$primaryForm.find( ".js_phone_country_code" ).prop( "disabled", true );
 
-	$primaryForm.trigger( "submit" );
+	loginPrompt.$site.removeClass( "show-otp" );
+	enableForm( loginPrompt.$primaryForm );
+
+	loginPrompt.$primaryForm.trigger( "submit" );
 } );
 
 
