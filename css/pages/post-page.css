@@ -60,19 +60,21 @@
 .post-content .wp-block-image {
 	margin: 0;
 }
-.post-content .wp-block-image figure { margin: 0; }
-/*.post-content .wp-block-image figure img { width: 100%; }*/
+.post-content .wp-block-image { margin: 0; }
+.post-content .wp-block-image img {
+	width: 100%;
+}
 
 .post-content .wp-block-image.alignfull {
 	width: 100vw;
 	margin-left: calc( ((100vw - var(--container-width))/2) * -1 );
-	background-color: peachpuff;
 }
+.post-content .wp-block-image.alignfull img { max-width: none; }
 
 .post-content .wp-block-image.alignwide {
 	width: var(--container-width);
-	background-color: skyblue;
 }
+.post-content .wp-block-image.alignwide img { max-width: none; }
 
 @media( min-width: 640px )  {
 	.post-content h1 { font-size: 4.2em; }
