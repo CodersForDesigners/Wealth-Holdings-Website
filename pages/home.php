@@ -595,7 +595,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						<span>Help Center</span>
 					</a>
 				</div>
-				<!--  -->
+				<!-- Brochure Section -->
 				<div class="brochures hidden">
 					<div class="row">
 						<?php foreach ( $brochures as $brochure ) : ?>
@@ -651,9 +651,78 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						<?php endforeach; ?>
 					</div>
 				</div>
+				<!-- END: Brochure Section -->
 			</div>
 		</div>
 	</div>
+	<!-- Tile Links Section -->
+	<div class="tile-link-section">
+		<div class="container">
+			<div class="row">
+				<div class="columns small-12 large-9 large-offset-3">
+					<div class="row">
+						<div class="tile columns small-12 medium-6 fill-blue-4">
+							<div class="layer-1" style="background-image: url('/* -- delete this and insert image url here -- */../content/cms/Free_Binded_Book_Mockup_3_exended.png<?php echo $ver ?>');"></div>
+							<div class="layer-2">
+								<div class="label opacity-75 space-min-bottom"><!-- Insert Label Text - Optional --></div>
+								<div class="h4 strong space-25-bottom">Comparison to <br>Gold</div>
+								<button class="button fill-red-2">Download Now</button>
+							</div>
+							<div class="layer-3">
+								<div class="form block form-dark">
+									<div class="form-row space-25-bottom">
+										<div class="title h5 strong">Signup to Download <br>for Free.</div>
+									</div>
+									<div class="form-row space-min-bottom">
+										<label for="">
+											<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
+											<input class="block" type="text">
+										</label>
+									</div>
+									<div class="form-row space-min-bottom">
+										<label for="">
+											<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+											<button class="button fill-red-2">Get Details</button>
+										</label>
+									</div>
+								</div>
+								<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+							</div>
+						</div>
+						<div class="tile columns small-12 medium-6 fill-red-2">
+							<div class="layer-1" style="background-image: url('/* -- delete this and insert image url here -- */../content/cms/Free_Binded_Book_Mockup_2_Extended.png<?php echo $ver ?>');"></div>
+							<div class="layer-2">
+								<div class="label opacity-75 space-min-bottom"><!-- Insert Label Text - Optional --></div>
+								<div class="h4 strong space-25-bottom">Comparison to <br>Fixed Deposits</div>
+								<button class="button fill-blue-4">Download Now</button>
+							</div>
+							<div class="layer-3">
+								<div class="form block form-dark">
+									<div class="form-row space-25-bottom">
+										<div class="title h5 strong">Signup to Download <br>for Free.</div>
+									</div>
+									<div class="form-row space-min-bottom">
+										<label for="">
+											<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
+											<input class="block" type="text">
+										</label>
+									</div>
+									<div class="form-row space-min-bottom">
+										<label for="">
+											<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+											<button class="button fill-red-2">Get Details</button>
+										</label>
+									</div>
+								</div>
+								<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+	<!-- END: Tile Links Section -->
 </section>
 <!-- END: FAQs Section -->
 

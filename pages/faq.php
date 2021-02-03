@@ -95,6 +95,104 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 <!-- END: FAQ Content Section -->
 
 
+<!-- Tile Links Section -->
+<div class="tile-link-section space-75-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="columns small-12 large-9 large-offset-3">
+				<div class="row">
+					<div class="tile columns small-12 medium-6 fill-red-1">
+						<div class="layer-1" style="background-image: url('/* -- delete this and insert image url here -- */<?php echo $ver ?>');"></div>
+						<div class="layer-2">
+							<div class="label opacity-75 space-min-bottom">EMI</div>
+							<div class="h4 strong space-25-bottom">Certe, inquam, pertinax non provident, similique sunt in ea quid est cur verear. Probabo, inquit, modo ista sis aequitate?</div>
+							<button class="button fill-red-2">Read More</button>
+						</div>
+						<div class="layer-3">
+							<div class="form block form-dark">
+								<div class="form-row space-25-bottom">
+									<div class="title h5 strong">Signup to Download <br>for Free.</div>
+								</div>
+								<div class="form-row space-min-bottom">
+									<label for="">
+										<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
+										<input class="block" type="text">
+									</label>
+								</div>
+								<div class="form-row space-min-bottom">
+									<label for="">
+										<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+										<button class="button fill-red-2">Get Details</button>
+									</label>
+								</div>
+							</div>
+							<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+						</div>
+					</div>
+					<div class="tile columns small-12 medium-6 fill-blue-4">
+						<div class="layer-1" style="background-image: url('/* -- delete this and insert image url here -- */<?php echo $ver ?>');"></div>
+						<div class="layer-2">
+							<div class="label opacity-75 space-min-bottom">Lumpsum</div>
+							<div class="h4 strong space-25-bottom">Torquem detraxit hosti <br>et quidem faciunt, ut <br>earum motus et quasi <br>naturalem atque?</div>
+							<button class="button fill-red-2">Read More</button>
+						</div>
+						<div class="layer-3">
+							<div class="form block form-dark">
+								<div class="form-row space-25-bottom">
+									<div class="title h5 strong">Signup to Download <br>for Free.</div>
+								</div>
+								<div class="form-row space-min-bottom">
+									<label for="">
+										<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
+										<input class="block" type="text">
+									</label>
+								</div>
+								<div class="form-row space-min-bottom">
+									<label for="">
+										<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+										<button class="button fill-red-2">Get Details</button>
+									</label>
+								</div>
+							</div>
+							<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+						</div>
+					</div>
+					<div class="tile columns small-12 medium-6 fill-dark">
+						<div class="layer-1" style="background-image: url('/* -- delete this and insert image url here -- */<?php echo $ver ?>');"></div>
+						<div class="layer-2">
+							<div class="h4 strong space-25-bottom">Epicurus in armatum <br>hostem impetum</div>
+							<button class="button fill-red-2">Watch Video</button>
+						</div>
+						<div class="layer-3">
+							<div class="form block form-dark">
+								<div class="form-row space-25-bottom">
+									<div class="label opacity-75 space-min-bottom"><!-- Insert Label Text - Optional --></div>
+									<div class="title h5 strong">Signup to Download <br>for Free.</div>
+								</div>
+								<div class="form-row space-min-bottom">
+									<label for="">
+										<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
+										<input class="block" type="text">
+									</label>
+								</div>
+								<div class="form-row space-min-bottom">
+									<label for="">
+										<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+										<button class="button fill-red-2">Get Details</button>
+									</label>
+								</div>
+							</div>
+							<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+<!-- END: Tile Links Section -->
+
+
 
 
 <script type="text/javascript">
