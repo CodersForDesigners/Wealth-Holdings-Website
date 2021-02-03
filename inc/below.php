@@ -112,6 +112,34 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 	<script type="text/javascript" src="/plugins/goodshare/goodshare-v6.1.5.min.js"></script>
 	<script type="text/javascript" src="/js/modules/sharing.js<?= $ver ?>"></script>
 
+	<!-- Slick Carousel -->
+	<script type="text/javascript" src="/plugins/slick/slick.min.js<?php echo $ver ?>"></script>
+	
+	<script type="text/javascript">
+
+		$( function () {
+
+		/*
+		 * Slick Slide Gallery
+		 */
+
+			$('.blocks-gallery-grid').slick({
+				arrows: true,
+				dots: false,
+				infinite: true,
+				speed: 800,
+				autoplaySpeed: 3000,
+				slidesToShow: 1,
+				centerMode: true,
+				variableWidth: true,
+				lazyLoad: 'ondemand'
+			}).slickNext();
+
+
+		} );
+
+	</script>
+
 	<script type="text/javascript" src="/js/modules/carousel.js<?= $ver ?>"></script>
 
 	<script type="text/javascript">
