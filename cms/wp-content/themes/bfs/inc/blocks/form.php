@@ -3,6 +3,7 @@
 $formName = get_field( 'form_name' );
 $fields = get_field( 'form_fields' );
 $formSubmitLabel = get_field( 'form_submit_label' );
+$formFeedback = get_field( 'form_feedback_message' );
 foreach ( $fields as &$field ) {
 	$field[ 'type' ] = $field[ 'acf_fc_layout' ];
 	if ( $field[ 'type' ] == 'select' )
@@ -18,17 +19,17 @@ unset( $field );
 <section class="form-section form-dark fill-neutral-4 space-50 js_forms_container">
 	<div class="h3 strong space-50-bottom"><?= $formName ?></div>
 	<div class="forms-container">
-		<form class="form primary-form js_primary_form" onsubmit="event.preventDefault()">
+		<form class="form primary-form js_primary_form" onsubmit="event.preventDefault()" data-feedback="<?= $formFeedback ?>">
 			<?php foreach ( $fields as $index => $field ) : ?>
 			<div class="form-row space-min-bottom">
 				<label for="form-field-<?= $index ?>">
 					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer"><?= $field[ 'label' ] ?></span><br>
 					<?php if ( $field[ 'type' ] === 'text' ) : ?>
-						<input class="block fill-dark" name="form-field-<?= $index ?>" type="text" id="form-field-<?= $index ?>">
+						<input class="block fill-dark" name="form-field-<?= $index ?>" type="text" id="form-field-<?= $index ?>" data-label="<?= $field[ 'label' ] ?>">
 					<?php elseif ( $field[ 'type' ] === 'textarea' ) : ?>
-						<textarea class="block fill-dark" name="form-field-<?= $index ?>" id="form-field-<?= $index ?>"></textarea>
+						<textarea class="block fill-dark" name="form-field-<?= $index ?>" id="form-field-<?= $index ?>" data-label="<?= $field[ 'label' ] ?>"></textarea>
 					<?php elseif ( $field[ 'type' ] === 'select' ) : ?>
-						<select class="block fill-dark" name="form-field-<?= $index ?>" id="form-field-<?= $index ?>">
+						<select class="block fill-dark" name="form-field-<?= $index ?>" id="form-field-<?= $index ?>" data-label="<?= $field[ 'label' ] ?>">
 							<?php foreach ( $field[ 'options' ] as $option ) : ?>
 								<option><?= $option ?></option>
 							<?php endforeach; ?>
@@ -63,7 +64,7 @@ unset( $field );
 				</label>
 			</div>
 			<div class="form-row space-min-bottom">
-				<div class="js_form_feedback">
+				<div class="js_form_feedback" style="display: none">
 					Thank you.
 					<br>
 					Someone will get in touch with you shortly.
