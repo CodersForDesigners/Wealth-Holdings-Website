@@ -6,6 +6,13 @@ require_once __DIR__ . '/utils.php';
 if ( CMS_ENABLED )
 	initWordPress();
 
+// If there is neither a corresponding post in the database nor a dedicated template for the given route, return a 404 and redirect
+if ( empty( $thePost ) and ! $hasDedicatedTemplate ) {
+	http_response_code( 404 );
+	return header( 'Location: /', true, 302 );
+	exit;
+}
+
 /* -- Lazaro disclaimer and footer -- */
 require_once __DIR__ . '/signatures-and-disclaimers.php';
 

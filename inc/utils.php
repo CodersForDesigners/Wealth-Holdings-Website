@@ -75,12 +75,6 @@ function establishContext () {
 		return header( 'Location: /', true, 302 );
 		exit;
 	}
-	// If there is neither a corresponding post in the database nor a dedicated template for the given route, return a 404 and redirect
-	else if ( empty( $thePost ) and ! $hasDedicatedTemplate ) {
-		http_response_code( 404 );
-		return header( 'Location: /', true, 302 );
-		exit;
-	}
 	else if ( ! empty( $thePost ) )
 		$postId = $thePost->get( 'ID' );
 
