@@ -94,4 +94,5 @@ unset( $field );
 	</div>
 </section>
 <script type="text/javascript" src="/js/modules/intercept-form-with-login-prompt.js"></script>
+<script type="text/javascript" src="/js/page/cms-post.js"></script>
 <?php endif; ?>
