@@ -242,14 +242,15 @@ loginPrompts.theForm.on( "login", onLogin );
 loginPrompts.theForm.on( "postLogin", function ( user ) {
 	var loginPrompt = this;
 
-	// loginPrompt.$OTPForm.css( { opacity: 0, pointerEvents: "none" } );
+	// Enable the primary form...
+	enableForm( loginPrompt.$primaryForm );
+	// ... but disable the core Cupid fields
 	loginPrompt.$primaryForm.find( "[ name = 'name' ]" ).prop( "disabled", true );
 	loginPrompt.$primaryForm.find( "[ name = 'email-address' ]" ).prop( "disabled", true );
 	loginPrompt.$primaryForm.find( "[ name = 'phone-number' ]" ).prop( "disabled", true );
 	loginPrompt.$primaryForm.find( ".js_phone_country_code" ).prop( "disabled", true );
 
 	loginPrompt.$site.removeClass( "show-otp" );
-	enableForm( loginPrompt.$primaryForm );
 
 	loginPrompt.$primaryForm.trigger( "submit" );
 } );
