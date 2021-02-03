@@ -7,6 +7,7 @@ wp.domReady( function () {
 		"core/image",
 		"core/heading",
 		"core/subhead",
+		"core/quote",
 		"core/gallery",
 		"core/list",
 		"core/group",
