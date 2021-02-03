@@ -1,5 +1,18 @@
 <?php
 
+// Get utility functions
+require_once __DIR__ . '/../inc/utils.php';
+// Include WordPress for Content Management
+if ( CMS_ENABLED )
+	initWordPress();
+
+// If there isn't a corresponding post, redirect to the introduction FAQ
+if ( empty( $thePost ) and ! $hasDedicatedTemplate ) {
+	http_response_code( 404 );
+	return header( 'Location: /faq/introduction', true, 302 );
+	exit;
+}
+
 // Page-specific preparatory code goes here.
 require_once __DIR__ . '/../inc/above.php';
 

@@ -54,6 +54,11 @@ else if ( substr( $requestPath, 0, 4 ) == 'faq/' ) {
 	$filename = $documentRoot . '/pages/' . $postType . '.php';
 	return require_once $filename;
 }
+else if ( substr( $requestPath, 0, 5 ) == 'faqs/' ) {
+	$urlSlug = substr( $requestPath, 5 );
+	header( 'Location: /faq/' . $urlSlug, true, 302 );
+	exit;
+}
 else if ( count( explode( '/', $requestPath ) ) === 2 ) {
 	[ $postType, $urlSlug ] = explode( '/', $requestPath );
 	$_GET[ '_slug' ] = $urlSlug;
