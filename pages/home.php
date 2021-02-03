@@ -591,7 +591,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						</div>
 					</div>
 				<?php endforeach; ?>
-					<a class="inline big-link h4 strong" tabindex="-1">
+					<a class="inline big-link h4 strong" tabindex="-1" href="/faq/introduction" target="_blank">
 						<span>Help Center</span>
 					</a>
 				</div>
