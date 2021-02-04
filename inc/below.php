@@ -12,7 +12,10 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 				<div class="container">
 					<div class="row">
 						<div class="about columns small-12 medium-6 large-4 space-50-bottom">
-							<div class="logo space-50-bottom"><img class="block" src="../media/wh-logo-large-light.svg<?php echo $ver ?>"></div>
+							<div class="logo space-50-bottom">
+								<a class="inline" href="/">
+									<img class="block" src="../media/wh-logo-large-light.svg<?php echo $ver ?>"></div>
+								</a>
 							<div class="h6 space-25-bottom text-blue-2">Wealth Holdings is a brand of Green <br>Infrastructure Projects Private Limited.</div>
 							<!-- <a class="address inline space-25-bottom" target="_blank" href="https://maps.google.com"> -->
 							<span class="address inline space-25-bottom">

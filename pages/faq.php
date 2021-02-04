@@ -53,11 +53,13 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 
 
 <!-- Header Section -->
-<section class="header-section fill-blue-4 space-75-top space-50-bottom">
+<section class="header-section fill-blue-4 space-75-top space-25-bottom">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12">
-				<div class="logo space-50-bottom"><img class="block" src="../media/wh-logo-large-light.svg<?php echo $ver ?>"></div>
+				<a class="inline" href="/">
+					<div class="logo space-50-bottom"><img class="block" src="../media/wh-logo-large-light.svg<?php echo $ver ?>"></div>
+				</a>
 			</div>
 			<div class="columns small-12 large-10 xlarge-8">
 				<div class="h2 strong">
@@ -70,8 +72,27 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 <!-- END: Header Section -->
 
 
+<!-- Search Section -->
+<section class="search-section fill-blue-4 space-25-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="columns small-12">
+				<form role="search" method="get" id="searchform" class="searchform" action="http://localhost/">
+					<div class="search-bar fill-dark">
+						<label class="label visuallyhidden screen-reader-text" for="s">Search for:</label>
+						<input class="search-input" type="text" value="" name="s" id="s" placeholder="How can we help?">
+						<input class="search-button button fill-red-2" type="submit" id="searchsubmit" value="Search">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Search Section -->
+
+
 <!-- FAQ Content Section -->
-<section class="faq-content-section space-75-top-bottom">
+<section class="faq-content-section space-50-top-bottom">
 	<div class="container">
 		<div class="row">
 			<div class="faq-sidebar columns small-12 large-4 js_faq_sidebar">
