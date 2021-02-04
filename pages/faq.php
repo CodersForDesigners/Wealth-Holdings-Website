@@ -6,6 +6,10 @@ require_once __DIR__ . '/../inc/utils.php';
 if ( CMS_ENABLED )
 	initWordPress();
 
+// If this is search query request, then delegate the handling to `faq-search.php`
+if ( $urlSlug == 'faq' and ! empty( $_GET[ 's' ] ) )
+	return require_once __DIR__ . '/faq-search.php';
+
 // If there isn't a corresponding post, redirect to the introduction FAQ
 if ( empty( $thePost ) and ! $hasDedicatedTemplate ) {
 	http_response_code( 404 );
