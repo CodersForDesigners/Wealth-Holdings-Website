@@ -81,7 +81,7 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12">
-				<form role="search" method="get" id="searchform" class="searchform" action="http://localhost/">
+				<form role="search" method="get" id="searchform" class="searchform" action="/faq">
 					<div class="search-bar fill-dark">
 						<label class="label visuallyhidden screen-reader-text" for="s">Search for:</label>
 						<input class="search-input" type="text" value="" name="s" id="s" placeholder="How can we help?">
