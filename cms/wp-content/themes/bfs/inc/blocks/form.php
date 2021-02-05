@@ -1,7 +1,8 @@
 <?php
 
 $formName = get_field( 'form_name' );
-$fields = get_field( 'form_fields' );
+$formContext = get_field( 'form_context' );
+$fields = get_field( 'form_fields' ) ?: [ ];
 $formSubmitLabel = get_field( 'form_submit_label' );
 $formFeedback = get_field( 'form_feedback_message' );
 foreach ( $fields as &$field ) {
@@ -16,10 +17,10 @@ unset( $field );
 	<h4>(A form will be placed here.)</h4>
 <?php else : ?>
 
-<section class="form-section form-dark fill-neutral-4 space-50 js_forms_container">
+<section class="form-section form-dark fill-neutral-4 space-50">
 	<div class="h3 strong space-50-bottom"><?= $formName ?></div>
-	<div class="forms-container">
-		<form class="form primary-form js_primary_form" onsubmit="event.preventDefault()" data-feedback="<?= $formFeedback ?>">
+	<div class="forms-container js_forms_container">
+		<form class="form primary-form js_primary_form" onsubmit="event.preventDefault()" data-context="<?= $formContext ?>" data-feedback="<?= htmlentities( $formFeedback ) ?>">
 			<?php foreach ( $fields as $index => $field ) : ?>
 			<div class="form-row space-min-bottom">
 				<label for="form-field-<?= $index ?>">
@@ -64,10 +65,10 @@ unset( $field );
 				</label>
 			</div>
 			<div class="form-row space-min-bottom">
-				<div class="js_form_feedback" style="display: none">
+				<div class="text-red-2 h5 form-feedback js_form_feedback" style="display: none">
 					Thank you.
 					<br>
-					Someone will get in touch with you shortly.
+					We'll get in touch shortly.
 				</div>
 				<label for="form-field-submit">
 					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>

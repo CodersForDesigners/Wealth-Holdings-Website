@@ -160,6 +160,10 @@
 	pointer-events: auto;
 	transition-delay: 0.4s;
 }
+.post-content .form-section .form-feedback {
+	opacity: 0;
+	transition: opacity 0.25s 0.25s ease-out;
+}
 
 @media( min-width: 640px )  {}
 @media( min-width: 1040px ) {

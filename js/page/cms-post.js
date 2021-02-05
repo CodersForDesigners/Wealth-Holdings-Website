@@ -26,12 +26,17 @@ $( document ).on( "submit", ".js_primary_form", function ( event ) {
 	var __ = window.__CUPID;
 
 	// Disable relevant portions of the forms
+	disableForm( $form );
 	$fields.prop( "disabled", true );
 	$submitButton.prop( "disabled", true );
 
 	// Pre-prepare the feedback message in the event of a successful form submission
 	var successFeedbackMessageTemplate = $form.data( "feedback" );
 	var successFeedbackMessage = window.__BFS.renderTemplate( successFeedbackMessageTemplate, __.user );
+	// Set the feedback message
+	$feedbackMessage.html( "<br>" + successFeedbackMessage );
+
+	var formContext = ( $form.data( "context" ) || "" ).trim();
 
 
 	/*
@@ -41,13 +46,8 @@ $( document ).on( "submit", ".js_primary_form", function ( event ) {
 	 *			capturing whatever context the form is placed in.
 	 */
 	if ( ! $fields.length ) {
-		$submitButton.parent().slideUp( 250, function () {
-			$feedbackMessage
-				.text( successFeedbackMessage )
-				.slideDown();
-		} );
+		provideFeedbackToTheUser( $submitButton, $feedbackMessage );
 		// Register interests and update the user record
-		var formContext = $form.data( "context" );
 		__.user.isInterestedIn( formContext );
 		__.user.update();
 		return;
@@ -64,7 +64,11 @@ $( document ).on( "submit", ".js_primary_form", function ( event ) {
 			validationIssues.push( label );
 			return false;
 		}
-		interests.push( label + ": " + value );
+		if ( formContext.length )
+			interests.push( formContext + ": " + label + ": " + value );
+		else
+			interests.push( label + ": " + value );
+		return true;
 	} );
 
 	// Abort if validation issues are present
@@ -77,18 +81,30 @@ $( document ).on( "submit", ".js_primary_form", function ( event ) {
 		return;
 	}
 
-	// Give feedback to the user
-	$submitButton.parent().slideUp( 250, function () {
-		$feedbackMessage
-			.text( successFeedbackMessage )
-			.slideDown();
-	} );
+	// Set the feedback message
+	$feedbackMessage.html( "<br>" + successFeedbackMessage );
+
+	provideFeedbackToTheUser( $submitButton, $feedbackMessage );
 
 	// Register interests and update the user record
 	__.user.isInterestedIn( interests );
 	__.user.update();
 
 } );
+
+
+function provideFeedbackToTheUser ( $submitButton, $feedbackMessage ) {
+	// Hide the submit button
+	$submitButton.parent().slideUp( 250, function () {
+		// Initiate the process to present the feedback message. ( Yes, it is quite an involved process. )
+		$feedbackMessage.slideDown( 250, function () {
+			// The form's height is explicitly set. This is form certain transitions to work.
+			__BFS.utils.measureAndSetFormHeights();
+			// Fade in the message
+			$feedbackMessage.css( { opacity: 1 } );
+		} );
+	} );
+}
 
 
 

@@ -21,10 +21,12 @@ domPrimaryForm.style.setProperty( "--content-height", domPrimaryForm.scrollHeigh
 var domOTPForm = $( ".js_otp_form" ).get( 0 );
 domFormsContainer.style.setProperty( "--otp-form-height", domOTPForm.scrollHeight + "px" );
 	// Track the height as and when the viewport gets resized
-$( window ).on( "resize", debounce( function ( event ) {
+function measureAndSetFormHeights ( event ) {
 	domPrimaryForm.style.setProperty( "--content-height", domPrimaryForm.scrollHeight + "px" );
 	domFormsContainer.style.setProperty( "--otp-form-height", domOTPForm.scrollHeight + "px" );
-} ) );
+}
+__BFS.utils.measureAndSetFormHeights = measureAndSetFormHeights;
+$( window ).on( "resize", debounce( measureAndSetFormHeights ) );
 
 
 
@@ -97,6 +99,17 @@ function onLogin () {
 			__.user.update();	// the name and email might have been provided somewhere earlier
 		} )
 
+
+	// Enable the primary form...
+	enableForm( loginPrompt.$primaryForm );
+	// ... but disable the core Cupid fields
+	loginPrompt.$primaryForm.find( "[ name = 'name' ]" ).prop( "disabled", true );
+	loginPrompt.$primaryForm.find( "[ name = 'email-address' ]" ).prop( "disabled", true );
+	loginPrompt.$primaryForm.find( "[ name = 'phone-number' ]" ).prop( "disabled", true );
+	loginPrompt.$primaryForm.find( ".js_phone_country_code" ).prop( "disabled", true );
+
+	loginPrompt.$site.removeClass( "show-otp" );
+
 	loginPrompt.trigger( "postLogin" );
 }
 
@@ -121,6 +134,7 @@ __BFS.loginPrompts = loginPrompts;
 loginPrompts.theForm = new __.LoginPrompt( "The Form", $( ".js_forms_container" ) );
 loginPrompts.theForm.conversionSlug = location.pathname.replace( "/", "" );
 loginPrompts.theForm.$primaryForm = loginPrompts.theForm.$site.find( ".js_primary_form" );
+loginPrompts.theForm.context = loginPrompts.theForm.$primaryForm.data( "context" );
 
 loginPrompts.theForm.triggerFlowOn( "submit", ".js_primary_form" );
 
@@ -241,17 +255,6 @@ loginPrompts.theForm.on( "login", onLogin );
 
 loginPrompts.theForm.on( "postLogin", function ( user ) {
 	var loginPrompt = this;
-
-	// Enable the primary form...
-	enableForm( loginPrompt.$primaryForm );
-	// ... but disable the core Cupid fields
-	loginPrompt.$primaryForm.find( "[ name = 'name' ]" ).prop( "disabled", true );
-	loginPrompt.$primaryForm.find( "[ name = 'email-address' ]" ).prop( "disabled", true );
-	loginPrompt.$primaryForm.find( "[ name = 'phone-number' ]" ).prop( "disabled", true );
-	loginPrompt.$primaryForm.find( ".js_phone_country_code" ).prop( "disabled", true );
-
-	loginPrompt.$site.removeClass( "show-otp" );
-
 	loginPrompt.$primaryForm.trigger( "submit" );
 } );
 
