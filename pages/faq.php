@@ -17,6 +17,9 @@ if ( empty( $thePost ) and ! $hasDedicatedTemplate ) {
 	exit;
 }
 
+// Suffix the page title
+$thePost->set( 'post_title', $thePost->get( 'post_title' ) . ' | Help Center' );
+
 // Page-specific preparatory code goes here.
 require_once __DIR__ . '/../inc/above.php';
 
