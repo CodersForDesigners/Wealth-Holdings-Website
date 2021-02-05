@@ -1,0 +1,21 @@
+/*
+ * Search Listing Section
+ */
+
+.search-listing-section {}
+
+.search-listing-section .item {
+	cursor: pointer;
+	border-bottom: dashed 2px var(--blue-4);
+}
+.search-listing-section .item:last-child {
+	border-bottom: none;
+}
+
+.search-listing-section .item * {
+	pointer-events: none;
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}

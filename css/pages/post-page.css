@@ -197,10 +197,7 @@
 .wp-block-gallery {
 	margin: 0;
 	width: 100%;
-	/*margin-left: 50%;*/
-	/*width: 100vw;*/
-	/*transform: translateX(-50%);*/
-	/*padding: 2px;*/
+	margin-bottom: var(--space-25);
 }
 .wp-block-gallery .blocks-gallery-grid {
 	list-style: none;
