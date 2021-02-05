@@ -64,7 +64,14 @@ foreach ( $testimonials as $testimonial ) {
 
 	$videoThumbnail = $testimonial->get( 'video_thumbnail' ) ?: [ 'sizes' => [ ] ];
 	if ( $videoThumbnail !== false ) {
-		$videoThumbnailURL = $videoThumbnail[ 'sizes' ][ 'thumbnail' ] ?: $videoThumbnail[ 'sizes' ][ 'small' ] ?: $videoThumbnail[ 'sizes' ][ 'medium' ] ?: $videoThumbnail[ 'sizes' ][ 'medium_large' ] ?: $videoThumbnail[ 'sizes' ][ 'large' ] ?: $videoThumbnail[ 'url' ] ?: null;
+		$videoThumbnailURL =
+				( $videoThumbnail[ 'sizes' ][ 'thumbnail' ] ?? false )
+			?:	( $videoThumbnail[ 'sizes' ][ 'small' ] ?? false )
+			?:	( $videoThumbnail[ 'sizes' ][ 'medium' ] ?? false )
+			?:	( $videoThumbnail[ 'sizes' ][ 'medium_large' ] ?? false )
+			?:	( $videoThumbnail[ 'sizes' ][ 'large' ] ?? false )
+			?:	( $videoThumbnail[ 'url' ] ?? false )
+			?:	null;
 		$testimonial->set( 'video_thumbnail', $videoThumbnailURL );
 	}
 }
