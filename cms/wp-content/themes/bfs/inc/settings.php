@@ -81,6 +81,22 @@ add_action( 'acf/init', function () {
 		'render_callback' => 'acf_render_callback'
 	] );
 
+	// Tile Link block
+	acf_register_block_type( [
+		'name' => 'bfs-tile-link',
+		'title' => __( 'Tile Link' ),
+		'description' => __( 'A tile that can link to a post, attachment or trigger playback of a video.' ),
+		'category' => 'wealth-holdings',
+		'icon' => 'testimonial',
+		'align' => 'wide',
+		'mode' => 'edit',
+		'supports' => [
+			'multiple' => false,
+			'align' => [ 'wide' ]
+		],
+		'render_callback' => 'acf_render_callback'
+	] );
+
 	// Form block
 	acf_register_block_type( [
 		'name' => 'bfs-form',
@@ -176,6 +192,12 @@ function bfs_theme_setup () {
 		else if ( $postType === 'brochure' ) {
 			$args[ 'template' ] = [
 				[ 'acf/bfs-brochures' ]
+			];
+			$args[ 'template_lock' ] = 'all';
+		}
+		else if ( $postType === 'tile-link' ) {
+			$args[ 'template' ] = [
+				[ 'acf/bfs-tile-link' ]
 			];
 			$args[ 'template_lock' ] = 'all';
 		}
