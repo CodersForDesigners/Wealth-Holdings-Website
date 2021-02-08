@@ -387,7 +387,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 							<div class="card fill-blue-3 space-25">
 								<div class="h4 strong" style="padding-bottom: calc(var(--space-min)/2)">Didn’t find a suitable investment?</div>
 								<div class="h6 space-25-bottom">Tell us what you are looking for.</div>
-								<a href="" class="link inline">
+								<a href="/didnt-find-a-suitable-investment" target="_blank" class="link inline">
 									<span class="h5 strong-underline blue-4 strong text-blue-4 line-height-large">Feedback</span>
 									<img class="icon inline-middle" src="../media/icon/icon-right-arrow-strong-blue-4.svg<?php echo $ver ?>">
 								</a>
@@ -396,7 +396,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						<div class="sub-tile columns small-12 medium-6 large-5">
 							<div class="card fill-blue-3 space-25">
 								<div class="h5 strong space-25-bottom">Get a sneak peak at upcoming investment opportunities.</div>
-								<a href="" class="link inline">
+								<a href="/get-a-sneak-peek" target="_blank" class="link inline">
 									<span class="h5 strong-underline blue-4 strong text-blue-4 line-height-large">Register</span>
 									<img class="icon inline-middle" src="../media/icon/icon-right-arrow-strong-blue-4.svg<?php echo $ver ?>">
 								</a>

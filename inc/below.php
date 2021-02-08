@@ -31,7 +31,7 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 						<div class="columns small-12 medium-6 large-8 space-50-bottom">
 							<div class="row featured-links">
 								<div class="columns small-12 large-6 space-50-bottom">
-									<a class="link inline" href="">
+									<a class="link inline <?= $hide ?>" href="/looking-to-sell-an-rental-asset" target="_blank">
 										<div class="h2 inline strong text-red-2 opacity-50 no-wrap">
 											<span class="inline-top">Sell</span>
 											<img class="inline-top" src="../media/icon/icon-wh-arrow-red.svg<?php echo $ver ?>">
@@ -40,7 +40,7 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 									</a>
 								</div>
 								<div class="columns small-12 large-6 space-50-bottom">
-									<a class="link inline" href="">
+									<a class="link inline" href="/authorised-partner-signup" target="_blank">
 										<div class="h2 inline strong text-red-2 opacity-50 no-wrap">
 											<span class="inline-top">Partner</span>
 											<img class="inline-top" src="../media/icon/icon-wh-arrow-red.svg<?php echo $ver ?>">
