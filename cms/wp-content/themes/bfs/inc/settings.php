@@ -259,3 +259,54 @@ add_action( 'bfs/backend/on-editing-posts', function ( $postType ) {
 	);
 
 } );
+
+
+/*
+ *
+ * ----- Tile Links
+ *	Capture certain ACF values and store them as native post (or post meta) attributes, or tags.
+ *	This is to optimize the post querying.
+ *
+ */
+function tileLink__SavePostHook ( $postId, $post, $postWasUpdated ) {
+
+	if ( get_post_type( $postId ) !== 'tile-link' )
+		return;
+
+	require_once __DIR__ . '/../../../../../inc/cms.php';
+
+	// Unregister the save_post action hook to prevent an infinite loop
+	remove_action( 'save_post_tile-link', 'tileLink__SavePostHook', 100, 3 );
+
+	$thePost = \BFS\CMS::getPostById( $postId );
+
+	/*
+	 * Capture the "title" value as the post title
+	 */
+	// Strip away all the HTML and newline characters
+	$title = strip_tags( str_replace( "\r\n", ' ', $thePost->get( 'tile_title' ) ) );
+	wp_update_post( [ 'ID' => $postId, 'post_title' => $title ], false, false );
+
+
+	/*
+	 * Capture the "Feature in" value as a tag
+	 */
+	$tags = array_map( function ( $tag ) {
+		return 'for-' . $tag;
+	}, $thePost->get( 'feature_on' ) );
+
+	$allExistingPostTags = wp_get_post_tags( $postId, [ 'fields' => 'slugs' ] );
+	$allOtherTags = array_filter( $allExistingPostTags, function ( $tag ) {
+		return substr( $tag, 0, 4 ) != 'for-';
+	} );
+
+	$tagsToSet = array_merge( $allOtherTags, $tags );
+
+	wp_set_post_tags( $postId, $tagsToSet, false );
+
+	// Re-register the action hook
+	add_action( 'save_post_tile-link', 'tileLink__SavePostHook', 100, 3 );
+
+}
+// Register a `save_post` action hook for the Tile Link post
+add_action( 'save_post_tile-link', 'tileLink__SavePostHook', 100, 3 );
