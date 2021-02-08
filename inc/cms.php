@@ -35,6 +35,11 @@ class CMS {
 
 
 		foreach ( $postsFromDB as &$post ) {
+			if ( isset( self::$cache[ $post->ID ] ) ) {
+				$post = self::$cache[ $post->ID ];
+				continue;
+			}
+
 			$post = get_object_vars( $post );
 			// Reset the var where the ACF data will be stored
 			self::$currentQueriedPostId = $post[ 'ID' ];
@@ -58,6 +63,9 @@ class CMS {
 	}
 
 	public static function getPostById ( $id ) {
+
+		if ( isset( self::$cache[ $id ] ) )
+			return new Content( self::$cache[ $id ] );
 
 		$postFromDB = get_post( $id, ARRAY_A ) ?? null;
 
@@ -84,6 +92,9 @@ class CMS {
 	}
 
 	public static function getPostBySlug ( $slug, $type = null ) {
+
+		if ( isset( self::$cache[ $slug ] ) )
+			return new Content( self::$cache[ $slug ] );
 
 		global $postType;
 		$type = $type ?: $postType ?: [ 'post', 'page', 'attachment' ];
