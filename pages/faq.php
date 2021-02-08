@@ -56,8 +56,23 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 
 }
 
+
+$tileLinks = BFS\CMS::getPostsOf( 'tile-link', [ 'tag' => 'for-faqs' ] );
+foreach ( $tileLinks as $tile ) {
+	$tile->set( 'link', $tile->get( 'arbitrary_link' ) ?: $tile->get( 'attachment_link' ) );
+	$tile->set( 'videoId', $tile->get( 'youtube_video_id' ) );
+}
+
 ?>
 
+<script type="text/javascript">
+
+	window.__BFS = window.__BFS || { };
+	window.__BFS.post = {
+		title: "<?= $thePost->get( 'post_title' ) ?>"
+	};
+
+</script>
 
 <!-- Header Section -->
 <section class="header-section fill-blue-4 space-75-top space-25-bottom">
@@ -129,90 +144,21 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 		<div class="row">
 			<div class="columns small-12 large-9 large-offset-3">
 				<div class="row">
-					<div class="tile columns small-12 medium-6 fill-red-1">
-						<div class="layer-1" style="background-image: url('/* -- delete this and insert image url here -- */<?php echo $ver ?>');"></div>
-						<div class="layer-2">
-							<div class="label opacity-75 space-min-bottom">EMI</div>
-							<div class="h4 strong space-25-bottom">Certe, inquam, pertinax non provident, similique sunt in ea quid est cur verear. Probabo, inquit, modo ista sis aequitate?</div>
-							<button class="button fill-red-2">Read More</button>
-						</div>
-						<div class="layer-3">
-							<div class="form block form-dark">
-								<div class="form-row space-25-bottom">
-									<div class="title h5 strong">Signup to Download <br>for Free.</div>
-								</div>
-								<div class="form-row space-min-bottom">
-									<label for="">
-										<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
-										<input class="block" type="text">
-									</label>
-								</div>
-								<div class="form-row space-min-bottom">
-									<label for="">
-										<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-										<button class="button fill-red-2">Get Details</button>
-									</label>
-								</div>
+					<?php foreach ( $tileLinks as $tile ) : ?>
+						<div class="tile columns small-12 medium-6 fill-<?= $tile->get( 'bg_color' ) ?> js_tile <?= $tile->get( 'trigger_login_flow' ) ? 'js_user_required' : '' ?>" <?php if ( $tile->get( 'trigger_login_flow' ) ) echo 'data-login-prompt-title="' . htmlentities( $tile->get( 'login_flow_title' ) ) . '"' ?>>
+							<div class="layer-1" <?php if ( $tile->get( 'bg_image' ) ) : ?>style="background-image: url( '<?= $tile->get( 'bg_image' ) ?>' );"<?php endif; ?>></div>
+							<div class="layer-2">
+								<div class="label opacity-75 space-min-bottom text-<?= $tile->get( 'text_color' ) ?> js_tile_subheading"><?= $tile->get( 'tile_label' ) ?></div>
+								<div class="<?= $tile->get( 'title_size' ) ?> strong space-25-bottom text-<?= $tile->get( 'text_color' ) ?> js_title"><?= $tile->get( 'tile_title' ) ?></div>
+								<?php if ( $tile->get( 'link' ) ) : ?>
+									<a class="button fill-<?= $tile->get( 'button_bg_color' ) ?> text-<?= $tile->get( 'button_color' ) ?> js_action" href="#" data-href="<?= $tile->get( 'link' ) ?>" target="_blank"><?= $tile->get( 'button_text' ) ?></a>
+								<?php else: ?>
+									<button class="button fill-<?= $tile->get( 'button_bg_color' ) ?> text-<?= $tile->get( 'button_color' ) ?> js_action js_modal_trigger" data-mod-id="youtube-video" data-src="<?= $tile->get( 'videoId' ) ?>"><?= $tile->get( 'button_text' ) ?></button>
+								<?php endif; ?>
 							</div>
-							<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+							<div class="layer-3 js_tile_login_prompt_container"></div>
 						</div>
-					</div>
-					<div class="tile columns small-12 medium-6 fill-blue-4">
-						<div class="layer-1" style="background-image: url('/* -- delete this and insert image url here -- */<?php echo $ver ?>');"></div>
-						<div class="layer-2">
-							<div class="label opacity-75 space-min-bottom">Lumpsum</div>
-							<div class="h4 strong space-25-bottom">Torquem detraxit hosti <br>et quidem faciunt, ut <br>earum motus et quasi <br>naturalem atque?</div>
-							<button class="button fill-red-2">Read More</button>
-						</div>
-						<div class="layer-3">
-							<div class="form block form-dark">
-								<div class="form-row space-25-bottom">
-									<div class="title h5 strong">Signup to Download <br>for Free.</div>
-								</div>
-								<div class="form-row space-min-bottom">
-									<label for="">
-										<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
-										<input class="block" type="text">
-									</label>
-								</div>
-								<div class="form-row space-min-bottom">
-									<label for="">
-										<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-										<button class="button fill-red-2">Get Details</button>
-									</label>
-								</div>
-							</div>
-							<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
-						</div>
-					</div>
-					<div class="tile columns small-12 medium-6 fill-dark">
-						<div class="layer-1" style="background-image: url('/* -- delete this and insert image url here -- */<?php echo $ver ?>');"></div>
-						<div class="layer-2">
-							<div class="h4 strong space-25-bottom">Epicurus in armatum <br>hostem impetum</div>
-							<button class="button fill-red-2">Watch Video</button>
-						</div>
-						<div class="layer-3">
-							<div class="form block form-dark">
-								<div class="form-row space-25-bottom">
-									<div class="label opacity-75 space-min-bottom"><!-- Insert Label Text - Optional --></div>
-									<div class="title h5 strong">Signup to Download <br>for Free.</div>
-								</div>
-								<div class="form-row space-min-bottom">
-									<label for="">
-										<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
-										<input class="block" type="text">
-									</label>
-								</div>
-								<div class="form-row space-min-bottom">
-									<label for="">
-										<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-										<button class="button fill-red-2">Get Details</button>
-									</label>
-								</div>
-							</div>
-							<div class="close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
-						</div>
-					</div>
+					<?php endforeach; ?>
 				</div>
 			</div>	
 		</div>
@@ -264,5 +210,55 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 	} );
 
 </script>
+
+<!-- Templates Section -->
+<section class="js_section_templates hidden">
+	<!-- TEMPLATE: Login Prompt for Tile Link -->
+	<template class="js_template" data-name="tile-link-login-prompt">
+		<div class="js_tile_login_prompt">
+			<div class="form-row space-25-bottom">
+				<div class="title h5 strong js_login_prompt_title">Signup to Download <br>for Free.</div>
+			</div>
+			<form class="form form-dark js_phone_form" onsubmit="event.preventDefault()">
+				<div class="form-row space-min-bottom">
+					<label for="">
+						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
+						<div style="position: relative; display: flex">
+							<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
+								<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+							</select>
+							<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
+							<input class="block" type="text" name="phone-number" id="">
+						</div>
+					</label>
+				</div>
+				<div class="form-row space-min-bottom">
+					<label for="">
+						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+						<button class="button fill-red-2" type="submit">Get Details</button>
+					</label>
+				</div>
+			</form>
+			<form class="form form-dark js_otp_form" style="display: none" onsubmit="event.preventDefault()">
+				<div class="form-row space-min-bottom">
+					<label for="">
+						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
+						<input class="block" type="text" name="otp" id="">
+					</label>
+					<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp hidden">Re-send OTP</span>
+					<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number hidden">Try a different number</span>
+				</div>
+				<div class="form-row space-min-bottom">
+					<label for="">
+						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
+						<button class="button fill-red-2" type="submit">Verify OTP</button>
+					</label>
+				</div>
+			</form>
+			<div class="close js_close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+		</div>
+	</template>
+	<!-- END: Template: Login Prompt for Tile Link -->
+</section>
 
 <?php require_once __DIR__ . '/../inc/below.php'; ?>
