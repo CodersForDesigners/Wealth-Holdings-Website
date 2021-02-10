@@ -3,6 +3,26 @@
 // Page-specific preparatory code goes here.
 require_once __DIR__ . '/../inc/above.php';
 
+$faqs = BFS\CMS::getPostsOf( 'faq', [
+	's' => get_query_var( 's' )
+] );
+foreach ( $faqs as $faq ) {
+	$faq->set( 'url', get_permalink( $faq->get( 'ID' ) ) );
+	// If summary exists, use that, else pull from the faq content and crop it to below 199 characters ( and don't break in the middle of a word )
+	$summary = $faq->get( 'summary' ) ?: wp_strip_all_tags( $faq->get( 'post_content' ) );
+	if ( strlen( $summary ) <= 199 )
+		$faq->set( 'content', $summary );
+	else
+		$faq->set(
+			'content',
+			preg_replace(
+				'/\s[^\s]+$/',
+				'',
+				substr( $summary , 0, 199 )
+			) . '...'
+		);
+}
+
 ?>
 
 <!-- Header Section -->
@@ -20,7 +40,7 @@ require_once __DIR__ . '/../inc/above.php';
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
 </section>
 <!-- END: Header Section -->
 
@@ -29,21 +49,18 @@ require_once __DIR__ . '/../inc/above.php';
 	<div class="container">
 		<div class="row">
 			<div class="search-listing columns small-12 large-8 xlarge-7">
-				<a class="item block space-25-top-bottom" href="#">
-					<div class="title h5 strong space-min-bottom">Why should I buy and is my money secure?</div>
-					<div class="description h6 opacity-50 space-min-bottom">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, perferendis aperiam quibusdam ipsam possimus optio alias? Excepturi, corporis eius inventore provident aut expedita quidem illo placeat aliquam ex, suscipit ratione.</div>
-					<span class="label inline text-lowercase">Read More <span class="material-icons">subject</span></span>
-				</a>
-				<a class="item block space-25-top-bottom" href="#">
-					<div class="title h5 strong space-min-bottom">When will my returns start?</div>
-					<div class="description h6 opacity-50 space-min-bottom">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, perferendis aperiam quibusdam ipsam possimus optio alias? Excepturi, corporis eius inventore provident aut expedita quidem illo placeat aliquam ex, suscipit ratione.</div>
-					<span class="label inline text-lowercase">Read More <span class="material-icons">subject</span></span>
-				</a>
-				<a class="item block space-25-top-bottom" href="#">
-					<div class="title h5 strong space-min-bottom">How frequently will I get my returns?</div>
-					<div class="description h6 opacity-50 space-min-bottom">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, perferendis aperiam quibusdam ipsam possimus optio alias? Excepturi, corporis eius inventore provident aut expedita quidem illo placeat aliquam ex, suscipit ratione.</div>
-					<span class="label inline text-lowercase">Read More <span class="material-icons">subject</span></span>
-				</a>
+				<?php if ( ! empty( $faqs ) ) : ?>
+					<?php foreach ( $faqs as $faq ) : ?>
+						<a class="item block space-25-top-bottom" href="<?= $faq->get( 'url' ) ?>">
+							<div class="title h5 strong space-min-bottom"><?= $faq->get( 'post_title' ) ?></div>
+							<div class="description h6 opacity-50 space-min-bottom"><?= $faq->get( 'content' ) ?></div>
+							<span class="label inline text-lowercase">Read More <span class="material-icons">subject</span></span>
+						</a>
+					<?php endforeach; ?>
+				<?php else : ?>
+					<div class="h4 strong">Sorry, we could not find any articles matching:</div>
+					<div class="space-25-top p">"<?= esc_html( get_query_var( 's' ) ) ?>"</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
