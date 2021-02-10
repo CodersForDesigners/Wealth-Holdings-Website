@@ -32,7 +32,7 @@ foreach ( $faqs as $faq ) {
 ?>
 
 <!-- Header Section -->
-<section class="header-section fill-blue-4 space-75-top space-50-bottom">
+<section class="header-section fill-blue-4 space-75-top space-25-bottom">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12">
@@ -42,13 +42,34 @@ foreach ( $faqs as $faq ) {
 			</div>
 			<div class="columns small-12 large-10 xlarge-8">
 				<div class="h2 strong">
-					Search Results
+					Help Center : Search
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 <!-- END: Header Section -->
+
+
+<!-- Search Section -->
+<section class="search-section fill-blue-4 space-25-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="columns small-12">
+				<form role="search" method="get" id="searchform" class="searchform" action="/faq">
+					<div class="search-bar fill-dark">
+						<label class="label visuallyhidden screen-reader-text" for="s">Search for:</label>
+						<input class="search-input" type="text" value="" name="s" id="s" placeholder="How can we help?">
+						<input type="text" name="bfs_hi_puf" class="well-designed">
+						<input class="search-button button fill-red-2" type="submit" id="searchsubmit" value="Search">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Search Section -->
+
 
 <!-- Search Listing Section -->
 <section class="search-listing-section space-50-top space-75-bottom">
@@ -64,7 +85,7 @@ foreach ( $faqs as $faq ) {
 						</a>
 					<?php endforeach; ?>
 				<?php else : ?>
-					<div class="h4 strong">Sorry, we could not find any articles matching:</div>
+					<div class="h4 strong">Sorry, we could not find any articles matching :</div>
 					<div class="space-25-top p">"<?= esc_html( get_query_var( 's' ) ) ?>"</div>
 				<?php endif; ?>
 			</div>
