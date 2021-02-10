@@ -11,7 +11,7 @@ if ( $urlSlug == 'faq' and ! empty( $_GET[ 's' ] ) )
 	return require_once __DIR__ . '/faq-search.php';
 
 // If there isn't a corresponding post, redirect to the introduction FAQ
-if ( empty( $thePost ) and ! $hasDedicatedTemplate ) {
+if ( empty( $thePost ) ) {
 	http_response_code( 404 );
 	return header( 'Location: /faq/introduction', true, 302 );
 	exit;
