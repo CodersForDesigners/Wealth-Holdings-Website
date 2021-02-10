@@ -27,9 +27,6 @@ $faqs = BFS\CMS::getPostsOf( 'faq' );
 $faqs__Tree = [ ];
 foreach ( $faqs as $faq ) {
 	$faq->set( 'url', get_permalink( $faq->get( 'ID' ) ) );
-	$faq->set( 'featuredImage', get_the_post_thumbnail_url( $faq->get( 'ID' ) ) );
-	// If no free-form post content was provided, use the summary
-	$faq->set( 'content', wp_strip_all_tags( $faq->get( 'post_content' ) ) ?: $faq->get( 'summary' ) );
 	// Build the a hierarchical tree representation of all the FAQs
 	$faqs__Tree[ $faq->get( 'post_parent' ) ][ ] = $faq;
 }
