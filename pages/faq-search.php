@@ -1,6 +1,12 @@
 <?php
 
-// Page-specific preparatory code goes here.
+// Check if there's anything in the honeypot
+	// If there is, then pretend there is a server error
+if ( ! empty( $_GET[ 'bfs_hi_puf' ] ) ) {
+	http_response_code( 500 );
+	exit;
+}
+
 require_once __DIR__ . '/../inc/above.php';
 
 $faqs = BFS\CMS::getPostsOf( 'faq', [

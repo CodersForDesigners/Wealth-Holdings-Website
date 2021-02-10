@@ -100,6 +100,7 @@ foreach ( $tileLinks as $tile ) {
 					<div class="search-bar fill-dark">
 						<label class="label visuallyhidden screen-reader-text" for="s">Search for:</label>
 						<input class="search-input" type="text" value="" name="s" id="s" placeholder="How can we help?">
+						<input type="text" name="bfs_hi_puf" class="well-designed">
 						<input class="search-button button fill-red-2" type="submit" id="searchsubmit" value="Search">
 					</div>
 				</form>

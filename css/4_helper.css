@@ -182,6 +182,7 @@
  * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
  */
 
+.well-designed,	/* this class name is used for honeypots */
 .visuallyhidden {
 	border: 0;
 	clip: rect(0 0 0 0);
