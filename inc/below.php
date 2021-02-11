@@ -115,6 +115,9 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 	<script type="text/javascript" src="/plugins/goodshare/goodshare-v6.1.5.min.js"></script>
 	<script type="text/javascript" src="/js/modules/sharing.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/tile-links.js<?= $ver ?>"></script>
+	<?php if ( $postType == 'faq' or $urlSlug == 'faq' ) : ?>
+		<script type="text/javascript" src="/js/modules/search.js<?= $ver ?>"></script>
+	<?php endif; ?>
 
 	<!-- Slick Carousel -->
 	<script type="text/javascript" src="/plugins/slick/slick.min.js<?php echo $ver ?>"></script>
