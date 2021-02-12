@@ -13,6 +13,10 @@
 
 // Export to global state
 window.__CUPID = window.__CUPID || { };
+
+window.__CUPID.policies = window.__CUPID.policies || { }
+window.__CUPID.policies.requireOTP = true;
+
 // Make convenient references
 var __ = window.__CUPID;
 var utils = __.utils;

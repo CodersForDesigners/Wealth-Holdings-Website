@@ -152,7 +152,12 @@ loginPrompts.investments.on( "phoneSubmit", function ( event ) {
 						trackConversion( loginPrompt );
 					return __.tempUser.add()
 						.then( function () {
-							loginPrompt.trigger( "requireOTP" );
+							if ( window.__CUPID.policies.requireOTP )
+								loginPrompt.trigger( "requireOTP" );
+							else {
+								__.user = __.tempUser;
+								loginPrompt.trigger( "login" );
+							}
 						} )
 						.catch( function () {
 							loginPrompt.trigger( "phoneError" );
@@ -275,7 +280,12 @@ loginPrompts.webinar.on( "phoneSubmit", function ( event ) {
 						trackConversion( loginPrompt );
 					return __.tempUser.add()
 						.then( function () {
-							loginPrompt.trigger( "requireOTP" );
+							if ( window.__CUPID.policies.requireOTP )
+								loginPrompt.trigger( "requireOTP" );
+							else {
+								__.user = __.tempUser;
+								loginPrompt.trigger( "login" );
+							}
 						} )
 						.catch( function () {
 							loginPrompt.trigger( "phoneError" );
