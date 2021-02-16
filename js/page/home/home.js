@@ -202,6 +202,7 @@ $( ".js_section_investment" ).on( "change", ".js_filter", function ( event ) {
 			$card.find( ".js_rent_duration" ).text( investment.acf.rent.duration );
 			$card.find( ".js_title_lumpsum" ).text( investment.acf.title.lumpsum );
 			$card.find( ".js_title_emi" ).text( investment.acf.title.emi );
+			$card.find( ".js_size" ).text( investment.acf.size );
 			$card.find( ".js_cost" ).text( investment.acf.cost );
 			$card.find( ".js_minimum_investment" ).text( investment.acf.minimum_investment );
 			$card.find( ".default_payment_mode" ).text( investment.acf.minimum_investment );
