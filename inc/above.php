@@ -41,7 +41,10 @@ else
 
 // Construct the page's title ( for use in the title tag )
 $siteTitle = cmsIsEnabled() ? get_bloginfo( 'name' ) : '';
-$pageUrl = $siteUrl . '/' . $requestPath;
+$pageUrl = $siteUrl;
+if ( $requestPath != 'home' )
+	$pageUrl .= '/' . $requestPath;
+
 
 // Build the Page Title ( if an explicit one is set, use that )
 if ( cmsIsEnabled() and ! empty( $thePost ) )
