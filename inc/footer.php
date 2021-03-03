@@ -1,6 +1,20 @@
 <?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty_One
+ * @since Twenty Twenty-One 1.0
+ */
 
-$footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
+use BFS\CMS;
+use BFS\Router;
+
+$footerNavigationMenuItems = CMS::getNavigation( 'Footer', '/' );
 
 ?>
 			<!-- ~/~/~/~/~/~/~/~/~/~/~/~/~/~/~/~/ -->
@@ -14,7 +28,7 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 						<div class="about columns small-12 medium-6 large-4 space-50-bottom">
 							<div class="logo space-50-bottom">
 								<a class="inline" href="/">
-									<img class="block" src="../media/wh-logo-large-light.svg<?php echo $ver ?>"></div>
+									<img class="block" src="/media/wh-logo-large-light.svg<?php echo $ver ?>"></div>
 								</a>
 							<div class="h6 space-25-bottom text-blue-2">Wealth Holdings is a brand of Green <br>Infrastructure Projects Private Limited.</div>
 							<!-- <a class="address inline space-25-bottom" target="_blank" href="https://maps.google.com"> -->
@@ -34,7 +48,7 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 									<a class="link inline <?= $hide ?>" href="/looking-to-sell-an-rental-asset" target="_blank">
 										<div class="h2 inline strong text-red-2 opacity-50 no-wrap">
 											<span class="inline-top">Sell</span>
-											<img class="inline-top" src="../media/icon/icon-wh-arrow-red.svg<?php echo $ver ?>">
+											<img class="inline-top" src="/media/icon/icon-wh-arrow-red.svg<?php echo $ver ?>">
 										</div>
 										<div class="h5 strong">Looking to sell a rental <br>yielding asset?</div>
 									</a>
@@ -43,7 +57,7 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 									<a class="link inline" href="/authorised-partner-signup" target="_blank">
 										<div class="h2 inline strong text-red-2 opacity-50 no-wrap">
 											<span class="inline-top">Partner</span>
-											<img class="inline-top" src="../media/icon/icon-wh-arrow-red.svg<?php echo $ver ?>">
+											<img class="inline-top" src="/media/icon/icon-wh-arrow-red.svg<?php echo $ver ?>">
 										</div>
 										<div class="h5 strong">Apply to become an <br>authorised channel partner.</div>
 									</a>
@@ -75,19 +89,15 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 
 	</div><!-- END : Page Wrapper -->
 
-	<?php require_once 'navigation.php'; ?>
+	<?php require_once __ROOT__ . '/inc/navigation.php'; ?>
 
-	<?php require_once 'modals.php' ?>
+	<?php require_once __ROOT__ . '/inc/modals.php' ?>
 
 	<!--  ☠  MARKUP ENDS HERE  ☠  -->
 
 	<?php if ( ! BFS_ENV_PRODUCTION ) : ?>
 		<?php lazaro_disclaimer(); ?>
 	<?php endif; ?>
-
-
-
-
 
 
 
@@ -105,23 +115,23 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 	<script type="text/javascript" src="/js/modules/phone-country-code.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/cupid/utils.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/cupid/user.js<?= $ver ?>"></script>
-	<?php if ( $requestPath == 'home' ) : ?>
+	<?php if ( Router::$urlSlug == '' ) : ?>
 		<script type="text/javascript" src="/js/page/home/home.js<?= $ver ?>"></script>
 	<?php endif; ?>
 	<script type="text/javascript" src="/js/modules/forms.js<?= $ver ?>"></script>
-	<?php if ( $requestPath == 'home' ) : ?>
+	<?php if ( Router::$urlSlug == '' ) : ?>
 		<script type="text/javascript" src="/js/page/home/forms.js<?= $ver ?>"></script>
 	<?php endif; ?>
 	<script type="text/javascript" src="/plugins/goodshare/goodshare-v6.1.5.min.js"></script>
 	<script type="text/javascript" src="/js/modules/sharing.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/tile-links.js<?= $ver ?>"></script>
-	<?php if ( $postType == 'faq' or $urlSlug == 'faq' ) : ?>
+	<?php if ( Router::$urlSlug == 'faqs' or ( CMS::$isEnabled and get_post_type() === 'faq' ) ) : ?>
 		<script type="text/javascript" src="/js/modules/search.js<?= $ver ?>"></script>
 	<?php endif; ?>
 
 	<!-- Slick Carousel -->
 	<script type="text/javascript" src="/plugins/slick/slick.min.js<?php echo $ver ?>"></script>
-	
+
 	<script type="text/javascript">
 
 		$( function () {
@@ -173,17 +183,14 @@ $footerNavigationMenuItems = \BFS\CMS::getNavigation( 'Footer', '/' );
 
 	</script>
 
-	<!-- Other Modules -->
-	<?php // require __DIR__ . '/inc/can-user-hover.php' ?>
+	<?php if ( CMS::$isEnabled and ! CMS::$onlySetupContext ) wp_footer() ?>
 
-
-	<?= getContent( '', 'arbitrary_code -> before_body_closing' ); ?>
+	<?= CMS::get( 'arbitrary_code / before_body_closing' ) ?>
 
 	<?php /* Query Monitor CMS plugin */ ?>
-	<?php if ( CMS_ENABLED and is_user_logged_in() ) : ?>
+	<?php if ( CMS::$isEnabled and ! CMS::$onlySetupContext and is_user_logged_in() ) : ?>
 		<script type="text/javascript" src="cms/wp-content/plugins/query-monitor/assets/query-monitor.js<?= $ver ?>"></script>
 	<?php endif; ?>
-
 
 </body>
 

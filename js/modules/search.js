@@ -21,7 +21,7 @@ $( function () {
 		var query = $query.val().trim();
 
 		// Make the search query
-		window.location.href = window.location.origin + "/faq" + "?s=" + query;
+		window.location.href = window.location.origin + "/faqs" + "?s=" + query;
 
 	} );
 

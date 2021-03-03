@@ -7,9 +7,11 @@ if ( ! empty( $_GET[ 'bfs_hi_puf' ] ) ) {
 	exit;
 }
 
-require_once __DIR__ . '/../inc/above.php';
+use BFS\CMS;
 
-$faqs = BFS\CMS::getPostsOf( 'faq', [
+require_once __ROOT__ . '/inc/header.php';
+
+$faqs = CMS::getPostsOf( 'faq', [
 	's' => get_query_var( 's' )
 ] );
 foreach ( $faqs as $faq ) {
@@ -52,7 +54,7 @@ foreach ( $faqs as $faq ) {
 
 
 <?php /* ----- Search Section ----- */
-require __DIR__ . '/../inc/search-bar.php';
+require __ROOT__ . '/inc/search-bar.php';
 ?>
 
 
@@ -80,5 +82,4 @@ require __DIR__ . '/../inc/search-bar.php';
 <!-- END: Search Listing Section -->
 
 
-
-<?php require_once __DIR__ . '/../inc/below.php'; ?>
+<?php require_once __ROOT__ . '/inc/footer.php'; ?>

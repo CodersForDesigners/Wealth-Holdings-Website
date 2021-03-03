@@ -13,9 +13,6 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^/?(content/.*) server/forward-to-remote-server.php [NC,QSA,L]
 
-# Correct REST API requests (since WordPress is accessible through a nested URL)
-RewriteRule ^/?wp\-json(/.*)$ "/cms/?rest_route=$1" [NC,QSA,L]
-
 
 # RewriteCond %{REQUEST_URI} !^/?cms/
 RewriteCond %{REQUEST_FILENAME} !-f

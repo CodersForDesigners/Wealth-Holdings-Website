@@ -1,26 +1,29 @@
 <?php
-/*
- *
- * This is a sample page you can copy and use as boilerplate for any new page.
- *
- */
 
-require_once __DIR__ . '/../inc/above.php';
+use BFS\CMS;
+CMS::setupContext();
+$postTitle = '';
 
-// Page-specific preparatory code goes here.
+require_once __ROOT__ . '/inc/header.php';
 
 
-$investments = BFS\CMS::getPostsOf( 'investment' );
+
+
+
+$investments = CMS::getPostsOf( 'investment' );
 foreach ( $investments as $investment ) {
 	$investment->set( 'url', get_permalink( $investment->get( 'ID' ) ) );
 	$investment->set( 'defaultDescription', $investment->get( 'default_payment_mode' ) ? $investment->get( 'title' )[ 'emi' ] : $investment->get( 'title' )[ 'lumpsum' ] );
 }
-$investmentCategories = array_map( function ( $el ) {
-	return [ 'key' => $el[ 'name' ], 'label' => $el[ 'label' ], 'values' => array_values( $el[ 'choices' ] ) ];
-}, acf_get_field(	// this function gets us the "Investment" field group settings
-	'categories',	// return this field from the field group
-	get_page_by_title( 'investments', OBJECT, 'acf-field-group' )->ID
-)[ 'sub_fields' ] );
+$investmentCategories = [ ];
+if ( CMS::$isEnabled ) {
+	$investmentCategories = array_map( function ( $el ) {
+		return [ 'key' => $el[ 'name' ], 'label' => $el[ 'label' ], 'values' => array_values( $el[ 'choices' ] ) ];
+	}, acf_get_field(	// this function gets us the "Investment" field group settings
+		'categories',	// return this field from the field group
+		get_page_by_title( 'investments', OBJECT, 'acf-field-group' )->ID
+	)[ 'sub_fields' ] );
+}
 // Determine whether to show the "View All" overlay at all in the first place
 $numberOfInvestments = count( $investments );
 $hideInvestmentsPagination = '';
@@ -31,9 +34,9 @@ if ( $numberOfInvestments <= 6 )
 if ( $numberOfInvestments <= 3 )
 	$hideInvestmentsPagination .= ' view-all-s';
 
-$webinarDate = getContent( 'Registered interest at ' . date( 'h:ia, d/m/Y' ), 'webinar_date' );
+$webinarDate = CMS::get( 'webinar_date' ) ?: ( 'Registered interest at ' . date( 'h:ia, d/m/Y' ) );
 
-$faqs = BFS\CMS::getPostsOf( 'faq', [
+$faqs = CMS::getPostsOf( 'faq', [
 	'meta_key' => '_is_ns_featured_post',
 	'meta_value' => 'yes'
 ] );
@@ -50,8 +53,8 @@ foreach ( $faqs as $faq ) {
 		$faq->set( 'thereIsMore?', true );
 }
 
-$brochures = BFS\CMS::getPostsOf( 'brochure' );
-$tileLinks = BFS\CMS::getPostsOf( 'tile-link', [ 'tag' => 'for-home' ] );
+$brochures = CMS::getPostsOf( 'brochure' );
+$tileLinks = CMS::getPostsOf( 'tile-link', [ 'tag' => 'for-home' ] );
 foreach ( $tileLinks as $tile ) {
 	$tile->set( 'link', $tile->get( 'arbitrary_link' ) ?: $tile->get( 'attachment_link' ) );
 	$tile->set( 'videoId', $tile->get( 'youtube_video_id' ) );
@@ -61,7 +64,7 @@ foreach ( $tileLinks as $tile ) {
 /*
  * ----- Testimonials
  */
-$testimonials = BFS\CMS::getPostsOf( 'testimonial' ) ?: [ ];
+$testimonials = CMS::getPostsOf( 'testimonial' ) ?: [ ];
 foreach ( $testimonials as $testimonial ) {
 	$photograph = $testimonial->get( 'photograph' ) ?: [ 'sizes' => [ ] ];
 	$photographURL = $photograph[ 'sizes' ][ 'thumbnail' ] ?: $photograph[ 'sizes' ][ 'small' ] ?: $photograph[ 'sizes' ][ 'medium' ] ?: $photograph[ 'sizes' ][ 'medium_large' ] ?: $photograph[ 'sizes' ][ 'large' ] ?: $photograph[ 'url' ] ?: '';
@@ -594,7 +597,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 									<div class="description h6 opacity-50 space-min-bottom"><?= $faq->get( 'summary' ) ?></div>
 									<div class="action clearfix">
 										<?php if ( $faq->get( 'thereIsMore?' ) ) : ?>
-											<a class="label inline text-lowercase" href="<?= $faq->get( 'guid' ) ?>">Read More <span class="material-icons">subject</span></a>
+											<a class="label inline text-lowercase" href="<?= $faq->get( 'url' ) ?>" target="_blank">Read More <span class="material-icons">subject</span></a>
 										<?php endif; ?>
 										<a class="label inline text-lowercase js_modal_trigger" data-mod-id="share" href="">Share <span class="material-icons" style="transform: scaleX(-1);">reply</span></a>
 									</div>
@@ -689,7 +692,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 							</div>
 						<?php endforeach; ?>
 					</div>
-				</div>	
+				</div>
 			</div>
 		</div>
 	</div>
@@ -855,4 +858,4 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 
-<?php require_once __DIR__ . '/../inc/below.php'; ?>
+<?php require_once __ROOT__ . '/inc/footer.php'; ?>
