@@ -11,6 +11,8 @@
 
 require get_template_directory() . '/inc/hooks.php';
 
+
+
 add_action( 'template_redirect', function () {
 
 	// If the URL slug is simply `cms`, then forward to the login or admin screen depending on if the user is already logged in or not
@@ -431,3 +433,28 @@ function tileLink__SavePostHook ( $postId, $post, $postWasUpdated ) {
 }
 // Register a `save_post` action hook for the Tile Link post
 add_action( 'save_post_tile-link', 'tileLink__SavePostHook', 100, 3 );
+
+
+
+/*
+ *
+ * ----- robots.txt
+ * 	Disable the default one.
+ *
+ */
+add_filter( 'robots_txt', function ( $output, $isSitePublic ) {
+	if ( ! $isSitePublic ) {
+		$output = 'User-agent: *'
+				. "\n"
+				. 'Disallow: /'
+				. "\n"
+				. 'Disallow: /*'
+				. "\n"
+				. 'Disallow: /*?'
+				. "\n";
+	}
+	else
+		$output = '';
+
+	return $output;
+}, 100, 2 );
