@@ -21,7 +21,7 @@ require_once __ROOT__ . '/inc/signatures-and-disclaimers.php';
  * A version number for versioning assets to invalidate the browser cache
  */
 global $versionNumber;
-$versionNumber = '20210303';
+$versionNumber = BFS_ASSET_VERSION_NUMBER;
 $ver = '?v=' . $versionNumber;
 
 /*

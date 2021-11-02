@@ -1,0 +1,290 @@
+/*
+ * Investment Section
+ */
+
+.investment-section {
+	position: relative;
+}
+.investment-section .tile-grid {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: var(--space-25);
+	counter-reset: order;
+	max-height: 1500px;
+	overflow: hidden;
+	transition: max-height 2s ease-in;
+}
+.investment-section.view-all .tile-grid {
+	max-height: var(--content-height,none);
+}
+.investment-section .tile-grid .tile {
+	position: relative;
+}
+
+.investment-section .tile-grid .tile.investment {
+	perspective: 1500px;
+}
+
+.investment-section .tile-grid .tile.investment .front {
+	position: relative;
+	padding: var(--space-50);
+	background-color: var(--dark);
+	overflow: hidden;
+}
+.investment-section .tile-grid .tile.investment .front * {
+	transition: all .3s ease-out;
+}
+.investment-section .tile-grid .tile.investment .front .rent {
+	padding-left: var(--space-25);
+	border-left: dashed 2px var(--red-2);
+}
+.investment-section .tile-grid .tile.investment .front .title {
+	position: relative;
+	pointer-events: none;
+	height: 6.875em; /* line height (1.375) * number of rows (5)*/
+}
+.investment-section .tile-grid .tile.investment .front .title .title-lumpsum {
+	position: relative;
+	z-index: 2;
+	opacity: 1;
+}
+.investment-section .tile-grid .tile.investment .front .title .title-emi {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+.investment-section .tile-grid .tile.investment .front .toggle {
+	position: relative;
+	font-size: 0;
+}
+.investment-section .tile-grid .tile.investment .front .toggle .toggle-button {
+	position: relative;
+	z-index: 2;
+	cursor: pointer;
+	display: inline-block;
+	color: var(--dark);
+	font-size: 0;
+	background-color: var(--blue-3);
+	border-radius: calc( var(--space-75)/2 );
+	overflow: hidden;
+}
+.investment-section .tile-grid .tile.investment .front .toggle .toggle-button:focus {
+	outline: none;
+}
+.investment-section .tile-grid .tile.investment .front .toggle .toggle-button * {
+	pointer-events: none;
+}
+.investment-section .tile-grid .tile.investment .front .toggle .toggle-button .pill {
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	background-color: var(--yellow-2);
+	width: 65.5%;
+	transition: all .3s ease-out;
+	border-radius: calc( var(--space-75)/2 );
+}
+.investment-section .tile-grid .tile.investment .front .toggle .toggle-button input:checked + .pill {
+	left: 65.5%;
+	width: 34.5%;
+	background-color: var(--green-2);
+}
+.investment-section .tile-grid .tile.investment .front .toggle .toggle-button .empty-pill {
+	position: relative;
+	z-index: 2;
+}
+.investment-section .tile-grid .tile.investment .front .toggle hr {
+	z-index: 1;
+	position: absolute;
+	left: 0;
+	bottom: calc( (var(--space-75)/2) - 2px );
+	width: 100%;
+	transform: translate(0,-50%);
+	margin: 0;
+}
+
+.investment-section .tile-grid .tile.investment.show-emi .front .title .title-lumpsum {
+	opacity: 0;
+}
+.investment-section .tile-grid .tile.investment.show-emi .front .title .title-emi {
+	opacity: 1;
+}
+.investment-section .tile-grid .tile.investment:not(.show-emi) .front .rent {
+	color: var(--light);
+}
+.investment-section .tile-grid .tile.investment:not(.show-emi) .front .cost {
+	color: var(--yellow-2);
+}
+.investment-section .tile-grid .tile.investment:not(.show-emi) .front .min-investment {
+	opacity: 0;
+}
+.investment-section .tile-grid .tile.investment.show-emi .front .min-investment {
+	color: var(--green-2);
+}
+
+
+
+.investment-section .tile-grid .tile.investment .back {
+	padding: var(--space-50);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: var(--dark);
+}
+.investment-section .tile-grid .tile.investment .back .title {
+	padding-right: var(--space-75);
+}
+.investment-section .tile-grid .tile.investment .back .close {
+	cursor: pointer;
+	position: absolute;
+	z-index: 2;
+	top: var(--space-50);
+	right: var(--space-50);
+	font-size: 0;
+	line-height: 0;
+	width: var(--space-50);
+}
+.investment-section .tile-grid .tile.investment .back .close:focus {
+	outline: none;
+}
+.investment-section .tile-grid .tile.investment .back .close * { pointer-events: none; }
+
+.investment-section .tile-grid .tile.investment .back .or-separator {
+	position: relative;
+	padding: calc( var(--space-25) + var(--space-min) ) 0;
+	font-size: 0;
+}
+.investment-section .tile-grid .tile.investment .back .or-separator span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	left: 0%;
+	display: inline-block;
+	width: var(--space-50);
+	color: var(--light);
+	height: var(--space-50);
+	line-height: var(--space-50);
+	box-shadow: 0 0 0 2px var(--red-2);
+	border-radius: 100%;
+	background-color: var(--dark);
+	/*transform: translate(-50%,-50%);*/
+	transform: translate(0%,-50%);
+	text-align: center;
+}
+
+
+.investment-section .tile-grid .tile.investment .front,
+.investment-section .tile-grid .tile.investment .back {
+	transition: transform .4s ease-out;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.investment-section .tile-grid .tile.investment .front {
+	transform: rotateY( 0turn );
+}
+.investment-section .tile-grid .tile.investment .back {
+	transform: rotateY( 0.5turn );
+}
+.investment-section .tile-grid .tile.investment.flipped .front {
+	transform: rotateY( 0.5turn );
+}
+.investment-section .tile-grid .tile.investment.flipped .back {
+	transform: rotateY( 1turn );
+}
+
+
+.investment-section .tile-grid .tile.banner {
+	grid-row: 3;
+	grid-column-start: 1;
+	grid-column-end: -1;
+}
+
+.investment-section .view-all-toggle {
+	position: absolute;
+	z-index: 2;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	background-image: linear-gradient(0deg, rgba(0, 38, 119, 1) 40%, rgba(0, 38, 119, 0) 100%)
+}
+.investment-section.view-all .view-all-toggle {
+	display: none;
+}
+.investment-section .view-all-toggle .view-all-toggle-button { cursor: pointer; }
+.investment-section .view-all-toggle .view-all-toggle-button * {
+	pointer-events: none;
+}
+.investment-section .view-all-toggle .view-all-toggle-button:focus {
+	outline: none;
+}
+.investment-section .view-all-toggle .view-all-toggle-button span {
+	display: inline-block;
+	line-height: 1.625;
+	border-bottom: solid 4px var(--light);
+}
+@media( min-width: 640px )  {
+	.investment-section .tile-grid {
+		grid-template-columns: 1fr 1fr;
+		max-height: 1570px;
+		transition: max-height 1s ease-in;
+	}
+}
+@media( min-width: 1040px ) {
+	.investment-section .tile-grid {
+		grid-template-columns: 1fr 1fr 1fr;
+		max-height: 1840px;
+	}
+	.investment-section .tile-grid .tile.investment .front {
+		padding: var(--space-25);
+	}
+	.investment-section .tile-grid .tile.investment .front .toggle .toggle-button {
+		border-radius: calc( var(--space-50)/2 );
+	}
+	.investment-section .tile-grid .tile.investment .front .toggle .toggle-button .pill {
+		border-radius: calc( var(--space-50)/2 );
+		width: 64%;
+	}
+	.investment-section .tile-grid .tile.investment .front .toggle .toggle-button input:checked + .pill {
+		left: 64%;
+		width: 36%;
+	}
+	.investment-section .tile-grid .tile.investment .back {
+		padding: var(--space-25);
+	}
+	.investment-section .tile-grid .tile.investment .back .title {
+		padding-right: var(--space-50);
+	}
+	.investment-section .tile-grid .tile.investment .back .close {
+		top: var(--space-25);
+		right: var(--space-25);
+		width: calc( var(--space-50) - var(--space-min) );
+	}
+
+
+	.investment-section .tile-grid .tile.investment .front .toggle hr {
+		bottom: calc( (var(--space-50)/2) - 2px );
+	}
+
+}
+@media( min-width: 1480px ) {
+	.investment-section .tile-grid {
+		max-height: 2400px;
+	}
+	.investment-section .tile-grid .tile.investment .front .toggle .toggle-button .pill {
+		width: 62%;
+	}
+	.investment-section .tile-grid .tile.investment .front .toggle .toggle-button input:checked + .pill {
+		left: 62%;
+		width: 38%;
+	}
+
+}

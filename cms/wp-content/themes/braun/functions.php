@@ -24,6 +24,14 @@ add_action( 'template_redirect', function () {
 		exit;
 	}
 
+	// If the site is private, prompt the user to log in
+	if ( BFS_PRIVATE_SITE and ! is_user_logged_in() )
+		if ( substr( $_SERVER[ 'REQUEST_URI' ], 0, strlen( '/robots.txt' ) ) != '/robots.txt' ) {
+			$redirectURL = wp_login_url() . '?redirect_to=' . urlencode( get_home_url() . $_SERVER[ 'REQUEST_URI' ] );
+			wp_redirect( $redirectURL, 302, 'BFS' );
+			exit;
+		}
+
 	// If WordPress is being loaded as a module, then cut short the on the "template routing" and "response preparation".
 	if ( \BFS\CMS::$onlySetupContext )
 		add_filter( 'template_include', function ( $template ) {
@@ -32,54 +40,9 @@ add_action( 'template_redirect', function () {
 
 } );
 
-add_action( 'wp_enqueue_scripts', function () {
 
-	// global $versionNumber;
-	// $stylesheets = [
-	// 	// Base
-	// 	'normalize' => '1_normalize.css',
-	// 	'base' => '2_base.css',
-	// 	'grid' => '3_grid.css',
-	// 	'helper' => '4_helper.css',
-	// 	'stylescape' => '5_stylescape.css',
-	// 	// Modules
-	// 	'header' => 'modules/header.css',
-	// 	'video-embed' => 'modules/video-embed.css',
-	// 	'modal-box' => 'modules/modal-box.css',
-	// 	'lazaro-signature' => 'modules/lazaro-signature.css',
-	// 	// Pages + Sections + Modals
-	// 	'page' => 'pages/page.css',
-	// 	'modal-menu' => 'pages/modal/modal-menu.css',
-	// 	'sample-section' => 'pages/section/sample-section.css'
-	// ];
-
-	// foreach ( $stylesheets as $handle => $stylesheet )
-	// 	wp_enqueue_style( $handle, '/../css/' . $stylesheet, [ ], $versionNumber );
-
-	// wp_register_script(
-	// 	'twenty-twenty-one-ie11-polyfills-asset',
-	// 	get_template_directory_uri() . '/assets/js/polyfills.js',
-	// 	array(),
-	// 	wp_get_theme()->get( 'Version' ),
-	// 	true
-	// );
-
-	// wp_add_inline_script(
-	// 	'twenty-twenty-one-ie11-polyfills',
-	// 	wp_get_script_polyfill(
-	// 		$wp_scripts,
-	// 		array(
-	// 			'Element.prototype.matches && Element.prototype.closest && window.NodeList && NodeList.prototype.forEach' => 'twenty-twenty-one-ie11-polyfills-asset',
-	// 		)
-	// 	)
-	// );
-
-} );
 
 add_action( 'after_setup_theme', function () {
-
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
 
 	/*
 	 * Let WordPress manage the document title.
@@ -93,6 +56,7 @@ add_action( 'after_setup_theme', function () {
 		} );
 	}
 
+	add_theme_support( 'menu' );
 	add_theme_support( 'menus' );
 
 	/**
@@ -117,8 +81,12 @@ add_action( 'after_setup_theme', function () {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
+	/*
+	 *
+	 * Media Settings
+	 *
+	 */
 	add_image_size( 'small', 400, 400, false );
-
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -133,9 +101,6 @@ add_action( 'after_setup_theme', function () {
 		'script',
 		'navigation-widgets',
 	] );
-
-	// Add theme support for selective refresh for widgets.
-	// add_theme_support( 'customize-selective-refresh-widgets' );
 
 	// Add support for Block Styles.
 	add_theme_support( 'wp-block-styles' );
@@ -231,6 +196,21 @@ add_action( 'after_setup_theme', function () {
 		] );
 	}
 
+} );
+
+
+
+/*
+ *
+ * ----- Manage the scripts and stylesheets being enqueued
+ *
+ */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( is_admin() )
+		return;
+	// Remove some default and stylesheets
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'wp-block-library-theme' );
 } );
 
 
@@ -442,9 +422,16 @@ add_action( 'save_post_tile-link', 'tileLink__SavePostHook', 100, 3 );
  * 	Disable the default one.
  *
  */
+// If the site is private, then prevent the Google Sitemap plugin from adding the sitemap line in the robots.txt file
+add_action( 'wp_loaded', function () {
+	if ( BFS_PRIVATE_SITE or ! get_option( 'blog_public' ) )
+		remove_all_actions( 'do_robots', 100 );
+} );
 add_filter( 'robots_txt', function ( $output, $isSitePublic ) {
-	if ( ! $isSitePublic ) {
+	if ( BFS_PRIVATE_SITE or ! $isSitePublic ) {
 		$output = 'User-agent: *'
+				. "\n"
+				. 'User-agent: AdsBot-Google'
 				. "\n"
 				. 'Disallow: /'
 				. "\n"

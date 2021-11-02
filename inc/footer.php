@@ -104,7 +104,7 @@ $footerNavigationMenuItems = CMS::getNavigation( 'Footer', '/' );
 
 
 	<!-- JS Modules -->
-	<script type="text/javascript" src="/plugins/base64/js-base64-v3.6.0.min.js"></script>
+	<script type="text/javascript" src="/plugins/base64/js-base64-v3.6.0.min.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/utils.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/navigation.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/video_embed.js<?= $ver ?>"></script>
@@ -122,7 +122,7 @@ $footerNavigationMenuItems = CMS::getNavigation( 'Footer', '/' );
 	<?php if ( Router::$urlSlug == '' ) : ?>
 		<script type="text/javascript" src="/js/page/home/forms.js<?= $ver ?>"></script>
 	<?php endif; ?>
-	<script type="text/javascript" src="/plugins/goodshare/goodshare-v6.1.5.min.js"></script>
+	<script type="text/javascript" src="/plugins/goodshare/goodshare-v6.1.5.min.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/sharing.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/tile-links.js<?= $ver ?>"></script>
 	<?php if ( Router::$urlSlug == 'faqs' or ( CMS::$isEnabled and get_post_type() === 'faq' ) ) : ?>
@@ -186,11 +186,6 @@ $footerNavigationMenuItems = CMS::getNavigation( 'Footer', '/' );
 	<?php if ( CMS::$isEnabled and ! CMS::$onlySetupContext ) wp_footer() ?>
 
 	<?= CMS::get( 'arbitrary_code / before_body_closing' ) ?>
-
-	<?php /* Query Monitor CMS plugin */ ?>
-	<?php if ( CMS::$isEnabled and ! CMS::$onlySetupContext and is_user_logged_in() ) : ?>
-		<script type="text/javascript" src="cms/wp-content/plugins/query-monitor/assets/query-monitor.js<?= $ver ?>"></script>
-	<?php endif; ?>
 
 </body>
 

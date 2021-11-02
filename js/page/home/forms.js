@@ -76,7 +76,9 @@ function onLogin () {
  * ------------------------|
  */
 var __ = window.__CUPID;
+window.__BFS = window.__BFS || { };
 var loginPrompts = { };
+window.__BFS.loginPrompts = loginPrompts;
 
 
 
@@ -87,6 +89,21 @@ var loginPrompts = { };
  */
 loginPrompts.investments = new __.LoginPrompt( "Investments", $( ".js_section_investment" ) );
 loginPrompts.investments.conversionSlug = "invest-today";
+
+// TEMP: FIX
+setTimeout( function () {
+	var loginPrompt = loginPrompts.investments;
+	loginPrompt.$phoneForm = loginPrompt.$site.find( "form.js_phone_form" )
+	loginPrompt.$OTPForm = loginPrompt.$site.find( "form.js_otp_form" )
+	loginPrompt.$phoneForm.on( "submit", function ( event ) {
+		event.preventDefault();
+		loginPrompt.trigger( "phoneSubmit", event );
+	} );
+	loginPrompt.$OTPForm.on( "submit", function ( event ) {
+		event.preventDefault();
+		loginPrompt.trigger( "OTPSubmit", event );
+	} );
+}, 500 );
 
 loginPrompts.investments.on( "requirePhone", function ( event ) {
 	var loginPrompt = this;
@@ -183,7 +200,6 @@ loginPrompts.investments.on( "requireOTP", function ( event, phoneNumber ) {
 			enableForm( loginPrompt.$phoneForm );
 		} )
 } );
-// When the OTP is required
 loginPrompts.investments.on( "OTPSubmit", onOTPSubmit );
 loginPrompts.investments.on( "OTPError", function ( e ) {
 	alert( e.message );

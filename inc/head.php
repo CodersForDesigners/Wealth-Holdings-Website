@@ -102,22 +102,22 @@ $metaCharset = CMS::$isEnabled ? get_bloginfo( 'charset' ) : 'utf-8';
 <meta name="theme-color" content="<?= CMS::get( 'theme_color' ) ?? '#f9f9f9' ?>">
 
 <!-- Favicons -->
-<link rel="apple-touch-icon" sizes="57x57" href="media/favicon/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="media/favicon/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="media/favicon/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="media/favicon/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="media/favicon/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="media/favicon/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="media/favicon/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="media/favicon/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="media/favicon/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="media/favicon/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="media/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="media/favicon/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="media/favicon/favicon-16x16.png">
-<link rel="manifest" href="media/favicon/manifest.json">
+<link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/manifest.json">
 <meta name="msapplication-TileColor" content="#444444">
-<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
 
 
 <!-- ~ iOS ~ -->
@@ -144,9 +144,9 @@ $metaCharset = CMS::$isEnabled ? get_bloginfo( 'charset' ) : 'utf-8';
 *
 - -->
 <!-- Facebook Open Graph -->
-<meta property="og:url" content="<?php echo $pageURL ?>">
+<meta property="og:url" content="<?= $pageURL ?>">
 <meta property="og:type" content="website">
-<meta property="og:title" content="<?php echo $pageTitle ?>">
+<meta property="og:title" content="<?= $pageTitle ?? '' ?>">
 <?php if ( $metaDescription ) : ?>
 <meta property="og:description" content="<?= $metaDescription ?>">
 <?php endif; ?>
@@ -157,7 +157,7 @@ $metaCharset = CMS::$isEnabled ? get_bloginfo( 'charset' ) : 'utf-8';
 
 
 <!-- Schema.org / Google+ -->
-<meta itemprop="name" content="<?= $pageTitle ?>">
+<meta itemprop="name" content="<?= $pageTitle ?? '' ?>">
 <?php if ( $metaDescription ) : ?>
 <meta itemprop="description" content="<?= $metaDescription ?>">
 <?php endif; ?>
