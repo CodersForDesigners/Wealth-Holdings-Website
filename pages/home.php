@@ -518,17 +518,17 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					See you on <?= $webinarDate ?>.
 				</div>
 				<div class="forms-container">
-					<form class="form form-dark phone-form js_phone_form" onsubmit="event.preventDefault()">
+					<form class="form form-dark phone-form js_webinar_form" onsubmit="event.preventDefault()">
 						<div class="form-row space-min-bottom">
 							<label for="webinar-form-name">
 								<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Name</span><br>
-								<input class="block fill-dark" name="name" type="text" id="webinar-form-name">
+								<input class="block fill-dark js_form_input_name" name="name" type="text" id="webinar-form-name">
 							</label>
 						</div>
 						<div class="form-row space-min-bottom">
 							<label for="webinar-form-email">
 								<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Email</span><br>
-								<input class="block fill-dark" type="text" name="email-address" id="webinar-form-email">
+								<input class="block fill-dark js_form_input_email" type="text" name="email-address" id="webinar-form-email">
 							</label>
 						</div>
 						<div class="form-row space-min-bottom">
@@ -539,7 +539,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 										<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
 									</select>
 									<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
-									<input class="block fill-dark" type="text" name="phone-number" id="webinar-form-phone-number">
+									<input class="block fill-dark js_form_input_phonenumber" type="text" name="phone-number" id="webinar-form-phone-number">
 								</div>
 							</label>
 						</div>
@@ -758,9 +758,9 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 	<!-- TEMPLATE: Back of Investment Card -->
 	<template class="js_template" data-name="investment-card-back">
 		<div>
-			<div class="close js_investment_card_unflip" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+			<div class="close js_investment_card_unflip" tabindex="-1"><img class="icon block" src="/media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
 			<div class="title h4 strong text-red-2 space-25-bottom js_message">Get access to a detailed offer document now.</div>
-			<form class="form form-dark js_phone_form" onsubmit="event.preventDefault()">
+			<form class="form form-dark js_investment_form" onsubmit="event.preventDefault()">
 				<div class="form-row space-min-bottom">
 					<label for="investment-form-phone-number">
 						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
@@ -769,7 +769,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 								<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
 							</select>
 							<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
-							<input class="block" type="text" name="phone-number" id="investment-form-phone-number">
+							<input class="block js_form_input_phonenumber" type="text" name="phone-number" id="investment-form-phone-number">
 						</div>
 					</label>
 				</div>
@@ -777,22 +777,6 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<label for="">
 						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span>
 						<button class="button block fill-red-2" type="submit">Get Details</button>
-					</label>
-				</div>
-			</form>
-			<form class="form form-dark js_otp_form" style="display: none" onsubmit="event.preventDefault()">
-				<div class="form-row space-min-bottom">
-					<label for="investment-form-otp">
-						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
-						<input class="block fill-dark" type="text" name="otp" id="investment-form-otp">
-					</label>
-					<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp hidden">Re-send OTP</span>
-					<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number hidden">Try a different number</span>
-				</div>
-				<div class="form-row space-min-bottom">
-					<label for="">
-						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-						<button class="button block fill-red-2" type="submit">Verify OTP</button>
 					</label>
 				</div>
 			</form>
@@ -818,7 +802,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 								<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
 							</select>
 							<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
-							<input class="block" type="text" name="phone-number" id="">
+							<input class="block js_form_input_phonenumber" type="text" name="phone-number" id="">
 						</div>
 					</label>
 				</div>
@@ -829,23 +813,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					</label>
 				</div>
 			</form>
-			<form class="form form-dark js_otp_form" style="display: none" onsubmit="event.preventDefault()">
-				<div class="form-row space-min-bottom">
-					<label for="">
-						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">We've sent you an OTP. Kindly provide it below.</span><br>
-						<input class="block" type="text" name="otp" id="">
-					</label>
-					<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_resend_otp hidden">Re-send OTP</span>
-					<span class="small text-uppercase line-height-small opacity-50 cursor-pointer js_try_different_number hidden">Try a different number</span>
-				</div>
-				<div class="form-row space-min-bottom">
-					<label for="">
-						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span><br>
-						<button class="button fill-red-2" type="submit">Verify OTP</button>
-					</label>
-				</div>
-			</form>
-			<div class="close js_close" tabindex="-1"><img class="icon block" src="../media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+			<div class="close js_close" tabindex="-1"><img class="icon block" src="/media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
 		</div>
 	</template>
 	<!-- END: Template: Login Prompt for Tile Link -->

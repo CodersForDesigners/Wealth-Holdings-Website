@@ -3,11 +3,11 @@ window.__BFS = window.__BFS || { };
 window.__BFS.utils = window.__BFS.utils || { };
 
 /*
- *
- * Wait for the specified number of seconds.
- * This facilitates a Promise or syncrhonous (i.e., using async/await ) style
- * 	of programming
- *
+ |
+ | Wait for the specified number of seconds.
+ | This facilitates a Promise or syncrhonous (i.e., using async/await ) style
+ | 	of programming
+ |
  */
 function waitFor ( seconds ) {
 	return new Promise( function ( resolve, reject ) {
@@ -15,6 +15,132 @@ function waitFor ( seconds ) {
 			resolve();
 		}, seconds * 1000 );
 	} );
+}
+
+
+
+function slugify ( string ) {
+	return string
+		.normalize( "NFD" )
+		.replace( /[\u0300-\u036f]/g, "" )
+		.replace( /\W/g, "-" )
+		.toLowerCase()
+}
+
+
+
+/*
+ |
+ | HTTP Request function
+ |
+ | Relies on jQuery's ajax helper function
+ |
+ */
+function httpRequest ( url, method, data, options ) {
+	let ajaxParameters = {
+		url,
+		method,
+		dataType: "json"
+	}
+	if ( [ "POST", "PUT" ].includes( method ) ) {
+		ajaxParameters.data = JSON.stringify( data || { } )
+		ajaxParameters.contentType = "application/json"
+	}
+
+	options = options || { }
+	if ( options.sync )
+		ajaxParameters.async = false
+
+	let ajaxRequest = $.ajax( ajaxParameters )
+
+	return new Promise( function ( resolve, reject ) {
+		ajaxRequest.done( resolve )
+		ajaxRequest.fail( function ( jqXHR, textStatus, e ) {
+			var errorResponse = getErrorResponse( jqXHR, textStatus, e )
+			reject( errorResponse )
+		} )
+	} );
+}
+
+
+
+/*
+ |
+ | Cookie abstraction
+ |
+ | Relies on the js-cookie library
+ |
+ */
+window.CookieJar = function () {
+
+	// Re-assign the library's namespace to a locally-scoped variable
+	let Cookies = window.Cookies.noConflict()
+
+	function setDefaultOptions ( options ) {
+		options = options || { }
+
+		if ( typeof options.expires === "number" && !Number.isNaN( options.expires ) )
+			options.expires = 365
+		else if ( ! ( options.expires instanceof Date ) )
+			options.expires = 365
+
+		options.secure = window.location.protocol.includes( "https" )
+
+		return options
+	}
+
+	function get ( key ) {
+		var data = Cookies.get( key );
+		var parsedValue;
+		if ( typeof data == "string" )
+			parsedValue = JSON.parse( window.Base64.decode( data ) ).value
+		else
+			parsedValue = data;
+		return parsedValue;
+	}
+
+	function set ( key, value, options ) {
+		options = setDefaultOptions( options )
+		value = window.Base64.encode( JSON.stringify( { value: value } ) )
+		return Cookies.set( key, value, options )
+	}
+
+	function remove ( key, options ) {
+		options = setDefaultOptions( options )
+		return Cookies.remove( key, options )
+	}
+
+	return {
+		get,
+		set,
+		remove
+	}
+
+}()
+
+
+
+/*
+ |
+ | Handle error / exception response helper
+ |
+ */
+function getErrorResponse ( jqXHR, textStatus, e ) {
+	var code = -1;
+	var message;
+	if ( jqXHR.responseJSON ) {
+		code = jqXHR.responseJSON.code || jqXHR.responseJSON.statusCode;
+		message = jqXHR.responseJSON.message;
+	}
+	else if ( typeof e == "object" ) {
+		message = e.stack;
+	}
+	else {
+		message = jqXHR.responseText;
+	}
+	var error = new Error( message );
+	error.code = code;
+	return error;
 }
 
 
@@ -98,9 +224,9 @@ function executeEvery ( interval, fn ) {
 
 
 /*
- *
- * Debounce a given function if invoked within the given period
- *
+ |
+ | Debounce a given function if invoked within the given period
+ |
  */
 function debounce ( fn, duration ) {
 
@@ -127,9 +253,9 @@ function debounce ( fn, duration ) {
 
 
 /*
- *
- * Throttle the execution of a given function to a fixed frequency interval, regardless of how many times it is invoked
- *
+ |
+ | Throttle the execution of a given function to a fixed frequency interval, regardless of how many times it is invoked
+ |
  */
 function throttle ( fn, duration ) {
 
@@ -159,9 +285,78 @@ function throttle ( fn, duration ) {
 
 
 /*
+ |
+ | This opens a new page in an iframe and closes it once it has loaded
+ |
+ */
+function openPageInIframe ( url, name, options ) {
+
+	options = options || { };
+	var closeOnLoad = options.closeOnLoad || false;
+
+	var $iframe = $( "<iframe>" );
+	$iframe.attr( {
+		width: 0,
+		height: 0,
+		title: name,
+		src: url,
+		style: "display:none;",
+		class: "js_iframe_trac"
+	} );
+
+	$( "body" ).append( $iframe );
+
+	if ( closeOnLoad ) {
+		$( window ).one( "message", function ( event ) {
+			if ( location.origin != event.originalEvent.origin )
+				return;
+			var message = event.originalEvent.data;
+			if ( message.status == "ready" )
+				setTimeout( function () { $iframe.remove() }, 19 * 1000 );
+		} );
+	}
+	else {
+		return $iframe.get( 0 );
+	}
+
+}
+
+
+
+/*
  *
- * Add given data to the data layer variable established by GTM
+ * "Track" a page visit
  *
+ * @params
+ * 	name -> the url of the page
+ *
+ */
+function trackPageVisit ( name ) {
+
+	/*
+	 *
+	 * Open a blank page and add the tracking code to it
+	 *
+	 */
+	// Build the URL
+	var baseTrackingURL = ( "/" + __.settings.trackingURL + "/" ).replace( /(\/+)/g, "/" );
+	var baseURL = location.origin.replace( /\/$/, "" ) + baseTrackingURL;
+	name = name.replace( /^[/]*/, "" );
+	var url = baseURL + name;
+
+	// Build the iframe
+	openPageInIframe( url, "", {
+		closeOnLoad: true
+	} );
+
+}
+
+
+
+/*
+ |
+ | Add given data to the data layer variable established by GTM
+ |
  */
 function gtmPushToDataLayer ( data ) {
 	if ( ! window.dataLayer )
@@ -216,7 +411,7 @@ function onScroll ( fn, options ) {
 	else if ( options.frequencyMode === "throttle" )
 		fn = throttle( fn, options.interval );
 	else if ( options.frequencyMode !== false || options.frequencyMode !== "none" || options.frequencyMode !== "default" )
-		console.log( "WARNING: Please provide an explicity frequency mode so that your intention is explicit and clear." );
+		console.log( "WARNING: Please provide an explicit frequency mode so that your intention is explicit and clear." );
 
 	// Add the provided function to the queue
 	window.__BFS = window.__BFS || { };

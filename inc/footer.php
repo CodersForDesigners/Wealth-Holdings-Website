@@ -104,7 +104,8 @@ $footerNavigationMenuItems = CMS::getNavigation( 'Footer', '/' );
 
 
 	<!-- JS Modules -->
-	<script type="text/javascript" src="/plugins/base64/js-base64-v3.6.0.min.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/plugins/base64/base64.js__v3.7.2.min.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/plugins/js-cookie/js-cookie__v3.0.1.min.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/utils.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/navigation.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/video_embed.js<?= $ver ?>"></script>
@@ -113,15 +114,19 @@ $footerNavigationMenuItems = CMS::getNavigation( 'Footer', '/' );
 		<script type="text/javascript" src="/js/modules/disclaimer.js<?= $ver ?>"></script>
 	<?php endif; ?>
 	<script type="text/javascript" src="/js/modules/phone-country-code.js<?= $ver ?>"></script>
-	<script type="text/javascript" src="/js/modules/cupid/utils.js<?= $ver ?>"></script>
-	<script type="text/javascript" src="/js/modules/cupid/user.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/js/modules/cupid.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/js/modules/forms.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/js/modules/form-utils.js<?= $ver ?>"></script>
 	<?php if ( Router::$urlSlug == '' ) : ?>
 		<script type="text/javascript" src="/js/page/home/home.js<?= $ver ?>"></script>
 	<?php endif; ?>
-	<script type="text/javascript" src="/js/modules/forms.js<?= $ver ?>"></script>
 	<?php if ( Router::$urlSlug == '' ) : ?>
-		<script type="text/javascript" src="/js/page/home/forms.js<?= $ver ?>"></script>
+		<script type="text/javascript" src="/js/page/home/investment-form.js<?= $ver ?>"></script>
+		<script type="text/javascript" src="/js/page/home/webinar-form.js<?= $ver ?>"></script>
+	<?php else : ?>
+		<script type="text/javascript" src="/js/page/cms-generated-form.js"></script>
 	<?php endif; ?>
+
 	<script type="text/javascript" src="/plugins/goodshare/goodshare-v6.1.5.min.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/sharing.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/modules/tile-links.js<?= $ver ?>"></script>
@@ -150,7 +155,8 @@ $footerNavigationMenuItems = CMS::getNavigation( 'Footer', '/' );
 				centerMode: true,
 				variableWidth: true,
 				lazyLoad: 'ondemand'
-			}).slickNext();
+			});
+			// }).slickNext();
 
 
 		} );
@@ -158,30 +164,6 @@ $footerNavigationMenuItems = CMS::getNavigation( 'Footer', '/' );
 	</script>
 
 	<script type="text/javascript" src="/js/modules/carousel.js<?= $ver ?>"></script>
-
-	<script type="text/javascript">
-
-		/*
-		 *
-		 * Tell to Cupid that the user dropped by
-		 *
-		 */
-		$( function () {
-
-			var user = __CUPID.utils.getUser();
-			if ( user ) {
-				setTimeout( function () {
-					__CUPID.utils.getAnalyticsId()
-						.then( function ( deviceId ) {
-							user.hasDeviceId( deviceId );
-							user.isOnWebsite();
-						} )
-				}, 1500 );
-			}
-
-		} );
-
-	</script>
 
 	<?php if ( CMS::$isEnabled and ! CMS::$onlySetupContext ) wp_footer() ?>
 

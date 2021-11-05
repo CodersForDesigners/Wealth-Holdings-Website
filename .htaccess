@@ -13,8 +13,9 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^/?(content/.*) server/forward-to-remote-server.php [NC,QSA,L]
 
+# If the request is for a purely backend / server route, forward them to the `server` directory
+RewriteRule ^/?(api/.*) server/$1.php [NC,QSA,L]
 
-# RewriteCond %{REQUEST_URI} !^/?cms/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.php [NC,QSA,L]
