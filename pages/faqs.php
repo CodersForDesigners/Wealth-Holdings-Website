@@ -1,59 +1,60 @@
 <?php
 /*
- *
- * ----- FAQs
- *
+ |
+ | FAQs
+ |
  */
-require_once __ROOT__ . '/inc/cms.php';
 
-use BFS\CMS;
-CMS::setupContext();
-
-
-// Set the document's section title
-$sectionTitle = 'Help Center';
-
-require_once __ROOT__ . '/inc/header.php';
+require_once __ROOT__ . '/lib/routing.php';
+require_once __ROOT__ . '/lib/providers/wordpress.php';
+require_once __ROOT__ . '/types/faqs/faqs.php';
+require_once __ROOT__ . '/types/tiles/tiles.php';
 
 use BFS\Router;
+use BFS\CMS\WordPress;
+use BFS\Types\FAQs;
+use BFS\Types\Tiles;
 
 
-
-
-
-// If this is search query request, then delegate the handling to `faq-search.php`
-if ( Router::$urlSlug == 'faqs' and ! empty( $_GET[ 's' ] ) )
-	return require_once __ROOT__ . '/pages/faq-search.php';
-
-global $thePost;
-$thePost = CMS::getThisPost();
-
-// If there isn't a corresponding post, redirect to the introduction FAQ
-if ( empty( $thePost ) ) {
-	http_response_code( 404 );
-	return header( 'Location: /faqs/introduction', true, 302 );
+// If this is request to the base url `/faqs`, then redirect to the first FAQ
+if ( Router::$urlSlug === 'faqs' and empty( $_GET[ 's' ] ) ) {
+	$firstFAQ = FAQs::getFirstFAQ();
+	$redirectURL = wp_make_link_relative( get_permalink( $firstFAQ->get( 'ID' ) ) );
+	return Router::redirectTo( $redirectURL );
 	exit;
 }
 
-$faqs = CMS::getPostsOf( 'faq' );
-$faqs__Tree = [ ];
-foreach ( $faqs as $faq ) {
-	$faq->set( 'url', get_permalink( $faq->get( 'ID' ) ) );
-	// Build the a hierarchical tree representation of all the FAQs
-	$faqs__Tree[ $faq->get( 'post_parent' ) ][ ] = $faq;
+// If this is a search query request, then delegate the handling to `faq-search.php`
+if ( Router::$urlSlug == 'faqs' and !empty( $_GET[ 's' ] ) )
+	return require_once __ROOT__ . '/pages/faq-search.php';
+
+global $thisFAQ;
+$thisFAQ = FAQs::getFromURL();
+
+// If there isn't a corresponding post, redirect to the first FAQ
+if ( empty( $thisFAQ ) ) {
+	http_response_code( 404 );
+	$firstFAQ = FAQs::getFirstFAQ();
+	$redirectURL = '/' . wp_make_link_relative( get_permalink( $firstFAQ->get( 'ID' ) ) );
+	return Router::redirectTo( $redirectURL );
+	exit;
 }
+
+$faqs = FAQs::getAll();
+$faqs__Tree = FAQs::getTreeRepresentation( $faqs );
+
 
 function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 	if ( empty( $faqs__Tree[ $parentId ] ) )
 		return '';
 
-	global $thePost;
+	global $thisFAQ;
 
 	?>
 
 	<ul>
 		<?php foreach ( $faqs__Tree[ $parentId ] as $faq ) : ?>
-			<li class="<?php if ( $faq->get( 'ID' ) == $thePost->get( 'ID' ) ) : ?>active js_active<?php endif; ?>">
+			<li class="<?php if ( $faq->get( 'ID' ) === $thisFAQ->get( 'ID' ) ) : ?>active js_active<?php endif; ?>">
 				<a href="<?= $faq->get( 'url' ) ?>"><?= $faq->get( 'post_title' ) ?></a>
 				<?= getFAQHierarchyMarkup( $faqs__Tree, $faq->get( 'ID' ) ) ?>
 				<button class="hierarchy-toggle js_expand">&#9654;</button>
@@ -66,18 +67,21 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 }
 
 
-$tileLinks = CMS::getPostsOf( 'tile-link', [ 'tag' => 'for-faqs' ] );
-foreach ( $tileLinks as $tile ) {
-	$tile->set( 'link', $tile->get( 'arbitrary_link' ) ?: $tile->get( 'attachment_link' ) );
-	$tile->set( 'videoId', $tile->get( 'youtube_video_id' ) );
-}
+$tileLinks = Tiles::get( [ 'tag' => 'for-faqs' ] );
+
+
+
+// Set the document's section title
+$sectionTitle = 'Help Center';
+
+require_once __ROOT__ . '/pages/partials/header.php';
 
 ?>
 
 <script type="text/javascript">
 	window.__BFS = window.__BFS || { };
 	window.__BFS.post = {
-		title: "<?= $thePost->get( 'post_title' ) ?>"
+		title: "<?= $thisFAQ->get( 'post_title' ) ?>"
 	};
 
 </script>
@@ -103,7 +107,7 @@ foreach ( $tileLinks as $tile ) {
 
 
 <?php /* ----- Search Section ----- */
-require __ROOT__ . '/inc/search-bar.php';
+require __ROOT__ . '/pages/snippets/search-bar.php';
 ?>
 
 
@@ -116,14 +120,14 @@ require __ROOT__ . '/inc/search-bar.php';
 					<div class="sidebar-min-label h5 text-blue-4 opacity-50 clearfix"><span class="label float-left">Help Center Menu</span> <span class="icon material-icons float-right">expand_more</span></div>
 					<div class="active-title h6 text-blue-4 js_current_category">Lumpsum</div>
 				</div>
-				<div class="faq-hierarchy js_faq_listing"><?= getFAQHierarchyMarkup( $faqs__Tree, 0, $thePost->get( 'ID' ) ) ?></div>
+				<div class="faq-hierarchy js_faq_listing"><?= getFAQHierarchyMarkup( $faqs__Tree, 0 ) ?></div>
 			</div>
 			<div class="faq-content columns small-12 large-8 xlarge-7">
 				<div class="title h4 strong space-50-bottom">
-					<?= $thePost->get( 'post_title' ) ?>
+					<?= $thisFAQ->get( 'post_title' ) ?>
 				</div>
 				<div class="post-content">
-					<?= $thePost->get( 'post_content' ) ?>
+					<?= $thisFAQ->get( 'post_content' ) ?>
 				</div>
 			</div>
 		</div>
@@ -133,7 +137,7 @@ require __ROOT__ . '/inc/search-bar.php';
 
 
 <!-- Tile Links Section -->
-<div class="tile-link-section space-75-bottom">
+<div class="tile-link-section space-75-bottom hidden">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 large-9 large-offset-3">
@@ -219,7 +223,7 @@ require __ROOT__ . '/inc/search-bar.php';
 						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
 						<div style="position: relative; display: flex">
 							<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
-								<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+								<?php include __ROOT__ . '/pages/snippets/phone-country-codes.php' ?>
 							</select>
 							<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
 							<input class="block" type="text" name="phone-number" id="">
@@ -255,4 +259,4 @@ require __ROOT__ . '/inc/search-bar.php';
 	<!-- END: Template: Login Prompt for Tile Link -->
 </section>
 
-<?php require_once __ROOT__ . '/inc/footer.php'; ?>
+<?php require_once __ROOT__ . '/pages/partials/footer.php'; ?>

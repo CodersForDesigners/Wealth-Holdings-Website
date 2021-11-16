@@ -69,13 +69,16 @@ class Person {
 
 class PersonLogger {}
 PersonLogger.newPerson = function newPerson ( person, options ) {
-	return httpRequest( "/api/person-created", "POST", person, options )
+	let payload = { ...person, timestamp: ( new Date ).toISOString() }
+	return httpRequest( "/api/person-created", "POST", payload, options )
 }
 PersonLogger.registerInterest = function registerInterest ( person, options ) {
-	return httpRequest( "/api/person-register-interest", "POST", person, options )
+	let payload = { ...person, timestamp: ( new Date ).toISOString() }
+	return httpRequest( "/api/person-register-interest", "POST", payload, options )
 }
 PersonLogger.submitData = function submitData ( person, options ) {
-	return httpRequest( "/api/person-submitted-data", "POST", person, options )
+	let payload = { ...person, timestamp: ( new Date ).toISOString() }
+	return httpRequest( "/api/person-submitted-data", "POST", payload, options )
 }
 // PersonLogger.recordActivity = function recordActivity ( person, options ) {
 // 	return httpRequest( "/api/person-activity", "POST", person, options )
@@ -171,7 +174,7 @@ Cupid.logPersonIn = function logPersonIn ( person, options ) {
 		PersonLogger.newPerson( person )
 		// Simulate a visit to the track URL
 		if ( options.trackSlug )
-			trackPageVisit( name )
+			trackPageVisit( options.trackSlug )
 		Cupid.savePerson( person )
 		return
 	}
@@ -184,7 +187,7 @@ Cupid.logPersonIn = function logPersonIn ( person, options ) {
 		PersonLogger.newPerson( person )
 		// Simulate a visit to the track URL
 		if ( options.trackSlug )
-			trackPageVisit( name )
+			trackPageVisit( options.trackSlug )
 		Cupid.savePerson( person )
 		return
 	}

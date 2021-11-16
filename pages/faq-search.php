@@ -7,22 +7,26 @@ if ( ! empty( $_GET[ 'bfs_hi_puf' ] ) ) {
 	exit;
 }
 
-use BFS\CMS;
 
-require_once __ROOT__ . '/inc/header.php';
 
-$faqs = CMS::getPostsOf( 'faq', [
+require_once __ROOT__ . '/lib/providers/wordpress.php';
+require_once __ROOT__ . '/types/faqs/faqs.php';
+
+use BFS\CMS\WordPress;
+use BFS\Types\FAQs;
+
+WordPress::setupContext();
+$faqs = FAQs::get( [
 	's' => get_query_var( 's' )
 ] );
 foreach ( $faqs as $faq ) {
-	$faq->set( 'url', get_permalink( $faq->get( 'ID' ) ) );
 	// If summary exists, use that, else pull from the faq content and crop it to below 199 characters ( and don't break in the middle of a word )
 	$summary = $faq->get( 'summary' ) ?: wp_strip_all_tags( $faq->get( 'post_content' ) );
 	if ( strlen( $summary ) <= 199 )
-		$faq->set( 'content', $summary );
+		$faq->set( 'preview', $summary );
 	else
 		$faq->set(
-			'content',
+			'preview',
 			preg_replace(
 				'/\s[^\s]+$/',
 				'',
@@ -30,6 +34,10 @@ foreach ( $faqs as $faq ) {
 			) . '...'
 		);
 }
+
+
+
+require_once __ROOT__ . '/pages/partials/header.php';
 
 ?>
 
@@ -54,7 +62,7 @@ foreach ( $faqs as $faq ) {
 
 
 <?php /* ----- Search Section ----- */
-require __ROOT__ . '/inc/search-bar.php';
+require __ROOT__ . '/pages/snippets/search-bar.php';
 ?>
 
 
@@ -67,7 +75,7 @@ require __ROOT__ . '/inc/search-bar.php';
 					<?php foreach ( $faqs as $faq ) : ?>
 						<a class="item block space-25-top-bottom" href="<?= $faq->get( 'url' ) ?>">
 							<div class="title h5 strong space-min-bottom"><?= $faq->get( 'post_title' ) ?></div>
-							<div class="description h6 opacity-50 space-min-bottom"><?= $faq->get( 'content' ) ?></div>
+							<div class="description h6 opacity-50 space-min-bottom"><?= $faq->get( 'preview' ) ?></div>
 							<span class="label inline text-lowercase">Read More <span class="material-icons">subject</span></span>
 						</a>
 					<?php endforeach; ?>
@@ -82,4 +90,5 @@ require __ROOT__ . '/inc/search-bar.php';
 <!-- END: Search Listing Section -->
 
 
-<?php require_once __ROOT__ . '/inc/footer.php'; ?>
+
+<?php require_once __ROOT__ . '/pages/partials/footer.php'; ?>

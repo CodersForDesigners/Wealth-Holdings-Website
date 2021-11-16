@@ -9,7 +9,7 @@
  */
 
 \BFS\Router::$httpResponseCode = 404;
-require_once __ROOT__ . '/inc/header.php';
+require_once __ROOT__ . '/pages/partials/header.php';
 
 ?>
 
@@ -39,4 +39,4 @@ require_once __ROOT__ . '/inc/header.php';
 	<!-- END: Landing Section -->
 
 <?php
-require_once __ROOT__ . '/inc/footer.php';
+require_once __ROOT__ . '/pages/partials/footer.php';

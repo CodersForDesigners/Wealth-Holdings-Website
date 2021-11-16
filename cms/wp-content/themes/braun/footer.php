@@ -1,1 +1,1 @@
-../../../../inc/footer.php
+../../../../pages/partials/footer.php

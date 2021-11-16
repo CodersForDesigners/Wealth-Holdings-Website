@@ -182,3 +182,58 @@
 		margin-top: 210px;
 		font-size: 9rem; }
 }
+
+
+/*
+ |
+ | Flip-able cards
+ |
+ */
+.benefits-section .minimum-investment-amount,
+.benefits-section .emi,
+.benefits-section .lumpsum {
+	perspective: 5000px;
+	cursor: pointer;
+}
+.benefits-section .minimum-investment-amount:focus,
+.benefits-section .emi:focus,
+.benefits-section .lumpsum:focus {
+	outline: none;
+}
+.benefits-section .front,
+.benefits-section .back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.4s ease-out;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.benefits-section .front {
+	padding: var(--space-50);
+	transform: rotateY( 0turn );
+}
+@media ( min-width: 1040px ) {
+	.benefits-section .front {
+		padding: var(--space-25);
+	}
+}
+.benefits-section .back {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transform: rotateY( 0.5turn );
+}
+
+.benefits-section :focus .front,
+.benefits-section :focus:focus-within .front,
+.benefits-section .flipped .front {
+	transform: rotateY( 0.5turn );
+}
+.benefits-section :focus .back,
+.benefits-section :focus:focus-within .back,
+.benefits-section .flipped .back {
+	transform: rotateY( 1turn );
+}

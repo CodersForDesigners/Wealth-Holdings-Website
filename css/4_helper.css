@@ -219,6 +219,17 @@
 }
 
 
+/*
+ |
+ | 3D
+ |
+ */
+.backface-not-invisible {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+
 
 /*
  * Selective Hide/Show

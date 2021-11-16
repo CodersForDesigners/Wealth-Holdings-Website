@@ -7,3 +7,9 @@
 
 # the content directory
 /content
+
+# test files
+test.php
+
+# Weird Networked Drive Artifact
+.smb*

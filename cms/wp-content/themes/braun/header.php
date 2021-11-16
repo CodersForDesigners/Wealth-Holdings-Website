@@ -1,1 +1,1 @@
-../../../../inc/header.php
+../../../../pages/partials/header.php

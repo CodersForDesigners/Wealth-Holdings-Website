@@ -1,29 +1,33 @@
 <?php
+/*
+ |
+ | Home Page
+ |
+ */
+require_once __ROOT__ . '/lib/providers/wordpress.php';
+require_once __ROOT__ . '/types/investments/investments.php';
+require_once __ROOT__ . '/types/faqs/faqs.php';
+require_once __ROOT__ . '/types/brochures/brochures.php';
+require_once __ROOT__ . '/types/tiles/tiles.php';
+require_once __ROOT__ . '/types/testimonials/testimonials.php';
 
-use BFS\CMS;
-CMS::setupContext();
-$postTitle = '';
-
-require_once __ROOT__ . '/inc/header.php';
-
-
-
+use BFS\CMS\WordPress;
+use BFS\Types\Investments;
+use BFS\Types\FAQs;
+use BFS\Types\Brochures;
+use BFS\Types\Tiles;
+use BFS\Types\Testimonials;
 
 
-$investments = CMS::getPostsOf( 'investment' );
-foreach ( $investments as $investment ) {
-	$investment->set( 'url', get_permalink( $investment->get( 'ID' ) ) );
-	$investment->set( 'defaultDescription', $investment->get( 'default_payment_mode' ) ? $investment->get( 'title' )[ 'emi' ] : $investment->get( 'title' )[ 'lumpsum' ] );
-}
-$investmentCategories = [ ];
-if ( CMS::$isEnabled ) {
-	$investmentCategories = array_map( function ( $el ) {
-		return [ 'key' => $el[ 'name' ], 'label' => $el[ 'label' ], 'values' => array_values( $el[ 'choices' ] ) ];
-	}, acf_get_field(	// this function gets us the "Investment" field group settings
-		'categories',	// return this field from the field group
-		get_page_by_title( 'investments', OBJECT, 'acf-field-group' )->ID
-	)[ 'sub_fields' ] );
-}
+
+/**
+ |
+ | Investments
+ |
+ */
+$investments = Investments::getAll();
+$investmentCategories = Investments::getCategories();
+
 // Determine whether to show the "View All" overlay at all in the first place
 $numberOfInvestments = count( $investments );
 $hideInvestmentsPagination = '';
@@ -34,59 +38,26 @@ if ( $numberOfInvestments <= 6 )
 if ( $numberOfInvestments <= 3 )
 	$hideInvestmentsPagination .= ' view-all-s';
 
-$webinarDate = CMS::get( 'webinar_date' ) ?: ( 'Registered interest at ' . date( 'h:ia, d/m/Y' ) );
-
-$faqs = CMS::getPostsOf( 'faq', [
-	'meta_key' => '_is_ns_featured_post',
-	'meta_value' => 'yes'
-] );
-foreach ( $faqs as $faq ) {
-	$faq->set( 'url', get_permalink( $faq->get( 'ID' ) ) );
-	$faq->set( 'featuredImage', get_the_post_thumbnail_url( $faq->get( 'ID' ) ) );
-	$faqTextualContent = wp_strip_all_tags( $faq->get( 'post_content' ) );
-	if ( ! $faq->get( 'summary' ) ) {
-		$faq->set( 'summary', substr( $faqTextualContent, 0, 415 ) );
-		if ( strlen( $faqTextualContent ) > 415 )
-			$faq->set( 'thereIsMore?', true );
-	}
-	else
-		$faq->set( 'thereIsMore?', true );
-}
-
-$brochures = CMS::getPostsOf( 'brochure' );
-$tileLinks = CMS::getPostsOf( 'tile-link', [ 'tag' => 'for-home' ] );
-foreach ( $tileLinks as $tile ) {
-	$tile->set( 'link', $tile->get( 'arbitrary_link' ) ?: $tile->get( 'attachment_link' ) );
-	$tile->set( 'videoId', $tile->get( 'youtube_video_id' ) );
-}
+$webinarDate = WordPress::get( 'webinar_date' ) ?: ( 'Registered interest at ' . date( 'h:ia, d/m/Y' ) );
 
 
-/*
- * ----- Testimonials
- */
-$testimonials = CMS::getPostsOf( 'testimonial' ) ?: [ ];
-foreach ( $testimonials as $testimonial ) {
-	$photograph = $testimonial->get( 'photograph' ) ?: [ 'sizes' => [ ] ];
-	$photographURL = $photograph[ 'sizes' ][ 'thumbnail' ] ?: $photograph[ 'sizes' ][ 'small' ] ?: $photograph[ 'sizes' ][ 'medium' ] ?: $photograph[ 'sizes' ][ 'medium_large' ] ?: $photograph[ 'sizes' ][ 'large' ] ?: $photograph[ 'url' ] ?: '';
-	$testimonial->set( 'photograph', $photographURL );
 
-	$videoThumbnail = $testimonial->get( 'video_thumbnail' ) ?: [ 'sizes' => [ ] ];
-	if ( $videoThumbnail !== false ) {
-		$videoThumbnailURL =
-				( $videoThumbnail[ 'sizes' ][ 'thumbnail' ] ?? false )
-			?:	( $videoThumbnail[ 'sizes' ][ 'small' ] ?? false )
-			?:	( $videoThumbnail[ 'sizes' ][ 'medium' ] ?? false )
-			?:	( $videoThumbnail[ 'sizes' ][ 'medium_large' ] ?? false )
-			?:	( $videoThumbnail[ 'sizes' ][ 'large' ] ?? false )
-			?:	( $videoThumbnail[ 'url' ] ?? false )
-			?:	null;
-		$testimonial->set( 'video_thumbnail', $videoThumbnailURL );
-	}
-}
-// Chunk it in sets of 2
-$testimonialSets = array_chunk( $testimonials, 2, true );
+$faqs = FAQs::getFeatured();
+
+$brochures = Brochures::getAll();
+
+$tileLinks = Tiles::get( [ 'tag' => 'for-home' ] );
+
+// Fetch and chunk it in sets of 2
+$testimonialSets = array_chunk(
+	Testimonials::getAll(),
+	2,
+	true
+);
 
 ?>
+
+<?php require_once __ROOT__ . '/pages/partials/header.php'; ?>
 
 
 <?php
@@ -108,16 +79,6 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 </script>
 
-<!-- Sample Section -->
-<section class="sample-section">
-	<div class="container">
-		<div class="row">
-			<div class="columns small-12">
-			</div>
-		</div>
-	</div>
-</section>
-<!-- END: Sample Section -->
 
 
 <!-- Landing Section -->
@@ -127,7 +88,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 			<div class="columns small-12 large-5">
 				<div class="row">
 					<div class="columns small-12 medium-4 space-25-top-bottom">
-						<div class="logo"><img class="block" src="../media/wh-logo-large-dark.svg<?php echo $ver ?>"></div>
+						<div class="logo"><img class="block" src="/media/wh-logo-large-dark.svg<?php echo $ver ?>"></div>
 					</div>
 					<div class="columns small-12 medium-10 large-12 space-50-top-bottom">
 						<div class="h5 strong space-min-bottom">Curated rental-yielding assets, with</div>
@@ -148,58 +109,6 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 <!-- Benefits Section -->
-<style type="text/css">
-
-	.benefits-section .minimum-investment-amount,
-	.benefits-section .emi,
-	.benefits-section .lumpsum {
-		perspective: 5000px;
-		cursor: pointer;
-	}
-	.benefits-section .minimum-investment-amount:focus,
-	.benefits-section .emi:focus,
-	.benefits-section .lumpsum:focus {
-		outline: none;
-	}
-	.benefits-section .front,
-	.benefits-section .back {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		transition: transform 0.4s ease-out;
-		-webkit-backface-visibility: hidden;
-		backface-visibility: hidden;
-	}
-	.benefits-section .front {
-		padding: var(--space-50);
-		transform: rotateY( 0turn );
-	}
-	@media ( min-width: 1040px ) {
-		.benefits-section .front {
-			padding: var(--space-25);
-		}
-	}
-	.benefits-section .back {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		transform: rotateY( 0.5turn );
-	}
-
-	.benefits-section :focus .front,
-	.benefits-section :focus:focus-within .front,
-	.benefits-section .flipped .front {
-		transform: rotateY( 0.5turn );
-	}
-	.benefits-section :focus .back,
-	.benefits-section :focus:focus-within .back,
-	.benefits-section .flipped .back {
-		transform: rotateY( 1turn );
-	}
-
-</style>
 <section class="benefits-section fill-red-2 space-25-top space-75-bottom" id="benefits-section" data-section-title="Benefits Section" data-section-slug="benefits-section">
 	<div class="container">
 		<div class="row">
@@ -221,7 +130,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<!-- (3.) -->
 					<div class="h6 strong">own an apartment with <br>a business model</div>
 				</div>
-				<div class="tile t-4 minimum-investment-amount" tabindex="-1">
+				<div class="tile t-4 minimum-investment-amount no-pointer" tabindex="-1">
 					<div class="front fill-blue-4">
 						<!-- (4.) -->
 						<div class="h6 strong space-25-bottom"><span class="text-red-2">minimum</span> investment <br>amount</div>
@@ -229,8 +138,8 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					</div>
 					<div class="back fill-blue-4">
 						<div>
-							<a class="label block text-lowercase" href="/lumpsum">Read More <span class="material-icons">subject</span></a>
-							<a class="label inline text-lowercase js_modal_trigger" data-mod-id="share" href="">Share <span class="material-icons" style="transform: scaleX(-1);">reply</span></a>
+							<a class="label block text-lowercase" href="/minimum-investment-amount">Read More <span class="material-icons">subject</span></a>
+							<a class="label inline text-lowercase js_modal_trigger" data-mod-id="share" href="">Share <span class="material-icons backface-not-invisible" style="transform: scaleX(-1);">reply</span></a>
 						</div>
 					</div>
 				</div>
@@ -242,7 +151,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<!-- (6.) -->
 					<div class="h6 strong">walking distance from SEZs, tech parks & schools</div>
 				</div>
-				<div class="tile t-7 emi" tabindex="-1">
+				<div class="tile t-7 emi no-pointer" tabindex="-1">
 					<div class="front fill-dark">
 						<!-- (7.) -->
 						<div class="h5 strong space-min-bottom">EMI</div>
@@ -250,15 +159,15 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					</div>
 					<div class="back fill-dark">
 						<div>
-							<a class="label block text-lowercase" href="/lumpsum">Read More <span class="material-icons">subject</span></a>
-							<a class="label inline text-lowercase js_modal_trigger" data-mod-id="share" href="">Share <span class="material-icons" style="transform: scaleX(-1);">reply</span></a>
+							<a class="label block text-lowercase" href="/emi">Read More <span class="material-icons">subject</span></a>
+							<a class="label inline text-lowercase js_modal_trigger" data-mod-id="share" href="">Share <span class="material-icons backface-not-invisible" style="transform: scaleX(-1);">reply</span></a>
 						</div>
 					</div>
 				</div>
 				<div class="tile t-8" style="background-image: url('../media/char-4.png<?php echo $ver ?>'); background-size: cover; background-position: center center;">
 					<!-- (8.) -->
 				</div>
-				<div class="tile t-9 lumpsum" tabindex="-1">
+				<div class="tile t-9 lumpsum no-pointer" tabindex="-1">
 					<div class="front fill-dark">
 						<!-- (9.) -->
 						<div class="h5 strong space-min-bottom">Lumpsum</div>
@@ -268,7 +177,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 					<div class="back fill-dark">
 						<div>
 							<a class="label block text-lowercase" href="/lumpsum">Read More <span class="material-icons">subject</span></a>
-							<a class="label inline text-lowercase js_modal_trigger" data-mod-id="share" href="">Share <span class="material-icons" style="transform: scaleX(-1);">reply</span></a>
+							<a class="label inline text-lowercase js_modal_trigger" data-mod-id="share" href="">Share <span class="material-icons backface-not-invisible" style="transform: scaleX(-1);">reply</span></a>
 						</div>
 					</div>
 				</div>
@@ -383,7 +292,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						</div>
 						<div class="action space-25-top">
 							<button class="fill-red-2 js_investment_get_details">Get Details</button>
-							<button class="fill-red-2 button-icon js_modal_trigger" data-mod-id="share" style="background-image: url('../media/icon/icon-share-more.svg<?php echo $ver ?>'); margin-left: calc(var(--space-min)/2);">Share</button>
+							<button class="fill-red-2 button-icon js_modal_trigger hidden" data-mod-id="share" style="background-image: url('../media/icon/icon-share-more.svg<?php echo $ver ?>'); margin-left: calc(var(--space-min)/2);">Share</button>
 						</div>
 					</div>
 					<div class="back js_back"></div>
@@ -536,7 +445,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 								<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
 								<div style="position: relative; display: flex">
 									<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
-										<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+										<?php include __ROOT__ . '/pages/snippets/phone-country-codes.php' ?>
 									</select>
 									<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
 									<input class="block fill-dark js_form_input_phonenumber" type="text" name="phone-number" id="webinar-form-phone-number">
@@ -595,7 +504,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 								<?php endif; ?>
 								<div class="columns small-12 medium-8 space-min-top">
 									<div class="description h6 opacity-50 space-min-bottom"><?= $faq->get( 'summary' ) ?></div>
-									<div class="action clearfix">
+									<div class="action clearfix hidden">
 										<?php if ( $faq->get( 'thereIsMore?' ) ) : ?>
 											<a class="label inline text-lowercase" href="<?= $faq->get( 'url' ) ?>" target="_blank">Read More <span class="material-icons">subject</span></a>
 										<?php endif; ?>
@@ -606,7 +515,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						</div>
 					</div>
 				<?php endforeach; ?>
-					<a class="inline big-link h4 strong" tabindex="-1" href="/faq/introduction" target="_blank">
+					<a class="inline big-link h4 strong hidden" tabindex="-1" href="/faqs" target="_blank">
 						<span>Help Center</span>
 					</a>
 				</div>
@@ -630,7 +539,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 												<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
 												<div style="position: relative; display: flex">
 													<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
-														<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+														<?php include __ROOT__ . '/pages/snippets/phone-country-codes.php' ?>
 													</select>
 													<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
 													<input class="block" type="text" name="phone-number" id="">
@@ -671,7 +580,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 		</div>
 	</div>
 	<!-- Tile Links Section -->
-	<div class="tile-link-section space-75-bottom">
+	<div class="tile-link-section space-75-bottom hidden">
 		<div class="container">
 			<div class="row">
 				<div class="columns small-12 large-9 large-offset-3">
@@ -766,7 +675,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
 						<div style="position: relative; display: flex">
 							<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
-								<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+								<?php include __ROOT__ . '/pages/snippets/phone-country-codes.php' ?>
 							</select>
 							<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
 							<input class="block js_form_input_phonenumber" type="text" name="phone-number" id="investment-form-phone-number">
@@ -799,7 +708,7 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
 						<div style="position: relative; display: flex">
 							<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
-								<?php include __DIR__ . '/../inc/phone-country-codes.php' ?>
+								<?php include __ROOT__ . '/pages/snippets/phone-country-codes.php' ?>
 							</select>
 							<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
 							<input class="block js_form_input_phonenumber" type="text" name="phone-number" id="">
@@ -824,6 +733,4 @@ $testimonialSets = array_chunk( $testimonials, 2, true );
 
 
 
-
-
-<?php require_once __ROOT__ . '/inc/footer.php'; ?>
+<?php require_once __ROOT__ . '/pages/partials/footer.php'; ?>

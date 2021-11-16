@@ -339,7 +339,7 @@ function trackPageVisit ( name ) {
 	 *
 	 */
 	// Build the URL
-	var baseTrackingURL = ( "/" + __.settings.trackingURL + "/" ).replace( /(\/+)/g, "/" );
+	var baseTrackingURL = ( "/" + Cupid.settings.trackingURL + "/" ).replace( /(\/+)/g, "/" );
 	var baseURL = location.origin.replace( /\/$/, "" ) + baseTrackingURL;
 	name = name.replace( /^[/]*/, "" );
 	var url = baseURL + name;

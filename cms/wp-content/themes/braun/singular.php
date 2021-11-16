@@ -1,11 +1,11 @@
 <?php
 
 // Page-specific preparatory code goes here.
-require_once __ROOT__ . '/inc/header.php';
+require_once __ROOT__ . '/pages/partials/header.php';
+
 the_post();
 
 ?>
-
 
 <!-- Header Section -->
 <section class="header-section fill-blue-4 space-75-top space-50-bottom">
@@ -42,5 +42,4 @@ the_post();
 
 
 
-
-<?php require_once __ROOT__ . '/inc/footer.php'; ?>
+<?php require_once __ROOT__ . '/pages/partials/footer.php'; ?>
