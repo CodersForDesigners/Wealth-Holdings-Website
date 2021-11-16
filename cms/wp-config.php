@@ -2,9 +2,9 @@
 /**
  * The base configuration for WordPress
  *
- * The wp-config.php creation script uses this file during the
- * installation. You don't have to use the web site, you can
- * copy this file to "wp-config.php" and fill in the values.
+ * The wp-config.php creation script uses this file during the installation.
+ * You don't have to use the web site, you can copy this file to "wp-config.php"
+ * and fill in the values.
  *
  * This file contains the following configurations:
  *
@@ -12,6 +12,7 @@
  * * Secret keys
  * * Database table prefix
  * * ABSPATH
+ * * and other things.
  *
  * @link https://wordpress.org/support/article/editing-wp-config-php/
  *
@@ -19,34 +20,30 @@
  */
 
 /**
- * Project configuration
- *
- * Pull the configuration file from the project root
+ |
+ | Project configuration
+ |
+ | Pull the configuration file from the project root
+ |
  */
-require_once __DIR__ . '/../conf.php';
+if ( ! defined( '__ROOT__' ) )
+	define( '__ROOT__', __DIR__ . '/..' );
+
+require_once __ROOT__ . '/conf.php';
 
 
-
-/**
- * WordPress Locations (Frontend and Backend)
- *
- * Set it such that it is contextual to the domain that the site is hosted behind
- */
 if ( HTTPS_SUPPORT )
 	$httpProtocol = 'https';
 else
 	$httpProtocol = 'http';
 
 $hostName = $_SERVER[ 'HTTP_HOST' ] ?: $_SERVER[ 'SERVER_NAME' ];
-define( 'WP_HOME', $httpProtocol . '://' . $hostName );
-if ( ! defined( 'WP_SITEURL' ) )
-	define( 'WP_SITEURL', $httpProtocol . '://' . $hostName . '/cms' );
-
 
 
 /**
- * Routing
- *
+ |
+ | Routing
+ |
  */
 // Fetch media files from the WIP server
 if ( CMS_FETCH_MEDIA_REMOTELY )
@@ -54,95 +51,89 @@ if ( CMS_FETCH_MEDIA_REMOTELY )
 		if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/content/cms/' ) !== false )
 			return header( 'Location: ' . $httpProtocol . '://' . CMS_REMOTE_ADDRESS . $_SERVER[ 'REQUEST_URI' ], true, 302 );
 
-
-
-/**
- * Caching
- *
- */
-define( 'WP_CACHE', CMS_CACHE_PAGES );
-
-
-
-/**
- * Content, Media and Uploads
- *
- */
-// Prevent posts from auto-saving
-define( 'AUTOSAVE_INTERVAL', 60 * 60 * 24 );
-define( 'WP_POST_REVISIONS', 50 );
-if ( ! defined( 'UPLOADS' ) )
-	define( 'UPLOADS', '../content/cms' );	# this one is relative to `ABSPATH`
+// If accessing the CMS backend, ensure that only the canonical version / instance is accessed
+if ( RESTRICT_ACCESS_TO_CANONICAL_CMS_ONLY )
+	if ( $hostName !== CMS_CANONICAL_ADDRESS )
+		if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/cms' ) === 0 )
+			return header( 'Location: ' . $httpProtocol . '://' . CMS_CANONICAL_ADDRESS . $_SERVER[ 'REQUEST_URI' ], true, 302 );
 
 
 
 /**
- * File System
- *
+ |
+ | WordPress Website Roots
+ |
+ | Set it such that it is contextual to the domain that the site is hosted behind
+ |
  */
-define( 'FS_METHOD', 'direct' );
+define( 'WP_HOME', $httpProtocol . '://' . $hostName );
+if ( ! defined( 'WP_SITEURL' ) )
+	define( 'WP_SITEURL', $httpProtocol . '://' . $hostName . '/cms' );
 
 
 
 /**
- * Database
- *
+ |
+ | Cron
+ |
  */
-// SQLite
-define( 'USE_MYSQL', ! CMS_USE_SQLITE );
-define( 'DB_DIR', $_SERVER[ 'DOCUMENT_ROOT' ] . '/data/' );
-define( 'DB_FILE', 'cms.db.sqlite' );
+// if ( BFS_ENV_PRODUCTION )
+//      define( 'DISABLE_WP_CRON', true );
 
-// ** MySQL settings - You can get this info from your web host ** //
+
+
+/**
+ |
+ | Database
+ |
+ */
+// define( 'WP_ALLOW_REPAIR', true );
+// MySQL
 /** The name of the database for WordPress */
 define( 'DB_NAME', CMS_DB_NAME );
-
 /** MySQL database username */
 define( 'DB_USER', CMS_DB_USER );
-
 /** MySQL database password */
 define( 'DB_PASSWORD', CMS_DB_PASSWORD );
-
 /** MySQL hostname */
 define( 'DB_HOST', CMS_DB_HOST );
-
+/** Database Charset to use in creating database tables. */
+define( 'DB_CHARSET', 'utf8mb4' );
+/** The Database Collate type. Don't change this if in doubt. */
+define( 'DB_COLLATE', '' );
 /** Use an SSL connection when connecting to the database */
 if ( CMS_DB_SSL )
 	define( 'MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL );
 
-/** Database Charset to use in creating database tables. */
-define( 'DB_CHARSET', 'utf8' );
-
-/** The Database Collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
-
 /**#@+
- * Authentication Unique Keys and Salts.
+ * Authentication unique keys and salts.
  *
- * Change these to different unique phrases!
- * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
- * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
+ * Change these to different unique phrases! You can generate these using
+ * the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}.
+ *
+ * You can change these at any point in time to invalidate all existing cookies.
+ * This will force all users to have to log in again.
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY', '%S-w1ulHl80xM[#%7*LE?V^j,&5UY>{&E(^,A^M`w4h?os]ZCNQWv<BBgoGI+k@@' );
-define( 'SECURE_AUTH_KEY', 'E,-qwZA6I)U)_HHh<Lz/&P7})-{(2/>/`ZC#W+#R-f<]E3Ldt,G9tT?t}}bhaR3S' );
-define( 'LOGGED_IN_KEY', 'KAl;o[;5H<-QRKzWv@ReNW;oFNFY!@Ntk5fN|([a#r&WsFdIgU!NL2q;#>DIvOl,' );
-define( 'NONCE_KEY', 'ew-5V&M#zB^emeCx3eqSU68byk!%{=SjxYN3UVMLDy7`x53OA_Tt;lKd$+OXVq^F' );
-define( 'AUTH_SALT', '>jN{Jhs)DYTA,ECmt75=?a4yhU?ir@X6Q%FybF@5./?`iy(qV)VvZKXwEBd:iSb0' );
-define( 'SECURE_AUTH_SALT', ')4d58n<w*/tXm9n.7]^^Xc8@H;-tA,!<#Njm#=w.4q+q{>kTZ}5?OGr5A!$!29^g' );
-define( 'LOGGED_IN_SALT', '*o*>#x+fzc.SfI!K07r!_wdsAvMjCYWrzRZsyBv.q6{Q+;r#CpiR)|et8!fSIGw0' );
-define( 'NONCE_SALT', 'T^@[`nhM8$IX_EYZ)hKm<6zUvH2/ZBM1p`=;kWLj|%z5&XCN]c}pXX-|4l6^6|tq' );
+define( 'AUTH_KEY', CMS_WP_AUTH_KEY );
+define( 'SECURE_AUTH_KEY', CMS_WP_SECURE_AUTH_KEY );
+define( 'LOGGED_IN_KEY', CMS_WP_LOGGED_IN_KEY );
+define( 'NONCE_KEY', CMS_WP_NONCE_KEY );
+define( 'AUTH_SALT', CMS_WP_AUTH_SALT );
+define( 'SECURE_AUTH_SALT', CMS_WP_SECURE_AUTH_SALT );
+define( 'LOGGED_IN_SALT', CMS_WP_LOGGED_IN_SALT );
+define( 'NONCE_SALT', CMS_WP_NONCE_SALT );
 
 /**#@-*/
 
 /**
- * WordPress Database Table prefix.
+ * WordPress database table prefix.
  *
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = 'wp_';
+$table_prefix = CMS_WP_DB_TABLE_PREFIX;
 
 /**
  * For developers: WordPress debugging mode.
@@ -161,30 +152,42 @@ define( 'WP_DEBUG_LOG', CMS_DEBUG_LOG_TO_FILE );
 define( 'WP_DEBUG_DISPLAY', CMS_DEBUG_LOG_TO_FRONTEND );
 ini_set( 'display_errors', CMS_DEBUG_LOG_TO_FRONTEND ? '1' : '0' );
 
-
-
-/**
- * Cron
- *
- */
-// define( 'DISABLE_WP_CRON', true );
-
-
+/* Add any custom values between this line and the "stop editing" line. */
 
 /**
- * WordPress Updates
- *
+ |
+ | WordPress Updates
+ |
+ | Using a plugin for this now.
+ |
  */
-define( 'WP_AUTO_UPDATE_CORE', CMS_AUTO_UPDATE );
+// define( 'WP_AUTO_UPDATE_CORE', false );
+// define( 'AUTOMATIC_UPDATER_DISABLED', !! CMS_AUTO_UPDATE );
+
+/**
+ |
+ | Theme
+ |
+ */
+define( 'WP_DEFAULT_THEME', CMS_DEFAULT_THEME );
+
+/**
+ |
+ | Media and Uploads
+ |
+ */
+if ( ! defined( 'UPLOADS' ) )
+	define( 'UPLOADS', '../content/cms' );  # this one is relative to `ABSPATH`
+
+
 
 
 
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
-if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) )
 	define( 'ABSPATH', __DIR__ . '/' );
-}
 
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
