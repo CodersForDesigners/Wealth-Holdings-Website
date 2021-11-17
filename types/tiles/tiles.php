@@ -110,13 +110,7 @@ class Tiles {
 
 	// Register a `save_post` action hook
 	public static function onSavingInstance () {
-		add_action( 'bfs/init/backend', function () {
-		// add_action( 'bfs/backend/on-editing-posts', function ( $postType ) {
-			// if ( $postType !== self::$typeSlug )
-				// return;
-
-			self::registerHook__OnSavingPost();
-		} );
+		add_action( 'wp_loaded', [ __CLASS__, 'registerHook__OnSavingPost' ] );
 	}
 
 	public static function registerHook__OnSavingPost () {
@@ -153,22 +147,11 @@ class Tiles {
 		wp_update_post( [ 'ID' => $postId, 'post_title' => $title ], false, false );
 
 		/*
-		 | Capture the "Feature in" value as a tag
-		 | All these tags are prefixed with `for-`
+		 | Capture the "Feature in" value as a tag (i.e. the custom tag_section taxonomy)
 		 |
 		 */
-		$tags = array_map( function ( $tag ) {
-			return 'for-' . $tag;
-		}, $thePost->get( 'feature_on' ) );
-
-		$allExistingPostTags = wp_get_post_tags( $postId, [ 'fields' => 'slugs' ] );
-		$allOtherTags = array_filter( $allExistingPostTags, function ( $tag ) {
-			return substr( $tag, 0, 4 ) != 'for-';
-		} );
-
-		$tagsToSet = array_merge( $allOtherTags, $tags );
-
-		wp_set_post_tags( $postId, $tagsToSet, false );
+		$sectionsThePostFeaturesIn = $thePost->get( 'feature_on' ) ?? [ ];
+		wp_set_post_terms( $postId, $sectionsThePostFeaturesIn, 'tag_section', false );
 
 
 
