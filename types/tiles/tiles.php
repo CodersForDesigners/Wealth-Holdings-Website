@@ -68,6 +68,19 @@ class Tiles {
 		);
 	}
 
+	public static function getBySection ( $section ) {
+		return self::get( [
+			'tax_query' => [
+				[
+					'taxonomy' => 'tag_section',
+					'field' => 'slug',
+					'terms' => [ $section ]
+				]
+			]
+		] );
+	}
+
+
 
 
 	public static function setupGutenbergBlocks () {

@@ -46,7 +46,7 @@ $faqs = FAQs::getFeatured();
 
 $brochures = Brochures::getAll();
 
-$tileLinks = Tiles::get( [ 'tag' => 'for-home' ] );
+$tileLinks = Tiles::getBySection( 'home' );
 
 // Fetch and chunk it in sets of 2
 $testimonialSets = array_chunk(

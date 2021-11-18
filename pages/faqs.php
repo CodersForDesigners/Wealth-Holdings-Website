@@ -67,7 +67,7 @@ function getFAQHierarchyMarkup ( $faqs__Tree, $parentId ) {
 }
 
 
-$tileLinks = Tiles::get( [ 'tag' => 'for-faqs' ] );
+$tileLinks = Tiles::getBySection( 'faqs' );
 
 
 
