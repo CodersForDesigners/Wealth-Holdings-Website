@@ -57,7 +57,7 @@ unset( $field );
 					<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span><br>
 					<div style="position: relative; display: flex">
 						<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
-							<?php include ABSPATH . '/../inc/phone-country-codes.php' ?>
+							<?php include ABSPATH . '/../pages/snippets/phone-country-codes.php' ?>
 						</select>
 						<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
 						<input class="block fill-dark js_form_input_phonenumber" type="text" name="phone-number" id="form-phone-number">
