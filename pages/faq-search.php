@@ -35,7 +35,7 @@ foreach ( $faqs as $faq ) {
 		);
 }
 
-
+$postTitle = 'Search results for "' . get_query_var( 's' ) . '"';
 
 require_once __ROOT__ . '/pages/partials/header.php';
 
