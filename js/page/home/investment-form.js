@@ -58,7 +58,7 @@ investmentForm.submit = function submit ( data ) {
 	let person = Cupid.getCurrentPerson( data.phoneNumber )
 	person.setSourcePoint( "Investments" )
 
-	Cupid.logPersonIn( person, { _trackSlug: "invest-today" } )
+	Cupid.logPersonIn( person, { trackSlug: "invest-today" } )
 
 	let interest = data.interest
 	if ( ! person.hasInterest( interest ) ) {

@@ -41,7 +41,7 @@ webinarForm.submit = function submit ( data ) {
 	person.setEmailAddress( data.emailAddress )
 	person.setSourcePoint( "Webinar" )
 
-	Cupid.logPersonIn( person, { _trackSlug: "register-for-webinar" } )
+	Cupid.logPersonIn( person, { trackSlug: "register-for-webinar" } )
 
 	let interest = `Webinar ${window.__BFS.data.webinarDate}`
 	if ( ! person.hasInterest( interest ) ) {

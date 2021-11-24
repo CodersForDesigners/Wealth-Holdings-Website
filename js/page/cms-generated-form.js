@@ -64,7 +64,7 @@ cmsForm.submit = function submit ( data ) {
 	person.setSourcePoint( sourcePoint )
 
 	let trackSlug = data.formContext ? slugify( data.formContext ) : data.urlSlug
-	Cupid.logPersonIn( person, { _trackSlug: trackSlug } )
+	Cupid.logPersonIn( person, { trackSlug: trackSlug } )
 
 	// Set the form heading as the "interest", else the URL slug
 	let interest = cmsForm.getFormNode().data( "heading" ) || data.formContext
