@@ -45,7 +45,7 @@ $metaCharset = WordPress::$isEnabled ? get_bloginfo( 'charset' ) : 'utf-8';
 <?php endif; ?>
 
 <?php if ( ! empty( $documentTitle ) ) : ?>
-<title><?= $documentTitle ?></title>
+<title><?= htmlentities( $documentTitle ) ?></title>
 <?php endif; ?>
 
 <?php if ( ! empty( $baseURL ) ) : ?>
@@ -141,7 +141,7 @@ $metaCharset = WordPress::$isEnabled ? get_bloginfo( 'charset' ) : 'utf-8';
 <!-- Facebook Open Graph -->
 <meta property="og:url" content="<?= $pageURL ?>">
 <meta property="og:type" content="website">
-<meta property="og:title" content="<?= $documentTitle ?>">
+<meta property="og:title" content="<?= htmlentities( $documentTitle ) ?>">
 <?php if ( $metaDescription ) : ?>
 <meta property="og:description" content="<?= $metaDescription ?>">
 <?php endif; ?>
@@ -152,7 +152,7 @@ $metaCharset = WordPress::$isEnabled ? get_bloginfo( 'charset' ) : 'utf-8';
 
 
 <!-- Schema.org / Google+ -->
-<meta itemprop="name" content="<?= $documentTitle ?>">
+<meta itemprop="name" content="<?= htmlentities( $documentTitle ) ?>">
 <?php if ( $metaDescription ) : ?>
 <meta itemprop="description" content="<?= $metaDescription ?>">
 <?php endif; ?>
