@@ -7,20 +7,26 @@
  |
  */
 
+/*
+ | 1. Pull JSON body
+ */
 # Get JSON as a string
 $json = file_get_contents( 'php://input' );
 # Convert the JSON string to an object
 $error = null;
-$input = null;
+$input = [ ];
 try {
 	$input = json_decode( $json, true );
-	if ( empty( $input ) )
-		throw new \Exception( "No data provided." );
 }
 catch ( \Exception $e ) {
-	$error = $e->getMessage();
 }
-if ( ! empty( $error ) ) {
+
+/*
+ | 2. Pull and merge payload from HTTP POST request body
+ */
+$input = array_merge( $input ?? [ ], $_POST ?? [ ] );
+
+if ( empty( $input ) ) {
 	echo json_encode( [
 		'code' => 400,
 		'message' => 'Data not provided'
