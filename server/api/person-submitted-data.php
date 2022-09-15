@@ -13,6 +13,8 @@ require_once __DIR__ . '/../../lib/api-script-mandatory-input-parsing.php';
 
 require_once __DIR__ . '/../../lib/http.php';
 
+use BFS\HTTP;
+
 /*
  |
  | Further input parsing
