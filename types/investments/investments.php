@@ -71,6 +71,11 @@ class Investments {
 		);
 	}
 
+	/*
+	 |
+	 | The categories data is pulled from the Investments ACF field group (which itself is represented by a custom post type of `acf-field-group`)
+	 |
+	 */
 	public static function getCategories () {
 		WordPress::setupContext();
 		$fields = acf_get_field(	// this function gets us the "Investment" field group settings
