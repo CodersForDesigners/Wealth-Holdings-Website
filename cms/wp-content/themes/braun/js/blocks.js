@@ -23,6 +23,8 @@ wp.domReady( function() {
 		"core/spacer"
 	];
 
+	const postType = wp.data.select( "core/editor" ).getCurrentPostType()
+
 	if ( postType === "investment" )
 		allowedBlocks.push( "acf/bfs-investments" )
 	if ( postType === "brochure" )
