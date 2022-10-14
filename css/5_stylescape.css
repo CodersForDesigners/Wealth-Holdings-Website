@@ -189,6 +189,9 @@ hr {
 hr.dashed {
 	border-top: 2px dashed;
 }
+hr.neutral-4 {
+	border-color: var(--neutral-4);
+}
 hr.red-2 {
 	border-color: var(--red-2);
 }
