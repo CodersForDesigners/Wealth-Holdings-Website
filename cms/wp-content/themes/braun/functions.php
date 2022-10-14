@@ -55,6 +55,7 @@ require_once __ROOT__ . '/types/faqs/faqs.php';
 require_once __ROOT__ . '/types/brochures/brochures.php';
 require_once __ROOT__ . '/types/tiles/tiles.php';
 require_once __ROOT__ . '/types/testimonials/testimonials.php';
+require_once __ROOT__ . '/types/distributors/distributors.php';
 
 use \BFS\Types;
 
@@ -82,3 +83,7 @@ Types\Tiles::onSavingInstance();
 /* ~ Testimonials ~ */
 Types\Testimonials::setupGutenbergBlocks();
 Types\Testimonials::setupContentInputForm();
+
+/* ~ (Authorized) Distributors ~ */
+Types\Distributors::setupGutenbergBlocks();
+Types\Distributors::setupContentInputForm();
