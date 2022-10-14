@@ -232,8 +232,8 @@ $testimonialSets = array_chunk(
 <!-- END: Investment Section -->
 
 
-<!-- How Section -->
-<section class="how-section fill-dark space-75-top-bottom" id="how-section" data-section-title="How Section" data-section-slug="how-section">
+<!-- How Investments Work Section -->
+<section class="how-investments-work-section fill-dark space-75-top-bottom" id="how-investments-work-section" data-section-title="How Investments Work Section" data-section-slug="how-investments-work-section">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 large-2 space-50-bottom">
@@ -303,7 +303,8 @@ $testimonialSets = array_chunk(
 		</div>
 	</div>
 </section>
-<!-- END: How Section -->
+<!-- END: How Investments Work Section -->
+
 
 
 <!-- Webinar Section -->

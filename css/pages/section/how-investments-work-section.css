@@ -1,18 +1,22 @@
+
 /*
- * How Section
+ |
+ | How Investments Work Section
+ |
+ |
  */
 
-.how-section { position: relative; }
-.how-section .lumpsum {}
-.how-section .emi {}
+.how-investments-work-section { position: relative; }
+.how-investments-work-section .lumpsum {}
+.how-investments-work-section .emi {}
 
-.how-section .table {
+.how-investments-work-section .table {
 	position: relative;
 	z-index: 1;
 	padding-left: var(--space-25);
 	counter-reset: rowindex;
 }
-.how-section .table:before {
+.how-investments-work-section .table:before {
 	content: '';
 	display: block;
 	position: absolute;
@@ -22,7 +26,7 @@
 	width: 1px;
 	height: 100%;
 }
-.how-section .table:after {
+.how-investments-work-section .table:after {
 	content: '';
 	display: block;
 	position: absolute;
@@ -35,16 +39,16 @@
 	background-repeat: repeat-y;
 	background-size: 100%;
 }
-.how-section .lumpsum .table:before,
-.how-section .lumpsum .table:after {
+.how-investments-work-section .lumpsum .table:before,
+.how-investments-work-section .lumpsum .table:after {
 	background-color: var(--yellow-2);
 }
-.how-section .emi .table:before,
-.how-section .emi .table:after {
+.how-investments-work-section .emi .table:before,
+.how-investments-work-section .emi .table:after {
 	background-color: var(--green-2);
 }
 
-.how-section .table .table-row {
+.how-investments-work-section .table .table-row {
 	position: relative;
 	z-index: 1;
 	display: block;
@@ -53,10 +57,10 @@
 	counter-increment: rowindex;
 	min-height: calc( 2.75em + ( var(--space-min) * 2 )); /* line-height (1.375) * Number of lines (2) */
 }
-.how-section .table .table-row:nth-child(2n+1) {
+.how-investments-work-section .table .table-row:nth-child(2n+1) {
 	background-color: rgba(255,255,255,0.25);
 }
-.how-section .table .table-row:before {
+.how-investments-work-section .table .table-row:before {
 	position: absolute;
 	display: inline-block;
 	z-index: 2;
@@ -68,7 +72,7 @@
 	transform: translateX(-50%);
 	content: counter(rowindex);
 }
-.how-section .table .table-row .tag {
+.how-investments-work-section .table .table-row .tag {
 	position: absolute;
 	display: inline-block;
 	z-index: 3;
@@ -82,7 +86,7 @@
 	background-color: var(--dark);
 }
 
-.how-section .character {
+.how-investments-work-section .character {
 	position: absolute;
 	z-index: 1;
 	bottom: 0;
@@ -90,32 +94,32 @@
 	width: 100%;
 	height: auto;
 }
-.how-section .character .char-image {
+.how-investments-work-section .character .char-image {
 	transform: translateX(-20%);
 }
 
 @media( min-width: 640px )  {
-	.how-section .table .table-row:before {
+	.how-investments-work-section .table .table-row:before {
 		font-size: 2.6rem;
 	}
 }
 @media( min-width: 1040px ) {
-	.how-section .table .table-row {
+	.how-investments-work-section .table .table-row {
 		padding: var(--space-min) var(--space-min) var(--space-min) var(--space-75);
 	}
-	.how-section .table .table-row:before {
+	.how-investments-work-section .table .table-row:before {
 		left: calc(var(--space-75)/2);
 		font-size: 3.4rem;
 	}
-	.how-section .table .table-row .tag {
+	.how-investments-work-section .table .table-row .tag {
 		left: calc( ( 1em + var(--space-25) ) * -1 );
 	}
 }
 @media( min-width: 1480px ) {
-	.how-section .table .table-row:before {
+	.how-investments-work-section .table .table-row:before {
 		font-size: 3.8rem;
 	}
-	.how-section .table .table-row .tag {
+	.how-investments-work-section .table .table-row .tag {
 		left: calc( ( 1.5em + var(--space-25) ) * -1 );
 	}
 }
