@@ -567,6 +567,9 @@ select {
 	background-repeat: no-repeat;
 	background-size: 12px;
 }
+input[ type = "text" ].phone-country-code {
+	width: calc( var(--space-min) + 7ch );
+}
 select.phone-country-code {
 	position: absolute;
 	top: 0;
