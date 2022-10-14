@@ -27,6 +27,8 @@ wp.domReady( function() {
 
 	if ( postType === "investment" )
 		allowedBlocks.push( "acf/bfs-investments" )
+	if ( postType === "co-investment" )
+		allowedBlocks.push( "acf/bfs-co-investments" )
 	if ( postType === "brochure" )
 		allowedBlocks.push( "acf/bfs-brochures" )
 	if ( postType === "tile-link" )
