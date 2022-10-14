@@ -133,7 +133,7 @@ $( ".js_section_investment" ).on( "change", ".js_filter", function ( event ) {
 	// Remove the "View All" overlay
 	$investmentSection.find( ".js_view_all" ).trigger( "click" );
 
-	// Add the filtration n' loading effect
+	// Add the filtration loading effect
 	$investmentSection.addClass( "filter-and-load" );
 
 	// Move the back of the investment card to temporary holding space
@@ -203,7 +203,7 @@ $( ".js_section_investment" ).on( "change", ".js_filter", function ( event ) {
 		// Remove the `faded-while-loading` class from the new cards
 		$investmentSection.find( ".js_investment_card.faded-while-loading" ).removeClass( "faded-while-loading" );
 
-		// Remove the filtration n' loading effect
+		// Remove the filtration loading effect
 		$investmentSection.removeClass( "filter-and-load" );
 
 	}, 300 );
