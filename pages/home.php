@@ -6,6 +6,7 @@
  */
 require_once __ROOT__ . '/lib/providers/wordpress.php';
 require_once __ROOT__ . '/types/investments/investments.php';
+require_once __ROOT__ . '/types/co-investments/co-investments.php';
 require_once __ROOT__ . '/types/faqs/faqs.php';
 require_once __ROOT__ . '/types/brochures/brochures.php';
 require_once __ROOT__ . '/types/tiles/tiles.php';
@@ -13,6 +14,7 @@ require_once __ROOT__ . '/types/testimonials/testimonials.php';
 
 use BFS\CMS\WordPress;
 use BFS\Types\Investments;
+use BFS\Types\CoInvestments;
 use BFS\Types\FAQs;
 use BFS\Types\Brochures;
 use BFS\Types\Tiles;
@@ -37,6 +39,27 @@ if ( $numberOfInvestments <= 6 )
 	$hideInvestmentsPagination .= ' view-all-m';
 if ( $numberOfInvestments <= 3 )
 	$hideInvestmentsPagination .= ' view-all-s';
+
+
+/**
+ |
+ | Co-Investments
+ |
+ */
+$coInvestments = CoInvestments::getAll();
+$coInvestmentCategories = CoInvestments::getCategories();
+
+// Determine whether to show the "View All" overlay at all in the first place
+$numberOfCoInvestments = count( $coInvestments );
+$hideCoInvestmentsPagination = '';
+if ( $numberOfCoInvestments <= 9 )
+	$hideCoInvestmentsPagination .= 'view-all-l view-all-xl';
+if ( $numberOfCoInvestments <= 6 )
+	$hideCoInvestmentsPagination .= ' view-all-m';
+if ( $numberOfCoInvestments <= 3 )
+	$hideCoInvestmentsPagination .= ' view-all-s';
+
+
 
 $webinarDate = WordPress::get( 'webinar_date' ) ?: ( 'Registered interest at ' . date( 'h:ia, d/m/Y' ) );
 
@@ -76,6 +99,12 @@ $testimonialSets = array_chunk(
 			$investmentsForJS[ ] = $investment->getAll();
 	?>
 	window.__BFS.data.investments = <?= json_encode( $investmentsForJS ) ?>;
+
+	<?php
+		foreach ( $coInvestments as $coInvestment )
+			$coInvestmentsForJS[ ] = $coInvestment->getAll();
+	?>
+	window.__BFS.data.coInvestments = <?= json_encode( $coInvestmentsForJS ) ?>;
 
 </script>
 
@@ -305,6 +334,60 @@ $testimonialSets = array_chunk(
 </section>
 <!-- END: How Investments Work Section -->
 
+
+<!-- Co-Investment Section -->
+<?php require_once __DIR__ . '/sections/home/co-investments.php'; ?>
+<!-- END: Co-Investment Section -->
+
+<!-- How Co-Investments Work Section -->
+<section class="how-investments-work-section fill-black space-75-top-bottom" id="how-co-investments-work-section" data-section-title="How Co-Investments Work Section" data-section-slug="how-co-investments-work-section">
+	<div class="container">
+		<div class="row">
+			<div class="columns small-12 large-2 space-50-bottom">
+				<div class="h2 strong">How does it work?</div>
+			</div>
+			<div class="co-own columns small-11 small-offset-1 medium-5 large-4">
+				<div class="h3 strong text-blue-1 space-25-bottom">Co-Own</div>
+				<div class="table">
+					<div class="table-row h6">
+						Choose the number of units you want to purchase.
+					</div>
+					<div class="table-row h6">
+						Fill out the application form and submit with KYC.
+					</div>
+					<div class="table-row h6">
+						Transfer the payment to our bank account.
+						<div class="tag label text-blue-1">Invest</div>
+					</div>
+					<div class="table-row h6">
+						Documentation will be executed in your name.
+					</div>
+					<div class="table-row h6">
+						Get a fixed monthly income.
+						<div class="tag label text-blue-1">Earn</div>
+					</div>
+					<div class="table-row h6">
+						Your units will appreciate to capture the appreciating property value.
+					</div>
+					<div class="table-row h6">
+						Sell your units at any time.
+						<div class="tag label text-blue-1">Gain</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="character row hide-small hide-medium">
+		<div class="container">
+			<div class="columns small-12 medium-8 large-4">
+				<div class="char-image">
+					<img class="block" src="../media/char-6.png<?php echo $ver ?>">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: How Co-Investments Work Section -->
 
 
 <!-- Webinar Section -->
@@ -592,7 +675,39 @@ $testimonialSets = array_chunk(
 		</div>
 	</template>
 	<!-- END: TEMPLATE: Back of Investment Card -->
-	<!-- TEMPLATE: Login Prompt for Tile Link -->
+	<!-- TEMPLATE: Back of Co-Investment Card -->
+	<template class="js_template" data-name="co-investment-card-back">
+		<div>
+			<div class="close js_investment_card_unflip" tabindex="-1"><img class="icon block" src="/media/icon/icon-close-red.svg<?php echo $ver ?>"></div>
+			<div class="title h4 strong space-25-bottom js_message">Get access to a detailed offer document now.</div>
+			<form class="form form-dark js_co_investment_form" onsubmit="event.preventDefault()">
+				<div class="form-row space-min-bottom">
+					<label for="investment-form-phone-number">
+						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Phone</span>
+						<div style="position: relative; display: flex">
+							<select class="js_phone_country_code" style="position: absolute; top: 0; left: 0; background-color: transparent; color: transparent; width: 26%;">
+								<?php include __ROOT__ . '/pages/snippets/phone-country-codes.php' ?>
+							</select>
+							<input type="text" class="no-pointer js_phone_country_code_label" value="+91" tabindex="-1" readonly style="width: 26%">
+							<input class="block js_form_input_phonenumber" type="text" name="phone-number" id="investment-form-phone-number">
+						</div>
+					</label>
+				</div>
+				<div class="form-row space-min-bottom">
+					<label for="">
+						<span class="small text-uppercase line-height-xlarge opacity-50 cursor-pointer">Submit</span>
+						<button class="button block fill-red-2" type="submit">Get Details</button>
+					</label>
+				</div>
+			</form>
+			<div class="or-separator"><span class="label">OR</span><hr class="dashed neutral-4"></div>
+			<div class="h5 text-neutral-2 line-height-xlarge"><?= $webinarDate ?></div>
+			<div class="label space-25-bottom">Join our investment manager for a 30min presentation and 30min of Q&A.</div>
+			<a href="#webinar-section" class="button" style="box-shadow: inset 0px 0px 0px 1px var(--red-3)">Register for Webinar</a>
+		</div>
+	</template>
+	<!-- END: TEMPLATE: Back of Co-Investment Card -->
+	<!-- [UNUSED] TEMPLATE: Login Prompt for Tile Link -->
 	<template class="js_template" data-name="tile-link-login-prompt">
 		<div class="js_tile_login_prompt">
 			<div class="form-row space-25-bottom">
@@ -624,6 +739,10 @@ $testimonialSets = array_chunk(
 	<!-- END: Template: Login Prompt for Tile Link -->
 </section>
 <!-- END: Templates Section -->
+
+<!-- Temporary DOM node hold area -->
+<div class="js_temp_holding_area"></div>
+<!-- END: Temporary DOM node hold area -->
 
 
 

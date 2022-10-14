@@ -25,6 +25,7 @@
 <link rel="stylesheet" type="text/css" href="/css/pages/section/landing-section.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="/css/pages/section/benefits-section.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="/css/pages/section/investment-section.css<?php echo $ver ?>">
+<link rel="stylesheet" type="text/css" href="/css/pages/section/co-investment-section.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="/css/pages/section/how-investments-work-section.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="/css/pages/section/webinar-section.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="/css/pages/section/faqs-section.css<?php echo $ver ?>">
