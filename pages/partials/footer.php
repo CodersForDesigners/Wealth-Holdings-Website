@@ -50,12 +50,12 @@ $footerNavigationMenuItems = WordPress::getNavigation( 'Footer', '/' );
 								</a>
 							</div>
 							<div class="columns small-12 large-6 space-50-bottom">
-								<a class="link inline" href="/authorised-partner-signup" target="_blank">
+								<a class="link inline" href="/authorised-distributor-signup" target="_blank">
 									<div class="h2 inline strong text-red-2 opacity-50 no-wrap">
-										<span class="inline-top">Partner</span>
+										<span class="inline-top">Distributor</span>
 										<img class="inline-top" src="/media/icon/icon-wh-arrow-red.svg<?php echo $ver ?>">
 									</div>
-									<div class="h5 strong">Apply to become an <br>authorised channel partner.</div>
+									<div class="h5 strong">Apply to become an <br>authorised distributor.</div>
 								</a>
 							</div>
 						</div>
