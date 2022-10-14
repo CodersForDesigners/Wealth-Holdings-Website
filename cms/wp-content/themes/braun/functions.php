@@ -50,6 +50,7 @@ add_action( 'after_setup_theme', function () {
  |
  */
 require_once __ROOT__ . '/types/investments/investments.php';
+require_once __ROOT__ . '/types/co-investments/co-investments.php';
 require_once __ROOT__ . '/types/faqs/faqs.php';
 require_once __ROOT__ . '/types/brochures/brochures.php';
 require_once __ROOT__ . '/types/tiles/tiles.php';
@@ -60,6 +61,10 @@ use \BFS\Types;
 /* ~ Investments ~ */
 Types\Investments::setupGutenbergBlocks();
 Types\Investments::setupContentInputForm();
+
+/* ~ Co-Investments ~ */
+Types\CoInvestments::setupGutenbergBlocks();
+Types\CoInvestments::setupContentInputForm();
 
 /* ~ FAQs ~ */
 Types\FAQs::setupGutenbergBlocks();
