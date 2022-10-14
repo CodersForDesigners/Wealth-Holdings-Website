@@ -230,6 +230,9 @@ hr.blue-4 {
 .fill-light {
 	color: var(--dark);
 	background-color: var(--light); }
+.fill-black {
+	color: var(--light);
+	background-color: var(--black) !important; }
 .fill-neutral-1 {
 	color: var(--dark);
 	background-color: var(--neutral-1); }
