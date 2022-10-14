@@ -361,10 +361,10 @@ $distributors = Distributors::getAll();
 					</div>
 					<div class="table-row h6">
 						Transfer the payment to our bank account.
-						<div class="tag label text-blue-1">Invest</div>
 					</div>
 					<div class="table-row h6">
 						Documentation will be executed in your name.
+						<div class="tag label text-blue-1">Invest</div>
 					</div>
 					<div class="table-row h6">
 						Get a fixed monthly income.
