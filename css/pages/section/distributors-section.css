@@ -75,7 +75,6 @@
 	}
 .distributors-section .distributors .distributor .tile .info {
 	display: flex;
-	align-items: flex-end;
 	justify-content: center;
 	height: 8rem;
 	padding-bottom: var(--space-50);
