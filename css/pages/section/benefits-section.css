@@ -78,7 +78,7 @@
 .benefits-section .tile-grid .tile.t-16 .hn {
 	margin-top: 140px;
 	line-height: 1;
-	font-size: 5.6rem; }
+	font-size: 4.1rem; }
 
 @media( min-width: 640px )  {
 	.benefits-section .tile-grid {
@@ -95,7 +95,7 @@
 	.benefits-section .tile-grid .tile:nth-child( 14 ) { grid-column-start: 1; grid-column-end: span 2; grid-row-start: 8; }
 
 	.benefits-section .tile-grid .tile.t-1 .hn {
-		margin-top: 140px;
+		margin-top: 113px;
 		font-size: 17.4rem; }
 	.benefits-section .tile-grid .tile.t-4 .hn {
 		margin-top: 18px; }
@@ -104,7 +104,7 @@
 		font-size: 8rem; }
 	.benefits-section .tile-grid .tile.t-16 .hn {
 		margin-top: 116px;
-		font-size: 5.4rem; }
+		font-size: 3.9rem; }
 }
 @media( min-width: 1040px ) {
 	.benefits-section .tile-grid {
@@ -132,12 +132,12 @@
 	.benefits-section .tile-grid .tile.t-1 .icon {
 		width: 44px; }
 	.benefits-section .tile-grid .tile.t-1 .hn {
-		margin-top: 106px;
+		margin-top: 86px;
 		font-size: 19.6rem; }
 	.benefits-section .tile-grid .tile.t-2 .hn {
 		font-size: 8rem; }
 	.benefits-section .tile-grid .tile.t-4 .hn {
-		margin-top: 6px;
+		margin-top: 7px;
 		font-size: 5.6rem; }
 	.benefits-section .tile-grid .tile.t-10 .hn {
 		font-size: 8rem; }
@@ -151,13 +151,13 @@
 		width: 5px; }
 	.benefits-section .tile-grid .tile.t-16 .hn {
 		margin-top: 120px;
-		font-size: 6rem; }
+		font-size: 4.5rem; }
 }
 @media( min-width: 1480px ) {
 	.benefits-section .tile-grid .tile.t-1 .icon {
 		width: 48px; }
 	.benefits-section .tile-grid .tile.t-1 .hn {
-		margin-top: 236px;
+		margin-top: 204px;
 		font-size: 28rem; }
 	.benefits-section .tile-grid .tile.t-2 .hn {
 		font-size: 10rem; }
@@ -180,7 +180,7 @@
 		width: 6px; }
 	.benefits-section .tile-grid .tile.t-16 .hn {
 		margin-top: 210px;
-		font-size: 9rem; }
+		font-size: 6.8rem; }
 }
 
 

@@ -115,7 +115,7 @@ $testimonialSets = array_chunk(
 			<div class="columns small-12 tile-grid">
 				<div class="tile t-1 fill-blue-4">
 					<!-- (1.) -->
-					<div class="h4 strong space-50-bottom">Why not invest in a 3BHK flat and get a 7% return on this investment?</div>
+					<div class="h5 strong space-50-bottom">Choose full ownership. Invest in a 3BHK, get it registered in your name. Get a fixed monthly income.</div>
 					<div class="h6 strong space-50-bottom clearfix">
 						<img class="icon float-left" src="../media/icon/icon-right-arrow-box-red.svg<?php echo $ver ?>">
 						The return is better than a fixed deposit.
@@ -133,8 +133,8 @@ $testimonialSets = array_chunk(
 				<div class="tile t-4 minimum-investment-amount no-pointer" tabindex="-1">
 					<div class="front fill-blue-4">
 						<!-- (4.) -->
-						<div class="h6 strong space-25-bottom"><span class="text-red-2">minimum</span> investment <br>amount</div>
-						<div class="hn strong text-red-2">₹14 Lakhs</div>
+						<div class="h6 strong space-25-bottom">Buy our 'Co-Own' fractional units by investing just</div>
+						<div class="hn strong text-red-2">₹5 Lakhs</div>
 					</div>
 					<div class="back fill-blue-4">
 						<div>
@@ -143,9 +143,10 @@ $testimonialSets = array_chunk(
 						</div>
 					</div>
 				</div>
-				<div class="tile t-5 fill-red-3 hide-small">
+				<div class="tile t-5 fill-blue-4 hide-small">
 					<!-- (5.) -->
-					<div class="h6 strong line-height-xlarge">Bangalore <br>Delhi <br>Pune</div>
+					<div class="space-min-bottom h5 strong">Co-own</div>
+					<div class="label strong">Buy fractional units. <span class="text-red-2">Earn fixed monthly income.</span></div>
 				</div>
 				<div class="tile t-6 fill-red-3 hide-small">
 					<!-- (6.) -->
@@ -155,7 +156,7 @@ $testimonialSets = array_chunk(
 					<div class="front fill-dark">
 						<!-- (7.) -->
 						<div class="h5 strong space-min-bottom">EMI</div>
-						<div class="label strong">Invest only the down payment and <span class="text-red-2">let us fund your EMIs.</span></div>
+						<div class="small strong">Invest only the down payment and <span class="text-red-2">get the rent to fund your EMIs.</span></div>
 					</div>
 					<div class="back fill-dark">
 						<div>
@@ -172,7 +173,7 @@ $testimonialSets = array_chunk(
 						<!-- (9.) -->
 						<div class="h5 strong space-min-bottom">Lumpsum</div>
 						<!-- <div class="label strong">Make a <span class="text-red-2">one-time investment</span> <br>and enjoy a monthly fixed <br>rental income.</div> -->
-						<div class="label strong">Get a monthly fixed income, <br>on a <span class="text-red-2">one-time investment.</span></div>
+						<div class="small strong">Get a monthly fixed income, <br>on a <span class="text-red-2">one-time investment.</span></div>
 					</div>
 					<div class="back fill-dark">
 						<div>
@@ -217,7 +218,7 @@ $testimonialSets = array_chunk(
 				<div class="tile t-16 fill-blue-4">
 					<!-- (16.) -->
 					<div class="h5 strong">you invest the down payment</div>
-					<div class="hn strong text-red-2">we fund your EMI</div>
+					<div class="hn strong text-red-2">the rent funds your EMI</div>
 				</div>
 			</div>
 		</div>
