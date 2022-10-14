@@ -18,6 +18,7 @@
 }
 .get-callback-section select.phone-country-code {
 	width: 31%;
+	background-position-y: 45%;
 }
 .get-callback-section .form .fine-print {
 	grid-column: 1 / -1;
