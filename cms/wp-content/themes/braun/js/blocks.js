@@ -37,6 +37,8 @@ wp.domReady( function() {
 		allowedBlocks.push( "acf/bfs-testimonials" )
 	if ( postType === "faq" )
 		allowedBlocks.push( "acf/bfs-faqs" )
+	if ( postType === "distributor" )
+		allowedBlocks.push( "acf/bfs-distributors" )
 
 	let allBlockTypes = wp.blocks.getBlockTypes();
 	allBlockTypes.forEach( function ( blockType ) {
