@@ -24,7 +24,7 @@ $( window ).on( "resize", debounce( function ( event ) {
 	domInvestmentTileGrid.style.setProperty( "--content-height", domInvestmentTileGrid.scrollHeight + "px" );
 } ) );
 
-// Clone an investment card and store it as a template
+// Clone a card from the Investments section, template-ize it, and store it on the side
 var $investmentCardCopy = $( $( ".js_section_investment" ).find( ".js_investment_card" ).first().get( 0 ).outerHTML );
 $investmentCardCopy
 	.addClass( "faded-while-loading" )
@@ -33,7 +33,14 @@ $investmentCardCopy
 	.find( ".js_toggle_payment_mode" ).prop( "checked", false )
 $( ".js_section_templates" ).prepend( $( "<template class='js_template' data-name='investment-card'>" + $investmentCardCopy.get( 0 ).outerHTML.trim() + "</template>" ) );
 
-
+/*
+ |
+ | When clicking on the "Get Details" button on the card, it flips over, revealing a form.
+ | The markup that comprises the back of the card; only one instance of it exists in the DOM.
+ | At any point in time, only one card can ever be flipped over.
+ | When a new card is to be flipped over, we un-flip the existing card,
+ | 	_transplant_ the markup (of the back of the card) over to the back of the new card
+ */
 // For the markup comprising the back of the investment cards, we're using only **one** instance of it
 // Every time a card is flipped, we move the markup from the previous card and onto the back of the card being flipped
 $( ".js_investment_card" ).first().find( ".js_back" )
@@ -41,7 +48,7 @@ $( ".js_investment_card" ).first().find( ".js_back" )
 let domBackOfInvestmentCard = $( ".js_investment_card" ).first().find( ".js_back > div" ).get( 0 )
 window.__BFS.exports.domBackOfInvestmentCard = domBackOfInvestmentCard
 
-// Un-flip the investment card if the user is clicks "Back"
+// Un-flip the investment card if the user clicks "Back"
 $( ".js_section_investment" ).on( "click", ".js_investment_card_unflip", function ( event ) {
 	let $card = $( event.target ).closest( ".js_investment_card" );
 	$card.removeClass( "flipped" );
