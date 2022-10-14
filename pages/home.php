@@ -11,6 +11,7 @@ require_once __ROOT__ . '/types/faqs/faqs.php';
 require_once __ROOT__ . '/types/brochures/brochures.php';
 require_once __ROOT__ . '/types/tiles/tiles.php';
 require_once __ROOT__ . '/types/testimonials/testimonials.php';
+require_once __ROOT__ . '/types/distributors/distributors.php';
 
 use BFS\CMS\WordPress;
 use BFS\Types\Investments;
@@ -19,6 +20,7 @@ use BFS\Types\FAQs;
 use BFS\Types\Brochures;
 use BFS\Types\Tiles;
 use BFS\Types\Testimonials;
+use BFS\Types\Distributors;
 
 
 
@@ -77,6 +79,8 @@ $testimonialSets = array_chunk(
 	2,
 	true
 );
+
+$distributors = Distributors::getAll();
 
 ?>
 
@@ -640,6 +644,9 @@ $testimonialSets = array_chunk(
 </section>
 <!-- END: Testimonials Section -->
 
+<!-- Authorized Distributors Section -->
+<?php require_once __DIR__ . '/sections/home/distributors.php'; ?>
+<!-- END: Authorized Distributors Section -->
 
 <!-- Templates Section -->
 <section class="js_section_templates hidden">

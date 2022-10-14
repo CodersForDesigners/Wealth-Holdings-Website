@@ -1,0 +1,163 @@
+
+/**
+ |
+ | Distributors section
+ |
+ |
+ */
+
+.distributors-section {}
+.distributors-section .distributors {
+	padding-top: var(--space-50);
+}
+.distributors-section .carousel::before {
+	background-image: linear-gradient( to left, transparent 0%, rgba(150,151,155,1) 90%);
+}
+.distributors-section .carousel::after {
+	background-image: linear-gradient( to right, transparent 0%, rgba(150,151,155,1) 90%);
+}
+.distributors-section .distributors .distributor {
+	padding: var(--space-min);
+}
+.distributors-section .distributors .distributor .tile {
+	position: relative;
+	z-index: 1;
+	color: var(--dark);
+	background-color: var(--light);
+	width: 100%;
+	height: auto;
+	padding: 0 var(--space-25);
+	font-size: 0;
+	overflow: hidden;
+}
+
+
+.distributors-section .distributors .distributor .tile .distributor-content-text {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: var(--space-150);
+	padding: var(--space-25);
+	padding-top: var(--space-100);
+	line-height: 1.75;
+}
+.distributors-section .distributors .distributor .tile .distributor-content-text:before {
+	display: block;
+	content: '';
+	position: absolute;
+	z-index: 1;
+	top: var(--space-25);
+	left: var(--space-25);
+	width: calc( var(--space-75) - var(--space-min) );
+	height: calc( var(--space-75) - var(--space-min) );
+	background-image: url('../../../media/icon/icon-quote-dark.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom left;
+
+}
+
+.distributors-section .distributors .distributor .tile .image {
+	display: flex;
+	align-items: center;
+	padding: var(--space-150) 0 var(--space-150);
+}
+	.distributors-section .distributors .distributor .tile .image img {
+		margin: 0 auto;
+		height: 50px;
+		filter: grayscale( 1 );
+		transition: filter 0.4s ease-in-out;
+	}
+	.distributors-section .distributors .distributor .tile .image:hover img {
+		filter: grayscale( 0 );
+	}
+.distributors-section .distributors .distributor .tile .info {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	height: 8rem;
+	padding-bottom: var(--space-50);
+}
+
+
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {
+
+	.distributors-section .carousel .carousel-list .carousel-list-item {
+		width: calc( 4 * var(--space-100) + var(--space-25) );
+	}
+	.distributors-section .distributors .distributor .tile .distributor-content-text {
+		bottom: calc( var(--space-100) + var(--space-25) );
+		padding-top: calc( var(--space-75) + var(--space-min) );
+		line-height: 1.375;
+		font-size: 1.2rem;
+	}
+	.distributors-section .distributors .distributor .tile .distributor-content-text:before {
+		width: calc( var(--space-50) - var(--space-min) );
+		height: calc( var(--space-50) - var(--space-min) );
+	}
+
+	.distributors-section .distributors .distributor .tile .image {
+		padding: var(--space-50) 0 var(--space-75);
+	}
+	.distributors-section .distributors .distributor .tile .info {
+		height: calc( var(--space-75) + var(--space-50) );
+		padding-bottom: var(--space-50);
+	}
+	.distributors-section .distributors .distributor .tile .info .meta {
+		left: calc( var(--space-100) + var(--space-25) );
+	}
+}
+@media( min-width: 1480px ) {
+
+	.distributors-section .carousel .carousel-list .carousel-list-item {
+		width: calc( 3 * var(--space-100) + var(--space-50) );
+	}
+	.distributors-section .distributors .distributor .tile .image {
+		padding: var(--space-50) 0 var(--space-25);
+	}
+	.distributors-section .distributors .distributor .tile .distributor-content-text {
+		font-size: 1.6rem;
+		line-height: 1.5;
+	}
+}
+
+
+/* -- Scroll Controls -- */
+
+.distributors-section .distributors .scroll-controls {
+	z-index: 7;
+	position: absolute;
+	top: calc( var(--space-50) + var(--space-min) );
+	left: 0;
+	width: 100%;
+	cursor: pointer;
+	transform: translateY(-25%);
+}
+.distributors-section .distributors .scroll-controls .scroll-button {
+	display: inline-block;
+	overflow: hidden;
+	width: var(--space-75);
+	height: var(--space-75);
+}
+.distributors-section .distributors .scroll-controls .scroll-button * { pointer-events: none; }
+.distributors-section .distributors .scroll-controls .scroll-button:focus { outline: none; }
+.distributors-section .distributors .scroll-controls .scroll-button.left {
+	transform: translateX(-25%);
+}
+.distributors-section .distributors .scroll-controls .scroll-button.right {
+	transform: translateX(25%);
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {
+	.distributors-section .distributors .scroll-controls .scroll-button {
+		width: var(--space-50);
+		height: var(--space-50);
+	}
+}
+@media( min-width: 1480px ) {}
+

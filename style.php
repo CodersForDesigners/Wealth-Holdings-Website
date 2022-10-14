@@ -30,6 +30,7 @@
 <link rel="stylesheet" type="text/css" href="/css/pages/section/webinar-section.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="/css/pages/section/faqs-section.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="/css/pages/section/testimonial-section.css<?php echo $ver ?>">
+<link rel="stylesheet" type="text/css" href="/css/pages/section/distributors-section.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="/css/pages/section/tile-link-section.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="/css/pages/section/search-listing-section.css<?php echo $ver ?>">
 <link rel="stylesheet" type="text/css" href="/css/pages/section/footer-section.css<?php echo $ver ?>">
