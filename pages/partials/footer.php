@@ -117,6 +117,7 @@ $footerNavigationMenuItems = WordPress::getNavigation( 'Footer', '/' );
 	<script type="text/javascript" src="/js/page/home/co-investments.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/page/home/co-investment-form.js<?= $ver ?>"></script>
 	<script type="text/javascript" src="/js/page/home/webinar-form.js<?= $ver ?>"></script>
+	<script type="text/javascript" src="/js/page/home/callback-form.js<?= $ver ?>"></script>
 <?php else : ?>
 	<script type="text/javascript" src="/js/page/cms-generated-form.js"></script>
 <?php endif; ?>
