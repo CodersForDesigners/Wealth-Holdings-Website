@@ -47,7 +47,7 @@ function coInvestmentCard ( $id = '', $title = '', $yield = [ ], $return = [ ], 
 			</div>
 			<div class="meta-2 space-25-top space-75-bottom">
 				<div class="cost space-min-bottom text-neutral-2">
-					<div class="label">Cost per Share</div>
+					<div class="label">Cost per unit</div>
 					<div class="h6 fade-able">₹ <span class="js_cost"><?= $cost ?></span></div>
 				</div>
 				<div class="min-investment space-min-bottom text-red-2">
