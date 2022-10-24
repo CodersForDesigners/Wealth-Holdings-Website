@@ -124,9 +124,9 @@ $distributors = Distributors::getAll();
 						<div class="logo"><img class="block" src="/media/wh-logo-large-dark.svg<?php echo $ver ?>"></div>
 					</div>
 					<div class="columns small-12 medium-10 large-12 space-50-top-bottom">
-						<div class="h5 strong space-min-bottom">Curated rental-yielding assets, with</div>
+						<div class="h5 strong space-min-bottom">Real estate investments with</div>
 						<div class="h1 strong">returns you cannot ignore.</div>
-						<div class="h5 text-blue-4 space-50-top">Invest in rental-yielding real estate assets that are backed by a business model. Get the right returns, with managed volatility and capital protection.</div>
+						<div class="h5 text-blue-4 space-50-top">We are a platform for buying and selling 'built-to-rent' property investments. A new class of real estate backed investment with fixed monthly rentals and asset appreciation.</div>
 					</div>
 				</div>
 			</div>
@@ -148,10 +148,10 @@ $distributors = Distributors::getAll();
 			<div class="columns small-12 tile-grid">
 				<div class="tile t-1 fill-blue-4">
 					<!-- (1.) -->
-					<div class="h5 strong space-50-bottom">Choose full ownership. Invest in a 3BHK, get it registered in your name. Get a fixed monthly income.</div>
+					<div class="h5 strong space-50-bottom">Based on your budget, choose between, full ownership rental property and 'co-ownership' of rental property.</div>
 					<div class="h6 strong space-50-bottom clearfix">
 						<img class="icon float-left" src="../media/icon/icon-right-arrow-box-red.svg<?php echo $ver ?>">
-						The return is better than a fixed deposit.
+						The return is better than a bank deposit.
 					</div>
 					<div class="hn strong text-red-2">7%</div>
 				</div>
@@ -166,7 +166,7 @@ $distributors = Distributors::getAll();
 				<div class="tile t-4 minimum-investment-amount no-pointer" tabindex="-1">
 					<div class="front fill-blue-4">
 						<!-- (4.) -->
-						<div class="h6 strong space-25-bottom">Buy our 'Co-Own' fractional units by investing just</div>
+						<div class="h6 strong space-25-bottom">Buy our 'Co-own' units and get monthly rent by investing just</div>
 						<div class="hn strong text-red-2">₹5 Lakhs</div>
 					</div>
 					<div class="back fill-blue-4">
@@ -179,7 +179,7 @@ $distributors = Distributors::getAll();
 				<div class="tile t-5 fill-blue-4 hide-small">
 					<!-- (5.) -->
 					<div class="space-min-bottom h5 strong">Co-own</div>
-					<div class="label strong">Buy fractional units. <span class="text-red-2">Earn fixed monthly income.</span></div>
+					<div class="label strong">Buy fractional units. <span class="text-red-2">Earn fixed monthly rent.</span></div>
 				</div>
 				<div class="tile t-6 fill-red-3 hide-small">
 					<!-- (6.) -->
@@ -206,7 +206,7 @@ $distributors = Distributors::getAll();
 						<!-- (9.) -->
 						<div class="h5 strong space-min-bottom">Lumpsum</div>
 						<!-- <div class="label strong">Make a <span class="text-red-2">one-time investment</span> <br>and enjoy a monthly fixed <br>rental income.</div> -->
-						<div class="small strong">Get a monthly fixed income, <br>on a <span class="text-red-2">one-time investment.</span></div>
+						<div class="small strong">Get a fixed monthly rent, after making <br>a <span class="text-red-2">one-time investment.</span></div>
 					</div>
 					<div class="back fill-dark">
 						<div>
@@ -226,7 +226,7 @@ $distributors = Distributors::getAll();
 				</div>
 				<div class="tile t-12 fill-blue-4">
 					<!-- (12.) -->
-					<div class="h5 strong">fixed <span class="text-red-2">monthly income</span></div>
+					<div class="h5 strong">fixed <span class="text-red-2">monthly rental</span></div>
 					<div class="hn strong text-red-2">6% to 7.5%</div>
 				</div>
 				<div class="tile t-13 fill-red-3 hide-small">
@@ -241,11 +241,11 @@ $distributors = Distributors::getAll();
 					<!-- (15.) -->
 					<div class="h5 strong space-25-bottom line-height-small clearfix">
 						<img class="icon float-left" src="../media/icon/icon-bar-red.svg<?php echo $ver ?>">
-						capital <br>appreciation
+						fixed monthly <br>rental
 					</div>
 					<div class="h5 strong line-height-small clearfix">
 						<img class="icon float-left" src="../media/icon/icon-bar-red.svg<?php echo $ver ?>">
-						+ fixed <br>rental income
+						+ asset <br>appreciation
 					</div>
 				</div>
 				<div class="tile t-16 fill-blue-4">
@@ -367,7 +367,7 @@ $distributors = Distributors::getAll();
 						<div class="tag label text-blue-1">Invest</div>
 					</div>
 					<div class="table-row h6">
-						Get a fixed monthly income.
+						Get a fixed monthly rent.
 						<div class="tag label text-blue-1">Earn</div>
 					</div>
 					<div class="table-row h6">

@@ -31,9 +31,9 @@ function coInvestmentCard ( $id = '', $title = '', $yield = [ ], $return = [ ], 
 					<div class="small line-height-small js_yield_duration"><?= $yield[ 'duration' ] ?? '' ?></div>
 				</div>
 				<div class="columns small-9 rent text-neutral-2">
-					<div class="h5 strong text-uppercase">Return</div>
 					<div class="h5 fade-able">₹ <span class="js_return_amount"><?= $return[ 'amount' ] ?? '' ?></span></div>
 					<div class="small line-height-small js_return_duration"><?= $return[ 'duration' ] ?? '' ?></div>
+					<div class="h5 strong text-uppercase">Rent</div>
 				</div>
 			</div>
 			<div class="title h5 strong">
@@ -76,7 +76,7 @@ function coInvestmentCard ( $id = '', $title = '', $yield = [ ], $return = [ ], 
 	<div class="row">
 		<div class="container">
 			<div class="columns small-12 space-50-bottom">
-				<div class="h2 strong">Fractional Ownership</div>
+				<div class="h2 strong">Co-Ownership</div>
 			</div>
 			<?php if ( $numberOfCoInvestments > 2 ) : ?>
 				<div class="filtration columns small-12 js_filtration">
