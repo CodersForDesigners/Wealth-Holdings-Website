@@ -159,8 +159,8 @@ $( ".js_section_co_investment" ).on( "change", ".js_filter", function ( event ) 
 			var investment = investments[ _i ];
 			$card.find( ".js_yield_amount" ).text( investment.acf.yield.amount );
 			$card.find( ".js_yield_duration" ).text( investment.acf.yield.duration );
-			$card.find( ".js_return_amount" ).text( investment.acf.return.amount );
-			$card.find( ".js_return_duration" ).text( investment.acf.return.duration );
+			$card.find( ".js_rent_amount" ).text( investment.acf.return.amount );
+			$card.find( ".js_rent_duration" ).text( investment.acf.return.duration );
 			$card.find( ".js_title_lumpsum" ).text( investment.acf.title.lumpsum );
 			$card.find( ".js_title" ).text( investment.acf.title );
 			$card.find( ".js_cost" ).text( investment.acf.cost );

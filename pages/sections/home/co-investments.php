@@ -20,7 +20,7 @@
  | - data-image="<?= $featuredImage ?>"
  |
  */
-function coInvestmentCard ( $id = '', $title = '', $yield = [ ], $return = [ ], $cost = '', $minInvestment = '' ) {
+function coInvestmentCard ( $id = '', $title = '', $yield = [ ], $rent = [ ], $cost = '', $minInvestment = '' ) {
 ?>
 	<div class="tile investment fill-black js_shareable js_co_investment_card" data-id="<?= $id ?>" >
 		<div class="front">
@@ -31,9 +31,9 @@ function coInvestmentCard ( $id = '', $title = '', $yield = [ ], $return = [ ], 
 					<div class="small line-height-small js_yield_duration"><?= $yield[ 'duration' ] ?? '' ?></div>
 				</div>
 				<div class="columns small-9 rent text-neutral-2">
-					<div class="h5 fade-able">₹ <span class="js_return_amount"><?= $return[ 'amount' ] ?? '' ?></span></div>
-					<div class="small line-height-small js_return_duration"><?= $return[ 'duration' ] ?? '' ?></div>
 					<div class="h5 strong text-uppercase">Rent</div>
+					<div class="h5 fade-able">₹ <span class="js_rent_amount"><?= $rent[ 'amount' ] ?? '' ?></span></div>
+					<div class="small line-height-small js_rent_duration"><?= $rent[ 'duration' ] ?? '' ?></div>
 				</div>
 			</div>
 			<div class="title h5 strong">
@@ -103,7 +103,7 @@ function coInvestmentCard ( $id = '', $title = '', $yield = [ ], $return = [ ], 
 					$e->get( 'ID' ),
 					$e->get( 'title' ),
 					$e->get( 'yield' ),
-					$e->get( 'return' ),
+					$e->get( 'rent' ),
 					$e->get( 'cost' ),
 					$e->get( 'minimum_investment' )
 				) ?>
