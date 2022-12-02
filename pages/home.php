@@ -126,7 +126,7 @@ $distributors = Distributors::getAll();
 					<div class="columns small-12 medium-10 large-12 space-50-top-bottom">
 						<div class="h5 strong space-min-bottom">Real estate investments with</div>
 						<div class="h1 strong">returns you cannot ignore.</div>
-						<div class="h5 text-blue-4 space-50-top">We are a platform for buying and selling 'built-to-rent' property investments. A new class of real estate backed investment with fixed monthly rentals and asset appreciation.</div>
+						<div class="h5 text-blue-4 space-50-top">We are a platform for buying and selling 'buy-to-rent' property investments. A new class of real estate backed investment with fixed monthly rentals and asset appreciation.</div>
 					</div>
 				</div>
 			</div>
@@ -189,7 +189,7 @@ $distributors = Distributors::getAll();
 					<div class="front fill-dark">
 						<!-- (7.) -->
 						<div class="h5 strong space-min-bottom">EMI</div>
-						<div class="small strong">Invest only the down payment and <span class="text-red-2">get the rent to fund your EMIs.</span></div>
+						<div class="small strong">Invest the down payment and <span class="text-red-2">get the monthly rent to fund your EMIs.</span></div>
 					</div>
 					<div class="back fill-dark">
 						<div>
@@ -206,7 +206,7 @@ $distributors = Distributors::getAll();
 						<!-- (9.) -->
 						<div class="h5 strong space-min-bottom">Lumpsum</div>
 						<!-- <div class="label strong">Make a <span class="text-red-2">one-time investment</span> <br>and enjoy a monthly fixed <br>rental income.</div> -->
-						<div class="small strong">Get a fixed monthly rent, after making <br>a <span class="text-red-2">one-time investment.</span></div>
+						<div class="small strong">Get a monthly rent and asset appreciation, after making <br>a <span class="text-red-2">one-time investment.</span></div>
 					</div>
 					<div class="back fill-dark">
 						<div>
@@ -226,8 +226,8 @@ $distributors = Distributors::getAll();
 				</div>
 				<div class="tile t-12 fill-blue-4">
 					<!-- (12.) -->
-					<div class="h5 strong">fixed <span class="text-red-2">monthly rental</span></div>
-					<div class="hn strong text-red-2">6% to 7.5%</div>
+					<div class="h5 strong">Monthly <span class="text-red-2">rental returns of</span></div>
+					<div class="hn strong text-red-2">5% to 7%</div>
 				</div>
 				<div class="tile t-13 fill-red-3 hide-small">
 					<!-- (13.) -->
@@ -241,7 +241,7 @@ $distributors = Distributors::getAll();
 					<!-- (15.) -->
 					<div class="h5 strong space-25-bottom line-height-small clearfix">
 						<img class="icon float-left" src="../media/icon/icon-bar-red.svg<?php echo $ver ?>">
-						fixed monthly <br>rental
+						monthly <br>rental returns
 					</div>
 					<div class="h5 strong line-height-small clearfix">
 						<img class="icon float-left" src="../media/icon/icon-bar-red.svg<?php echo $ver ?>">
@@ -286,11 +286,11 @@ $distributors = Distributors::getAll();
 						Sign a 9-year rental agreement.
 					</div>
 					<div class="table-row h6">
-							Get a fixed yearly rental income for 9 years.
+							Get your monthly rental returns.
 							<div class="tag label text-yellow-2">Earn</div>
 						</div>
 					<div class="table-row h6">
-							Get the benefit of capital appreciation plus fixed income.
+							Get the additional benefit of capital appreciation.
 							<div class="tag label text-yellow-2">Gain</div>
 						</div>
 				</div>
