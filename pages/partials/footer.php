@@ -26,7 +26,7 @@ $footerNavigationMenuItems = WordPress::getNavigation( 'Footer', '/' );
 							<a class="inline" href="/">
 								<img class="block" src="/media/wh-logo-large-light.svg<?php echo $ver ?>"></div>
 							</a>
-						<div class="h6 space-25-bottom text-blue-2">Wealth Holdings is a brand of Green <br>Infrastructure Projects Private Limited.</div>
+						<div class="h6 space-25-bottom text-blue-2">Wealth Holdings is a brand of Bagadia <br>Properties Private Limited.</div>
 						<!-- <a class="address inline space-25-bottom" target="_blank" href="https://maps.google.com"> -->
 						<span class="address inline space-25-bottom">
 							<span class="label inline text-blue-3 line-height-xlarge">Corporate Address :</span><br>
