@@ -6,7 +6,7 @@
  */
 require_once __ROOT__ . '/lib/providers/wordpress.php';
 require_once __ROOT__ . '/types/investments/investments.php';
-require_once __ROOT__ . '/types/co-investments/co-investments.php';
+// require_once __ROOT__ . '/types/co-investments/co-investments.php';
 require_once __ROOT__ . '/types/faqs/faqs.php';
 require_once __ROOT__ . '/types/brochures/brochures.php';
 require_once __ROOT__ . '/types/tiles/tiles.php';
@@ -15,7 +15,7 @@ require_once __ROOT__ . '/types/distributors/distributors.php';
 
 use BFS\CMS\WordPress;
 use BFS\Types\Investments;
-use BFS\Types\CoInvestments;
+// use BFS\Types\CoInvestments;
 use BFS\Types\FAQs;
 use BFS\Types\Brochures;
 use BFS\Types\Tiles;
@@ -48,18 +48,18 @@ if ( $numberOfInvestments <= 3 )
  | Co-Investments
  |
  */
-$coInvestments = CoInvestments::getAll();
-$coInvestmentCategories = CoInvestments::getCategories();
+// $coInvestments = CoInvestments::getAll();
+// $coInvestmentCategories = CoInvestments::getCategories();
 
-// Determine whether to show the "View All" overlay at all in the first place
-$numberOfCoInvestments = count( $coInvestments );
-$hideCoInvestmentsPagination = '';
-if ( $numberOfCoInvestments <= 9 )
-	$hideCoInvestmentsPagination .= 'view-all-l view-all-xl';
-if ( $numberOfCoInvestments <= 6 )
-	$hideCoInvestmentsPagination .= ' view-all-m';
-if ( $numberOfCoInvestments <= 3 )
-	$hideCoInvestmentsPagination .= ' view-all-s';
+// // Determine whether to show the "View All" overlay at all in the first place
+// $numberOfCoInvestments = count( $coInvestments );
+// $hideCoInvestmentsPagination = '';
+// if ( $numberOfCoInvestments <= 9 )
+// 	$hideCoInvestmentsPagination .= 'view-all-l view-all-xl';
+// if ( $numberOfCoInvestments <= 6 )
+// 	$hideCoInvestmentsPagination .= ' view-all-m';
+// if ( $numberOfCoInvestments <= 3 )
+// 	$hideCoInvestmentsPagination .= ' view-all-s';
 
 
 
@@ -105,10 +105,10 @@ $distributors = Distributors::getAll();
 	window.__BFS.data.investments = <?= json_encode( $investmentsForJS ) ?>;
 
 	<?php
-		foreach ( $coInvestments as $coInvestment )
-			$coInvestmentsForJS[ ] = $coInvestment->getAll();
+		// foreach ( $coInvestments as $coInvestment )
+			// $coInvestmentsForJS[ ] = $coInvestment->getAll();
 	?>
-	window.__BFS.data.coInvestments = <?= json_encode( $coInvestmentsForJS ) ?>;
+	// window.__BFS.data.coInvestments = <?= json_encode( $coInvestmentsForJS ) ?>;
 
 </script>
 
@@ -340,10 +340,11 @@ $distributors = Distributors::getAll();
 
 
 <!-- Co-Investment Section -->
-<?php require_once __DIR__ . '/sections/home/co-investments.php'; ?>
+<?php /* require_once __DIR__ . '/sections/home/co-investments.php'; */ ?>
 <!-- END: Co-Investment Section -->
 
 <!-- How Co-Investments Work Section -->
+<?php /*
 <section class="how-investments-work-section fill-black space-75-top-bottom" id="how-co-investments-work-section" data-section-title="How Co-Investments Work Section" data-section-slug="how-co-investments-work-section">
 	<div class="container">
 		<div class="row">
@@ -391,6 +392,7 @@ $distributors = Distributors::getAll();
 		</div>
 	</div>
 </section>
+*/ ?>
 <!-- END: How Co-Investments Work Section -->
 
 
